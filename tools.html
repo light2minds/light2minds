@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tools & Resources — Light2minds</title>
+  <meta name="description" content="Free downloadable tools for families and ABA professionals — ABC data sheets, visual schedules, behavior tracking forms, reinforcement menus, parent handouts, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── Category filter tabs ──────────────────────────────────── */
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+      justify-content: center;
+    }
+    .filter-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: .88rem;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all var(--ease);
+      background: var(--white);
+      border: 2px solid var(--border);
+      color: var(--text-med);
+    }
+    .filter-tab:hover { border-color: var(--blue); color: var(--blue); }
+    .filter-tab.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+    }
+
+    /* ── Resource sections ─────────────────────────────────────── */
+    .resource-section {
+      margin-bottom: 60px;
+    }
+    .resource-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .resource-section > p {
+      margin-bottom: 24px;
+      font-size: .95rem;
+    }
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── Tool card ─────────────────────────────────────────────── */
+    .tool-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: all var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+    .tool-card:hover { box-shadow: var(--shadow); border-color: var(--blue-mid); transform: translateY(-2px); }
+    .tool-card__header {
+      padding: 22px 22px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .tool-card__ico {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--r-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .tool-card__body { flex: 1; }
+    .tool-card__body h4 { margin-bottom: 4px; font-size: .98rem; }
+    .tool-card__body p  { font-size: .86rem; color: var(--text-mute); line-height: 1.5; }
+    .tool-card__footer {
+      padding: 14px 22px 18px;
+      border-top: 1px solid var(--divider);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .tool-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .file-badge {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .file-badge--pdf  { background: #FEE2E2; color: #991B1B; }
+    .file-badge--doc  { background: #DBEAFE; color: #1E40AF; }
+    .file-badge--xls  { background: #D1FAE5; color: #065F46; }
+    .file-badge--free { background: var(--teal-pale); color: var(--teal-dark); }
+    .tool-card__audience {
+      font-size: .75rem;
+      color: var(--text-faint);
+    }
+
+    /* ── Category divider ──────────────────────────────────────── */
+    .cat-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 56px 0 28px;
+    }
+    .cat-divider__line {
+      flex: 1;
+      height: 1px;
+      background: var(--divider);
+    }
+    .cat-divider__label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--text-mute);
+      white-space: nowrap;
+    }
+
+    /* ── Search bar ────────────────────────────────────────────── */
+    .search-wrap {
+      position: relative;
+      max-width: 500px;
+      margin: 0 auto 32px;
+    }
+    .search-wrap input {
+      width: 100%;
+      padding: 14px 20px 14px 48px;
+      border: 2px solid var(--border);
+      border-radius: 100px;
+      font-size: .95rem;
+      font-family: inherit;
+      color: var(--text-dark);
+      background: var(--white);
+      outline: none;
+      transition: border var(--ease);
+    }
+    .search-wrap input:focus { border-color: var(--blue-mid); }
+    .search-wrap input::placeholder { color: var(--text-faint); }
+    .search-wrap__icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-mute);
+      font-size: 1.1rem;
+    }
+
+    /* ── Sensory recommendation card ──────────────────────────── */
+    .sensory-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: all var(--ease);
+    }
+    .sensory-card:hover { box-shadow: var(--shadow-sm); }
+    .sensory-card__ico { font-size: 2rem; flex-shrink: 0; }
+    .sensory-card h4 { font-size: .97rem; margin-bottom: 5px; }
+    .sensory-card p  { font-size: .87rem; color: var(--text-mute); }
+    .sensory-card .tag { margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">Bright<span class="two">2</span><span class="teal">Minds</span></a>
+    <div class="nav__links">
+      <a href="index.html">Home</a>
+      <a href="parents.html">For Parents</a>
+      <a href="professionals.html">For Professionals</a>
+      <a href="aba-center.html">ABA Center Startup</a>
+      <a href="tools.html" class="active">Tools & Resources</a>
+    </div>
+    <a href="#all-tools" class="btn btn--primary btn--sm nav__cta">Browse Tools</a>
+    <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile">
+  <a href="index.html">Home</a>
+  <a href="parents.html">For Parents</a>
+  <a href="professionals.html">For Professionals</a>
+  <a href="aba-center.html">ABA Center Startup</a>
+  <a href="tools.html">Tools & Resources</a>
+  <a href="#all-tools" class="btn btn--primary">Browse Tools</a>
+</div>
+
+<!-- ── Page Hero ─────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="container page-hero__inner">
+    <div class="page-hero__breadcrumb">
+      <a href="index.html">Home</a><span>›</span><span>Tools & Resources</span>
+    </div>
+    <h1>Tools &amp; Resources</h1>
+    <p class="lead">A growing library of free, practical tools for families and ABA professionals — printable, downloadable, and ready to use.</p>
+    <div class="page-hero__btns">
+      <a href="#clinical-tools" class="btn btn--ghost">Clinical Forms</a>
+      <a href="#parent-tools" class="btn btn--outline-white">Parent Resources</a>
+      <a href="#sensory-tools" class="btn btn--warm">Sensory Tools</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Stats / overview ───────────────────────────────────────── -->
+<section style="background:var(--white);padding:40px 0;">
+  <div class="container">
+    <div class="grid grid-4">
+      <div style="text-align:center;padding:20px;">
+        <strong style="font-size:2.2rem;font-weight:800;color:var(--blue);display:block;">40+</strong>
+        <span style="color:var(--text-mute);font-size:.9rem;">Free Downloads</span>
+      </div>
+      <div style="text-align:center;padding:20px;">
+        <strong style="font-size:2.2rem;font-weight:800;color:var(--teal);display:block;">6</strong>
+        <span style="color:var(--text-mute);font-size:.9rem;">Resource Categories</span>
+      </div>
+      <div style="text-align:center;padding:20px;">
+        <strong style="font-size:2.2rem;font-weight:800;color:var(--warm);display:block;">PDF</strong>
+        <span style="color:var(--text-mute);font-size:.9rem;">Print-Ready Formats</span>
+      </div>
+      <div style="text-align:center;padding:20px;">
+        <strong style="font-size:2.2rem;font-weight:800;color:var(--sage);display:block;">Free</strong>
+        <span style="color:var(--text-mute);font-size:.9rem;">No Sign-Up Required</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Disclaimer ─────────────────────────────────────────────── -->
+<div style="background:var(--bg);padding:24px 0;">
+  <div class="container">
+    <div class="disclaimer">
+      <strong>Disclaimer:</strong> All tools and resources provided by Light2minds are for educational and informational use only. They are not intended to replace professional clinical assessment, therapy, or individualized recommendations. Always consult a licensed clinician before implementing any therapeutic strategy.
+    </div>
+  </div>
+</div>
+
+<!-- ── All Tools ──────────────────────────────────────────────── -->
+<section class="section" id="all-tools">
+  <div class="container">
+
+    <!-- Search -->
+    <div class="search-wrap">
+      <span class="search-wrap__icon">🔍</span>
+      <input type="text" id="toolSearch" placeholder="Search tools and resources..." aria-label="Search resources" />
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="filter-tabs" role="tablist">
+      <button class="filter-tab active" data-filter="all" role="tab">All Resources</button>
+      <button class="filter-tab" data-filter="clinical">🧩 Clinical Forms</button>
+      <button class="filter-tab" data-filter="parent">👨‍👩‍👧 Parent Resources</button>
+      <button class="filter-tab" data-filter="sensory">🌊 Sensory Tools</button>
+      <button class="filter-tab" data-filter="developmental">🌱 Developmental Guides</button>
+      <button class="filter-tab" data-filter="rbt">📚 RBT Study</button>
+      <button class="filter-tab" data-filter="center">🏢 ABA Center</button>
+    </div>
+
+    <!-- ── CLINICAL FORMS ─── -->
+    <div class="cat-divider" id="clinical-tools" data-category="clinical">
+      <div class="cat-divider__line"></div>
+      <div class="cat-divider__label"><span>📊</span> Clinical Data Forms</div>
+      <div class="cat-divider__line"></div>
+    </div>
+    <div class="resource-grid" id="clinical-grid">
+
+      <div class="tool-card" data-category="clinical" data-name="ABC Data Sheet Antecedent Behavior Consequence">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--blue">📊</div>
+          <div class="tool-card__body">
+            <h4>ABC Data Sheet</h4>
+            <p>Antecedent-Behavior-Consequence data collection form for functional behavior assessment. Includes columns for time, setting, antecedent, behavior description, consequence, and hypothesized function.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For Professionals</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="ABC Data Sheet">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="clinical" data-name="Discrete Trial DTT Data Sheet Skill Acquisition">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--teal">📝</div>
+          <div class="tool-card__body">
+            <h4>Discrete Trial (DTT) Data Sheet</h4>
+            <p>Track correct, incorrect, and prompted responses across trials. Includes target name, SD, prompt level, response recording (+ / – / P), and mastery criteria tracking.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For Professionals</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="DTT Data Sheet">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="clinical" data-name="Behavior Frequency Tracking Event Recording">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--warm">🔢</div>
+          <div class="tool-card__body">
+            <h4>Behavior Frequency Tracking Sheet</h4>
+            <p>Simple event recording form for tracking frequency of target behaviors across a session. Supports up to 5 behaviors simultaneously with tally marks and totals.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="Behavior Frequency Tracking Sheet">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="clinical" data-name="Duration Latency Recording Form">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--sage">🕒</div>
+          <div class="tool-card__body">
+            <h4>Duration &amp; Latency Recording Form</h4>
+            <p>Track how long behaviors last (duration) and how quickly they occur after a stimulus (latency). Includes start/stop times and calculation fields.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="Duration and Latency Recording Form">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="clinical" data-name="Interval Recording Whole Partial Momentary Time Sampling">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--blue">⏱️</div>
+          <div class="tool-card__body">
+            <h4>Interval Recording Data Sheet</h4>
+            <p>Whole-interval, partial-interval, and momentary time sampling recording forms. Pre-divided into 10-second intervals across a 30-minute observation period.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="Interval Recording Data Sheet">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="clinical" data-name="Session Note Template Documentation">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--teal">📓</div>
+          <div class="tool-card__body">
+            <h4>Session Note Template</h4>
+            <p>Insurance-ready session note format covering all required documentation elements. Includes target summary, behavioral events, progress narrative, and next session plan.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--doc">Word</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="Session Note Template">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="clinical" data-name="Task Analysis Chaining Data Sheet">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--warm">📋</div>
+          <div class="tool-card__body">
+            <h4>Task Analysis Data Sheet</h4>
+            <p>Blank task analysis data sheet for chaining programs. Record independence (+), prompt level (P, G, M, PP, FP), or failure (–) for each step. Supports up to 20 steps and 10 sessions.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="Task Analysis Data Sheet">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="clinical" data-name="Preference Assessment MSWO Free Operant">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--sage">⭐</div>
+          <div class="tool-card__body">
+            <h4>Preference Assessment Recording Form</h4>
+            <p>Free operant and MSWO (Multiple Stimulus Without Replacement) preference assessment recording forms to identify potential reinforcers for individual learners.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="Preference Assessment Form">Download</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── PARENT RESOURCES ─── -->
+    <div class="cat-divider" id="parent-tools" data-category="parent">
+      <div class="cat-divider__line"></div>
+      <div class="cat-divider__label"><span>👨‍👩‍👧</span> Parent Resources &amp; Handouts</div>
+      <div class="cat-divider__line"></div>
+    </div>
+    <div class="resource-grid">
+
+      <div class="tool-card" data-category="parent" data-name="IEP Preparation Checklist School Parents">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--blue">🏫</div>
+          <div class="tool-card__body">
+            <h4>IEP Meeting Preparation Checklist</h4>
+            <p>Know exactly what to bring, what to ask, and what to look for in your child's IEP meeting. Includes a rights summary and post-meeting action steps.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For Families</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="IEP Meeting Preparation Checklist">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="parent" data-name="Behavior Observation Log Home Parent">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--teal">📒</div>
+          <div class="tool-card__body">
+            <h4>Home Behavior Observation Log</h4>
+            <p>Parent-friendly form for tracking behaviors at home — time, setting, what triggered it, what happened after, and your child's emotional state. Share with your child's therapy team.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For Families</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="Home Behavior Observation Log">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="parent" data-name="Visual Daily Schedule Home Routine Autism ADHD">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--warm">🗓️</div>
+          <div class="tool-card__body">
+            <h4>Visual Daily Schedule Template</h4>
+            <p>Customizable visual schedule for home use. Available in morning routine, after-school, bedtime, and full-day formats. Supports predictability and reduces transition-related behaviors.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For Families</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="Visual Daily Schedule Template">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="parent" data-name="ABA Glossary Terms Parents Plain Language">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--blue">💬</div>
+          <div class="tool-card__body">
+            <h4>ABA Terms for Parents — Glossary</h4>
+            <p>A plain-language guide to the therapy terms your child's ABA team will use — so you always feel informed, not confused, in meetings and calls.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For Families</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="ABA Terms for Parents Glossary">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="parent" data-name="Provider Interview Questions ABA Speech OT">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--sage">❓</div>
+          <div class="tool-card__body">
+            <h4>Provider Interview Question Guide</h4>
+            <p>25 essential questions to ask before choosing an ABA provider, speech therapist, or occupational therapist. Know what good looks like before you commit.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For Families</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="Provider Interview Question Guide">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="parent" data-name="Home Strategy Guide Parenting Autism ADHD">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--warm">🏠</div>
+          <div class="tool-card__body">
+            <h4>Home Strategy Quick-Reference Guide</h4>
+            <p>Seven proven home strategies — visual schedules, child-led play, positive reinforcement, simple language, and more — explained simply and practically for everyday use.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For Families</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="Home Strategy Quick-Reference Guide">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="parent" data-name="First Diagnosis Guide What to Do After Autism ADHD">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--blue">🗺️</div>
+          <div class="tool-card__body">
+            <h4>After the Diagnosis — A Parent Roadmap</h4>
+            <p>A compassionate, step-by-step guide for parents in the first weeks after a diagnosis. What to do, who to call, and how to take care of yourself too.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For Families</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="After the Diagnosis Roadmap">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="parent" data-name="Reinforcement Menu Reward Chart Children">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--teal">🌟</div>
+          <div class="tool-card__body">
+            <h4>Reinforcement Menu for Home</h4>
+            <p>A customizable menu of reinforcer categories (activities, social, sensory, edible, tangible) to help parents identify what motivates their child and use it intentionally to build positive behaviors.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">Families &amp; Professionals</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="Reinforcement Menu">Download</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── SENSORY TOOLS ─── -->
+    <div class="cat-divider" id="sensory-tools" data-category="sensory">
+      <div class="cat-divider__line"></div>
+      <div class="cat-divider__label"><span>🌊</span> Sensory Tool Recommendations</div>
+      <div class="cat-divider__line"></div>
+    </div>
+    <p style="color:var(--text-med);margin-bottom:28px;font-size:.95rem;">These are general sensory tool categories recommended by occupational therapists. Always consult an OT for individualized recommendations for your child.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:32px;">
+
+      <div class="sensory-card">
+        <span class="sensory-card__ico">🦺</span>
+        <div>
+          <h4>Weighted Vests &amp; Blankets</h4>
+          <p>Deep pressure tools that provide proprioceptive input to help calm and regulate children who seek heavy work or have trouble with sensory modulation.</p>
+          <span class="tag tag--teal">Deep Pressure</span>
+        </div>
+      </div>
+
+      <div class="sensory-card">
+        <span class="sensory-card__ico">🎧</span>
+        <div>
+          <h4>Noise-Canceling Headphones</h4>
+          <p>Helpful for children with auditory hypersensitivity — in classrooms, grocery stores, or any high-stimulation environment. Available in child sizes.</p>
+          <span class="tag tag--blue">Auditory</span>
+        </div>
+      </div>
+
+      <div class="sensory-card">
+        <span class="sensory-card__ico">🪑</span>
+        <div>
+          <h4>Wobble Seats &amp; Cushions</h4>
+          <p>Provides vestibular and proprioceptive input for children who need movement to focus. Great for classroom or homework desk use.</p>
+          <span class="tag tag--teal">Vestibular</span>
+        </div>
+      </div>
+
+      <div class="sensory-card">
+        <span class="sensory-card__ico">🎾</span>
+        <div>
+          <h4>Fidget Tools</h4>
+          <p>Textured fidgets, stress balls, and hand spinners provide tactile input and help channel sensory-seeking behavior in a controlled way during learning activities.</p>
+          <span class="tag tag--blue">Tactile</span>
+        </div>
+      </div>
+
+      <div class="sensory-card">
+        <span class="sensory-card__ico">🌡️</span>
+        <div>
+          <h4>Oral Sensory Tools</h4>
+          <p>Chew necklaces, vibrating oral tools, and chewy tubes for children who are oral sensory seekers — a safer, socially appropriate alternative to chewing clothing or objects.</p>
+          <span class="tag tag--warm">Oral</span>
+        </div>
+      </div>
+
+      <div class="sensory-card">
+        <span class="sensory-card__ico">🫧</span>
+        <div>
+          <h4>Sensory Bins &amp; Play Materials</h4>
+          <p>Sand, water, kinetic sand, slime, and rice bins provide controlled tactile and proprioceptive exploration — often used in sensory diets prescribed by OTs.</p>
+          <span class="tag tag--blue">Tactile</span>
+        </div>
+      </div>
+
+      <div class="sensory-card">
+        <span class="sensory-card__ico">💡</span>
+        <div>
+          <h4>Visual Sensory Tools</h4>
+          <p>Sunglasses for light sensitivity, visual timers (like Time Timer), calm-down glitter jars, and visual schedules to reduce visual overstimulation and support transitions.</p>
+          <span class="tag tag--teal">Visual</span>
+        </div>
+      </div>
+
+      <div class="sensory-card">
+        <span class="sensory-card__ico">🛏️</span>
+        <div>
+          <h4>Calming Corner Essentials</h4>
+          <p>A designated, low-stimulation area with soft lighting, a bean bag or crash pad, weighted lap pad, noise-canceling headphones, and a feelings chart for self-regulation.</p>
+          <span class="tag tag--warm">Self-Regulation</span>
+        </div>
+      </div>
+
+    </div>
+    <div style="background:var(--teal-pale);border:1px solid rgba(13,148,136,.2);border-radius:var(--r-lg);padding:24px 28px;">
+      <strong style="color:var(--teal-dark);">Download:</strong>
+      <span style="color:var(--text-med);font-size:.95rem;margin:0 12px 0 6px;">Sensory Profile Questionnaire — help identify your child's sensory profile to share with their occupational therapist.</span>
+      <button class="btn btn--sm btn--teal" data-download="Sensory Profile Questionnaire">Download Free</button>
+    </div>
+
+    <!-- ── DEVELOPMENTAL GUIDES ─── -->
+    <div class="cat-divider" id="developmental-tools" data-category="developmental">
+      <div class="cat-divider__line"></div>
+      <div class="cat-divider__label"><span>🌱</span> Developmental Activity Guides</div>
+      <div class="cat-divider__line"></div>
+    </div>
+    <div class="resource-grid">
+
+      <div class="tool-card" data-category="developmental" data-name="Early Language Development Activities Play">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--teal">💬</div>
+          <div class="tool-card__body">
+            <h4>Early Language Development Activity Guide</h4>
+            <p>25 simple, play-based activities to support communication development in young children — from first words to two-word combinations. No materials required beyond everyday objects.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="Early Language Development Activity Guide">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="developmental" data-name="Social Skills Play Activities Children Peers">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--blue">🤝</div>
+          <div class="tool-card__body">
+            <h4>Social Skills Activity Cards</h4>
+            <p>30 printable activity cards for building social skills at home — turn-taking, sharing, requesting, greeting, and perspective-taking activities for ages 3–10.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="Social Skills Activity Cards">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="developmental" data-name="Fine Motor Activities Development Children Preschool">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--warm">✍️</div>
+          <div class="tool-card__body">
+            <h4>Fine Motor Activity Guide</h4>
+            <p>Easy fine motor activities to support hand strength, coordination, and pre-writing skills — using household materials like play-doh, tweezers, and stickers.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="Fine Motor Activity Guide">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="developmental" data-name="Emotion Feelings Regulation Cards Children">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--sage">💛</div>
+          <div class="tool-card__body">
+            <h4>Emotions &amp; Feelings Cards</h4>
+            <p>Printable emotions flashcards and a feelings check-in chart for children — supports emotional vocabulary and regulation skills. Available in simple and detailed versions.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="Emotions and Feelings Cards">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="developmental" data-name="Milestone Checklist Developmental Ages Stages">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--blue">📌</div>
+          <div class="tool-card__body">
+            <h4>Developmental Milestone Checklist</h4>
+            <p>Age-by-age developmental milestone checklist (birth to age 8) covering motor, language, cognitive, and social-emotional development. Use to track progress and identify areas of concern.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="Developmental Milestone Checklist">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="developmental" data-name="Daily Living Skills Self Care Chores Independence">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--warm">🧼</div>
+          <div class="tool-card__body">
+            <h4>Daily Living Skills Task Cards</h4>
+            <p>Visual step-by-step cards for common daily living skills — hand-washing, getting dressed, brushing teeth, and making a simple snack. Print, laminate, and post at eye level.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--teal" data-download="Daily Living Skills Task Cards">Download</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── RBT STUDY MATERIALS ─── -->
+    <div class="cat-divider" id="rbt-tools" data-category="rbt">
+      <div class="cat-divider__line"></div>
+      <div class="cat-divider__label"><span>📚</span> RBT Study Materials</div>
+      <div class="cat-divider__line"></div>
+    </div>
+    <div class="resource-grid">
+
+      <div class="tool-card" data-category="rbt" data-name="RBT Terminology Glossary Flashcards Study">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--blue">📖</div>
+          <div class="tool-card__body">
+            <h4>RBT Terminology Glossary</h4>
+            <p>Comprehensive ABA glossary covering all terms from the RBT Task List — definitions, examples, and exam tips for every concept you need to know.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For RBTs</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="RBT Terminology Glossary">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="rbt" data-name="Ethics Quick Reference BACB Code Conduct">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--teal">⚖️</div>
+          <div class="tool-card__body">
+            <h4>Ethics Quick-Reference Sheet</h4>
+            <p>Key BACB Ethics Code principles summarized for RBTs — confidentiality, scope of practice, dual relationships, reporting, and professional conduct in two pages.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For RBTs</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="Ethics Quick Reference Sheet">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="rbt" data-name="RBT Study Guide Task List Exam Preparation">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--warm">📚</div>
+          <div class="tool-card__body">
+            <h4>RBT Exam Study Guide</h4>
+            <p>Organized by Task List section (A–F), this study guide covers every competency with explanations, examples, and exam-specific study tips.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For RBTs</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="RBT Exam Study Guide">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="rbt" data-name="Supervision Log Monthly Hours Documentation">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--sage">📋</div>
+          <div class="tool-card__body">
+            <h4>Monthly Supervision Log</h4>
+            <p>BACB-aligned monthly supervision log to track required supervision hours, skills covered, and supervisor signatures. Essential for RBT certification maintenance.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For RBTs</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="Monthly Supervision Log">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="rbt" data-name="Competency Checklist Self Assessment Skills">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--blue">✅</div>
+          <div class="tool-card__body">
+            <h4>Competency Self-Assessment Checklist</h4>
+            <p>Self-rate your competency on each skill in the RBT Task List before your formal competency assessment — identify gaps and focus your preparation.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For RBTs</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="Competency Self-Assessment Checklist">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="rbt" data-name="Resume Template Career RBT Job Application">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--teal">📄</div>
+          <div class="tool-card__body">
+            <h4>RBT Resume Template</h4>
+            <p>Professionally designed resume template for RBT positions — highlights key competencies, clinical experience, and credentials in a clean, ATS-friendly format.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--doc">Word</span>
+            <span class="file-badge file-badge--free">FREE</span>
+            <span class="tool-card__audience">For RBTs</span>
+          </div>
+          <button class="btn btn--sm btn--primary" data-download="RBT Resume Template">Download</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── ABA CENTER TOOLS ─── -->
+    <div class="cat-divider" id="center-tools" data-category="center">
+      <div class="cat-divider__line"></div>
+      <div class="cat-divider__label"><span>🏢</span> ABA Center Startup Templates</div>
+      <div class="cat-divider__line"></div>
+    </div>
+    <div class="resource-grid">
+
+      <div class="tool-card" data-category="center" data-name="Intake Packet Client Consent Forms ABA Practice">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--blue">📁</div>
+          <div class="tool-card__body">
+            <h4>Client Intake Packet</h4>
+            <p>Complete intake packet template — consent for treatment, HIPAA notice, developmental history form, financial agreement, and authorization forms. Fully customizable.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--doc">Word</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--warm" data-download="Client Intake Packet">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="center" data-name="Center Launch Checklist Startup ABA Practice Opening">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--warm">✅</div>
+          <div class="tool-card__body">
+            <h4>ABA Center Launch Checklist</h4>
+            <p>A comprehensive pre-launch checklist covering legal, clinical, operational, HIPAA, and staffing milestones — so nothing falls through the cracks before you open your doors.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--warm" data-download="ABA Center Launch Checklist">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="center" data-name="Billing Workflow CPT Codes ABA Insurance">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--teal">💳</div>
+          <div class="tool-card__body">
+            <h4>ABA Billing Workflow Guide</h4>
+            <p>Step-by-step billing workflow, CPT code reference card, prior authorization tracking log, and a denial management tracking sheet — all in one downloadable package.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--pdf">PDF</span>
+            <span class="file-badge file-badge--xls">Excel</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--warm" data-download="ABA Billing Workflow Guide">Download</button>
+        </div>
+      </div>
+
+      <div class="tool-card" data-category="center" data-name="Treatment Plan Template BCBA Goals Objectives">
+        <div class="tool-card__header">
+          <div class="tool-card__ico card-icon--sage">📊</div>
+          <div class="tool-card__body">
+            <h4>Treatment Plan Template</h4>
+            <p>BCBA-aligned treatment plan format with sections for present levels, long-term goals, short-term objectives, methodology, generalization plan, and parent training goals.</p>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <div class="tool-card__meta">
+            <span class="file-badge file-badge--doc">Word</span>
+            <span class="file-badge file-badge--free">FREE</span>
+          </div>
+          <button class="btn btn--sm btn--warm" data-download="Treatment Plan Template">Download</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────── -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="cta-banner">
+      <div class="cta-banner__inner">
+        <h2>Need Something You Don't See Here?</h2>
+        <p>Our resource library is growing. If you're a parent or professional who needs a specific tool, reach out and let us know — we may already have it or we'll create it.</p>
+        <div class="cta-banner__btns">
+          <a href="mailto:hello@light2minds.com" class="btn btn--outline-white btn--lg">Request a Resource</a>
+          <a href="parents.html" class="btn btn--teal btn--lg">Parent Resources</a>
+          <a href="professionals.html" class="btn btn--ghost btn--lg">RBT Professional Hub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo">Bright<span class="two">2</span><span class="teal">Minds</span></a>
+        <p>Guiding Florida families and professionals through behavioral and developmental care — with compassion, clarity, and practical tools.</p>
+        <span class="footer__badge">🌴 Florida-Based Organization</span>
+      </div>
+      <div class="footer__col">
+        <h5>Resource Categories</h5>
+        <ul>
+          <li><a href="#clinical-tools">Clinical Forms</a></li>
+          <li><a href="#parent-tools">Parent Resources</a></li>
+          <li><a href="#sensory-tools">Sensory Tools</a></li>
+          <li><a href="#developmental-tools">Developmental Guides</a></li>
+          <li><a href="#rbt-tools">RBT Study</a></li>
+          <li><a href="#center-tools">ABA Center Templates</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="parents.html">For Parents</a></li>
+          <li><a href="professionals.html">For Professionals</a></li>
+          <li><a href="aba-center.html">ABA Center Startup</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="mailto:hello@light2minds.com">hello@light2minds.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2024 Light2minds. All rights reserved. Florida, USA.</p>
+      <p style="font-size:.78rem;max-width:600px;text-align:right;">Educational content only. Not a substitute for professional clinical guidance. Always consult licensed professionals for individualized recommendations.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // ── Filter tabs ──────────────────────────────────────────────
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const toolCards  = document.querySelectorAll('.tool-card');
+
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      toolCards.forEach(card => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        card.style.display = match ? '' : 'none';
+      });
+      // Show/hide cat dividers
+      document.querySelectorAll('.cat-divider').forEach(div => {
+        div.style.display = (filter === 'all' || div.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  // ── Live search ──────────────────────────────────────────────
+  const searchInput = document.getElementById('toolSearch');
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase().trim();
+    toolCards.forEach(card => {
+      const name = (card.dataset.name || '').toLowerCase();
+      const text = card.innerText.toLowerCase();
+      card.style.display = (!q || name.includes(q) || text.includes(q)) ? '' : 'none';
+    });
+    // Reset filter tabs if searching
+    if (q) {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      filterTabs[0].classList.add('active');
+      document.querySelectorAll('.cat-divider').forEach(d => d.style.display = '');
+    }
+  });
+</script>
+</body>
+</html>

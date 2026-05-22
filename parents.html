@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Parents — Light2minds</title>
+  <meta name="description" content="Compassionate resources for parents of children with autism, ADHD, developmental delays, and behavioral challenges. Education, home strategies, IEP guidance, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── Page-specific tabs ─ */
+    .tabs { margin-top: 36px; }
+    .tab-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0;
+      margin-bottom: 36px;
+    }
+    [data-tab] {
+      font-size: .92rem;
+      font-weight: 600;
+      color: var(--text-mute);
+      padding: 10px 18px;
+      border-radius: var(--r-sm) var(--r-sm) 0 0;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      cursor: pointer;
+      transition: all var(--ease);
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+    }
+    [data-tab]:hover { color: var(--blue); background: var(--blue-faint); }
+    [data-tab].active { color: var(--blue); border-bottom-color: var(--blue); background: var(--blue-faint); }
+    [data-panel] { display: none; }
+    [data-panel].active { display: block; }
+
+    /* Quick nav pills */
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 32px 0 0;
+    }
+    .quick-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .87rem;
+      font-weight: 600;
+      color: var(--blue-dark);
+      background: var(--blue-pale);
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: 1px solid rgba(44,123,182,.2);
+      transition: all var(--ease);
+    }
+    .quick-nav a:hover { background: var(--blue); color: var(--white); }
+    .info-box {
+      background: var(--teal-pale);
+      border: 1px solid rgba(13,148,136,.2);
+      border-left: 4px solid var(--teal);
+      border-radius: var(--r);
+      padding: 20px 24px;
+      margin: 24px 0;
+      font-size: .95rem;
+      color: var(--text-med);
+    }
+    .info-box strong { color: var(--teal-dark); }
+    .cond-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .cond-card {
+      background: var(--white);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+      padding: 24px;
+      transition: all var(--ease);
+    }
+    .cond-card:hover { box-shadow: var(--shadow); border-color: var(--blue-mid); }
+    .cond-card h4 { margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .cond-card p { font-size: .9rem; }
+    .strategy-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 22px;
+      background: var(--white);
+      border-radius: var(--r);
+      border: 1px solid var(--border);
+      margin-bottom: 14px;
+      transition: all var(--ease);
+    }
+    .strategy-card:hover { box-shadow: var(--shadow-sm); }
+    .strategy-card__num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      color: var(--white);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: .9rem;
+    }
+    .strategy-card h4 { margin-bottom: 5px; font-size: 1rem; }
+    .strategy-card p { font-size: .9rem; }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ────────────────────────────────────────────── -->
+<nav class="nav" role="navigation">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">Light<span class="two">2</span><span class="teal">minds</span></a>
+    <div class="nav__links">
+      <a href="index.html">Home</a>
+      <a href="parents.html" class="active">For Parents</a>
+      <a href="professionals.html">For Professionals</a>
+      <a href="aba-center.html">ABA Center Startup</a>
+      <a href="tools.html">Tools & Resources</a>
+    </div>
+    <a href="#sessions" class="btn btn--teal btn--sm nav__cta">Book a Session</a>
+    <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile">
+  <a href="index.html">Home</a>
+  <a href="parents.html">For Parents</a>
+  <a href="professionals.html">For Professionals</a>
+  <a href="aba-center.html">ABA Center Startup</a>
+  <a href="tools.html">Tools & Resources</a>
+  <a href="#sessions" class="btn btn--teal">Book a Session</a>
+</div>
+
+<!-- ── Page Hero ─────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="container page-hero__inner">
+    <div class="page-hero__breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span>For Parents</span>
+    </div>
+    <h1>For Parents &amp; Families</h1>
+    <p class="lead">You are not alone. Light2minds is here to walk alongside you with warm, clear, and practical information — from the moment of diagnosis and every step beyond.</p>
+    <div class="page-hero__btns">
+      <a href="#diagnosis" class="btn btn--ghost">Understanding Diagnosis</a>
+      <a href="#strategies" class="btn btn--outline-white">Home Strategies</a>
+      <a href="#sessions" class="btn btn--warm">Book a 1-on-1 Session</a>
+    </div>
+    <!-- Quick nav -->
+    <div class="quick-nav" style="justify-content:center;margin-top:28px;">
+      <a href="#diagnosis">🧩 Diagnosis</a>
+      <a href="#after-diagnosis">🗺️ What's Next</a>
+      <a href="#aba">📋 ABA Therapy</a>
+      <a href="#iep">🏫 IEP &amp; School</a>
+      <a href="#strategies">🏠 Home Tips</a>
+      <a href="#sessions">💬 1-on-1 Sessions</a>
+      <a href="#downloads">📥 Downloads</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Disclaimer ─────────────────────────────────────────────── -->
+<div style="background:var(--white);padding:24px 0;">
+  <div class="container">
+    <div class="disclaimer">
+      <strong>Important:</strong> All content on this page is for educational purposes only. It is not a substitute for professional medical evaluation, diagnosis, therapy, or clinical supervision. Please work with qualified healthcare providers for your child's individualized care plan.
+    </div>
+  </div>
+</div>
+
+<!-- ── Understanding Diagnosis ────────────────────────────────── -->
+<section class="section" id="diagnosis">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Understanding Your Child</span>
+      <h2>Understanding Your Child's Diagnosis</h2>
+      <p style="max-width:640px;">A diagnosis is not a ceiling — it's a doorway to the right support. Here's what we help you understand across the most common neurodevelopmental conditions.</p>
+      <span class="divider-accent"></span>
+    </div>
+    <div class="cond-grid">
+
+      <div class="cond-card">
+        <h4><span>🧩</span> Autism Spectrum Disorder (ASD)</h4>
+        <p>ASD is a neurodevelopmental condition that affects social communication, sensory processing, and behavior. It's called a "spectrum" because it looks very different in every child. Early intervention — including ABA therapy, speech therapy, and occupational therapy — can make a meaningful difference.</p>
+        <div class="info-box" style="margin:16px 0 0;">
+          <strong>Key insight:</strong> Autism is not caused by parenting. It is a neurological difference that requires understanding, not fixing.
+        </div>
+      </div>
+
+      <div class="cond-card">
+        <h4><span>⚡</span> ADHD</h4>
+        <p>Attention-Deficit/Hyperactivity Disorder affects focus, impulse control, and activity regulation. Children with ADHD often have exceptional creativity, energy, and problem-solving skills. Support includes behavioral strategies, school accommodations, and in some cases, medication — always under a doctor's guidance.</p>
+        <div class="info-box" style="margin:16px 0 0;">
+          <strong>Key insight:</strong> ADHD is not a behavior problem. It is a neurological difference in how the brain manages attention and executive function.
+        </div>
+      </div>
+
+      <div class="cond-card">
+        <h4><span>🌱</span> Developmental Delays</h4>
+        <p>A developmental delay means a child is reaching milestones — like walking, talking, or social skills — later than expected. Delays may affect one area or several, and many children with early support catch up significantly. Early intervention services (often free through public programs) are critical.</p>
+        <div class="info-box" style="margin:16px 0 0;">
+          <strong>Key insight:</strong> "Wait and see" is rarely the right approach. Early intervention is always more effective than waiting.
+        </div>
+      </div>
+
+      <div class="cond-card">
+        <h4><span>💬</span> Language Delays</h4>
+        <p>Language delays affect a child's ability to understand or express language. This can involve spoken words, sentence structure, or both. A speech-language pathologist (SLP) can conduct an evaluation and recommend therapy. Parents play a crucial role in building communication through daily interaction.</p>
+      </div>
+
+      <div class="cond-card">
+        <h4><span>🌊</span> Sensory Processing Difficulties</h4>
+        <p>Some children are over- or under-sensitive to sounds, textures, lights, and movement. This can lead to meltdowns, avoidance, or difficulty in environments like school. An occupational therapist can assess sensory needs and create a "sensory diet" — a personalized set of activities to regulate the sensory system.</p>
+      </div>
+
+      <div class="cond-card">
+        <h4><span>🔵</span> Behavioral Challenges</h4>
+        <p>Behavioral challenges — such as aggression, self-injury, tantrums, or refusal — are usually communication. When a child can't express their needs, their behavior does the talking. ABA therapy helps identify the function of behavior and teach more effective replacement skills.</p>
+        <div class="info-box" style="margin:16px 0 0;">
+          <strong>Key insight:</strong> All behavior serves a function. Understanding the "why" is the first step to change.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── What to Expect After Diagnosis ────────────────────────── -->
+<section class="section section--alt" id="after-diagnosis">
+  <div class="container container--narrow">
+    <div class="section-header">
+      <span class="eyebrow">What's Next</span>
+      <h2>What to Expect After Diagnosis</h2>
+      <p>The period after a diagnosis can feel overwhelming. Here's a realistic roadmap of what typically comes next — and how to navigate it.</p>
+      <span class="divider-accent"></span>
+    </div>
+    <ul class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Process the News — Give Yourself Grace</h4>
+          <p>It's normal to feel grief, relief, fear, or all three at once. A diagnosis doesn't change who your child is — it gives you and the team a clearer picture of how they experience the world. Give yourself time before making any big decisions.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Request the Full Evaluation Report</h4>
+          <p>Get a written copy of your child's evaluation. This document is the foundation of their support plan and is required for school services, insurance authorization, and therapy referrals. Keep several copies.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Connect with Early Intervention or School Services</h4>
+          <p>In Florida, children under 3 may qualify for Early Steps (Florida's early intervention program). Children 3 and older are entitled to a free appropriate public education (FAPE) — including an IEP — through their school district. Contact your district's Exceptional Student Education (ESE) department.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Explore Therapy Options</h4>
+          <p>Depending on the diagnosis, your child may benefit from ABA therapy, speech-language therapy, occupational therapy, physical therapy, or a combination. Ask your pediatrician for referrals and check your insurance for covered providers.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>Understand Your Insurance Benefits</h4>
+          <p>Florida law (Chapters 627 and 641) requires most insurance plans to cover autism spectrum disorder treatment, including ABA therapy. Contact your insurance company to understand your specific benefits, co-pays, and prior authorization requirements.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h4>Build Your Support Network</h4>
+          <p>Connect with other families, join parent advocacy groups, and consider working with a parent advocate if IEP meetings feel difficult. You don't have to navigate this alone — and you learn fastest from people who've been there.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── How ABA Works ──────────────────────────────────────────── -->
+<section class="section" id="aba">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="eyebrow">ABA Therapy</span>
+      <h2>How ABA Therapy Works</h2>
+      <p style="max-width:640px;margin:12px auto 0;">Applied Behavior Analysis (ABA) is an evidence-based approach to understanding and changing behavior. Here's what every parent should know before starting services.</p>
+      <span class="divider-accent divider-accent--center"></span>
+    </div>
+    <div class="grid grid-3" style="margin-bottom:40px;">
+      <div class="card card--blue">
+        <div class="card-icon card-icon--blue">🔬</div>
+        <h3>What Is ABA?</h3>
+        <p>ABA applies our understanding of how behavior works to real-life situations. It looks at the relationship between the environment and behavior — and uses that knowledge to teach skills, reduce challenging behaviors, and improve quality of life.</p>
+      </div>
+      <div class="card card--teal">
+        <div class="card-icon card-icon--teal">👥</div>
+        <h3>Who Is on the Team?</h3>
+        <p>An ABA team typically includes a Board Certified Behavior Analyst (BCBA), who designs and supervises the therapy, and one or more Registered Behavior Technicians (RBTs), who implement the program directly with your child.</p>
+      </div>
+      <div class="card card--sage">
+        <div class="card-icon card-icon--sage">📋</div>
+        <h3>What Does a Session Look Like?</h3>
+        <p>Sessions are structured but can take place at home, school, or a clinic. Therapists use naturalistic play, skill-building exercises, and positive reinforcement to teach everything from daily living skills to communication and social behavior.</p>
+      </div>
+    </div>
+
+    <div class="accordion" data-open-first="true">
+      <div class="accordion__item">
+        <button class="accordion__trigger">What is positive reinforcement and why does it matter? <span class="accordion__arrow">▼</span></button>
+        <div class="accordion__body">
+          <p>Positive reinforcement means adding something enjoyable after a behavior, which makes that behavior more likely to happen again. In ABA, therapists identify what is motivating for your child (called "reinforcers") and use them strategically to build skills. This is not bribery — it's teaching, the same way we learn.</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger">How many hours per week does my child need? <span class="accordion__arrow">▼</span></button>
+        <div class="accordion__body">
+          <p>Intensity varies based on your child's age, needs, and goals. Research supports anywhere from 10 to 40 hours per week. The BCBA will conduct a comprehensive assessment and recommend an appropriate level of intensity. Medicaid and many private insurers in Florida cover intensive ABA.</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger">How do I know if my child is making progress? <span class="accordion__arrow">▼</span></button>
+        <div class="accordion__body">
+          <p>Progress in ABA is data-driven. Your BCBA will track skill acquisition and challenging behavior with daily data collection. You should receive regular progress reports and meetings to review goals. Ask questions — you are a critical part of the team.</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger">Is ABA only for autism? <span class="accordion__arrow">▼</span></button>
+        <div class="accordion__body">
+          <p>No. While ABA is most widely known for autism treatment, the principles of behavior analysis apply to any individual who would benefit from skill-building or behavior support — including children with ADHD, developmental delays, intellectual disabilities, and behavioral challenges.</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger">What questions should I ask a potential ABA provider? <span class="accordion__arrow">▼</span></button>
+        <div class="accordion__body">
+          <ul>
+            <li>Is the supervising clinician a BCBA? Are RBTs registered with the BACB?</li>
+            <li>How are goals developed and how often are they reviewed?</li>
+            <li>Will services be provided at home, in a center, or both?</li>
+            <li>How will you communicate with me about my child's progress?</li>
+            <li>What does parent training look like in your program?</li>
+            <li>What is your approach to challenging behavior?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── IEP & School ────────────────────────────────────────────── -->
+<section class="section section--blue-pale" id="iep">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">School Support</span>
+      <h2>IEP Guidance &amp; School Support</h2>
+      <p>The Individualized Education Program (IEP) is a legally binding document that outlines the supports your child is entitled to in public school. Here's how to navigate it confidently.</p>
+      <span class="divider-accent"></span>
+    </div>
+    <div class="grid grid-2">
+      <div>
+        <h3 style="margin-bottom:20px;">Your Rights as a Parent</h3>
+        <ul class="checklist">
+          <li><div class="check-icon check-icon--blue">✓</div> You are a full and equal member of your child's IEP team.</li>
+          <li><div class="check-icon check-icon--blue">✓</div> You have the right to request an evaluation — for free — if you suspect your child has a disability.</li>
+          <li><div class="check-icon check-icon--blue">✓</div> You must receive written notice before any change to your child's placement or services.</li>
+          <li><div class="check-icon check-icon--blue">✓</div> You can request an Independent Educational Evaluation (IEE) if you disagree with the school's evaluation.</li>
+          <li><div class="check-icon check-icon--blue">✓</div> You can bring a support person or advocate to any IEP meeting.</li>
+          <li><div class="check-icon check-icon--blue">✓</div> You can request a copy of all educational records — at no cost.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:20px;">What Goes Inside an IEP?</h3>
+        <ul class="checklist">
+          <li><div class="check-icon check-icon--teal">✓</div> Present levels of academic achievement and functional performance</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Annual measurable goals (academic and functional)</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Special education services and related services (speech, OT, ABA)</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Accommodation and modification list</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Least restrictive environment (LRE) statement</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Transition plan (age 16+ in Florida)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-box" style="margin-top:32px;">
+      <strong>Florida Tip:</strong> Florida follows IDEA (Individuals with Disabilities Education Act). Exceptional Student Education (ESE) is Florida's term for special education. Contact your district's ESE office — they are required by law to respond to your request for evaluation within 60 days.
+    </div>
+    <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="tools.html#iep" class="btn btn--primary">IEP Prep Checklist</a>
+      <a href="tools.html#parent-handouts" class="btn btn--outline-blue">Parent Handouts</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Home Strategies ────────────────────────────────────────── -->
+<section class="section" id="strategies">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Home Life</span>
+      <h2>Home Strategies That Make a Real Difference</h2>
+      <p style="max-width:640px;">You don't need to be a therapist to support your child's development. These evidence-based strategies can be naturally woven into everyday routines.</p>
+      <span class="divider-accent"></span>
+    </div>
+
+    <div style="margin-bottom:36px;">
+      <div class="strategy-card">
+        <div class="strategy-card__num">1</div>
+        <div>
+          <h4>Build a Predictable Routine</h4>
+          <p>Children with autism, ADHD, and developmental delays thrive with structure. Use visual schedules (pictures or words) to show what's coming next. Warn your child before transitions ("In 5 minutes, we're leaving the park"). Predictability reduces anxiety and challenging behavior.</p>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-card__num">2</div>
+        <div>
+          <h4>Follow Your Child's Lead</h4>
+          <p>During play, join what your child is already doing instead of redirecting. Get on the floor, imitate their actions, and comment on what you see. Child-led play builds joint attention, language, and social connection — the building blocks of communication.</p>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-card__num">3</div>
+        <div>
+          <h4>Use Clear, Simple Language</h4>
+          <p>Keep instructions short and specific. Instead of "stop it," say "hands down." Instead of "behave," say "sit in your chair." For children with limited language, use their language level plus one word. ("Ball!" → "Roll ball!")</p>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-card__num">4</div>
+        <div>
+          <h4>Catch the Positives</h4>
+          <p>For every correction, aim for 4–5 positive comments. Specific praise teaches: "I love how you put your shoes on by yourself!" rather than just "Good job!" Positive reinforcement builds the behaviors you want to see more of.</p>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-card__num">5</div>
+        <div>
+          <h4>Understand the Function of Behavior</h4>
+          <p>Before reacting to challenging behavior, ask: What is my child trying to get or avoid? Most behavior serves one of four functions: attention, access to something, escape from something, or sensory stimulation. Identifying the function helps you respond more effectively.</p>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-card__num">6</div>
+        <div>
+          <h4>Create a Sensory-Friendly Home</h4>
+          <p>Reduce overwhelming stimuli where possible — dim harsh lights, minimize background noise, provide a quiet space. At the same time, offer sensory input your child seeks: a swing, textured toys, movement breaks, or deep pressure. An OT can help you design a personalized sensory diet.</p>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-card__num">7</div>
+        <div>
+          <h4>Take Care of Yourself Too</h4>
+          <p>Caregiver burnout is real and it affects your child's wellbeing directly. You cannot pour from an empty cup. Connect with a parent support group, ask for respite care, and know that needing help is not weakness — it's wisdom.</p>
+        </div>
+      </div>
+    </div>
+    <a href="tools.html#parent-handouts" class="btn btn--primary">Download Home Strategy Guides</a>
+  </div>
+</section>
+
+<!-- ── 1-on-1 Sessions ─────────────────────────────────────────── -->
+<section class="section section--dark" id="sessions">
+  <div class="container">
+    <div class="grid grid-2" style="align-items:center;gap:60px;">
+      <div>
+        <span class="eyebrow eyebrow--white">Personalized Support</span>
+        <h2>Parent 1-on-1 Educational Sessions</h2>
+        <p>Sometimes you need more than a guide — you need a conversation. Our parent education sessions give you dedicated time with a specialist to discuss your child's specific situation, ask every question you've been holding, and leave with a clear plan.</p>
+        <ul class="checklist" style="margin:24px 0;">
+          <li><div class="check-icon check-icon--teal">✓</div> <span style="color:rgba(255,255,255,.82);">Understanding your child's specific diagnosis and profile</span></li>
+          <li><div class="check-icon check-icon--teal">✓</div> <span style="color:rgba(255,255,255,.82);">Reviewing reports and therapy recommendations</span></li>
+          <li><div class="check-icon check-icon--teal">✓</div> <span style="color:rgba(255,255,255,.82);">Preparing for IEP meetings and advocating for your child</span></li>
+          <li><div class="check-icon check-icon--teal">✓</div> <span style="color:rgba(255,255,255,.82);">Creating a home support strategy tailored to your family</span></li>
+          <li><div class="check-icon check-icon--teal">✓</div> <span style="color:rgba(255,255,255,.82);">Guidance on selecting therapists and providers</span></li>
+        </ul>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="mailto:hello@light2minds.com" class="btn btn--warm btn--lg">Book a Session</a>
+          <a href="mailto:hello@light2minds.com" class="btn btn--outline-white">Email Us</a>
+        </div>
+      </div>
+      <div class="card" style="padding:40px;">
+        <div style="font-size:2rem;margin-bottom:12px;">💬</div>
+        <h3>What Parents Say</h3>
+        <div style="margin-top:20px;">
+          <blockquote style="border-left:3px solid var(--teal-mid);padding-left:18px;margin-bottom:20px;">
+            <p style="font-style:italic;color:var(--text-med);font-size:.95rem;">"After our session I finally felt like I understood what was in my daughter's evaluation report. I went to the next IEP meeting prepared, and for the first time I actually advocated for what she needed."</p>
+            <cite style="font-size:.83rem;color:var(--text-mute);font-style:normal;margin-top:8px;display:block;">— Florida Parent</cite>
+          </blockquote>
+          <blockquote style="border-left:3px solid var(--blue-mid);padding-left:18px;">
+            <p style="font-style:italic;color:var(--text-med);font-size:.95rem;">"I had so many questions after my son was diagnosed with autism. The session gave me a roadmap I didn't know I needed."</p>
+            <cite style="font-size:.83rem;color:var(--text-mute);font-style:normal;margin-top:8px;display:block;">— Florida Parent</cite>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Downloads ──────────────────────────────────────────────── -->
+<section class="section section--alt" id="downloads">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="eyebrow">Free Resources</span>
+      <h2>Downloadable Parent Tools</h2>
+      <p style="max-width:560px;margin:12px auto 0;">Practical, print-ready resources to support your family at home and in school meetings.</p>
+      <span class="divider-accent divider-accent--center"></span>
+    </div>
+    <div class="grid grid-auto">
+
+      <div class="resource-card">
+        <div class="resource-card__ico card-icon--blue">📋</div>
+        <div class="resource-card__body">
+          <h4>IEP Meeting Preparation Checklist</h4>
+          <p>Know exactly what to bring, what to ask, and what to look out for in your child's IEP meeting.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF</span>
+            <button class="btn btn--sm btn--primary" data-download="IEP Meeting Preparation Checklist">Download Free</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card__ico card-icon--teal">📊</div>
+        <div class="resource-card__body">
+          <h4>Behavior Observation Log</h4>
+          <p>Track behaviors at home to share with your child's therapy team — includes time, trigger, and outcome fields.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF</span>
+            <button class="btn btn--sm btn--primary" data-download="Behavior Observation Log">Download Free</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card__ico card-icon--warm">🗓️</div>
+        <div class="resource-card__body">
+          <h4>Visual Daily Schedule Template</h4>
+          <p>A customizable visual schedule for home use — ideal for children who benefit from routine and predictability.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF</span>
+            <button class="btn btn--sm btn--primary" data-download="Visual Daily Schedule Template">Download Free</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card__ico card-icon--sage">🌿</div>
+        <div class="resource-card__body">
+          <h4>Sensory Profile Questionnaire</h4>
+          <p>Help identify your child's sensory sensitivities and preferences to share with their occupational therapist.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF</span>
+            <button class="btn btn--sm btn--primary" data-download="Sensory Profile Questionnaire">Download Free</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card__ico card-icon--blue">💬</div>
+        <div class="resource-card__body">
+          <h4>ABA Terms for Parents Glossary</h4>
+          <p>A plain-language guide to the therapy terms your child's ABA team will use — so you always know what they mean.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF</span>
+            <button class="btn btn--sm btn--primary" data-download="ABA Terms for Parents Glossary">Download Free</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card__ico card-icon--teal">❓</div>
+        <div class="resource-card__body">
+          <h4>Provider Interview Question Guide</h4>
+          <p>25 questions to ask before choosing an ABA provider, speech therapist, or occupational therapist.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF</span>
+            <button class="btn btn--sm btn--primary" data-download="Provider Interview Question Guide">Download Free</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <a href="tools.html" class="btn btn--outline-blue btn--lg">View All Resources &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner">
+      <div class="cta-banner__inner">
+        <h2>Every Child Deserves the Right Support</h2>
+        <p>Light2minds is here to make sure families and professionals have what they need to provide it. Explore our full library of tools and resources.</p>
+        <div class="cta-banner__btns">
+          <a href="tools.html" class="btn btn--outline-white btn--lg">Browse All Resources</a>
+          <a href="mailto:hello@light2minds.com" class="btn btn--warm btn--lg">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo">Light<span class="two">2</span><span class="teal">minds</span></a>
+        <p>Guiding Florida families and professionals through behavioral and developmental care — with compassion, clarity, and practical tools.</p>
+        <span class="footer__badge">🌴 Florida-Based Organization</span>
+      </div>
+      <div class="footer__col">
+        <h5>For Families</h5>
+        <ul>
+          <li><a href="#diagnosis">Understanding Diagnosis</a></li>
+          <li><a href="#after-diagnosis">What's Next</a></li>
+          <li><a href="#aba">How ABA Works</a></li>
+          <li><a href="#iep">IEP Guidance</a></li>
+          <li><a href="#strategies">Home Strategies</a></li>
+          <li><a href="#sessions">1-on-1 Sessions</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>For Professionals</h5>
+        <ul>
+          <li><a href="professionals.html">RBT Exam Prep</a></li>
+          <li><a href="professionals.html#materials">Study Materials</a></li>
+          <li><a href="professionals.html#ethics">Ethics Module</a></li>
+          <li><a href="aba-center.html">ABA Center Startup</a></li>
+          <li><a href="tools.html">Data Forms</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tools.html">Free Resources</a></li>
+          <li><a href="#downloads">Downloads</a></li>
+          <li><a href="mailto:hello@light2minds.com">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2024 Light2minds. All rights reserved. Florida, USA.</p>
+      <p style="font-size:.78rem;max-width:600px;text-align:right;">Educational content only. Not a substitute for professional medical advice, therapy, or clinical supervision.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

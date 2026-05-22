@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ABA Center Startup — Light2minds</title>
+  <meta name="description" content="Step-by-step guidance for opening your own ABA therapy center in Florida — business planning, operations, compliance, billing, clinical workflow, and ready-to-use templates." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .quick-nav {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 28px;
+    }
+    .quick-nav a {
+      display: inline-flex; align-items: center; gap: 6px; font-size: .87rem; font-weight: 600;
+      color: #92400E; background: var(--warm-pale); padding: 8px 16px; border-radius: 100px;
+      border: 1px solid rgba(245,158,11,.25); transition: all var(--ease);
+    }
+    .quick-nav a:hover { background: var(--warm); color: var(--white); }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .phase-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      color: var(--white);
+      font-size: 1.2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .phase-header h2 { margin: 0; font-size: 1.6rem; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+    @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+
+    .checklist-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 28px;
+    }
+    .checklist-box h4 { margin-bottom: 16px; }
+
+    .phase-section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--divider);
+    }
+    .phase-section:last-of-type { border-bottom: none; }
+
+    .template-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">Light<span class="two">2</span><span class="teal">minds</span></a>
+    <div class="nav__links">
+      <a href="index.html">Home</a>
+      <a href="parents.html">For Parents</a>
+      <a href="professionals.html">For Professionals</a>
+      <a href="aba-center.html" class="active">ABA Center Startup</a>
+      <a href="tools.html">Tools & Resources</a>
+    </div>
+    <a href="#templates" class="btn btn--warm btn--sm nav__cta">Get Templates</a>
+    <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile">
+  <a href="index.html">Home</a>
+  <a href="parents.html">For Parents</a>
+  <a href="professionals.html">For Professionals</a>
+  <a href="aba-center.html">ABA Center Startup</a>
+  <a href="tools.html">Tools & Resources</a>
+  <a href="#templates" class="btn btn--warm">Get Templates</a>
+</div>
+
+<!-- ── Page Hero ─────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="container page-hero__inner">
+    <div class="page-hero__breadcrumb">
+      <a href="index.html">Home</a><span>›</span><span>ABA Center Startup</span>
+    </div>
+    <h1>Open Your Own ABA Center</h1>
+    <p class="lead">Launching an ABA therapy practice is one of the most meaningful business decisions you can make. This guide walks you through every phase — from the first business plan to your first client session.</p>
+    <div class="page-hero__btns">
+      <a href="#business" class="btn btn--ghost">Business Planning</a>
+      <a href="#operations" class="btn btn--outline-white">Operations</a>
+      <a href="#templates" class="btn btn--warm">Templates &amp; Checklists</a>
+    </div>
+    <div class="quick-nav">
+      <a href="#business">📊 Business Plan</a>
+      <a href="#operations">⚙️ Operations</a>
+      <a href="#intake">📋 Intake &amp; Packets</a>
+      <a href="#staff">👥 Staff Onboarding</a>
+      <a href="#compliance">✅ Compliance</a>
+      <a href="#billing">💳 Billing Workflow</a>
+      <a href="#clinical">🧩 Clinical Workflow</a>
+      <a href="#templates">📁 Templates</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Disclaimer ─────────────────────────────────────────────── -->
+<div style="background:var(--white);padding:24px 0;">
+  <div class="container">
+    <div class="disclaimer">
+      <strong>Important Notice:</strong> The content in this section is for educational and informational purposes only. It does not constitute legal, financial, medical, or clinical consultation. Starting an ABA practice involves complex legal, regulatory, and clinical considerations. Always consult with a licensed attorney, accountant, BCBA, and compliance specialist before making business decisions.
+    </div>
+  </div>
+</div>
+
+<!-- ── Overview ───────────────────────────────────────────────── -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="eyebrow">At a Glance</span>
+      <h2>What Does Opening an ABA Center Involve?</h2>
+      <p style="max-width:640px;margin:12px auto 0;">Starting a therapy practice is rewarding but complex. Here's the high-level roadmap across all phases of launch.</p>
+      <span class="divider-accent divider-accent--center"></span>
+    </div>
+    <div class="grid grid-4">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2.2rem;margin-bottom:12px;">📊</div>
+        <h4>Phase 1</h4>
+        <p style="font-size:.9rem;">Business planning, entity formation, and market research</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2.2rem;margin-bottom:12px;">⚙️</div>
+        <h4>Phase 2</h4>
+        <p style="font-size:.9rem;">Operations setup, space, hiring, and credentialing</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2.2rem;margin-bottom:12px;">📋</div>
+        <h4>Phase 3</h4>
+        <p style="font-size:.9rem;">Documentation systems, intake process, and compliance</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2.2rem;margin-bottom:12px;">🚀</div>
+        <h4>Phase 4</h4>
+        <p style="font-size:.9rem;">Billing, clinical workflows, and serving your first clients</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Business Planning ──────────────────────────────────────── -->
+<section class="phase-section section" id="business">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-num">1</div>
+      <h2>Business Planning &amp; Entity Formation</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <p style="margin-bottom:24px;">A solid business plan is the foundation of a sustainable ABA practice. Before spending a dollar on rent or hiring, you need clarity on your model, market, and finances.</p>
+
+        <h3 style="margin-bottom:16px;">Your Business Plan Should Include:</h3>
+        <ul class="checklist">
+          <li><div class="check-icon check-icon--blue">✓</div> Executive summary and mission statement</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Target population and geographic service area</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Service model (home-based, center-based, or hybrid)</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Competitive landscape and differentiators</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Projected startup costs and operating budget</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Revenue projections based on billing rates and capacity</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Marketing and referral strategy</li>
+          <li><div class="check-icon check-icon--blue">✓</div> 3-year financial forecast</li>
+        </ul>
+
+        <div style="margin-top:28px;">
+          <h3 style="margin-bottom:16px;">Common Business Entity Options in Florida:</h3>
+          <div class="accordion" data-open-first="true">
+            <div class="accordion__item">
+              <button class="accordion__trigger">LLC (Limited Liability Company) <span class="accordion__arrow">▼</span></button>
+              <div class="accordion__body">
+                <p>The most popular choice for small ABA practices. Provides personal liability protection and flexible tax treatment. Easy to form through Florida Division of Corporations (sunbiz.org). Low annual fees.</p>
+              </div>
+            </div>
+            <div class="accordion__item">
+              <button class="accordion__trigger">PLLC (Professional LLC) <span class="accordion__arrow">▼</span></button>
+              <div class="accordion__body">
+                <p>Required in some states for licensed professionals; in Florida, a BCBA may form an LLC or PLLC depending on how the practice is structured. Consult an attorney to determine the right entity type for your licensure status.</p>
+              </div>
+            </div>
+            <div class="accordion__item">
+              <button class="accordion__trigger">S-Corp or C-Corp <span class="accordion__arrow">▼</span></button>
+              <div class="accordion__body">
+                <p>More complex entity types typically used as practices grow. S-Corp election can provide tax advantages at higher revenue levels. Consult a CPA familiar with healthcare businesses before choosing this structure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="checklist-box">
+          <h4>Pre-Launch Checklist — Legal &amp; Financial</h4>
+          <ul class="checklist">
+            <li><div class="check-icon check-icon--teal">✓</div> Choose and register your business name (Florida SunBiz)</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Form your legal entity (LLC, PLLC)</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Obtain a Federal Employer Identification Number (EIN) from IRS</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Open a dedicated business bank account</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Obtain professional liability (malpractice) insurance</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Obtain general business liability insurance</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Consult a CPA to set up your accounting system</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Create a Florida Department of Health account if applicable</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Apply for an NPI (National Provider Identifier) number</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Draft a business plan and financial projections</li>
+          </ul>
+        </div>
+        <div class="card card--warm" style="margin-top:20px;">
+          <div style="font-size:1.8rem;margin-bottom:10px;">💡</div>
+          <h4>Startup Cost Estimate</h4>
+          <p style="font-size:.9rem;">Typical startup costs for a small center-based ABA practice range from $30,000 to $100,000+, depending on location, space size, and staffing. Home-based models have significantly lower initial overhead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Operations ─────────────────────────────────────────────── -->
+<section class="phase-section section section--alt" id="operations">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-num">2</div>
+      <h2>Operations Setup</h2>
+    </div>
+    <div class="grid grid-3" style="margin-bottom:36px;">
+      <div class="card">
+        <div class="card-icon card-icon--blue">🏢</div>
+        <h3>Your Physical Space</h3>
+        <p style="font-size:.92rem;">For a center-based practice, look for a location that is accessible, zoned appropriately for medical/therapy services, and has sufficient room for therapy rooms, a waiting area, and admin space. ABA therapy rooms should be distraction-minimal with appropriate lighting.</p>
+        <ul style="margin-top:14px;font-size:.87rem;color:var(--text-mute);padding-left:16px;list-style:disc;">
+          <li>Minimum 80–100 sq ft per therapy room</li>
+          <li>ADA accessible entry and restrooms</li>
+          <li>Safe, secure environment for children</li>
+          <li>Outdoor play area if possible</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon card-icon--teal">💻</div>
+        <h3>Practice Management Software</h3>
+        <p style="font-size:.92rem;">You'll need software to manage scheduling, documentation, billing, and client records. Popular options in the ABA space include CentralReach, Catalyst, ABADesk, and Rethink Ed. Evaluate cost, training requirements, and insurance integrations carefully.</p>
+        <ul style="margin-top:14px;font-size:.87rem;color:var(--text-mute);padding-left:16px;list-style:disc;">
+          <li>Electronic health record (EHR) system</li>
+          <li>Session scheduling and notes</li>
+          <li>Billing and insurance claims</li>
+          <li>Data collection tools</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon card-icon--warm">🔐</div>
+        <h3>HIPAA Compliance Setup</h3>
+        <p style="font-size:.92rem;">As a healthcare provider, you are required to comply with HIPAA. This includes appointing a Privacy Officer, completing a risk assessment, training all staff, and having Business Associate Agreements (BAAs) with any vendors who access protected health information (PHI).</p>
+        <ul style="margin-top:14px;font-size:.87rem;color:var(--text-mute);padding-left:16px;list-style:disc;">
+          <li>Written privacy policies and procedures</li>
+          <li>Staff HIPAA training (documented)</li>
+          <li>Secure storage of client records</li>
+          <li>BAAs with software vendors</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:20px;">Credentialing with Insurance</h3>
+    <p style="margin-bottom:20px;color:var(--text-med);">Credentialing is the process of becoming an approved in-network provider with insurance companies. It can take 3–6 months, so start this process early — ideally before you open your doors.</p>
+    <ul class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Obtain Your NPI Number</h4>
+          <p>Apply for an NPI Type 1 (individual) and NPI Type 2 (organization) through the NPPES registry at nppes.cms.hhs.gov. This is free and required for all insurance billing.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Enroll in Medicaid</h4>
+          <p>Florida Medicaid covers ABA therapy for eligible children. Enroll through the Florida Medicaid provider portal. Each BCBA and the practice entity must be enrolled separately.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Credential with Commercial Insurers</h4>
+          <p>Contact major insurers operating in Florida (Blue Cross, Aetna, United Healthcare, Cigna, etc.) to request provider credentialing applications. Many use the CAQH ProView system to streamline the process.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Understand Billing Codes</h4>
+          <p>ABA services are billed using CPT codes (97151–97158 for ABA, and H2019 for Medicaid in some states). Work with a billing specialist who knows ABA to avoid denied claims.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── Intake & Parent Packets ────────────────────────────────── -->
+<section class="phase-section section" id="intake">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-num">3</div>
+      <h2>Intake Process &amp; Parent Packets</h2>
+    </div>
+    <p style="margin-bottom:32px;color:var(--text-med);max-width:720px;">The intake process is your client's first experience with your practice. A smooth, organized, and warm intake sets the tone for the entire therapeutic relationship.</p>
+    <div class="two-col">
+      <div>
+        <h3 style="margin-bottom:18px;">Intake Workflow — Step by Step</h3>
+        <ul class="step-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Initial Inquiry</h4>
+              <p>Phone or email inquiry from the family. Collect basic information, confirm diagnosis, and check insurance. Do a brief needs screening to ensure you can serve the family.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Insurance Verification</h4>
+              <p>Verify the client's benefits before scheduling any services. Confirm coverage for ABA therapy (CPT codes, prior authorization requirements, in-network status, co-pay, and deductible).</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Send Parent Intake Packet</h4>
+              <p>Send (or collect in person) all required intake documents. See the checklist on the right for what to include.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Schedule the Initial Assessment</h4>
+              <p>The supervising BCBA conducts a comprehensive assessment (often using tools such as VB-MAPP, ABLLS-R, AFLS, or ADOS-2 results from a prior evaluation). This forms the basis of the treatment plan.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <h4>Submit for Prior Authorization</h4>
+              <p>Most insurers require prior authorization (PA) before ABA services begin. Submit the completed assessment report and treatment plan to the insurer and await approval.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-body">
+              <h4>Begin Services</h4>
+              <p>Once PA is approved, schedule the first therapy session. Assign a primary RBT, introduce the family to the team, and review the program overview with parents.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="checklist-box">
+          <h4>Parent Intake Packet — What to Include</h4>
+          <ul class="checklist">
+            <li><div class="check-icon check-icon--teal">✓</div> Welcome letter and practice overview</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Consent for treatment (signed by legal guardian)</li>
+            <li><div class="check-icon check-icon--teal">✓</div> HIPAA Notice of Privacy Practices &amp; acknowledgment</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Release of records authorization form</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Insurance information and benefit assignment form</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Financial agreement / fee schedule</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Child background and developmental history form</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Parent / caregiver contact and emergency information</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Photo, media, and communication consent</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Attendance and cancellation policy acknowledgment</li>
+            <li><div class="check-icon check-icon--teal">✓</div> Mandated reporter disclosure</li>
+          </ul>
+        </div>
+        <div class="card card--blue" style="margin-top:20px;">
+          <div style="font-size:1.6rem;margin-bottom:10px;">📁</div>
+          <h4>Ready-to-Use Intake Templates</h4>
+          <p style="font-size:.9rem;">Download our customizable intake packet templates — professionally written, HIPAA-aware, and ready to brand with your practice name.</p>
+          <a href="#templates" class="btn btn--sm btn--primary mt-16">Get Intake Templates</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Staff Onboarding ───────────────────────────────────────── -->
+<section class="phase-section section section--alt" id="staff">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-num">4</div>
+      <h2>Staff Onboarding</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <p style="margin-bottom:24px;color:var(--text-med);">Your staff are the most important asset in your practice. A thorough onboarding process ensures quality, safety, and compliance from day one.</p>
+        <h3 style="margin-bottom:16px;">Before the First Day</h3>
+        <ul class="checklist">
+          <li><div class="check-icon check-icon--blue">✓</div> Verify credentials — RBT registry, BCBA certification, Florida Medicaid eligibility</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Background screening (Level 2 fingerprinting required in Florida)</li>
+          <li><div class="check-icon check-icon--blue">✓</div> CPR and First Aid certification (current)</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Signed offer letter and employment agreement</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Signed confidentiality / HIPAA agreement</li>
+          <li><div class="check-icon check-icon--blue">✓</div> I-9 employment eligibility verification</li>
+          <li><div class="check-icon check-icon--blue">✓</div> W-4 or W-9 (depending on employment classification)</li>
+        </ul>
+        <h3 style="margin-bottom:16px;margin-top:28px;">First Week Onboarding</h3>
+        <ul class="checklist">
+          <li><div class="check-icon check-icon--teal">✓</div> Practice policies and procedures review</li>
+          <li><div class="check-icon check-icon--teal">✓</div> HIPAA training (documented)</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Mandated reporter training</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Data collection system training</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Crisis prevention and safety protocol training</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Client-specific program overview with supervising BCBA</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Shadowing and co-session with experienced team member</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Emergency procedures and evacuation plan review</li>
+        </ul>
+      </div>
+      <div>
+        <div class="checklist-box">
+          <h4>Supervision Structure for RBTs</h4>
+          <p style="font-size:.9rem;color:var(--text-mute);margin-bottom:18px;">BACB requirements state that RBTs must receive ongoing supervision from a qualified BCBA. Your practice must have a formal supervision structure in place.</p>
+          <ul class="checklist">
+            <li><div class="check-icon check-icon--blue">✓</div> A minimum of 5% of total therapy hours per month must be supervised by a BCBA</li>
+            <li><div class="check-icon check-icon--blue">✓</div> At least 1 hour of supervision per week for new RBTs</li>
+            <li><div class="check-icon check-icon--blue">✓</div> Supervision can be individual or group, in-person or remote</li>
+            <li><div class="check-icon check-icon--blue">✓</div> All supervision must be documented with date, time, and skills reviewed</li>
+            <li><div class="check-icon check-icon--blue">✓</div> The BCBA must review data and update programs regularly</li>
+          </ul>
+        </div>
+        <div class="card card--sage" style="margin-top:20px;">
+          <div style="font-size:1.6rem;margin-bottom:10px;">📋</div>
+          <h4>Staff Onboarding Packet Template</h4>
+          <p style="font-size:.9rem;">Download a complete staff onboarding packet — includes employee handbook template, HIPAA training acknowledgment, confidentiality agreement, and first-week checklist.</p>
+          <a href="#templates" class="btn btn--sm btn--outline-blue mt-16">Download Packet</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Compliance ─────────────────────────────────────────────── -->
+<section class="phase-section section" id="compliance">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-num">5</div>
+      <h2>Compliance Basics</h2>
+    </div>
+    <div class="grid grid-3" style="margin-bottom:32px;">
+      <div class="card card--blue">
+        <div class="card-icon card-icon--blue">🔐</div>
+        <h3>HIPAA Compliance</h3>
+        <ul style="font-size:.9rem;color:var(--text-med);padding-left:16px;list-style:disc;margin-top:12px;">
+          <li>Appoint a designated Privacy Officer</li>
+          <li>Conduct annual HIPAA risk assessments</li>
+          <li>Maintain Business Associate Agreements</li>
+          <li>Document all staff HIPAA training</li>
+          <li>Have a documented breach response plan</li>
+        </ul>
+      </div>
+      <div class="card card--teal">
+        <div class="card-icon card-icon--teal">📜</div>
+        <h3>BACB Standards</h3>
+        <ul style="font-size:.9rem;color:var(--text-med);padding-left:16px;list-style:disc;margin-top:12px;">
+          <li>Ensure all BCBAs maintain active certification</li>
+          <li>RBTs must be registered and supervised per BACB standards</li>
+          <li>Ethics Code applies to all BACB certificants</li>
+          <li>Maintain required supervision documentation</li>
+          <li>Report ethics violations to BACB as required</li>
+        </ul>
+      </div>
+      <div class="card card--warm">
+        <div class="card-icon card-icon--warm">🏛️</div>
+        <h3>Florida State Requirements</h3>
+        <ul style="font-size:.9rem;color:var(--text-med);padding-left:16px;list-style:disc;margin-top:12px;">
+          <li>Level 2 background screening for all direct-care staff</li>
+          <li>Mandated reporter training and documentation</li>
+          <li>Florida Medicaid provider enrollment and compliance</li>
+          <li>Comply with Florida Patient Rights Act</li>
+          <li>Maintain required malpractice insurance</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-box" style="background:var(--warm-pale);border-color:rgba(245,158,11,.3);border-left-color:var(--warm);color:#78350F;">
+      <strong>Important:</strong> ABA therapy regulation varies by state. Florida does not currently require a separate state license for ABA providers (beyond BCBA certification), but this can change. Always verify current requirements with the Florida Department of Health and consult a healthcare attorney. Medicaid enrollment has its own compliance requirements and auditing standards.
+    </div>
+  </div>
+</section>
+
+<!-- ── Billing Workflow ────────────────────────────────────────── -->
+<section class="phase-section section section--alt" id="billing">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-num">6</div>
+      <h2>Billing Workflow Overview</h2>
+    </div>
+    <p style="margin-bottom:32px;color:var(--text-med);max-width:720px;">ABA billing is specialized. Working with a billing company that knows ABA is strongly recommended. Here's a simplified overview of how the billing cycle works.</p>
+    <ul class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Verify Benefits Before Every Authorization Period</h4>
+          <p>Insurance benefits change. Verify coverage at intake and before each authorization renewal. Record the reference number for every verification call.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Obtain Prior Authorization (PA)</h4>
+          <p>Most ABA services require a PA before sessions can begin or renew. The PA is based on a BCBA assessment and treatment plan. Submit all required documents promptly — delays in PA mean delayed services.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Use Correct ABA CPT Codes</h4>
+          <p>ABA services are billed with specific CPT codes: 97151 (adaptive behavior assessment), 97153 (adaptive behavior treatment by RBT), 97155 (protocol modification by BCBA), 97156 (family training by BCBA), and others. Each code has specific requirements about who delivers and supervises the service.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Submit Clean Claims Promptly</h4>
+          <p>Submit claims within the timely filing limit (varies by insurer — typically 90–365 days). Ensure all required fields are completed accurately. Common denial reasons include missing modifiers, incorrect diagnosis codes, or no active PA.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>Manage Denials and Appeals</h4>
+          <p>Denied claims must be tracked and appealed within the insurer's appeal window. A good billing system and dedicated billing staff or partner can dramatically reduce your denial rate.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h4>Collect Patient Responsibility</h4>
+          <p>Clearly communicate co-pay and deductible obligations to families at intake. Collect co-pays at time of service. Have a written financial agreement and payment policy — enforced consistently to avoid awkward conversations later.</p>
+        </div>
+      </li>
+    </ul>
+    <div class="card card--blue" style="max-width:680px;margin-top:32px;">
+      <div style="font-size:1.6rem;margin-bottom:10px;">💡</div>
+      <h4>Billing Tip: Work with a Specialist</h4>
+      <p>ABA billing has a steep learning curve. Many small practices partner with an ABA-specific billing company or hire a dedicated billing coordinator from the start. Your revenue cycle health directly determines your ability to serve clients sustainably.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Clinical Workflow ───────────────────────────────────────── -->
+<section class="phase-section section" id="clinical">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-num">7</div>
+      <h2>Clinical Workflow</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <h3 style="margin-bottom:18px;">Assessment to Treatment — The Clinical Cycle</h3>
+        <ul class="step-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Initial Intake Assessment</h4>
+              <p>BCBA conducts a comprehensive assessment using standardized tools (VB-MAPP, ABLLS-R, AFLS, PEAK) and direct observation. Parent interview is included.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Treatment Plan Development</h4>
+              <p>BCBA writes the treatment plan, including: present levels, long-term goals, short-term objectives, recommended intensity (hours/week), and proposed interventions.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Program Implementation by RBT Team</h4>
+              <p>RBTs implement programs as designed, collect data every session, and communicate observations to the supervising BCBA.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Ongoing Supervision &amp; Program Review</h4>
+              <p>BCBA reviews data graphs, adjusts programs, provides feedback to RBTs, and meets with families regularly. Programs are never static — they evolve with the learner.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <h4>Progress Reporting &amp; Authorization Renewals</h4>
+              <p>BCBA writes progress reports at regular intervals (typically every 6 months) and submits to insurers for authorization renewal. Goals are updated based on data.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-body">
+              <h4>Discharge Planning</h4>
+              <p>When treatment goals are met or services end, the BCBA prepares a discharge summary and transition plan — including recommendations for school support, community programs, or other services.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:18px;">Quality Assurance</h3>
+        <p style="color:var(--text-med);margin-bottom:16px;font-size:.95rem;">Building quality checks into your clinical operations protects clients and protects your practice.</p>
+        <ul class="checklist">
+          <li><div class="check-icon check-icon--teal">✓</div> Regular IOA (interobserver agreement) checks on data collection</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Routine treatment integrity checks by BCBA</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Parent satisfaction surveys at regular intervals</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Staff competency evaluations on an annual basis</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Regular team meetings and case consultations</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Peer review of treatment plans for complex cases</li>
+          <li><div class="check-icon check-icon--teal">✓</div> Incident tracking and response protocol</li>
+        </ul>
+        <div class="card card--teal" style="margin-top:24px;">
+          <div style="font-size:1.6rem;margin-bottom:10px;">🧩</div>
+          <h4>Parent Training Is Not Optional</h4>
+          <p style="font-size:.9rem;">High-quality ABA programs include structured parent training. Generalization — the ability of skills to transfer beyond the therapy room — depends heavily on parents implementing strategies consistently at home. Build this into your clinical model from the start.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Templates ──────────────────────────────────────────────── -->
+<section class="section section--dark" id="templates">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="eyebrow eyebrow--white">Ready-to-Use</span>
+      <h2>Templates &amp; Checklists for ABA Centers</h2>
+      <p style="max-width:580px;margin:12px auto 0;color:rgba(255,255,255,.75);">Download professionally written, customizable templates to launch your practice faster and more confidently.</p>
+      <span class="divider-accent divider-accent--center"></span>
+    </div>
+    <div class="template-grid">
+
+      <div class="resource-card" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);">
+        <div class="resource-card__ico" style="background:rgba(255,255,255,.1);font-size:1.5rem;">📁</div>
+        <div class="resource-card__body">
+          <h4 style="color:var(--white);">Client Intake Packet</h4>
+          <p style="color:rgba(255,255,255,.65);">Consent forms, HIPAA notices, developmental history questionnaire, and financial agreement.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format" style="color:rgba(255,255,255,.45);">PDF + Word</span>
+            <button class="btn btn--sm btn--warm" data-download="Client Intake Packet">Download</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);">
+        <div class="resource-card__ico" style="background:rgba(255,255,255,.1);font-size:1.5rem;">👥</div>
+        <div class="resource-card__body">
+          <h4 style="color:var(--white);">Staff Onboarding Packet</h4>
+          <p style="color:rgba(255,255,255,.65);">Employee handbook template, HIPAA acknowledgment, confidentiality agreement, and onboarding checklist.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format" style="color:rgba(255,255,255,.45);">PDF + Word</span>
+            <button class="btn btn--sm btn--warm" data-download="Staff Onboarding Packet">Download</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);">
+        <div class="resource-card__ico" style="background:rgba(255,255,255,.1);font-size:1.5rem;">📊</div>
+        <div class="resource-card__body">
+          <h4 style="color:var(--white);">Treatment Plan Template</h4>
+          <p style="color:rgba(255,255,255,.65);">BCBA-designed treatment plan format with present levels, goals, objectives, and methodology sections.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format" style="color:rgba(255,255,255,.45);">Word</span>
+            <button class="btn btn--sm btn--warm" data-download="Treatment Plan Template">Download</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);">
+        <div class="resource-card__ico" style="background:rgba(255,255,255,.1);font-size:1.5rem;">📝</div>
+        <div class="resource-card__body">
+          <h4 style="color:var(--white);">Session Note Template</h4>
+          <p style="color:rgba(255,255,255,.65);">Insurance-ready session note format covering all required elements for ABA billing compliance.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format" style="color:rgba(255,255,255,.45);">PDF + Word</span>
+            <button class="btn btn--sm btn--warm" data-download="Session Note Template">Download</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);">
+        <div class="resource-card__ico" style="background:rgba(255,255,255,.1);font-size:1.5rem;">✅</div>
+        <div class="resource-card__body">
+          <h4 style="color:var(--white);">Center Launch Checklist</h4>
+          <p style="color:rgba(255,255,255,.65);">A comprehensive pre-launch checklist covering legal, clinical, operational, and compliance milestones.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format" style="color:rgba(255,255,255,.45);">PDF</span>
+            <button class="btn btn--sm btn--warm" data-download="Center Launch Checklist">Download</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);">
+        <div class="resource-card__ico" style="background:rgba(255,255,255,.1);font-size:1.5rem;">💳</div>
+        <div class="resource-card__body">
+          <h4 style="color:var(--white);">Billing Workflow Guide</h4>
+          <p style="color:rgba(255,255,255,.65);">Step-by-step billing workflow, CPT code reference, prior authorization tracking sheet, and denial management log.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format" style="color:rgba(255,255,255,.45);">PDF + Excel</span>
+            <button class="btn btn--sm btn--warm" data-download="Billing Workflow Guide">Download</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);">
+        <div class="resource-card__ico" style="background:rgba(255,255,255,.1);font-size:1.5rem;">🔐</div>
+        <div class="resource-card__body">
+          <h4 style="color:var(--white);">HIPAA Policy Templates</h4>
+          <p style="color:rgba(255,255,255,.65);">Privacy policy, notice of privacy practices, breach notification procedure, and staff training acknowledgment form.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format" style="color:rgba(255,255,255,.45);">Word</span>
+            <button class="btn btn--sm btn--warm" data-download="HIPAA Policy Templates">Download</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);">
+        <div class="resource-card__ico" style="background:rgba(255,255,255,.1);font-size:1.5rem;">📋</div>
+        <div class="resource-card__body">
+          <h4 style="color:var(--white);">Supervision Documentation Log</h4>
+          <p style="color:rgba(255,255,255,.65);">BACB-aligned supervision log for documenting RBT supervision sessions — required for RBT certification maintenance.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format" style="color:rgba(255,255,255,.45);">PDF + Excel</span>
+            <button class="btn btn--sm btn--warm" data-download="Supervision Documentation Log">Download</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner">
+      <div class="cta-banner__inner">
+        <h2>Ready to Build Something That Matters?</h2>
+        <p>Opening an ABA center is a significant undertaking — and a remarkable opportunity to serve your community. Light2minds is here to help you do it well.</p>
+        <div class="cta-banner__btns">
+          <a href="mailto:hello@light2minds.com" class="btn btn--warm btn--lg">Contact Us for Guidance</a>
+          <a href="professionals.html" class="btn btn--outline-white btn--lg">RBT Professional Hub</a>
+          <a href="tools.html" class="btn btn--ghost btn--lg">Browse All Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo">Bright<span class="two">2</span><span class="teal">Minds</span></a>
+        <p>Guiding Florida families and professionals through behavioral and developmental care — with compassion, clarity, and practical tools.</p>
+        <span class="footer__badge">🌴 Florida-Based Organization</span>
+      </div>
+      <div class="footer__col">
+        <h5>ABA Center Guide</h5>
+        <ul>
+          <li><a href="#business">Business Planning</a></li>
+          <li><a href="#operations">Operations</a></li>
+          <li><a href="#intake">Intake Process</a></li>
+          <li><a href="#staff">Staff Onboarding</a></li>
+          <li><a href="#compliance">Compliance</a></li>
+          <li><a href="#billing">Billing Workflow</a></li>
+          <li><a href="#templates">Templates</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Other Resources</h5>
+        <ul>
+          <li><a href="professionals.html">RBT Exam Prep</a></li>
+          <li><a href="parents.html">For Parents</a></li>
+          <li><a href="tools.html">Free Downloads</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="mailto:hello@light2minds.com">hello@light2minds.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2024 Light2minds. All rights reserved. Florida, USA.</p>
+      <p style="font-size:.78rem;max-width:600px;text-align:right;">For educational purposes only. Not legal, financial, medical, or clinical advice. Consult licensed professionals for guidance specific to your situation.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

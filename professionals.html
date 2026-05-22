@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For RBTs & Professionals — Light2minds</title>
+  <meta name="description" content="RBT exam preparation, mock exams, flashcards, ABA terminology, ethics, session documentation, career tools, and printable data collection forms." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 28px;
+    }
+    .quick-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .87rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+      background: var(--teal-pale);
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: 1px solid rgba(13,148,136,.2);
+      transition: all var(--ease);
+    }
+    .quick-nav a:hover { background: var(--teal); color: var(--white); }
+
+    /* Flashcard grid */
+    .flashcard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .flashcard {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 24px;
+      cursor: pointer;
+      perspective: 800px;
+      min-height: 160px;
+      position: relative;
+      transition: box-shadow var(--ease);
+    }
+    .flashcard:hover { box-shadow: var(--shadow); }
+    .flashcard__front, .flashcard__back {
+      position: absolute;
+      inset: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: opacity .3s ease;
+    }
+    .flashcard__front { opacity: 1; }
+    .flashcard__back  { opacity: 0; }
+    .flashcard.flipped .flashcard__front { opacity: 0; }
+    .flashcard.flipped .flashcard__back  { opacity: 1; }
+    .flashcard__term {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .flashcard__word { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); }
+    .flashcard__def  { font-size: .9rem; color: var(--text-med); line-height: 1.55; }
+    .flashcard__hint {
+      position: absolute;
+      bottom: 16px;
+      right: 20px;
+      font-size: .75rem;
+      color: var(--text-faint);
+    }
+
+    /* Task list table */
+    .task-table { width: 100%; border-collapse: collapse; border-radius: var(--r); overflow: hidden; }
+    .task-table th {
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      color: var(--white);
+      padding: 14px 18px;
+      text-align: left;
+      font-size: .88rem;
+      font-weight: 600;
+      letter-spacing: .03em;
+    }
+    .task-table td {
+      padding: 13px 18px;
+      font-size: .9rem;
+      color: var(--text-med);
+      border-bottom: 1px solid var(--divider);
+    }
+    .task-table tr:last-child td { border-bottom: none; }
+    .task-table tr:nth-child(even) td { background: var(--bg); }
+    .task-table tr:hover td { background: var(--blue-faint); }
+
+    /* Study progress */
+    .progress-bar {
+      height: 8px;
+      background: var(--bg-alt);
+      border-radius: 100px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--teal), var(--blue));
+    }
+
+    /* Career card */
+    .career-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .career-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 28px 24px;
+      transition: all var(--ease);
+    }
+    .career-card:hover { box-shadow: var(--shadow); border-color: var(--blue-mid); }
+    .career-card h4 { margin: 14px 0 8px; }
+    .career-card p { font-size: .9rem; }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">Light<span class="two">2</span><span class="teal">minds</span></a>
+    <div class="nav__links">
+      <a href="index.html">Home</a>
+      <a href="parents.html">For Parents</a>
+      <a href="professionals.html" class="active">For Professionals</a>
+      <a href="aba-center.html">ABA Center Startup</a>
+      <a href="tools.html">Tools & Resources</a>
+    </div>
+    <a href="#exam" class="btn btn--teal btn--sm nav__cta">RBT Prep</a>
+    <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile">
+  <a href="index.html">Home</a>
+  <a href="parents.html">For Parents</a>
+  <a href="professionals.html">For Professionals</a>
+  <a href="aba-center.html">ABA Center Startup</a>
+  <a href="tools.html">Tools & Resources</a>
+  <a href="#exam" class="btn btn--teal">RBT Prep</a>
+</div>
+
+<!-- ── Page Hero ─────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="container page-hero__inner">
+    <div class="page-hero__breadcrumb">
+      <a href="index.html">Home</a><span>›</span><span>For Professionals</span>
+    </div>
+    <h1>Professional Training Hub</h1>
+    <p class="lead">Whether you're preparing for your RBT exam, building your clinical skills, or laying the groundwork for your own ABA practice — this is your dedicated space.</p>
+    <div class="page-hero__btns">
+      <a href="#exam" class="btn btn--ghost">RBT Exam Prep</a>
+      <a href="#materials" class="btn btn--outline-white">Study Materials</a>
+      <a href="#career" class="btn btn--warm">Career Tools</a>
+    </div>
+    <div class="quick-nav">
+      <a href="#exam">📝 Exam Prep</a>
+      <a href="#materials">📚 Study Materials</a>
+      <a href="#terminology">🔤 Terminology</a>
+      <a href="#ethics">⚖️ Ethics</a>
+      <a href="#documentation">📋 Documentation</a>
+      <a href="#competency">✅ Competency</a>
+      <a href="#career">💼 Career Tools</a>
+      <a href="#forms">📥 Forms</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── RBT Exam Prep ──────────────────────────────────────────── -->
+<section class="section" id="exam">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="eyebrow">RBT Exam Preparation</span>
+      <h2>Pass Your RBT Exam with Confidence</h2>
+      <p style="max-width:640px;margin:12px auto 0;">The RBT exam covers six content areas. Light2minds organizes your study materials to match the BACB Task List so you know exactly what to focus on.</p>
+      <span class="divider-accent divider-accent--center"></span>
+    </div>
+
+    <!-- Task list overview -->
+    <div style="background:var(--white);border-radius:var(--r-xl);padding:36px;border:1px solid var(--border);margin-bottom:40px;">
+      <h3 style="margin-bottom:8px;">RBT Task List — Second Edition Overview</h3>
+      <p style="color:var(--text-mute);font-size:.92rem;margin-bottom:24px;">The BACB RBT Task List (2nd Ed.) defines the competencies tested on the exam. Use the table below to guide your study.</p>
+      <div style="overflow-x:auto;">
+        <table class="task-table">
+          <thead>
+            <tr>
+              <th>Section</th>
+              <th>Content Area</th>
+              <th>Key Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>A</strong></td>
+              <td>Measurement</td>
+              <td>Continuous vs discontinuous measurement, data collection, graphing</td>
+            </tr>
+            <tr>
+              <td><strong>B</strong></td>
+              <td>Skill Acquisition</td>
+              <td>Discrete trial training, naturalistic teaching, prompting, shaping, chaining</td>
+            </tr>
+            <tr>
+              <td><strong>C</strong></td>
+              <td>Behavior Reduction</td>
+              <td>Extinction, differential reinforcement, antecedent modifications, function of behavior</td>
+            </tr>
+            <tr>
+              <td><strong>D</strong></td>
+              <td>Documentation &amp; Reporting</td>
+              <td>Session notes, graphing, reporting to supervisors, data integrity</td>
+            </tr>
+            <tr>
+              <td><strong>E</strong></td>
+              <td>Professional Conduct &amp; Scope of Practice</td>
+              <td>BACB ethics, scope of practice, supervisor relationship, confidentiality</td>
+            </tr>
+            <tr>
+              <td><strong>F</strong></td>
+              <td>Competency Demonstration</td>
+              <td>Direct skills, observational learning, generalization and maintenance</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Exam prep cards -->
+    <div class="grid grid-3">
+      <div class="card card--teal">
+        <div class="card-icon card-icon--teal">📝</div>
+        <h3>Mock Exams</h3>
+        <p>Timed practice exams that mirror the format and difficulty of the actual RBT exam. Available in full-length (85 questions) and section-specific formats.</p>
+        <div style="margin-top:20px;">
+          <div style="display:flex;justify-content:space-between;font-size:.85rem;color:var(--text-mute);margin-bottom:4px;">
+            <span>Available Exams</span><span>3 full-length</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+        </div>
+        <a href="tools.html#exams" class="btn btn--sm btn--teal mt-16">Access Mock Exams</a>
+      </div>
+
+      <div class="card card--blue">
+        <div class="card-icon card-icon--blue">🗂️</div>
+        <h3>Flashcard Decks</h3>
+        <p>Interactive flashcards covering ABA terminology, measurement concepts, behavior reduction strategies, and ethics — organized by task list section.</p>
+        <div style="margin-top:20px;">
+          <div style="display:flex;justify-content:space-between;font-size:.85rem;color:var(--text-mute);margin-bottom:4px;">
+            <span>Total Flashcards</span><span>150+</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+        </div>
+        <a href="#materials" class="btn btn--sm btn--primary mt-16">Study Flashcards</a>
+      </div>
+
+      <div class="card card--warm">
+        <div class="card-icon card-icon--warm">📖</div>
+        <h3>Study Guide</h3>
+        <p>Comprehensive chapter-by-chapter study guide aligned to each section of the RBT Task List, with definitions, examples, and memory tips.</p>
+        <div style="margin-top:20px;">
+          <div style="display:flex;justify-content:space-between;font-size:.85rem;color:var(--text-mute);margin-bottom:4px;">
+            <span>Sections Covered</span><span>A through F</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+        </div>
+        <a href="tools.html" class="btn btn--sm btn--warm mt-16">Download Study Guide</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Study Materials / Flashcards ──────────────────────────── -->
+<section class="section section--alt" id="materials">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="eyebrow">Interactive Learning</span>
+      <h2>ABA Flashcards — Click to Flip</h2>
+      <p style="max-width:560px;margin:12px auto 0;">Click any card to reveal the definition. Study these terms to build the foundation you need for the RBT exam and your clinical practice.</p>
+      <span class="divider-accent divider-accent--center"></span>
+    </div>
+    <div class="flashcard-grid">
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')" role="button" tabindex="0" aria-label="Flashcard: Positive Reinforcement">
+        <div class="flashcard__front">
+          <span class="flashcard__term">Section B · Skill Acquisition</span>
+          <span class="flashcard__word">Positive Reinforcement</span>
+        </div>
+        <div class="flashcard__back">
+          <span class="flashcard__term">Definition</span>
+          <span class="flashcard__def">The addition of a stimulus following a behavior that increases the future frequency of that behavior. The stimulus added must be something the individual finds valuable or pleasurable.</span>
+        </div>
+        <span class="flashcard__hint">Tap to flip ↺</span>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')" role="button" tabindex="0">
+        <div class="flashcard__front">
+          <span class="flashcard__term">Section C · Behavior Reduction</span>
+          <span class="flashcard__word">Extinction</span>
+        </div>
+        <div class="flashcard__back">
+          <span class="flashcard__term">Definition</span>
+          <span class="flashcard__def">Withholding the reinforcer that has been maintaining a behavior, resulting in a decrease in the frequency of that behavior over time. Often produces an "extinction burst" initially.</span>
+        </div>
+        <span class="flashcard__hint">Tap to flip ↺</span>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')" role="button" tabindex="0">
+        <div class="flashcard__front">
+          <span class="flashcard__term">Section A · Measurement</span>
+          <span class="flashcard__word">ABC Data</span>
+        </div>
+        <div class="flashcard__back">
+          <span class="flashcard__term">Definition</span>
+          <span class="flashcard__def">Antecedent-Behavior-Consequence data. A descriptive data collection method used to identify patterns and potential functions of behavior by recording what happens before and after a behavior occurs.</span>
+        </div>
+        <span class="flashcard__hint">Tap to flip ↺</span>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')" role="button" tabindex="0">
+        <div class="flashcard__front">
+          <span class="flashcard__term">Section B · Skill Acquisition</span>
+          <span class="flashcard__word">Discrete Trial Training (DTT)</span>
+        </div>
+        <div class="flashcard__back">
+          <span class="flashcard__term">Definition</span>
+          <span class="flashcard__def">A structured teaching method involving a clear discriminative stimulus (SD), a prompt if needed, the learner's response, and a consequence (reinforcement or corrective feedback). Trials are repeated systematically.</span>
+        </div>
+        <span class="flashcard__hint">Tap to flip ↺</span>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')" role="button" tabindex="0">
+        <div class="flashcard__front">
+          <span class="flashcard__term">Section C · Behavior Reduction</span>
+          <span class="flashcard__word">Four Functions of Behavior</span>
+        </div>
+        <div class="flashcard__back">
+          <span class="flashcard__term">Definition</span>
+          <span class="flashcard__def">All behavior serves a purpose: (1) Access to tangibles, (2) Attention from others, (3) Escape/Avoidance of demands or situations, (4) Automatic/Sensory reinforcement. Identifying the function guides treatment.</span>
+        </div>
+        <span class="flashcard__hint">Tap to flip ↺</span>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')" role="button" tabindex="0">
+        <div class="flashcard__front">
+          <span class="flashcard__term">Section B · Skill Acquisition</span>
+          <span class="flashcard__word">Prompting Hierarchy</span>
+        </div>
+        <div class="flashcard__back">
+          <span class="flashcard__term">Definition</span>
+          <span class="flashcard__def">A systematic way of delivering prompts from most-to-least or least-to-most intrusive. Prompt types include: Full Physical, Partial Physical, Modeling, Gestural, and Verbal. The goal is to fade prompts and achieve independent responding.</span>
+        </div>
+        <span class="flashcard__hint">Tap to flip ↺</span>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')" role="button" tabindex="0">
+        <div class="flashcard__front">
+          <span class="flashcard__term">Section C · Behavior Reduction</span>
+          <span class="flashcard__word">Differential Reinforcement (DR)</span>
+        </div>
+        <div class="flashcard__back">
+          <span class="flashcard__term">Definition</span>
+          <span class="flashcard__def">Reinforcing one behavior while placing another on extinction. Types: DRA (alternative behavior), DRI (incompatible behavior), DRO (other behavior / zero instances), DRL (low rates of behavior).</span>
+        </div>
+        <span class="flashcard__hint">Tap to flip ↺</span>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')" role="button" tabindex="0">
+        <div class="flashcard__front">
+          <span class="flashcard__term">Section A · Measurement</span>
+          <span class="flashcard__word">Interobserver Agreement (IOA)</span>
+        </div>
+        <div class="flashcard__back">
+          <span class="flashcard__term">Definition</span>
+          <span class="flashcard__def">A measure of data reliability. Two observers independently collect data on the same behavior, and their results are compared. IOA ≥80% is generally considered acceptable. Formula: Agreements ÷ (Agreements + Disagreements) × 100.</span>
+        </div>
+        <span class="flashcard__hint">Tap to flip ↺</span>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')" role="button" tabindex="0">
+        <div class="flashcard__front">
+          <span class="flashcard__term">Section B · Skill Acquisition</span>
+          <span class="flashcard__word">Task Analysis</span>
+        </div>
+        <div class="flashcard__back">
+          <span class="flashcard__term">Definition</span>
+          <span class="flashcard__def">Breaking down a complex skill into smaller, teachable steps. Used in chaining procedures. Each step is taught individually and then linked together. Example: hand-washing broken into 10–15 discrete steps.</span>
+        </div>
+        <span class="flashcard__hint">Tap to flip ↺</span>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="tools.html" class="btn btn--teal">Download All Flashcard Decks</a>
+      <a href="tools.html#exams" class="btn btn--outline-blue">Take a Mock Exam</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Terminology ────────────────────────────────────────────── -->
+<section class="section" id="terminology">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="eyebrow">ABA Terminology</span>
+      <h2>Essential ABA Terms &amp; Concepts</h2>
+      <p style="max-width:560px;margin:12px auto 0;">A solid grasp of behavioral terminology is foundational for exam success and professional practice. Expand each category to review.</p>
+      <span class="divider-accent divider-accent--center"></span>
+    </div>
+    <div class="accordion" data-open-first="true">
+      <div class="accordion__item">
+        <button class="accordion__trigger">Measurement &amp; Data Collection Terms <span class="accordion__arrow">▼</span></button>
+        <div class="accordion__body">
+          <ul>
+            <li><strong>Frequency/Event Recording:</strong> Counting how many times a behavior occurs within an observation period.</li>
+            <li><strong>Duration Recording:</strong> Measuring how long a behavior lasts from start to finish.</li>
+            <li><strong>Latency Recording:</strong> Time from the presentation of a stimulus (SD) to the onset of the behavior.</li>
+            <li><strong>Interval Recording (Whole/Partial):</strong> Dividing an observation period into intervals; noting if behavior occurred in each interval.</li>
+            <li><strong>Momentary Time Sampling:</strong> Observing whether the behavior is occurring at the end of each interval — not throughout.</li>
+            <li><strong>Permanent Product Recording:</strong> Measuring the tangible result of a behavior rather than the behavior itself (e.g., number of worksheets completed).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger">Reinforcement Concepts <span class="accordion__arrow">▼</span></button>
+        <div class="accordion__body">
+          <ul>
+            <li><strong>Positive Reinforcement:</strong> Adding a stimulus to increase behavior.</li>
+            <li><strong>Negative Reinforcement:</strong> Removing a stimulus to increase behavior (e.g., removing an itchy tag when a child puts on their shirt).</li>
+            <li><strong>Unconditioned Reinforcer (UR):</strong> Naturally reinforcing without learning (food, water, warmth).</li>
+            <li><strong>Conditioned Reinforcer (CR):</strong> Learned reinforcer (praise, tokens, money) through pairing with a UR.</li>
+            <li><strong>Schedules of Reinforcement:</strong> Rules for when reinforcement is delivered — Fixed Ratio (FR), Variable Ratio (VR), Fixed Interval (FI), Variable Interval (VI).</li>
+            <li><strong>Preference Assessment:</strong> A structured process to identify potential reinforcers (MSWO, paired stimulus, free operant).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger">Behavior Reduction Terms <span class="accordion__arrow">▼</span></button>
+        <div class="accordion__body">
+          <ul>
+            <li><strong>Antecedent:</strong> What happens immediately before a behavior (the trigger).</li>
+            <li><strong>Consequence:</strong> What happens immediately after a behavior.</li>
+            <li><strong>Punishment:</strong> A consequence that decreases the future frequency of a behavior (positive: adding an aversive; negative: removing something valued).</li>
+            <li><strong>Extinction Burst:</strong> A temporary increase in behavior when extinction is first implemented.</li>
+            <li><strong>Functional Behavior Assessment (FBA):</strong> A process to determine the function (purpose) of a challenging behavior — conducted by the BCBA, not the RBT.</li>
+            <li><strong>Behavior Intervention Plan (BIP):</strong> A written plan (developed by the BCBA) based on the FBA that outlines strategies to reduce challenging behavior.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger">Teaching Procedures <span class="accordion__arrow">▼</span></button>
+        <div class="accordion__body">
+          <ul>
+            <li><strong>Shaping:</strong> Reinforcing successive approximations toward a target behavior.</li>
+            <li><strong>Chaining:</strong> Teaching a skill by linking steps of a task analysis together (forward, backward, or total task).</li>
+            <li><strong>Modeling:</strong> Demonstrating a skill for the learner to imitate.</li>
+            <li><strong>Natural Environment Teaching (NET):</strong> Teaching skills in the natural context using the learner's interests and motivation.</li>
+            <li><strong>Generalization:</strong> The occurrence of a behavior across different settings, people, or materials without direct training.</li>
+            <li><strong>Maintenance:</strong> A previously learned skill continues to occur after direct instruction has ended.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="tools.html" class="btn btn--primary">Download Full Terminology Glossary</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Ethics ─────────────────────────────────────────────────── -->
+<section class="section section--blue-pale" id="ethics">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Professional Conduct</span>
+      <h2>Ethics &amp; the RBT Code of Ethics</h2>
+      <p style="max-width:640px;">Ethics questions are guaranteed to appear on the RBT exam. More importantly, ethical practice protects your clients, your career, and the integrity of the field. This section covers what every RBT must know.</p>
+      <span class="divider-accent"></span>
+    </div>
+    <div class="grid grid-2">
+      <div>
+        <h3 style="margin-bottom:20px;">Core RBT Ethical Responsibilities</h3>
+        <ul class="checklist">
+          <li><div class="check-icon check-icon--blue">✓</div> Maintain confidentiality for all client information (HIPAA)</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Practice only within your scope — implement programs designed by the BCBA, do not modify them</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Report any concerns about client safety or welfare to your supervisor immediately</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Avoid dual relationships with clients and their families</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Complete RBT supervision requirements and document sessions accurately</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Use the least restrictive, most effective procedures</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Represent your credentials honestly</li>
+          <li><div class="check-icon check-icon--blue">✓</div> Follow your organization's policies and the BACB Ethics Code</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:20px;">Ethics Scenarios — Exam Practice</h3>
+        <div class="accordion" data-open-first="false">
+          <div class="accordion__item">
+            <button class="accordion__trigger">Scenario 1: Client's parent asks you to change a program <span class="accordion__arrow">▼</span></button>
+            <div class="accordion__body">
+              <p><strong>Situation:</strong> A parent tells you they've read that a different prompting strategy works better and asks you to use it instead.</p>
+              <p style="margin-top:10px;"><strong>Correct Response:</strong> Thank the parent for their input, explain that you implement programs as designed by the BCBA, and commit to passing this feedback along to your supervisor. Do not modify the program without BCBA approval.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">Scenario 2: You see another therapist using an unapproved procedure <span class="accordion__arrow">▼</span></button>
+            <div class="accordion__body">
+              <p><strong>Situation:</strong> During a session, you observe a colleague using a physical prompt that is not in the client's program.</p>
+              <p style="margin-top:10px;"><strong>Correct Response:</strong> Report the observation to your supervising BCBA as soon as possible. Do not confront the colleague directly or ignore it. Client safety and ethical practice are the priority.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">Scenario 3: A family member asks for the client's progress notes <span class="accordion__arrow">▼</span></button>
+            <div class="accordion__body">
+              <p><strong>Situation:</strong> A grandparent of a client calls you directly and asks you to email them the last three progress notes.</p>
+              <p style="margin-top:10px;"><strong>Correct Response:</strong> Do not share records without proper authorization. Politely explain that you need to direct them to the BCBA or clinic director for any record requests, which go through a formal process under HIPAA.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:32px;">
+      <a href="tools.html" class="btn btn--primary">Download Ethics Quick-Reference Sheet</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Session Documentation ──────────────────────────────────── -->
+<section class="section" id="documentation">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="eyebrow">Clinical Practice</span>
+      <h2>Session Documentation &amp; Data Integrity</h2>
+      <p style="max-width:620px;margin:12px auto 0;">Accurate documentation is a professional and ethical requirement. Understanding what to document — and how — is a testable skill and a daily responsibility.</p>
+      <span class="divider-accent divider-accent--center"></span>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="card-icon card-icon--blue">📝</div>
+        <h3>Session Notes</h3>
+        <p>Session notes document what occurred during therapy. They should include: date, time, duration, attendees, targets addressed, data summary, behavioral events, and any deviations from the plan. Notes must be objective — no interpretations.</p>
+        <a href="tools.html" class="btn btn--sm btn--outline-blue mt-16">Download Session Note Template</a>
+      </div>
+      <div class="card">
+        <div class="card-icon card-icon--teal">📊</div>
+        <h3>Graphing Data</h3>
+        <p>ABA is a data-driven field. RBTs plot session data on graphs so the BCBA can visually analyze progress and make clinical decisions. Learn to graph frequency, percentage correct, duration, and rate data accurately.</p>
+        <a href="tools.html" class="btn btn--sm btn--outline-blue mt-16">Graph Templates</a>
+      </div>
+      <div class="card">
+        <div class="card-icon card-icon--warm">🔔</div>
+        <h3>Reporting to Supervisors</h3>
+        <p>RBTs are required to report concerns — about client safety, unexpected behaviors, deviations from the plan, or environmental hazards — to their supervising BCBA promptly. When in doubt, report it.</p>
+        <a href="tools.html" class="btn btn--sm btn--outline-blue mt-16">Incident Report Template</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Competency Assessment ──────────────────────────────────── -->
+<section class="section section--teal-pale" id="competency">
+  <div class="container container--narrow">
+    <div class="section-header section-header--center">
+      <span class="eyebrow">Competency Preparation</span>
+      <h2>RBT Competency Assessment Prep</h2>
+      <p style="max-width:580px;margin:12px auto 0;">Before you can call yourself an RBT, a BCBA must assess your ability to perform the skills on the Task List. Here's how to prepare.</p>
+      <span class="divider-accent divider-accent--center"></span>
+    </div>
+    <div style="background:var(--white);border-radius:var(--r-xl);padding:36px;border:1px solid rgba(13,148,136,.15);">
+      <h3 style="margin-bottom:20px;">Skills You'll Be Assessed On</h3>
+      <ul class="step-list">
+        <li>
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Measurement — Demonstrating Data Collection</h4>
+            <p>You'll be asked to demonstrate event recording, interval recording, duration recording, and graphing data during a role-play or live observation.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Skill Acquisition — Running Discrete Trials</h4>
+            <p>You must demonstrate delivering an SD, delivering prompts appropriately, recording correct/incorrect responses, and reinforcing behavior according to the program.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Behavior Reduction — Implementing BIP Strategies</h4>
+            <p>You must be able to implement antecedent modifications, extinction procedures, and reinforcement-based reduction strategies as written in the BIP.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Documentation — Completing Session Notes</h4>
+            <p>Demonstrate that you can complete a session note accurately, objectively, and in a timely manner following a simulated session.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Communication — Reporting to Supervisor</h4>
+            <p>Role-play scenarios involving reporting behavioral events, safety concerns, or data anomalies to a supervising BCBA professionally and promptly.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="tools.html" class="btn btn--teal btn--lg">Download Competency Self-Check Guide</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Career Tools ────────────────────────────────────────────── -->
+<section class="section" id="career">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="eyebrow">Career Development</span>
+      <h2>Build a Rewarding Career in ABA</h2>
+      <p style="max-width:580px;margin:12px auto 0;">The demand for RBTs and behavior analysts is growing rapidly. Use these tools to present yourself professionally and navigate your next career step.</p>
+      <span class="divider-accent divider-accent--center"></span>
+    </div>
+    <div class="career-grid">
+
+      <div class="career-card">
+        <div style="font-size:2rem;">📄</div>
+        <h4>RBT Resume Template</h4>
+        <p>A professionally designed resume template tailored for RBT roles, highlighting key competencies employers look for.</p>
+        <a href="tools.html" class="btn btn--sm btn--outline-blue mt-12" data-download="RBT Resume Template">Download Template</a>
+      </div>
+
+      <div class="career-card">
+        <div style="font-size:2rem;">💬</div>
+        <h4>Interview Preparation Guide</h4>
+        <p>30 common RBT interview questions with expert-coached answers and tips for demonstrating your knowledge and professionalism.</p>
+        <a href="tools.html" class="btn btn--sm btn--outline-blue mt-12" data-download="Interview Preparation Guide">Download Guide</a>
+      </div>
+
+      <div class="career-card">
+        <div style="font-size:2rem;">🗺️</div>
+        <h4>Career Pathway Map</h4>
+        <p>A visual guide showing career progression from RBT to BCaBA to BCBA — including education, supervision, and exam requirements at each level.</p>
+        <a href="tools.html" class="btn btn--sm btn--outline-blue mt-12" data-download="Career Pathway Map">Download PDF</a>
+      </div>
+
+      <div class="career-card">
+        <div style="font-size:2rem;">📋</div>
+        <h4>Supervision Log Template</h4>
+        <p>Track your required monthly supervision hours with this BACB-aligned log — essential for maintaining your RBT certification.</p>
+        <a href="tools.html" class="btn btn--sm btn--outline-blue mt-12" data-download="Supervision Log Template">Download Template</a>
+      </div>
+
+      <div class="career-card">
+        <div style="font-size:2rem;">🏢</div>
+        <h4>ABA Center Startup Guide</h4>
+        <p>Thinking beyond RBT? Our comprehensive startup guide walks you through opening your own ABA therapy practice in Florida.</p>
+        <a href="aba-center.html" class="btn btn--sm btn--teal mt-12">View Startup Guide</a>
+      </div>
+
+      <div class="career-card">
+        <div style="font-size:2rem;">🎓</div>
+        <h4>BCBA Pathway Overview</h4>
+        <p>An overview of the requirements to pursue your BCBA — including education, fieldwork hours, and the exam.</p>
+        <a href="tools.html" class="btn btn--sm btn--outline-blue mt-12" data-download="BCBA Pathway Overview">Download PDF</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Printable Forms ─────────────────────────────────────────── -->
+<section class="section section--alt" id="forms">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="eyebrow">Clinical Tools</span>
+      <h2>Printable Data Collection Forms</h2>
+      <p style="max-width:560px;margin:12px auto 0;">Ready-to-use clinical forms for session documentation, data collection, and daily practice. All forms are printer-ready and free to download.</p>
+      <span class="divider-accent divider-accent--center"></span>
+    </div>
+    <div class="grid grid-auto">
+
+      <div class="resource-card">
+        <div class="resource-card__ico card-icon--blue">📊</div>
+        <div class="resource-card__body">
+          <h4>ABC Data Sheet</h4>
+          <p>Antecedent-Behavior-Consequence data collection form for functional behavior assessment.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF</span>
+            <button class="btn btn--sm btn--primary" data-download="ABC Data Sheet">Download</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card__ico card-icon--teal">📝</div>
+        <div class="resource-card__body">
+          <h4>Discrete Trial (DTT) Data Sheet</h4>
+          <p>Track correct, incorrect, and prompted responses across multiple trials per session.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF</span>
+            <button class="btn btn--sm btn--primary" data-download="DTT Data Sheet">Download</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card__ico card-icon--warm">📋</div>
+        <div class="resource-card__body">
+          <h4>Behavior Frequency Tracking Sheet</h4>
+          <p>Simple event recording form for tracking frequency of target behaviors across a session.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF</span>
+            <button class="btn btn--sm btn--primary" data-download="Behavior Frequency Tracking Sheet">Download</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card__ico card-icon--sage">🕒</div>
+        <div class="resource-card__body">
+          <h4>Duration &amp; Latency Recording Form</h4>
+          <p>Track how long behaviors last and how quickly they occur after a prompt or stimulus.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF</span>
+            <button class="btn btn--sm btn--primary" data-download="Duration and Latency Recording Form">Download</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card__ico card-icon--blue">📓</div>
+        <div class="resource-card__body">
+          <h4>Session Note Template</h4>
+          <p>A structured session note format aligned with insurance billing requirements and BACB standards.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF + Word</span>
+            <button class="btn btn--sm btn--primary" data-download="Session Note Template">Download</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card__ico card-icon--teal">⚡</div>
+        <div class="resource-card__body">
+          <h4>Interval Recording Data Sheet</h4>
+          <p>Whole-interval and partial-interval recording sheets for structured observation periods.</p>
+          <div class="resource-card__meta">
+            <span class="resource-card__format">PDF</span>
+            <button class="btn btn--sm btn--primary" data-download="Interval Recording Data Sheet">Download</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <a href="tools.html" class="btn btn--outline-blue btn--lg">View All Clinical Forms &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner">
+      <div class="cta-banner__inner">
+        <h2>Ready to Pass Your RBT Exam?</h2>
+        <p>Access all study materials, mock exams, flashcards, and career tools — free and available now. Start your preparation today.</p>
+        <div class="cta-banner__btns">
+          <a href="tools.html" class="btn btn--outline-white btn--lg">Browse All Resources</a>
+          <a href="aba-center.html" class="btn btn--warm btn--lg">ABA Center Startup Guide</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo">Light<span class="two">2</span><span class="teal">minds</span></a>
+        <p>Guiding Florida families and professionals through behavioral and developmental care — with compassion, clarity, and practical tools.</p>
+        <span class="footer__badge">🌴 Florida-Based Organization</span>
+      </div>
+      <div class="footer__col">
+        <h5>RBT Prep</h5>
+        <ul>
+          <li><a href="#exam">Exam Overview</a></li>
+          <li><a href="#materials">Flashcards</a></li>
+          <li><a href="#terminology">Terminology</a></li>
+          <li><a href="#ethics">Ethics Module</a></li>
+          <li><a href="#documentation">Documentation</a></li>
+          <li><a href="#competency">Competency Prep</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Career & Practice</h5>
+        <ul>
+          <li><a href="#career">Career Tools</a></li>
+          <li><a href="#forms">Data Forms</a></li>
+          <li><a href="aba-center.html">ABA Center Startup</a></li>
+          <li><a href="tools.html">Free Downloads</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Other Pages</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="parents.html">For Parents</a></li>
+          <li><a href="tools.html">Tools & Resources</a></li>
+          <li><a href="mailto:hello@light2minds.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2024 Light2minds. All rights reserved. Florida, USA.</p>
+      <p style="font-size:.78rem;max-width:600px;text-align:right;">Educational content only. All RBT content is aligned with BACB standards but does not guarantee exam results. Verify current requirements with the BACB at bacb.com.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
