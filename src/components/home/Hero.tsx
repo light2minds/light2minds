@@ -21,13 +21,13 @@ export default function Hero() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <line x1="640" y1="0" x2="0"   y2="640" stroke="#E8B84B" strokeWidth="1"   strokeOpacity="0.09" />
-          <line x1="640" y1="0" x2="80"  y2="640" stroke="#E8B84B" strokeWidth="0.8" strokeOpacity="0.07" />
-          <line x1="640" y1="0" x2="200" y2="640" stroke="#E8B84B" strokeWidth="0.8" strokeOpacity="0.06" />
-          <line x1="640" y1="0" x2="340" y2="640" stroke="#E8B84B" strokeWidth="0.6" strokeOpacity="0.05" />
-          <line x1="640" y1="0" x2="480" y2="640" stroke="#E8B84B" strokeWidth="0.5" strokeOpacity="0.04" />
-          <line x1="640" y1="0" x2="0"   y2="400" stroke="#E8B84B" strokeWidth="0.5" strokeOpacity="0.06" />
-          <line x1="640" y1="0" x2="0"   y2="200" stroke="#E8B84B" strokeWidth="0.4" strokeOpacity="0.04" />
+          <line x1="640" y1="0" x2="0"   y2="640" stroke="#FFE030" strokeWidth="1"   strokeOpacity="0.12" />
+          <line x1="640" y1="0" x2="80"  y2="640" stroke="#FFE030" strokeWidth="0.8" strokeOpacity="0.09" />
+          <line x1="640" y1="0" x2="200" y2="640" stroke="#5BC4F8" strokeWidth="0.8" strokeOpacity="0.08" />
+          <line x1="640" y1="0" x2="340" y2="640" stroke="#2EBB50" strokeWidth="0.6" strokeOpacity="0.07" />
+          <line x1="640" y1="0" x2="480" y2="640" stroke="#FFE030" strokeWidth="0.5" strokeOpacity="0.05" />
+          <line x1="640" y1="0" x2="0"   y2="400" stroke="#5BC4F8" strokeWidth="0.5" strokeOpacity="0.07" />
+          <line x1="640" y1="0" x2="0"   y2="200" stroke="#2EBB50" strokeWidth="0.4" strokeOpacity="0.05" />
         </svg>
       </div>
 
@@ -42,7 +42,7 @@ export default function Hero() {
           transition={{ duration: 0.55, delay: 0.1 }}
           className="flex items-center gap-3 mb-10"
         >
-          <span className="block w-7 h-px bg-gold-400" />
+          <span className="block w-7 h-px bg-forest-500" />
           <span className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/55">
             Behavioral &amp; Neurodevelopmental Guidance · Florida
           </span>
@@ -77,20 +77,20 @@ export default function Hero() {
             className="flex flex-wrap gap-8 mb-16"
           >
             <Link href="/parents" className="group flex items-center gap-4 text-[15px] font-semibold text-navy-900">
-              <span className="w-9 h-9 rounded-full border border-navy-900/20 flex items-center justify-center group-hover:bg-navy-900 group-hover:border-navy-900 transition-all duration-250 flex-shrink-0">
-                <ArrowRight className="w-3.5 h-3.5 text-navy-900 group-hover:text-white transition-colors duration-250" />
+              <span className="w-9 h-9 rounded-full bg-forest-500 border border-forest-500 flex items-center justify-center group-hover:bg-forest-600 group-hover:border-forest-600 transition-all duration-250 flex-shrink-0">
+                <ArrowRight className="w-3.5 h-3.5 text-white" />
               </span>
               For Families
             </Link>
-            <Link href="/professionals" className="group flex items-center gap-4 text-[15px] font-semibold text-navy-600/80">
-              <span className="w-9 h-9 rounded-full border border-navy-600/15 flex items-center justify-center group-hover:bg-navy-600 group-hover:border-navy-600 transition-all duration-250 flex-shrink-0">
-                <ArrowRight className="w-3.5 h-3.5 text-navy-600 group-hover:text-white transition-colors duration-250" />
+            <Link href="/professionals" className="group flex items-center gap-4 text-[15px] font-semibold text-navy-700/80">
+              <span className="w-9 h-9 rounded-full bg-sky-400/10 border border-sky-400/40 flex items-center justify-center group-hover:bg-sky-400 group-hover:border-sky-400 transition-all duration-250 flex-shrink-0">
+                <ArrowRight className="w-3.5 h-3.5 text-sky-500 group-hover:text-white transition-colors duration-250" />
               </span>
               For Professionals
             </Link>
-            <Link href="/aba-center" className="group flex items-center gap-4 text-[15px] font-semibold text-forest-700/70">
-              <span className="w-9 h-9 rounded-full border border-forest-700/15 flex items-center justify-center group-hover:bg-forest-700 group-hover:border-forest-700 transition-all duration-250 flex-shrink-0">
-                <ArrowRight className="w-3.5 h-3.5 text-forest-700 group-hover:text-white transition-colors duration-250" />
+            <Link href="/aba-center" className="group flex items-center gap-4 text-[15px] font-semibold text-navy-700/60">
+              <span className="w-9 h-9 rounded-full border border-navy-900/12 flex items-center justify-center group-hover:bg-navy-900 group-hover:border-navy-900 transition-all duration-250 flex-shrink-0">
+                <ArrowRight className="w-3.5 h-3.5 text-navy-700/50 group-hover:text-white transition-colors duration-250" />
               </span>
               ABA Center Startup
             </Link>

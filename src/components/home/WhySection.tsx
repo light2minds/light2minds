@@ -6,19 +6,19 @@ const pillars = [
   {
     title: 'Family-First Tone',
     body: 'We write for real families, not clinicians. No jargon. No overwhelm. Just clear, warm guidance.',
-    accent: 'bg-navy-50 border-navy-100',
-    dot: 'bg-navy-400',
+    accent: 'bg-sky-50 border-sky-100',
+    dot: 'bg-sky-400',
   },
   {
     title: 'Professionally Grounded',
     body: 'All professional content is aligned with BACB standards and current ABA best practices.',
     accent: 'bg-forest-50 border-forest-100',
-    dot: 'bg-forest-400',
+    dot: 'bg-forest-500',
   },
   {
     title: 'Florida-Based & Focused',
     body: 'Built for Florida families and providers, with state-specific considerations where relevant.',
-    accent: 'bg-gold-50 border-gold-100',
+    accent: 'bg-gold-50 border-gold-200',
     dot: 'bg-gold-400',
   },
   {

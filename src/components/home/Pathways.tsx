@@ -23,7 +23,7 @@ export default function Pathways() {
         </span>
 
         <div>
-          <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-gold-400/55 mb-6">
+          <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-forest-400/70 mb-6">
             For Families
           </p>
           <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-white leading-[1.12] tracking-[-0.02em] mb-5 max-w-sm">
@@ -47,7 +47,7 @@ export default function Pathways() {
 
       {/* Divider dot */}
       <div className="hidden lg:flex items-center justify-center w-px bg-stone-200/30 relative">
-        <div className="absolute w-5 h-5 rounded-full bg-gold-400 border-4 border-stone-50 z-10" />
+        <div className="absolute w-5 h-5 rounded-full bg-gold-400 border-[3px] border-stone-50 z-10" />
       </div>
 
       {/* Right — Professionals */}
@@ -66,7 +66,7 @@ export default function Pathways() {
         </span>
 
         <div>
-          <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-forest-700/55 mb-6">
+          <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-sky-500/70 mb-6">
             For Professionals
           </p>
           <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-navy-900 leading-[1.12] tracking-[-0.02em] mb-5 max-w-sm">

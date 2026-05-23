@@ -13,6 +13,7 @@ const config: Config = {
         serif: ['var(--font-serif)', 'Georgia', 'serif'],
       },
       colors: {
+        // Primary dark base — professional foundation
         navy: {
           950: '#060C16',
           900: '#0D1B2E',
@@ -25,25 +26,39 @@ const config: Config = {
           100: '#D6E4F7',
           50:  '#EBF2FB',
         },
+        // Brand green — from logo "Minds"
         forest: {
-          900: '#0F2A1D',
-          800: '#174232',
-          700: '#2B7A52',
-          600: '#3A9E6A',
-          500: '#4DBF80',
-          400: '#74D19B',
-          200: '#B6E8CE',
-          100: '#D4EFE1',
-          50:  '#EAF7EF',
+          900: '#0D3A1C',
+          800: '#165C2C',
+          700: '#1A8838',
+          600: '#22AA45',
+          500: '#2EBB50',  // logo green
+          400: '#52CC6E',
+          300: '#84DC97',
+          200: '#B8ECCA',
+          100: '#DBF5E3',
+          50:  '#EDFAF1',
         },
+        // Brand yellow — from logo "2" and sunburst
         gold: {
-          600: '#B8900E',
-          500: '#CF9F10',
-          400: '#E8B84B',
-          300: '#F0CC70',
-          200: '#F7E4A8',
-          100: '#FBF3D8',
-          50:  '#FEFCF0',
+          600: '#C8A800',
+          500: '#E5C800',
+          400: '#FFE030',  // logo yellow
+          300: '#FFE866',
+          200: '#FFF3AA',
+          100: '#FFF9D6',
+          50:  '#FFFCE8',
+        },
+        // Brand sky blue — from logo "Light"
+        sky: {
+          700: '#1A7AC0',
+          600: '#2A9EE0',
+          500: '#3FB5F5',
+          400: '#5BC4F8',  // logo sky blue
+          300: '#87D4FA',
+          200: '#BBE8FD',
+          100: '#DDF4FE',
+          50:  '#EFF9FF',
         },
         sage: {
           900: '#1d3329',

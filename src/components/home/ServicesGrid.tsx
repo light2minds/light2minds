@@ -49,8 +49,8 @@ const services = [
 ]
 
 const accentDot: Record<string, string> = {
-  forest: 'bg-forest-400',
-  navy:   'bg-navy-400',
+  forest: 'bg-forest-500',
+  navy:   'bg-sky-400',
   gold:   'bg-gold-400',
   sage:   'bg-sage-400',
 }

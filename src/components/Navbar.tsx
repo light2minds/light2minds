@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -39,15 +40,15 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16 lg:h-18">
 
-          <Link
-            href="/"
-            className={[
-              'font-bold text-lg tracking-tight leading-none transition-colors duration-300',
-              scrolled || !isHome ? 'text-navy-900' : 'text-navy-900',
-            ].join(' ')}
-            aria-label="Light2minds home"
-          >
-            Light<span className="text-gold-400">2</span>minds
+          <Link href="/" aria-label="Light2minds home" className="flex items-center">
+            <Image
+              src="/logo.jpg"
+              alt="Light2minds"
+              width={140}
+              height={44}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1" aria-label="Primary navigation">
@@ -69,7 +70,7 @@ export default function Navbar() {
 
           <Link
             href="/parents"
-            className="hidden lg:inline-flex items-center text-sm font-semibold text-navy-900 border border-navy-900/20 px-5 py-2 rounded-full hover:bg-navy-900 hover:text-white hover:border-navy-900 transition-all duration-200"
+            className="hidden lg:inline-flex items-center text-sm font-semibold text-white bg-forest-500 border border-forest-500 px-5 py-2 rounded-full hover:bg-forest-600 hover:border-forest-600 transition-all duration-200"
           >
             Get Started
           </Link>
@@ -108,7 +109,7 @@ export default function Navbar() {
             <div className="pt-4 mt-1 border-t border-stone-100">
               <Link
                 href="/parents"
-                className="block w-full text-center text-sm font-semibold text-white bg-navy-900 px-5 py-3 rounded-full hover:bg-navy-800 transition-colors"
+                className="block w-full text-center text-sm font-semibold text-white bg-forest-500 px-5 py-3 rounded-full hover:bg-forest-600 transition-colors"
               >
                 Get Started
               </Link>
