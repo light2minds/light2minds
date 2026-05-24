@@ -6,17 +6,23 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 
 const WARM_BG = '#F8F5EF'
 
-const BTN_SHADOW_LIGHT = 'inset 0 1px 0 rgba(255,255,255,0.28), 0 1px 4px rgba(0,0,0,0.10)'
-const BTN_SHADOW_GOLD  = 'inset 0 1px 0 rgba(255,255,255,0.45), 0 1px 4px rgba(0,0,0,0.08)'
+// 3D raised button shadows — each colour has a matching darker bottom edge
+const BTN_SHADOW_BLUE  = '0 5px 0 #3A9ECE, 0 8px 16px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.30)'
+const BTN_SHADOW_GOLD  = '0 5px 0 #C4A800, 0 8px 16px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.45)'
+const BTN_SHADOW_GREEN = '0 5px 0 #1E8E3E, 0 8px 16px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.30)'
 
-// Headline: gradient flows logo blue → teal → logo green
-// Drop-shadows make gradient text readable on any video frame
+// Headline gradient: logo blue → yellow → green, with 3D extruded drop-shadow
 const HEADLINE_GRADIENT = {
   background: 'linear-gradient(90deg, #5BC4F8 0%, #FFE030 50%, #2EBB50 100%)',
   WebkitBackgroundClip: 'text' as const,
   WebkitTextFillColor: 'transparent' as const,
   backgroundClip: 'text' as const,
-  filter: 'drop-shadow(0 1px 6px rgba(4,12,26,0.70)) drop-shadow(0 3px 18px rgba(4,12,26,0.45))',
+  // Two stacked offset shadows create an extruded / 3D depth effect
+  filter: [
+    'drop-shadow(2px 2px 0 rgba(4,12,26,0.55))',
+    'drop-shadow(4px 4px 0 rgba(4,12,26,0.30))',
+    'drop-shadow(0 8px 20px rgba(4,12,26,0.40))',
+  ].join(' '),
 }
 
 export default function Hero() {
@@ -73,21 +79,27 @@ export default function Hero() {
       </motion.div>
 
       {/*
-        Overlay system — stronger coverage through the centre (where the
-        headline lives) while keeping the right side open and vivid.
+        Overlay system — centre is fully open (kid + puzzle unshaded).
+        Both left and right edges dissolve to white creating a "portal" feel.
 
-        Layer A  Warm directional: extended so it holds 51% at 45% width
-                 (was only 24% there before). Headline zone stays clearly
-                 warm-toned, fades to transparent at 78%.
-
-        Layer B  Cinematic dark vignette: extends to 50% width coverage so
-                 the text contrast is solid through the middle of the frame.
-
-        Layer C  Radial at lower-centre: softens "Light2Minds" video text.
-
-        Mobile   Extra uniform tint for full-width text legibility.
-        Bottom   Eases lower edge without masking puzzle or child.
+        Left edge  → white (narrow fade, doesn't touch text)
+        Layer A    → warm directional, ends at 62%
+        Layer B    → dark vignette for text contrast, ends at 58%
+        Right edge → white (gradual fade from ~64% onward)
+        Bottom     → subtle depth
       */}
+
+      {/* Left-edge white fade (mirror of right) */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background: `linear-gradient(to right,
+            rgba(255,255,255,0.82) 0%,
+            rgba(255,255,255,0.38) 3%,
+            transparent 10%)`,
+        }}
+      />
 
       {/* Layer A — warm directional: left text zone only, gone by 62% */}
       <div
@@ -103,7 +115,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Layer B — dark vignette: left text zone only, gone by 58% */}
+      {/* Layer B — dark vignette for text contrast, gone by 58% */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
@@ -116,9 +128,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Right-edge fade: kid/puzzle zone is fully clear, then the far-right
-          edge dissolves gradually to pure white so the hero flows into the
-          next section naturally */}
+      {/* Right-edge fade to white — kid/puzzle zone is clear, far right dissolves */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
@@ -169,7 +179,7 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Headline — full logo-colour gradient across entire text block */}
+          {/* Headline — logo gradient with 3D extruded drop-shadows */}
           <motion.h1
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
@@ -183,7 +193,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── CTAs: pinned to bottom ── */}
+      {/* ── CTAs: 3D raised pill buttons pinned to bottom ── */}
       <motion.div
         style={{ opacity: contentOp }}
         initial={{ opacity: 0, y: 10 }}
@@ -194,28 +204,31 @@ export default function Hero() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-wrap items-center gap-3">
 
+            {/* Blue */}
             <Link
               href="/parents"
-              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-250 hover:opacity-[0.87] active:scale-[0.97]"
-              style={{ backgroundColor: '#5BC4F8', boxShadow: BTN_SHADOW_LIGHT }}
+              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
+              style={{ backgroundColor: '#5BC4F8', boxShadow: BTN_SHADOW_BLUE }}
             >
               For Families
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
+            {/* Gold */}
             <Link
               href="/professionals"
-              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold px-7 py-3.5 rounded-full transition-all duration-250 hover:opacity-[0.87] active:scale-[0.97]"
+              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
               style={{ backgroundColor: '#FFE030', color: '#0D1B2E', boxShadow: BTN_SHADOW_GOLD }}
             >
               For Professionals
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
+            {/* Green */}
             <Link
               href="/aba-center"
-              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-250 hover:opacity-[0.87] active:scale-[0.97]"
-              style={{ backgroundColor: '#2EBB50', boxShadow: BTN_SHADOW_LIGHT }}
+              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
+              style={{ backgroundColor: '#2EBB50', boxShadow: BTN_SHADOW_GREEN }}
             >
               ABA Center Startup
               <ArrowRight className="w-3.5 h-3.5" />

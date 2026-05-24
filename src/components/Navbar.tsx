@@ -80,7 +80,7 @@ export default function Navbar() {
             className="hidden lg:inline-flex items-center text-[12.5px] font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:opacity-90 active:scale-[0.97]"
             style={{ backgroundColor: '#FFE030', color: '#0D1B2E' }}
           >
-            Get Started
+            Shop
           </Link>
 
           {/* Mobile burger */}
@@ -154,7 +154,7 @@ export default function Navbar() {
                 className="block w-full text-center text-[14px] font-semibold text-white py-4 rounded-xl transition-colors active:opacity-90"
                 style={{ backgroundColor: '#2EBB50' }}
               >
-                Get Started
+                Shop
               </Link>
             </div>
           </motion.div>
