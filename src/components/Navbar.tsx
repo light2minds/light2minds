@@ -5,6 +5,9 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 
+const SHOP_SHADOW_GOLD  = '0 4px 0 #C4A800, 0 6px 14px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.45)'
+const SHOP_SHADOW_GREEN = '0 4px 0 #1E8E3E, 0 6px 14px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.30)'
+
 const links = [
   { href: '/parents',       label: 'Families' },
   { href: '/professionals', label: 'Professionals' },
@@ -74,11 +77,11 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Desktop CTA — yellow pill, always visible */}
+          {/* Desktop CTA — yellow 3D pill */}
           <Link
             href="/parents"
-            className="hidden lg:inline-flex items-center text-[12.5px] font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:opacity-90 active:scale-[0.97]"
-            style={{ backgroundColor: '#FFE030', color: '#0D1B2E' }}
+            className="hidden lg:inline-flex items-center text-[12.5px] font-semibold px-5 py-2.5 rounded-full transition-all duration-150 hover:translate-y-[2px] active:translate-y-[4px]"
+            style={{ backgroundColor: '#FFE030', color: '#0D1B2E', boxShadow: SHOP_SHADOW_GOLD }}
           >
             Shop
           </Link>
@@ -151,8 +154,8 @@ export default function Navbar() {
             <div className="pt-3 mt-1 border-t border-stone-100/80">
               <Link
                 href="/parents"
-                className="block w-full text-center text-[14px] font-semibold text-white py-4 rounded-xl transition-colors active:opacity-90"
-                style={{ backgroundColor: '#2EBB50' }}
+                className="block w-full text-center text-[14px] font-semibold text-white py-4 rounded-xl transition-all duration-150 hover:translate-y-[2px] active:translate-y-[4px]"
+                style={{ backgroundColor: '#2EBB50', boxShadow: SHOP_SHADOW_GREEN }}
               >
                 Shop
               </Link>

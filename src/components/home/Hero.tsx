@@ -11,9 +11,9 @@ const BTN_SHADOW_BLUE  = '0 5px 0 #3A9ECE, 0 8px 16px rgba(0,0,0,0.14), inset 0 
 const BTN_SHADOW_GOLD  = '0 5px 0 #C4A800, 0 8px 16px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.45)'
 const BTN_SHADOW_GREEN = '0 5px 0 #1E8E3E, 0 8px 16px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.30)'
 
-// Headline gradient: logo blue → yellow → green, with 3D extruded drop-shadow
+// Headline gradient: logo yellow → green, with 3D extruded drop-shadow
 const HEADLINE_GRADIENT = {
-  background: 'linear-gradient(90deg, #5BC4F8 0%, #FFE030 50%, #2EBB50 100%)',
+  background: 'linear-gradient(90deg, #FFE030 0%, #2EBB50 100%)',
   WebkitBackgroundClip: 'text' as const,
   WebkitTextFillColor: 'transparent' as const,
   backgroundClip: 'text' as const,
@@ -89,15 +89,16 @@ export default function Hero() {
         Bottom     → subtle depth
       */}
 
-      {/* Left-edge white fade (mirror of right) */}
+      {/* Left-edge white fade — mirrors right side for symmetric portal frame */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background: `linear-gradient(to right,
-            rgba(255,255,255,0.82) 0%,
-            rgba(255,255,255,0.38) 3%,
-            transparent 10%)`,
+            rgba(255,255,255,1.00) 0%,
+            rgba(255,255,255,0.82) 8%,
+            rgba(255,255,255,0.32) 20%,
+            transparent 36%)`,
         }}
       />
 
