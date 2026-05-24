@@ -6,9 +6,17 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 
 const WARM_BG = '#F8F5EF'
 
-// Inline shadow for premium glass-like button depth — no heavy drop shadow
 const BTN_SHADOW_LIGHT = 'inset 0 1px 0 rgba(255,255,255,0.28), 0 1px 4px rgba(0,0,0,0.10)'
 const BTN_SHADOW_GOLD  = 'inset 0 1px 0 rgba(255,255,255,0.45), 0 1px 4px rgba(0,0,0,0.08)'
+
+// Headline: gradient flows logo blue → teal midpoint → logo green
+// mirrors the "Anything" color-blend reference (blue→green, no harsh break)
+const HEADLINE_GRADIENT = {
+  background: 'linear-gradient(90deg, #5BC4F8 0%, #38C4A0 45%, #2EBB50 100%)',
+  WebkitBackgroundClip: 'text' as const,
+  WebkitTextFillColor: 'transparent' as const,
+  backgroundClip: 'text' as const,
+}
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null)
@@ -64,49 +72,50 @@ export default function Hero() {
       </motion.div>
 
       {/*
-        Overlay system — three composited layers, each handling one job:
+        Overlay system — stronger coverage through the centre (where the
+        headline lives) while keeping the right side open and vivid.
 
-        A  Warm directional: brand-warm tone concentrated in the text zone.
-           Softened to 75% max (was 80%) — text stays readable, video breathes.
+        Layer A  Warm directional: extended so it holds 51% at 45% width
+                 (was only 24% there before). Headline zone stays clearly
+                 warm-toned, fades to transparent at 78%.
 
-        B  Cinematic dark vignette: warm-navy depth for headline contrast.
-           Reduced to 23% max (was 30%) — natural shadow, not a box.
+        Layer B  Cinematic dark vignette: extends to 50% width coverage so
+                 the text contrast is solid through the middle of the frame.
 
-        C  Center-lower radial: very subtle warm haze over the "Light2Minds"
-           video watermark so it supports rather than competes with the headline.
-           Only 20% opacity — the text remains visible but steps back visually.
+        Layer C  Radial at lower-centre: softens "Light2Minds" video text.
 
-        Bottom vignette: eases the lower edge without masking the puzzle.
+        Mobile   Extra uniform tint for full-width text legibility.
+        Bottom   Eases lower edge without masking puzzle or child.
       */}
 
-      {/* Layer A — warm directional (text zone only, fades right) */}
+      {/* Layer A — warm directional, stronger through the middle */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background: `linear-gradient(to right,
             ${WARM_BG}BF 0%,
-            ${WARM_BG}96 17%,
-            ${WARM_BG}3D 38%,
-            ${WARM_BG}0A 56%,
-            transparent 70%)`,
+            ${WARM_BG}B0 20%,
+            ${WARM_BG}82 45%,
+            ${WARM_BG}28 65%,
+            transparent 78%)`,
         }}
       />
 
-      {/* Layer B — cinematic warm-dark vignette (slightly reduced) */}
+      {/* Layer B — dark vignette extended to cover middle zone */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background: `linear-gradient(105deg,
-            rgba(8,18,34,0.23) 0%,
-            rgba(8,18,34,0.15) 22%,
-            rgba(8,18,34,0.05) 44%,
-            transparent 58%)`,
+            rgba(8,18,34,0.24) 0%,
+            rgba(8,18,34,0.18) 25%,
+            rgba(8,18,34,0.07) 50%,
+            transparent 65%)`,
         }}
       />
 
-      {/* Layer C — gentle center radial to soften "Light2Minds" video watermark */}
+      {/* Layer C — gentle radial over "Light2Minds" video watermark */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
@@ -125,7 +134,7 @@ export default function Hero() {
         style={{ backgroundColor: `${WARM_BG}50` }}
       />
 
-      {/* Bottom depth — eases lower edge, supports watermark softening */}
+      {/* Bottom depth */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
@@ -137,7 +146,7 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Headline: upper zone — more breathing room via increased top padding ── */}
+      {/* ── Headline: upper zone ── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-48 lg:pt-44">
         <motion.div
           style={{ y: contentY, opacity: contentOp }}
@@ -156,20 +165,21 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Headline */}
+          {/* Headline — full logo-colour gradient across entire text block */}
           <motion.h1
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[clamp(2.4rem,5.5vw,4.6rem)] font-bold leading-[1.04] tracking-[-0.03em] text-navy-900"
+            className="text-[clamp(2.4rem,5.5vw,4.6rem)] font-bold leading-[1.04] tracking-[-0.03em]"
+            style={HEADLINE_GRADIENT}
           >
-            <span style={{ color: '#5BC4F8' }}>Guiding</span> families.<br />
-            <span style={{ color: '#2EBB50' }}>Empowering</span> professionals.
+            Guiding families.<br />
+            Empowering professionals.
           </motion.h1>
         </motion.div>
       </div>
 
-      {/* ── CTAs: pinned to bottom — more space gives composition room to breathe ── */}
+      {/* ── CTAs: pinned to bottom ── */}
       <motion.div
         style={{ opacity: contentOp }}
         initial={{ opacity: 0, y: 10 }}
@@ -180,7 +190,6 @@ export default function Hero() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-wrap items-center gap-3">
 
-            {/* Blue — logo "Light" */}
             <Link
               href="/parents"
               className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-250 hover:opacity-[0.87] active:scale-[0.97]"
@@ -190,7 +199,6 @@ export default function Hero() {
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
-            {/* Gold — logo "2" — dark text for contrast */}
             <Link
               href="/professionals"
               className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold px-7 py-3.5 rounded-full transition-all duration-250 hover:opacity-[0.87] active:scale-[0.97]"
@@ -200,7 +208,6 @@ export default function Hero() {
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
-            {/* Green — logo "Minds" */}
             <Link
               href="/aba-center"
               className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-250 hover:opacity-[0.87] active:scale-[0.97]"
