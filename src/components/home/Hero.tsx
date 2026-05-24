@@ -9,13 +9,14 @@ const WARM_BG = '#F8F5EF'
 const BTN_SHADOW_LIGHT = 'inset 0 1px 0 rgba(255,255,255,0.28), 0 1px 4px rgba(0,0,0,0.10)'
 const BTN_SHADOW_GOLD  = 'inset 0 1px 0 rgba(255,255,255,0.45), 0 1px 4px rgba(0,0,0,0.08)'
 
-// Headline: gradient flows logo blue → teal midpoint → logo green
-// mirrors the "Anything" color-blend reference (blue→green, no harsh break)
+// Headline: gradient flows logo blue → teal → logo green
+// Drop-shadows make gradient text readable on any video frame
 const HEADLINE_GRADIENT = {
   background: 'linear-gradient(90deg, #5BC4F8 0%, #38C4A0 45%, #2EBB50 100%)',
   WebkitBackgroundClip: 'text' as const,
   WebkitTextFillColor: 'transparent' as const,
   backgroundClip: 'text' as const,
+  filter: 'drop-shadow(0 1px 6px rgba(4,12,26,0.70)) drop-shadow(0 3px 18px rgba(4,12,26,0.45))',
 }
 
 export default function Hero() {
@@ -88,30 +89,30 @@ export default function Hero() {
         Bottom   Eases lower edge without masking puzzle or child.
       */}
 
-      {/* Layer A — warm directional, stronger through the middle */}
+      {/* Layer A — warm directional, strong through headline zone */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background: `linear-gradient(to right,
-            ${WARM_BG}BF 0%,
-            ${WARM_BG}B0 20%,
-            ${WARM_BG}82 45%,
-            ${WARM_BG}28 65%,
-            transparent 78%)`,
+            ${WARM_BG}E0 0%,
+            ${WARM_BG}CC 18%,
+            ${WARM_BG}99 42%,
+            ${WARM_BG}33 62%,
+            transparent 76%)`,
         }}
       />
 
-      {/* Layer B — dark vignette extended to cover middle zone */}
+      {/* Layer B — dark vignette for contrast depth in headline zone */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background: `linear-gradient(105deg,
-            rgba(8,18,34,0.24) 0%,
-            rgba(8,18,34,0.18) 25%,
-            rgba(8,18,34,0.07) 50%,
-            transparent 65%)`,
+            rgba(8,18,34,0.32) 0%,
+            rgba(8,18,34,0.24) 22%,
+            rgba(8,18,34,0.09) 48%,
+            transparent 62%)`,
         }}
       />
 
