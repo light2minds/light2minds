@@ -74,15 +74,11 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Desktop CTA — transitions between states */}
+          {/* Desktop CTA — yellow pill, always visible */}
           <Link
             href="/parents"
-            className={[
-              'hidden lg:inline-flex items-center text-[12.5px] font-semibold px-5 py-2.5 rounded-full transition-all duration-300',
-              overHero
-                ? 'text-navy-800 border border-navy-800/20 hover:border-navy-800/40 hover:bg-white/30'
-                : 'text-white bg-forest-500 border border-forest-500 hover:bg-forest-600 hover:border-forest-600',
-            ].join(' ')}
+            className="hidden lg:inline-flex items-center text-[12.5px] font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:opacity-90 active:scale-[0.97]"
+            style={{ backgroundColor: '#FFE030', color: '#0D1B2E' }}
           >
             Get Started
           </Link>

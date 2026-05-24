@@ -159,9 +159,11 @@ export default function Hero() {
               {/* Green — logo "Minds" color */}
               <Link
                 href="/aba-center"
-                className="text-[13px] font-medium transition-colors duration-150 px-3 py-3.5 text-forest-500 hover:text-forest-600"
+                className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow-md active:scale-[0.97]"
+                style={{ backgroundColor: '#2EBB50' }}
               >
-                ABA Center Startup →
+                ABA Center Startup
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </motion.div>
 
