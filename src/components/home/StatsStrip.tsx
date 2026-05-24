@@ -11,9 +11,9 @@ const stats = [
 
 export default function StatsStrip() {
   return (
-    <div className="bg-navy-900 py-14 lg:py-16">
+    <div className="bg-stone-100 py-14 lg:py-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x divide-white/[0.08]">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x divide-stone-300/60">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.value}
@@ -23,8 +23,8 @@ export default function StatsStrip() {
               transition={{ duration: 0.45, delay: i * 0.07 }}
               className="lg:px-10 first:lg:pl-0 last:lg:pr-0"
             >
-              <p className="text-[2rem] font-bold text-white tracking-[-0.03em] leading-none mb-2">{stat.value}</p>
-              <p className="text-[12px] text-white/40 leading-relaxed">{stat.label}</p>
+              <p className="text-[2rem] font-bold text-navy-900 tracking-[-0.03em] leading-none mb-2">{stat.value}</p>
+              <p className="text-[12px] text-navy-800/50 leading-relaxed">{stat.label}</p>
             </motion.div>
           ))}
         </div>

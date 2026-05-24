@@ -44,7 +44,7 @@ const areas = [
 
 export default function ProfessionalEcosystem() {
   return (
-    <section className="bg-navy-950 py-24 lg:py-36">
+    <section className="bg-stone-50 py-24 lg:py-36">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         <motion.div
@@ -55,16 +55,16 @@ export default function ProfessionalEcosystem() {
           className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16"
         >
           <div>
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-gold-400/45 mb-4">
+            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">
               Professional Ecosystem
             </p>
-            <h2 className="text-[clamp(1.85rem,3.8vw,2.75rem)] font-bold text-white tracking-[-0.025em] leading-[1.1]">
+            <h2 className="text-[clamp(1.85rem,3.8vw,2.75rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1]">
               A complete system for<br />ABA professionals.
             </h2>
           </div>
           <Link
             href="/professionals"
-            className="inline-flex items-center gap-3 text-[13px] font-medium text-white/45 hover:text-white/80 transition-colors duration-200 self-start lg:self-auto"
+            className="inline-flex items-center gap-3 text-[13px] font-medium text-navy-700/50 hover:text-navy-900 transition-colors duration-200 self-start lg:self-auto"
           >
             Explore all tools
             <span className="w-5 h-px bg-current" />
@@ -72,7 +72,7 @@ export default function ProfessionalEcosystem() {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/[0.06] border border-white/[0.06] rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-stone-200/60 border border-stone-200/60 rounded-2xl overflow-hidden">
           {areas.map((area, i) => (
             <motion.div
               key={area.id}
@@ -81,20 +81,20 @@ export default function ProfessionalEcosystem() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
               className={[
-                'border-white/[0.06]',
+                'border-stone-200/60',
                 i >= 3 ? 'lg:border-t' : '',
                 i === 1 || i === 4 ? 'md:border-l' : '',
               ].join(' ')}
             >
               <Link
                 href={area.href}
-                className="group block bg-navy-950 hover:bg-navy-900/60 p-8 h-full transition-colors duration-300"
+                className="group block bg-white hover:bg-stone-50 p-8 h-full transition-colors duration-300"
               >
-                <p className="text-[11px] font-bold text-white/18 mb-5 tracking-[0.1em]">{area.id}</p>
-                <h3 className="text-[15px] font-semibold text-white mb-3 group-hover:text-gold-300 transition-colors duration-200">
+                <p className="text-[11px] font-bold text-navy-900/20 mb-5 tracking-[0.1em]">{area.id}</p>
+                <h3 className="text-[15px] font-semibold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors duration-200">
                   {area.title}
                 </h3>
-                <p className="text-[13px] text-white/35 leading-relaxed">{area.body}</p>
+                <p className="text-[13px] text-navy-800/50 leading-relaxed">{area.body}</p>
               </Link>
             </motion.div>
           ))}

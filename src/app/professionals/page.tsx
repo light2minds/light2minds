@@ -127,18 +127,18 @@ export default function ProfessionalsPage() {
     <main>
 
       {/* Hero */}
-      <section className="bg-navy-900 pt-36 pb-24 lg:pt-44 lg:pb-32 relative overflow-hidden">
-        <span className="absolute bottom-0 right-8 text-[18rem] font-bold leading-none text-white/[0.02] select-none pointer-events-none" aria-hidden="true">ABA</span>
+      <section className="bg-stone-50 pt-36 pb-24 lg:pt-44 lg:pb-32 relative overflow-hidden border-b border-stone-200/60">
+        <span className="absolute bottom-0 right-8 text-[18rem] font-bold leading-none text-navy-900/[0.03] select-none pointer-events-none" aria-hidden="true">ABA</span>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
           <motion.div {...fade} transition={{ duration: 0.65 }} className="max-w-3xl">
             <div className="flex items-center gap-3 mb-6">
-              <span className="block w-6 h-px bg-gold-400/40" />
-              <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-gold-400/50">For Professionals</p>
+              <span className="block w-6 h-px bg-navy-700/30" />
+              <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40">For Professionals</p>
             </div>
-            <h1 className="text-[clamp(2.25rem,5vw,4rem)] font-bold text-white tracking-[-0.03em] leading-[1.06] mb-6">
+            <h1 className="text-[clamp(2.25rem,5vw,4rem)] font-bold text-navy-900 tracking-[-0.03em] leading-[1.06] mb-6">
               Professional Training Hub
             </h1>
-            <p className="text-[clamp(1rem,1.5vw,1.15rem)] font-light text-white/45 leading-relaxed max-w-xl mb-8">
+            <p className="text-[clamp(1rem,1.5vw,1.15rem)] font-light text-navy-800/55 leading-relaxed max-w-xl mb-8">
               Whether you&apos;re preparing for your RBT exam, building your clinical skills, or laying the groundwork for your own ABA practice — this is your dedicated space.
             </p>
             <div className="flex flex-wrap gap-3 mb-5">
@@ -148,7 +148,7 @@ export default function ProfessionalsPage() {
                 { href: '#career', label: 'Career Tools' },
               ].map(btn => (
                 <a key={btn.href} href={btn.href}
-                  className="text-[12px] font-semibold text-white/60 border border-white/15 px-4 py-2 rounded-full hover:bg-white hover:text-navy-900 transition-all duration-150">
+                  className="text-[12px] font-semibold text-navy-800/60 border border-stone-200 bg-white px-4 py-2 rounded-full hover:border-navy-900/30 hover:text-navy-900 transition-all duration-150">
                   {btn.label}
                 </a>
               ))}
@@ -165,7 +165,7 @@ export default function ProfessionalsPage() {
                 { href: '#forms', label: 'Forms' },
               ].map(link => (
                 <a key={link.href} href={link.href}
-                  className="text-[11px] font-medium text-white/35 hover:text-white transition-colors duration-150 underline underline-offset-2">
+                  className="text-[11px] font-medium text-navy-800/45 hover:text-navy-800 transition-colors duration-150 underline underline-offset-2">
                   {link.label}
                 </a>
               ))}
@@ -196,10 +196,10 @@ export default function ProfessionalsPage() {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-navy-900">
-                    <th className="px-6 py-3 text-left text-[11px] font-bold tracking-[0.06em] text-white/70 uppercase">Section</th>
-                    <th className="px-6 py-3 text-left text-[11px] font-bold tracking-[0.06em] text-white/70 uppercase">Content Area</th>
-                    <th className="px-6 py-3 text-left text-[11px] font-bold tracking-[0.06em] text-white/70 uppercase">Key Topics</th>
+                  <tr className="bg-stone-100">
+                    <th className="px-6 py-3 text-left text-[11px] font-bold tracking-[0.06em] text-navy-700/60 uppercase">Section</th>
+                    <th className="px-6 py-3 text-left text-[11px] font-bold tracking-[0.06em] text-navy-700/60 uppercase">Content Area</th>
+                    <th className="px-6 py-3 text-left text-[11px] font-bold tracking-[0.06em] text-navy-700/60 uppercase">Key Topics</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-stone-100">
@@ -288,7 +288,7 @@ export default function ProfessionalsPage() {
 
           <div className="flex flex-wrap gap-4">
             <Link href="/tools#rbt-tools"
-              className="inline-flex items-center gap-3 text-[13px] font-semibold text-white bg-navy-900 px-6 py-3 rounded-full hover:bg-navy-800 transition-colors duration-200">
+              className="inline-flex items-center gap-3 text-[13px] font-semibold text-white bg-forest-500 px-6 py-3 rounded-full hover:bg-forest-600 transition-colors duration-200">
               Download All Flashcard Decks
             </Link>
             <Link href="/tools#rbt-tools"
@@ -474,7 +474,7 @@ export default function ProfessionalsPage() {
           </div>
 
           <Link href="/tools#rbt-tools"
-            className="inline-flex items-center gap-3 text-[13px] font-semibold text-white bg-navy-900 px-6 py-3 rounded-full hover:bg-navy-800 transition-colors duration-200">
+            className="inline-flex items-center gap-3 text-[13px] font-semibold text-white bg-forest-500 px-6 py-3 rounded-full hover:bg-forest-600 transition-colors duration-200">
             Download Competency Self-Check Guide
           </Link>
         </div>
@@ -555,18 +555,18 @@ export default function ProfessionalsPage() {
       {/* CTA */}
       <section className="bg-white py-20 border-t border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.65 }} className="bg-navy-900 rounded-3xl px-10 py-12 lg:px-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+          <motion.div {...fade} transition={{ duration: 0.65 }} className="bg-stone-50 border border-stone-200/60 rounded-3xl px-10 py-12 lg:px-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
             <div>
-              <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-white tracking-[-0.025em] leading-[1.1] mb-3">
+              <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
                 Ready to pass your RBT exam?
               </h2>
-              <p className="text-[15px] text-white/45 leading-relaxed max-w-lg">
+              <p className="text-[15px] text-navy-800/50 leading-relaxed max-w-lg">
                 Access all study materials, mock exams, flashcards, and career tools — free and available now. Start your preparation today.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
               <Link href="/tools"
-                className="inline-flex items-center justify-center gap-3 text-[13px] font-semibold text-white border border-white/15 px-6 py-3 rounded-full hover:bg-white hover:text-navy-900 transition-all duration-200">
+                className="inline-flex items-center justify-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/20 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200">
                 Browse All Resources
               </Link>
               <Link href="/aba-center"

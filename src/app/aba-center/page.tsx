@@ -251,23 +251,23 @@ export default function AbaCenterPage() {
     <main>
 
       {/* Hero */}
-      <section className="bg-navy-950 pt-36 pb-24 lg:pt-44 lg:pb-32 relative overflow-hidden">
+      <section className="bg-stone-50 pt-36 pb-24 lg:pt-44 lg:pb-32 relative overflow-hidden border-b border-stone-200/60">
         <span
-          className="absolute bottom-0 right-0 text-[22rem] font-bold leading-none text-white/[0.015] select-none pointer-events-none"
+          className="absolute bottom-0 right-0 text-[22rem] font-bold leading-none text-navy-900/[0.03] select-none pointer-events-none"
           aria-hidden="true"
         >
           ABA
         </span>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
           <motion.div {...fade} transition={{ duration: 0.65 }} className="max-w-3xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-gold-400/45 mb-6 flex items-center gap-3">
-              <span className="block w-6 h-px bg-gold-400/40" />
+            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-6 flex items-center gap-3">
+              <span className="block w-6 h-px bg-navy-700/30" />
               ABA Center Startup Guide
             </p>
-            <h1 className="text-[clamp(2.25rem,5vw,4rem)] font-bold text-white tracking-[-0.03em] leading-[1.06] mb-7">
+            <h1 className="text-[clamp(2.25rem,5vw,4rem)] font-bold text-navy-900 tracking-[-0.03em] leading-[1.06] mb-7">
               Open Your Own<br />ABA Center
             </h1>
-            <p className="text-[clamp(1rem,1.5vw,1.15rem)] font-light text-white/45 leading-relaxed max-w-xl mb-8">
+            <p className="text-[clamp(1rem,1.5vw,1.15rem)] font-light text-navy-800/55 leading-relaxed max-w-xl mb-8">
               Launching an ABA therapy practice is one of the most meaningful business decisions you can make. This guide walks you through every phase — from the first business plan to your first client session.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -275,7 +275,7 @@ export default function AbaCenterPage() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="inline-flex items-center text-[12px] font-semibold text-gold-300/70 bg-white/[0.05] border border-white/10 px-4 py-2 rounded-full hover:bg-white/10 hover:text-gold-300 transition-all duration-150"
+                  className="inline-flex items-center text-[12px] font-semibold text-navy-800/60 bg-white border border-stone-200 px-4 py-2 rounded-full hover:border-navy-900/30 hover:text-navy-900 transition-all duration-150"
                 >
                   {item.label}
                 </a>
@@ -779,14 +779,14 @@ export default function AbaCenterPage() {
       </section>
 
       {/* Templates */}
-      <section id="templates" className="bg-navy-950 py-24 lg:py-32">
+      <section id="templates" className="bg-stone-50 py-24 lg:py-32 border-t border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <motion.div {...fade} transition={{ duration: 0.65 }} className="text-center mb-14">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-gold-400/45 mb-4">Ready-to-Use</p>
-            <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-white tracking-[-0.025em] leading-[1.1] mb-4">
+            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">Ready-to-Use</p>
+            <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
               Templates &amp; Checklists for ABA Centers
             </h2>
-            <p className="text-[15px] text-white/40 leading-relaxed max-w-xl mx-auto">
+            <p className="text-[15px] text-navy-800/50 leading-relaxed max-w-xl mx-auto">
               Download professionally written, customizable templates to launch your practice faster and more confidently.
             </p>
           </motion.div>
@@ -797,15 +797,15 @@ export default function AbaCenterPage() {
                 key={t.title}
                 {...fade}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="bg-white/[0.06] border border-white/10 rounded-2xl p-6 flex flex-col"
+                className="bg-white border border-stone-200/70 rounded-2xl p-6 flex flex-col"
               >
                 <div className="flex-1">
-                  <h3 className="text-[14px] font-semibold text-white mb-2">{t.title}</h3>
-                  <p className="text-[13px] text-white/50 leading-relaxed mb-4">{t.body}</p>
+                  <h3 className="text-[14px] font-semibold text-navy-900 mb-2">{t.title}</h3>
+                  <p className="text-[13px] text-navy-800/50 leading-relaxed mb-4">{t.body}</p>
                 </div>
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/[0.08]">
-                  <span className="text-[11px] font-medium text-white/35">{t.format}</span>
-                  <button className="text-[12px] font-semibold text-white bg-gold-500/20 border border-gold-400/30 px-4 py-1.5 rounded-full hover:bg-gold-500/30 transition-colors duration-150">
+                <div className="flex items-center justify-between mt-auto pt-4 border-t border-stone-100">
+                  <span className="text-[11px] font-medium text-navy-800/40">{t.format}</span>
+                  <button className="text-[12px] font-semibold text-navy-900 bg-gold-50 border border-gold-300 px-4 py-1.5 rounded-full hover:bg-gold-100 transition-colors duration-150">
                     Download
                   </button>
                 </div>
@@ -818,12 +818,12 @@ export default function AbaCenterPage() {
       {/* CTA */}
       <section className="bg-stone-50 py-20 lg:py-28 border-t border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="bg-navy-950 rounded-3xl px-10 py-14 lg:px-16 lg:py-18">
+          <div className="bg-white border border-stone-200/60 rounded-3xl px-10 py-14 lg:px-16 lg:py-18">
             <motion.div {...fade} transition={{ duration: 0.65 }} className="max-w-2xl mb-10">
-              <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-white tracking-[-0.025em] leading-[1.1] mb-4">
+              <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
                 Ready to Build Something That Matters?
               </h2>
-              <p className="text-[15px] text-white/40 leading-relaxed">
+              <p className="text-[15px] text-navy-800/50 leading-relaxed">
                 Opening an ABA center is a significant undertaking — and a remarkable opportunity to serve your community. Light2minds is here to help you do it well.
               </p>
             </motion.div>
@@ -834,19 +834,19 @@ export default function AbaCenterPage() {
             >
               <a
                 href="mailto:hello@light2minds.com"
-                className="inline-flex items-center gap-3 text-[13px] font-semibold text-white border border-white/15 px-6 py-3 rounded-full hover:bg-white hover:text-navy-950 transition-all duration-200"
+                className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/20 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200"
               >
                 Contact Us for Guidance
               </a>
               <Link
                 href="/professionals"
-                className="inline-flex items-center gap-3 text-[13px] font-semibold text-white border border-white/15 px-6 py-3 rounded-full hover:bg-white hover:text-navy-950 transition-all duration-200"
+                className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/20 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200"
               >
                 RBT Professional Hub
               </Link>
               <Link
                 href="/tools"
-                className="inline-flex items-center gap-3 text-[13px] font-medium text-white/50 hover:text-white transition-colors duration-200 px-2 py-3"
+                className="inline-flex items-center gap-3 text-[13px] font-medium text-navy-700/50 hover:text-navy-900 transition-colors duration-200 px-2 py-3"
               >
                 Browse All Resources
                 <span className="w-4 h-px bg-current" />

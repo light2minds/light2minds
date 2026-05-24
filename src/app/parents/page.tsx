@@ -449,15 +449,15 @@ export default function ParentsPage() {
       </section>
 
       {/* 1-on-1 Sessions */}
-      <section className="bg-navy-900 py-24 lg:py-32" id="sessions">
+      <section className="bg-stone-50 py-24 lg:py-32 border-t border-stone-200/60" id="sessions">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             <motion.div {...fade} transition={{ duration: 0.65 }}>
-              <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-gold-400/50 mb-4">Personalized Support</p>
-              <h2 className="text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-white tracking-[-0.025em] leading-[1.1] mb-5">
+              <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">Personalized Support</p>
+              <h2 className="text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-5">
                 Parent 1-on-1 Educational Sessions
               </h2>
-              <p className="text-[15px] text-white/45 leading-relaxed mb-7">
+              <p className="text-[15px] text-navy-800/50 leading-relaxed mb-7">
                 Sometimes you need more than a guide — you need a conversation. Our parent education sessions give you dedicated time with a specialist to discuss your child&apos;s specific situation, ask every question you&apos;ve been holding, and leave with a clear plan.
               </p>
               <ul className="space-y-3 mb-8">
@@ -468,9 +468,9 @@ export default function ParentsPage() {
                   'Creating a home support strategy tailored to your family',
                   'Guidance on selecting therapists and providers',
                 ].map(item => (
-                  <li key={item} className="flex items-start gap-3 text-[13px] text-white/60">
-                    <span className="w-4 h-4 rounded-full bg-forest-400/25 border border-forest-400/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <svg className="w-2 h-2 text-forest-300" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  <li key={item} className="flex items-start gap-3 text-[13px] text-navy-800/65">
+                    <span className="w-4 h-4 rounded-full bg-forest-100 border border-forest-200 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-2 h-2 text-forest-600" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     </span>
                     {item}
                   </li>
@@ -482,7 +482,7 @@ export default function ParentsPage() {
                   Book a Session
                 </a>
                 <a href="mailto:hello@light2minds.com"
-                  className="inline-flex items-center gap-3 text-[13px] font-medium text-white/50 hover:text-white transition-colors duration-200 px-2 py-3">
+                  className="inline-flex items-center gap-3 text-[13px] font-medium text-navy-700/50 hover:text-navy-900 transition-colors duration-200 px-2 py-3">
                   Email Us
                   <span className="w-4 h-px bg-current" />
                 </a>
@@ -552,16 +552,16 @@ export default function ParentsPage() {
       {/* CTA */}
       <section className="bg-white py-20 border-t border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.65 }} className="bg-navy-900 rounded-3xl px-10 py-12 lg:px-16">
-            <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-white tracking-[-0.025em] leading-[1.1] mb-4">
+          <motion.div {...fade} transition={{ duration: 0.65 }} className="bg-stone-50 border border-stone-200/60 rounded-3xl px-10 py-12 lg:px-16">
+            <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
               Every child deserves the right support.
             </h2>
-            <p className="text-[15px] text-white/45 leading-relaxed mb-8 max-w-xl">
+            <p className="text-[15px] text-navy-800/50 leading-relaxed mb-8 max-w-xl">
               Light2minds is here to make sure families and professionals have what they need to provide it. Explore our full library of tools and resources.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/tools"
-                className="inline-flex items-center gap-3 text-[13px] font-semibold text-white border border-white/15 px-6 py-3 rounded-full hover:bg-white hover:text-navy-900 transition-all duration-200">
+                className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/20 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200">
                 Browse All Resources
               </Link>
               <a href="mailto:hello@light2minds.com"

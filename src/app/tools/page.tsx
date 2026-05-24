@@ -637,12 +637,12 @@ export default function ToolsPage() {
       {/* CTA */}
       <section className="bg-stone-50 py-20 lg:py-28 border-t border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="bg-navy-950 rounded-3xl px-10 py-14 lg:px-16">
+          <div className="bg-white border border-stone-200/60 rounded-3xl px-10 py-14 lg:px-16">
             <motion.div {...fade} transition={{ duration: 0.65 }} className="max-w-2xl mb-10">
-              <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-white tracking-[-0.025em] leading-[1.1] mb-4">
+              <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
                 Need Something You Don&apos;t See Here?
               </h2>
-              <p className="text-[15px] text-white/40 leading-relaxed">
+              <p className="text-[15px] text-navy-800/50 leading-relaxed">
                 Our resource library is growing. If you&apos;re a parent or professional who needs a specific tool, reach out and let us know — we may already have it or we&apos;ll create it.
               </p>
             </motion.div>
@@ -653,19 +653,19 @@ export default function ToolsPage() {
             >
               <a
                 href="mailto:hello@light2minds.com"
-                className="inline-flex items-center gap-3 text-[13px] font-semibold text-white border border-white/15 px-6 py-3 rounded-full hover:bg-white hover:text-navy-950 transition-all duration-200"
+                className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/20 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200"
               >
                 Request a Resource
               </a>
               <Link
                 href="/parents"
-                className="inline-flex items-center gap-3 text-[13px] font-semibold text-white border border-white/15 px-6 py-3 rounded-full hover:bg-white hover:text-navy-950 transition-all duration-200"
+                className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/20 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200"
               >
                 Parent Resources
               </Link>
               <Link
                 href="/professionals"
-                className="inline-flex items-center gap-3 text-[13px] font-medium text-white/50 hover:text-white transition-colors duration-200 px-2 py-3"
+                className="inline-flex items-center gap-3 text-[13px] font-medium text-navy-700/50 hover:text-navy-900 transition-colors duration-200 px-2 py-3"
               >
                 RBT Professional Hub
                 <span className="w-4 h-px bg-current" />
