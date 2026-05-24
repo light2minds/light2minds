@@ -12,7 +12,7 @@ const BTN_SHADOW_GOLD  = 'inset 0 1px 0 rgba(255,255,255,0.45), 0 1px 4px rgba(0
 // Headline: gradient flows logo blue → teal → logo green
 // Drop-shadows make gradient text readable on any video frame
 const HEADLINE_GRADIENT = {
-  background: 'linear-gradient(90deg, #5BC4F8 0%, #38C4A0 45%, #2EBB50 100%)',
+  background: 'linear-gradient(90deg, #5BC4F8 0%, #FFE030 50%, #2EBB50 100%)',
   WebkitBackgroundClip: 'text' as const,
   WebkitTextFillColor: 'transparent' as const,
   backgroundClip: 'text' as const,
