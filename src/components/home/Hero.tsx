@@ -89,42 +89,45 @@ export default function Hero() {
         Bottom   Eases lower edge without masking puzzle or child.
       */}
 
-      {/* Layer A — warm directional, strong through headline zone */}
+      {/* Layer A — warm directional: left text zone only, gone by 62% */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background: `linear-gradient(to right,
             ${WARM_BG}E0 0%,
-            ${WARM_BG}CC 18%,
-            ${WARM_BG}99 42%,
-            ${WARM_BG}33 62%,
-            transparent 76%)`,
+            ${WARM_BG}CC 16%,
+            ${WARM_BG}99 38%,
+            ${WARM_BG}28 55%,
+            transparent 62%)`,
         }}
       />
 
-      {/* Layer B — dark vignette for contrast depth in headline zone */}
+      {/* Layer B — dark vignette: left text zone only, gone by 58% */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background: `linear-gradient(105deg,
             rgba(8,18,34,0.32) 0%,
-            rgba(8,18,34,0.24) 22%,
-            rgba(8,18,34,0.09) 48%,
-            transparent 62%)`,
+            rgba(8,18,34,0.24) 20%,
+            rgba(8,18,34,0.06) 45%,
+            transparent 58%)`,
         }}
       />
 
-      {/* Layer C — gentle radial over "Light2Minds" video watermark */}
+      {/* Right-edge fade: kid/puzzle zone is fully clear, then the far-right
+          edge dissolves gradually to pure white so the hero flows into the
+          next section naturally */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
-          background: `radial-gradient(ellipse 62% 48% at 58% 76%,
-            rgba(248,245,239,0.20) 0%,
-            rgba(248,245,239,0.10) 55%,
-            transparent 100%)`,
+          background: `linear-gradient(to left,
+            rgba(255,255,255,1.00) 0%,
+            rgba(255,255,255,0.82) 8%,
+            rgba(255,255,255,0.32) 20%,
+            transparent 36%)`,
         }}
       />
 
