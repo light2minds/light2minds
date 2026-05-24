@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -40,15 +39,8 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16 lg:h-18">
 
-          <Link href="/" aria-label="Light2minds home" className="flex items-center">
-            <Image
-              src="/logo.jpg"
-              alt="Light2minds"
-              width={140}
-              height={44}
-              className="h-10 w-auto object-contain"
-              priority
-            />
+          <Link href="/" aria-label="Light2minds home">
+            <LogoMark />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1" aria-label="Primary navigation">
@@ -118,5 +110,25 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </>
+  )
+}
+
+function LogoMark() {
+  return (
+    <span className="inline-flex items-end gap-0 select-none leading-none">
+      <span className="font-black text-[1.22rem] tracking-tight" style={{ color: '#5BC4F8' }}>Light</span>
+      <span className="inline-flex flex-col items-center mx-[2px]">
+        {/* Sunburst rays above the 2 */}
+        <svg width="15" height="9" viewBox="0 0 15 9" fill="none" aria-hidden="true" style={{ marginBottom: '-1px' }}>
+          <line x1="7.5" y1="8.5" x2="7.5" y2="0.5" stroke="#FFE030" strokeWidth="1.8" strokeLinecap="round" />
+          <line x1="7.5" y1="8.5" x2="2"   y2="2.5" stroke="#FFE030" strokeWidth="1.6" strokeLinecap="round" />
+          <line x1="7.5" y1="8.5" x2="13"  y2="2.5" stroke="#FFE030" strokeWidth="1.6" strokeLinecap="round" />
+          <line x1="7.5" y1="8.5" x2="0"   y2="6"   stroke="#FFE030" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
+          <line x1="7.5" y1="8.5" x2="15"  y2="6"   stroke="#FFE030" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
+        </svg>
+        <span className="font-black text-[1.22rem] leading-none" style={{ color: '#FFE030' }}>2</span>
+      </span>
+      <span className="font-black text-[1.22rem] tracking-tight" style={{ color: '#2EBB50' }}>Minds</span>
+    </span>
   )
 }

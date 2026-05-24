@@ -5,55 +5,66 @@ import { motion } from 'framer-motion'
 
 const services = [
   {
+    num: '01',
     title: 'Parent Education & Support',
     body: 'Clear, jargon-free guidance on autism, ADHD, developmental delays, sensory challenges, and behavioral conditions — written for families, not clinicians.',
     href: '/parents',
     label: 'Learn More',
-    accent: 'forest',
+    bar: 'bg-forest-500',
+    numColor: 'text-forest-500',
+    hover: 'hover:border-forest-300',
   },
   {
+    num: '02',
     title: 'RBT Exam Preparation',
     body: 'Structured study materials including mock exams, flashcards, ABA terminology glossaries, ethics case studies, and competency checklists.',
     href: '/professionals#exam',
     label: 'Explore Materials',
-    accent: 'navy',
+    bar: 'bg-sky-400',
+    numColor: 'text-sky-500',
+    hover: 'hover:border-sky-300',
   },
   {
+    num: '03',
     title: 'ABA Center Startup',
     body: 'Step-by-step guidance for opening your own ABA practice — business planning, staffing, compliance, billing workflow, and clinical operations.',
     href: '/aba-center',
     label: 'Get Started',
-    accent: 'gold',
+    bar: 'bg-gold-400',
+    numColor: 'text-gold-500',
+    hover: 'hover:border-gold-300',
   },
   {
+    num: '04',
     title: 'Sensory & Developmental Tools',
     body: 'Practical sensory tool recommendations, developmental activity guides, visual schedules, and reinforcement menus for home and classroom use.',
     href: '/tools',
     label: 'View Tools',
-    accent: 'sage',
+    bar: 'bg-forest-500',
+    numColor: 'text-forest-500',
+    hover: 'hover:border-forest-300',
   },
   {
+    num: '05',
     title: 'School Support & IEP Guidance',
     body: 'Help parents understand IEP meetings, request evaluations, advocate for services, and collaborate effectively with school teams.',
     href: '/parents#iep',
     label: 'IEP Resources',
-    accent: 'navy',
+    bar: 'bg-sky-400',
+    numColor: 'text-sky-500',
+    hover: 'hover:border-sky-300',
   },
   {
+    num: '06',
     title: 'Data & Documentation Forms',
     body: 'Printable and downloadable ABC data sheets, behavior tracking forms, session notes, parent handouts, and clinical intake packets.',
     href: '/tools',
     label: 'Download Forms',
-    accent: 'forest',
+    bar: 'bg-gold-400',
+    numColor: 'text-gold-500',
+    hover: 'hover:border-gold-300',
   },
 ]
-
-const accentDot: Record<string, string> = {
-  forest: 'bg-forest-500',
-  navy:   'bg-sky-400',
-  gold:   'bg-gold-400',
-  sage:   'bg-sage-400',
-}
 
 const fade = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } }
 
@@ -73,7 +84,7 @@ export default function ServicesGrid() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((svc, i) => (
             <motion.div
               key={svc.title}
@@ -82,15 +93,19 @@ export default function ServicesGrid() {
             >
               <Link
                 href={svc.href}
-                className="group block bg-white border border-stone-200/70 rounded-2xl p-7 hover:shadow-sm hover:shadow-stone-200/60 hover:-translate-y-0.5 transition-all duration-200 h-full"
+                className={`group block bg-white rounded-2xl overflow-hidden border border-stone-100 ${svc.hover} hover:-translate-y-0.5 hover:shadow-md hover:shadow-stone-200/50 transition-all duration-200 h-full`}
               >
-                <div className={`w-2 h-2 rounded-full ${accentDot[svc.accent]} mb-5`} />
-                <h3 className="text-[15px] font-semibold text-navy-900 mb-2 group-hover:text-navy-700 transition-colors duration-150">{svc.title}</h3>
-                <p className="text-[13px] text-navy-800/45 leading-relaxed mb-5">{svc.body}</p>
-                <p className="text-[12px] font-semibold text-navy-600/45 group-hover:text-navy-900 transition-colors duration-200 flex items-center gap-2">
-                  {svc.label}
-                  <span className="w-4 h-px bg-current" />
-                </p>
+                {/* Colored accent bar at top */}
+                <div className={`h-[3px] w-full ${svc.bar}`} />
+                <div className="p-7">
+                  <p className={`text-[11px] font-bold tracking-[0.12em] ${svc.numColor} mb-4`}>{svc.num}</p>
+                  <h3 className="text-[15px] font-semibold text-navy-900 mb-3 leading-snug group-hover:text-navy-700 transition-colors duration-150">{svc.title}</h3>
+                  <p className="text-[13px] text-navy-800/45 leading-relaxed mb-6">{svc.body}</p>
+                  <p className={`text-[12px] font-semibold ${svc.numColor} opacity-70 group-hover:opacity-100 transition-opacity duration-200 flex items-center gap-2`}>
+                    {svc.label}
+                    <span className="w-4 h-px bg-current" />
+                  </p>
+                </div>
               </Link>
             </motion.div>
           ))}
