@@ -9,28 +9,28 @@ const categories = [
     label: 'Parent Resources',
     body: 'Guides, handouts, and tools for families navigating diagnosis and therapy.',
     href: '/tools#parent-tools',
-    accent: 'forest',
+    color: '#2EBB50',
   },
   {
     count: '8',
     label: 'Clinical Forms',
     body: 'Data sheets, session notes, and documentation templates for daily clinical use.',
     href: '/tools#clinical-tools',
-    accent: 'navy',
+    color: '#5BC4F8',
   },
   {
     count: '10',
     label: 'Developmental Guides',
     body: 'Activity guides, milestone checklists, and skill-building resources.',
     href: '/tools#developmental-tools',
-    accent: 'gold',
+    color: '#FFE030',
   },
   {
     count: '15',
     label: 'RBT Study Materials',
     body: 'Exam prep, flashcards, ethics reference sheets, and career templates.',
     href: '/tools#rbt-tools',
-    accent: 'navy',
+    color: '#5BC4F8',
   },
 ]
 
@@ -62,6 +62,7 @@ export default function ResourcesSection() {
             className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/18 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200 self-start lg:self-auto"
           >
             Browse all resources
+            <span className="w-4 h-px bg-current" />
           </Link>
         </motion.div>
 
@@ -76,20 +77,36 @@ export default function ResourcesSection() {
             >
               <Link
                 href={cat.href}
-                className="group block bg-white border border-stone-200/70 rounded-2xl p-7 hover:shadow-md hover:shadow-stone-200/60 hover:-translate-y-0.5 transition-all duration-250 h-full"
+                className="group block bg-white rounded-2xl overflow-hidden border border-stone-100 hover:-translate-y-0.5 hover:shadow-md hover:shadow-stone-200/50 transition-all duration-200 h-full"
               >
-                <p
-                  className="text-[3.5rem] font-bold leading-none tracking-[-0.04em] mb-6"
-                  style={{ color: 'rgba(13,27,46,0.07)' }}
-                >
-                  {cat.count}
-                </p>
-                <h3 className="text-[15px] font-semibold text-navy-900 mb-2">{cat.label}</h3>
-                <p className="text-[13px] text-navy-800/45 leading-relaxed">{cat.body}</p>
-                <p className="mt-5 text-[12px] font-semibold text-navy-600/50 group-hover:text-navy-900 transition-colors duration-200 flex items-center gap-2">
-                  View resources
-                  <span className="inline-block w-4 h-px bg-current" />
-                </p>
+                {/* Colored accent bar */}
+                <div className="h-[3px] w-full" style={{ backgroundColor: cat.color }} />
+                <div className="p-7">
+                  {/* Count badge */}
+                  <div className="flex items-center gap-2 mb-5">
+                    <span
+                      className="inline-flex items-center justify-center w-9 h-9 rounded-full text-[13px] font-bold"
+                      style={{ backgroundColor: cat.color + '18', color: cat.color === '#FFE030' ? '#B8900E' : cat.color }}
+                    >
+                      {cat.count}
+                    </span>
+                    <span
+                      className="text-[10px] font-bold tracking-[0.1em] uppercase"
+                      style={{ color: cat.color === '#FFE030' ? '#B8900E' : cat.color }}
+                    >
+                      items
+                    </span>
+                  </div>
+                  <h3 className="text-[15px] font-semibold text-navy-900 mb-2 leading-snug">{cat.label}</h3>
+                  <p className="text-[13px] text-navy-800/45 leading-relaxed mb-6">{cat.body}</p>
+                  <p
+                    className="text-[12px] font-semibold opacity-70 group-hover:opacity-100 transition-opacity duration-200 flex items-center gap-2"
+                    style={{ color: cat.color === '#FFE030' ? '#B8900E' : cat.color }}
+                  >
+                    View resources
+                    <span className="w-4 h-px bg-current" />
+                  </p>
+                </div>
               </Link>
             </motion.div>
           ))}

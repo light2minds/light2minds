@@ -6,26 +6,32 @@ const conditions = [
   {
     title: 'Autism Spectrum Disorder',
     body: 'Diagnosis, ABA, social skills, sensory support, and transition planning.',
+    color: '#5BC4F8',
   },
   {
     title: 'ADHD',
     body: 'Attention, executive function, school support, and behavior management strategies.',
+    color: '#2EBB50',
   },
   {
     title: 'Developmental Delays',
     body: 'Early intervention, milestone tracking, therapy options, and family support.',
+    color: '#FFE030',
   },
   {
     title: 'Language Delays',
     body: 'Communication strategies, AAC tools, speech therapy collaboration, and home practice.',
+    color: '#5BC4F8',
   },
   {
     title: 'Sensory Difficulties',
     body: 'Sensory processing basics, calming tools, sensory diets, and environmental modifications.',
+    color: '#2EBB50',
   },
   {
     title: 'Behavioral Challenges',
     body: 'Understanding behavior functions, proactive strategies, and working with a behavior analyst.',
+    color: '#FFE030',
   },
 ]
 
@@ -53,10 +59,20 @@ export default function ConditionsSection() {
               key={c.title}
               {...fade}
               transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="bg-white border border-stone-200/70 rounded-2xl p-7"
+              className="bg-white rounded-2xl overflow-hidden border border-stone-100"
             >
-              <h3 className="text-[14px] font-semibold text-navy-900 mb-2">{c.title}</h3>
-              <p className="text-[13px] text-navy-800/45 leading-relaxed">{c.body}</p>
+              {/* Colored left border via top bar approach */}
+              <div className="h-[3px] w-full" style={{ backgroundColor: c.color }} />
+              <div className="p-7">
+                <div className="flex items-center gap-2.5 mb-3">
+                  <div
+                    className="w-2 h-2 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: c.color }}
+                  />
+                  <h3 className="text-[14px] font-semibold text-navy-900 leading-snug">{c.title}</h3>
+                </div>
+                <p className="text-[13px] text-navy-800/45 leading-relaxed pl-[18px]">{c.body}</p>
+              </div>
             </motion.div>
           ))}
         </div>
