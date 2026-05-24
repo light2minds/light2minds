@@ -27,7 +27,7 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen overflow-hidden"
       style={{ backgroundColor: WARM_BG }}
     >
       {/* ── Cinematic full-bleed video ── */}
@@ -58,22 +58,6 @@ export default function Hero() {
           />
         )}
       </motion.div>
-
-      {/*
-        Two-layer overlay strategy for natural cinematic text contrast:
-
-        Layer A — warm directional tone: preserves brand warmth, slightly
-        stronger than before (80% at edge → transparent at 68%) so the text
-        zone feels grounded without washing the right side.
-
-        Layer B — cinematic dark vignette: a warm-navy shadow (not black) at
-        30% max, angled at 105° so it reads as natural depth rather than a
-        flat rectangle. Fades to fully transparent by 58% — puzzle and child
-        remain vivid and unaffected on the right.
-
-        Combined, the two layers create layered depth: the warm layer handles
-        tone, the dark layer handles contrast for typography.
-      */}
 
       {/* Layer A — warm directional */}
       <div
@@ -106,86 +90,93 @@ export default function Hero() {
         aria-hidden="true"
         style={{ backgroundColor: `${WARM_BG}55` }}
       />
-      {/* Subtle bottom depth */}
+      {/* Bottom depth */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{ background: `linear-gradient(to top, ${WARM_BG}73 0%, transparent 40%)` }}
       />
 
-      {/* ── Content ── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center min-h-screen pt-20 pb-52 lg:pt-16 lg:pb-44">
+      {/*
+        Layout: two separate zones.
+        - Headline block: top of hero, sits above the video's "Light 2 Minds" text
+        - CTA block: pinned to the bottom edge, below the video's watermark
+      */}
 
+      {/* ── Headline: upper zone ── */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-44 lg:pt-40">
+        <motion.div
+          style={{ y: contentY, opacity: contentOp }}
+          className="max-w-xl lg:max-w-2xl"
+        >
+          {/* Eyebrow */}
           <motion.div
-            style={{ y: contentY, opacity: contentOp }}
-            className="w-full max-w-xl lg:max-w-2xl"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex items-center gap-3 mb-7 sm:mb-8"
           >
-            {/* Eyebrow */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex items-center gap-3 mb-7 sm:mb-8"
-            >
-              <span className="w-5 h-px flex-shrink-0" style={{ backgroundColor: '#2EBB50' }} />
-              <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-navy-700/70">
-                Compassionate Care · Brighter Futures
-              </span>
-            </motion.div>
-
-            {/* Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 26 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[clamp(2.4rem,5.5vw,4.6rem)] font-bold leading-[1.04] tracking-[-0.03em] text-navy-900 mb-12 sm:mb-14 lg:mb-16"
-            >
-              <span style={{ color: '#5BC4F8' }}>Guiding</span> families.<br />
-              <span style={{ color: '#2EBB50' }}>Empowering</span> professionals.
-            </motion.h1>
-
-            {/* CTAs — colors matched exactly to logo palette */}
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.46 }}
-              className="flex flex-wrap items-center gap-3"
-            >
-              {/* Blue — logo "Light" color */}
-              <Link
-                href="/parents"
-                className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow-md active:scale-[0.97]"
-                style={{ backgroundColor: '#5BC4F8' }}
-              >
-                For Families
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-
-              {/* Yellow — logo "2" color; dark text for contrast on gold */}
-              <Link
-                href="/professionals"
-                className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold px-7 py-3.5 rounded-full transition-all duration-200 hover:opacity-90 active:scale-[0.97]"
-                style={{ backgroundColor: '#FFE030', color: '#0D1B2E' }}
-              >
-                For Professionals
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-
-              {/* Green — logo "Minds" color */}
-              <Link
-                href="/aba-center"
-                className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow-md active:scale-[0.97]"
-                style={{ backgroundColor: '#2EBB50' }}
-              >
-                ABA Center Startup
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </motion.div>
-
+            <span className="w-5 h-px flex-shrink-0" style={{ backgroundColor: '#2EBB50' }} />
+            <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-navy-700/70">
+              Compassionate Care · Brighter Futures
+            </span>
           </motion.div>
-        </div>
+
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 26 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[clamp(2.4rem,5.5vw,4.6rem)] font-bold leading-[1.04] tracking-[-0.03em] text-navy-900"
+          >
+            <span style={{ color: '#5BC4F8' }}>Guiding</span> families.<br />
+            <span style={{ color: '#2EBB50' }}>Empowering</span> professionals.
+          </motion.h1>
+        </motion.div>
       </div>
+
+      {/* ── CTAs: pinned to bottom of hero, below "Light 2 Minds" video text ── */}
+      <motion.div
+        style={{ opacity: contentOp }}
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.46 }}
+        className="absolute z-10 bottom-10 sm:bottom-12 lg:bottom-14 left-0 right-0"
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Blue — logo "Light" color */}
+            <Link
+              href="/parents"
+              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow-md active:scale-[0.97]"
+              style={{ backgroundColor: '#5BC4F8' }}
+            >
+              For Families
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+
+            {/* Yellow — logo "2" color; dark text for contrast on gold */}
+            <Link
+              href="/professionals"
+              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold px-7 py-3.5 rounded-full transition-all duration-200 hover:opacity-90 active:scale-[0.97]"
+              style={{ backgroundColor: '#FFE030', color: '#0D1B2E' }}
+            >
+              For Professionals
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+
+            {/* Green — logo "Minds" color */}
+            <Link
+              href="/aba-center"
+              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow-md active:scale-[0.97]"
+              style={{ backgroundColor: '#2EBB50' }}
+            >
+              ABA Center Startup
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        </div>
+      </motion.div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-stone-200/40" />
     </section>
