@@ -6,6 +6,10 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 
 const WARM_BG = '#F8F5EF'
 
+// Inline shadow for premium glass-like button depth — no heavy drop shadow
+const BTN_SHADOW_LIGHT = 'inset 0 1px 0 rgba(255,255,255,0.28), 0 1px 4px rgba(0,0,0,0.10)'
+const BTN_SHADOW_GOLD  = 'inset 0 1px 0 rgba(255,255,255,0.45), 0 1px 4px rgba(0,0,0,0.08)'
+
 export default function Hero() {
   const ref = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -59,52 +63,82 @@ export default function Hero() {
         )}
       </motion.div>
 
-      {/* Layer A — warm directional */}
+      {/*
+        Overlay system — three composited layers, each handling one job:
+
+        A  Warm directional: brand-warm tone concentrated in the text zone.
+           Softened to 75% max (was 80%) — text stays readable, video breathes.
+
+        B  Cinematic dark vignette: warm-navy depth for headline contrast.
+           Reduced to 23% max (was 30%) — natural shadow, not a box.
+
+        C  Center-lower radial: very subtle warm haze over the "Light2Minds"
+           video watermark so it supports rather than competes with the headline.
+           Only 20% opacity — the text remains visible but steps back visually.
+
+        Bottom vignette: eases the lower edge without masking the puzzle.
+      */}
+
+      {/* Layer A — warm directional (text zone only, fades right) */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background: `linear-gradient(to right,
-            ${WARM_BG}CC 0%,
-            ${WARM_BG}A8 16%,
-            ${WARM_BG}5C 36%,
-            ${WARM_BG}14 54%,
-            transparent 68%)`,
+            ${WARM_BG}BF 0%,
+            ${WARM_BG}96 17%,
+            ${WARM_BG}3D 38%,
+            ${WARM_BG}0A 56%,
+            transparent 70%)`,
         }}
       />
-      {/* Layer B — cinematic warm-dark vignette for text contrast */}
+
+      {/* Layer B — cinematic warm-dark vignette (slightly reduced) */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background: `linear-gradient(105deg,
-            rgba(8,18,34,0.30) 0%,
-            rgba(8,18,34,0.22) 20%,
-            rgba(8,18,34,0.08) 42%,
+            rgba(8,18,34,0.23) 0%,
+            rgba(8,18,34,0.15) 22%,
+            rgba(8,18,34,0.05) 44%,
             transparent 58%)`,
         }}
       />
+
+      {/* Layer C — gentle center radial to soften "Light2Minds" video watermark */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background: `radial-gradient(ellipse 62% 48% at 58% 76%,
+            rgba(248,245,239,0.20) 0%,
+            rgba(248,245,239,0.10) 55%,
+            transparent 100%)`,
+        }}
+      />
+
       {/* Mobile supplemental */}
       <div
         className="md:hidden absolute inset-0 pointer-events-none"
         aria-hidden="true"
-        style={{ backgroundColor: `${WARM_BG}55` }}
+        style={{ backgroundColor: `${WARM_BG}50` }}
       />
-      {/* Bottom depth */}
+
+      {/* Bottom depth — eases lower edge, supports watermark softening */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
-        style={{ background: `linear-gradient(to top, ${WARM_BG}73 0%, transparent 40%)` }}
+        style={{
+          background: `linear-gradient(to top,
+            ${WARM_BG}6E 0%,
+            ${WARM_BG}18 32%,
+            transparent 52%)`,
+        }}
       />
 
-      {/*
-        Layout: two separate zones.
-        - Headline block: top of hero, sits above the video's "Light 2 Minds" text
-        - CTA block: pinned to the bottom edge, below the video's watermark
-      */}
-
-      {/* ── Headline: upper zone ── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-44 lg:pt-40">
+      {/* ── Headline: upper zone — more breathing room via increased top padding ── */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-48 lg:pt-44">
         <motion.div
           style={{ y: contentY, opacity: contentOp }}
           className="max-w-xl lg:max-w-2xl"
@@ -117,7 +151,7 @@ export default function Hero() {
             className="flex items-center gap-3 mb-7 sm:mb-8"
           >
             <span className="w-5 h-px flex-shrink-0" style={{ backgroundColor: '#2EBB50' }} />
-            <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-navy-700/70">
+            <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-navy-700/60">
               Compassionate Care · Brighter Futures
             </span>
           </motion.div>
@@ -135,50 +169,52 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── CTAs: pinned to bottom of hero, below "Light 2 Minds" video text ── */}
+      {/* ── CTAs: pinned to bottom — more space gives composition room to breathe ── */}
       <motion.div
         style={{ opacity: contentOp }}
-        initial={{ opacity: 0, y: 12 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.46 }}
-        className="absolute z-10 bottom-10 sm:bottom-12 lg:bottom-14 left-0 right-0"
+        transition={{ duration: 0.65, delay: 0.5 }}
+        className="absolute z-10 bottom-12 sm:bottom-14 lg:bottom-16 left-0 right-0"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-wrap items-center gap-3">
-            {/* Blue — logo "Light" color */}
+
+            {/* Blue — logo "Light" */}
             <Link
               href="/parents"
-              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow-md active:scale-[0.97]"
-              style={{ backgroundColor: '#5BC4F8' }}
+              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-250 hover:opacity-[0.87] active:scale-[0.97]"
+              style={{ backgroundColor: '#5BC4F8', boxShadow: BTN_SHADOW_LIGHT }}
             >
               For Families
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
-            {/* Yellow — logo "2" color; dark text for contrast on gold */}
+            {/* Gold — logo "2" — dark text for contrast */}
             <Link
               href="/professionals"
-              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold px-7 py-3.5 rounded-full transition-all duration-200 hover:opacity-90 active:scale-[0.97]"
-              style={{ backgroundColor: '#FFE030', color: '#0D1B2E' }}
+              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold px-7 py-3.5 rounded-full transition-all duration-250 hover:opacity-[0.87] active:scale-[0.97]"
+              style={{ backgroundColor: '#FFE030', color: '#0D1B2E', boxShadow: BTN_SHADOW_GOLD }}
             >
               For Professionals
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
-            {/* Green — logo "Minds" color */}
+            {/* Green — logo "Minds" */}
             <Link
               href="/aba-center"
-              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow-md active:scale-[0.97]"
-              style={{ backgroundColor: '#2EBB50' }}
+              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-250 hover:opacity-[0.87] active:scale-[0.97]"
+              style={{ backgroundColor: '#2EBB50', boxShadow: BTN_SHADOW_LIGHT }}
             >
               ABA Center Startup
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
+
           </div>
         </div>
       </motion.div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-stone-200/40" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-stone-200/30" />
     </section>
   )
 }
