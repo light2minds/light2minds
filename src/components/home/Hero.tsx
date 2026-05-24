@@ -59,24 +59,52 @@ export default function Hero() {
         )}
       </motion.div>
 
-      {/* Directional overlay — localized behind text zone, fades to transparent */}
+      {/*
+        Two-layer overlay strategy for natural cinematic text contrast:
+
+        Layer A — warm directional tone: preserves brand warmth, slightly
+        stronger than before (80% at edge → transparent at 68%) so the text
+        zone feels grounded without washing the right side.
+
+        Layer B — cinematic dark vignette: a warm-navy shadow (not black) at
+        30% max, angled at 105° so it reads as natural depth rather than a
+        flat rectangle. Fades to fully transparent by 58% — puzzle and child
+        remain vivid and unaffected on the right.
+
+        Combined, the two layers create layered depth: the warm layer handles
+        tone, the dark layer handles contrast for typography.
+      */}
+
+      {/* Layer A — warm directional */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background: `linear-gradient(to right,
-            ${WARM_BG}B3 0%,
-            ${WARM_BG}8A 18%,
-            ${WARM_BG}42 38%,
-            ${WARM_BG}0F 56%,
-            transparent 70%)`,
+            ${WARM_BG}CC 0%,
+            ${WARM_BG}A8 16%,
+            ${WARM_BG}5C 36%,
+            ${WARM_BG}14 54%,
+            transparent 68%)`,
         }}
       />
-      {/* Mobile supplemental: full-width text needs a bit more coverage on small screens */}
+      {/* Layer B — cinematic warm-dark vignette for text contrast */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background: `linear-gradient(105deg,
+            rgba(8,18,34,0.30) 0%,
+            rgba(8,18,34,0.22) 20%,
+            rgba(8,18,34,0.08) 42%,
+            transparent 58%)`,
+        }}
+      />
+      {/* Mobile supplemental */}
       <div
         className="md:hidden absolute inset-0 pointer-events-none"
         aria-hidden="true"
-        style={{ backgroundColor: `${WARM_BG}66` }}
+        style={{ backgroundColor: `${WARM_BG}55` }}
       />
       {/* Subtle bottom depth */}
       <div
