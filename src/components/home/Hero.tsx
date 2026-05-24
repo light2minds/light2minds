@@ -145,18 +145,6 @@ export default function Hero() {
               <span style={{ color: '#2EBB50' }}>Empowering</span> professionals.
             </motion.h1>
 
-            {/* Body */}
-            <motion.p
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.34, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[1.02rem] sm:text-[1.05rem] font-light text-navy-800/70 leading-[1.75] max-w-lg mb-10"
-            >
-              Light2minds bridges the gap between families navigating
-              neurodevelopmental challenges and the professionals dedicated to
-              supporting them — with education, tools, and compassionate guidance.
-            </motion.p>
-
             {/* CTAs — colors matched exactly to logo palette */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
