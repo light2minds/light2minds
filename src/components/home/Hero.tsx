@@ -115,7 +115,7 @@ export default function Hero() {
 
       {/* ── Content ── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center min-h-screen py-28 lg:py-24">
+        <div className="flex items-center min-h-screen pt-20 pb-52 lg:pt-16 lg:pb-44">
 
           <motion.div
             style={{ y: contentY, opacity: contentOp }}
@@ -126,7 +126,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex items-center gap-3 mb-8 sm:mb-9"
+              className="flex items-center gap-3 mb-7 sm:mb-8"
             >
               <span className="w-5 h-px flex-shrink-0" style={{ backgroundColor: '#2EBB50' }} />
               <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-navy-700/70">
@@ -139,7 +139,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[clamp(2.4rem,5.5vw,4.6rem)] font-bold leading-[1.04] tracking-[-0.03em] text-navy-900 mb-6"
+              className="text-[clamp(2.4rem,5.5vw,4.6rem)] font-bold leading-[1.04] tracking-[-0.03em] text-navy-900 mb-12 sm:mb-14 lg:mb-16"
             >
               <span style={{ color: '#5BC4F8' }}>Guiding</span> families.<br />
               <span style={{ color: '#2EBB50' }}>Empowering</span> professionals.
