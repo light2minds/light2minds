@@ -49,34 +49,17 @@ export default function Hero() {
             <source src="/hero-video.mp4" type="video/mp4" />
           </video>
         ) : (
-          /* Reduced-motion: warm gradient still-image fallback */
           <div
             className="w-full h-full"
             style={{
-              background: `linear-gradient(135deg,
-                #5BC4F818 0%, #2EBB5012 40%, #FFE03012 100%)`,
+              background: `linear-gradient(135deg, #5BC4F818 0%, #2EBB5012 40%, #FFE03012 100%)`,
               backgroundColor: WARM_BG,
             }}
           />
         )}
       </motion.div>
 
-      {/*
-        Overlay strategy — two focused layers, not a full wash:
-
-        1. Desktop directional: warm tint only in the text zone (left ~45% of width),
-           fades aggressively to transparent so the video dominates the right half.
-           Max opacity is 70% (was 95%) — enough for heading legibility without
-           erasing the video's emotional depth.
-
-        2. Mobile additive: phones show text full-width, so a second uniform layer
-           on small screens compensates without touching desktop layout.
-
-        3. Bottom vignette: subtle depth that eases the transition to the next
-           section — lighter than before (45% → 0, was 80%).
-      */}
-
-      {/* Layer 1 — desktop directional gradient */}
+      {/* Directional overlay — localized behind text zone, fades to transparent */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
@@ -89,21 +72,17 @@ export default function Hero() {
             transparent 70%)`,
         }}
       />
-
-      {/* Layer 2 — mobile-only supplemental overlay (md:hidden = active below 768 px) */}
+      {/* Mobile supplemental: full-width text needs a bit more coverage on small screens */}
       <div
         className="md:hidden absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{ backgroundColor: `${WARM_BG}66` }}
       />
-
-      {/* Layer 3 — subtle bottom vignette */}
+      {/* Subtle bottom depth */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
-        style={{
-          background: `linear-gradient(to top, ${WARM_BG}73 0%, transparent 40%)`,
-        }}
+        style={{ background: `linear-gradient(to top, ${WARM_BG}73 0%, transparent 40%)` }}
       />
 
       {/* ── Content ── */}
@@ -150,69 +129,43 @@ export default function Hero() {
               supporting them — with education, tools, and compassionate guidance.
             </motion.p>
 
-            {/* CTAs */}
+            {/* CTAs — colors matched exactly to logo palette */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.46 }}
-              className="flex flex-wrap items-center gap-3 mb-12 sm:mb-16"
+              className="flex flex-wrap items-center gap-3"
             >
+              {/* Blue — logo "Light" color */}
               <Link
                 href="/parents"
                 className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow-md active:scale-[0.97]"
-                style={{ backgroundColor: '#2EBB50' }}
+                style={{ backgroundColor: '#5BC4F8' }}
               >
                 For Families
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
+
+              {/* Yellow — logo "2" color; dark text for contrast on gold */}
               <Link
                 href="/professionals"
-                className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold px-7 py-3.5 rounded-full border-2 transition-all duration-200 active:scale-[0.97]"
-                style={{ color: '#5BC4F8', borderColor: '#5BC4F8' }}
-                onMouseEnter={e => {
-                  ;(e.currentTarget as HTMLElement).style.backgroundColor = '#5BC4F8'
-                  ;(e.currentTarget as HTMLElement).style.color = '#fff'
-                }}
-                onMouseLeave={e => {
-                  ;(e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'
-                  ;(e.currentTarget as HTMLElement).style.color = '#5BC4F8'
-                }}
+                className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold px-7 py-3.5 rounded-full transition-all duration-200 hover:opacity-90 active:scale-[0.97]"
+                style={{ backgroundColor: '#FFE030', color: '#0D1B2E' }}
               >
                 For Professionals
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
+
+              {/* Green — logo "Minds" color */}
               <Link
                 href="/aba-center"
-                className="text-[13px] font-medium text-navy-700/55 hover:text-navy-800 transition-colors duration-150 px-3 py-3.5"
+                className="text-[13px] font-medium transition-colors duration-150 px-3 py-3.5 text-forest-500 hover:text-forest-600"
               >
                 ABA Center Startup →
               </Link>
             </motion.div>
 
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.62 }}
-              className="flex gap-0 divide-x divide-stone-400/25"
-            >
-              {[
-                { value: '5+',   label: 'Areas of Support' },
-                { value: '100+', label: 'Free Resources' },
-                { value: '2',    label: 'Specialized Wings' },
-              ].map((stat, i) => (
-                <div key={stat.label} className={i === 0 ? 'pr-7 sm:pr-8' : 'px-7 sm:px-8'}>
-                  <p className="text-[1.55rem] sm:text-[1.7rem] font-bold text-navy-900 tracking-[-0.03em] leading-none mb-1.5">
-                    {stat.value}
-                  </p>
-                  <p className="text-[10px] sm:text-[11px] font-medium text-navy-800/55 tracking-[0.04em] whitespace-nowrap">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
           </motion.div>
-
         </div>
       </div>
 
