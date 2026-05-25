@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { useLang } from '@/lib/language'
 
 const WARM_BG = '#F8F5EF'
 
@@ -29,6 +30,8 @@ export default function Hero() {
   const ref = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const [reducedMotion, setReducedMotion] = useState(false)
+  const { lang } = useLang()
+  const tx = (en: string, es: string) => lang === 'es' ? es : en
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const contentY  = useTransform(scrollYProgress, [0, 1], ['0%', '16%'])
@@ -40,14 +43,22 @@ export default function Hero() {
     if (mq.matches) {
       setReducedMotion(true)
       videoRef.current?.pause()
+    } else {
+      const v = videoRef.current
+      if (v) {
+        // Older iOS Safari attributes to suppress the play button overlay
+        v.setAttribute('webkit-playsinline', 'true')
+        v.setAttribute('x-webkit-airplay', 'deny')
+        v.play().catch(() => {})
+      }
     }
   }, [])
 
   return (
     <section
       ref={ref}
-      className="relative min-h-screen overflow-hidden"
-      style={{ backgroundColor: WARM_BG }}
+      className="relative overflow-hidden"
+      style={{ backgroundColor: WARM_BG, minHeight: '100svh' }}
     >
       {/* ── Cinematic full-bleed video ── */}
       <motion.div
@@ -62,8 +73,11 @@ export default function Hero() {
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
+            disablePictureInPicture
+            poster="/logo.jpg"
             className="w-full h-full object-cover"
+            style={{ pointerEvents: 'none' }}
           >
             <source src="/hero-video.mp4" type="video/mp4" />
           </video>
@@ -176,7 +190,7 @@ export default function Hero() {
           >
             <span className="w-5 h-px flex-shrink-0" style={{ backgroundColor: '#2EBB50' }} />
             <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-navy-700/60">
-              Compassionate Care · Brighter Futures
+              {tx('Compassionate Care · Brighter Futures', 'Cuidado Compasivo · Futuros Más Brillantes')}
             </span>
           </motion.div>
 
@@ -188,8 +202,8 @@ export default function Hero() {
             className="text-[clamp(2.4rem,5.5vw,4.6rem)] font-bold leading-[1.04] tracking-[-0.03em]"
             style={HEADLINE_GRADIENT}
           >
-            Guiding families.<br />
-            Empowering professionals.
+            {tx('Guiding families.', 'Guiando familias.')}<br />
+            {tx('Empowering professionals.', 'Empoderando profesionales.')}
           </motion.h1>
         </motion.div>
       </div>
@@ -211,7 +225,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
               style={{ backgroundColor: '#5BC4F8', boxShadow: BTN_SHADOW_BLUE }}
             >
-              For Families
+              {tx('For Families', 'Para Familias')}
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
@@ -221,7 +235,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
               style={{ backgroundColor: '#FFE030', color: '#0D1B2E', boxShadow: BTN_SHADOW_GOLD }}
             >
-              For Professionals
+              {tx('For Professionals', 'Para Profesionales')}
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
@@ -231,7 +245,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
               style={{ backgroundColor: '#2EBB50', boxShadow: BTN_SHADOW_GREEN }}
             >
-              ABA Center Startup
+              {tx('ABA Center Startup', 'Inicio Centro ABA')}
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 

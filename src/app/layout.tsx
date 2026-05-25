@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Instrument_Serif } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { Providers } from '@/components/Providers'
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -37,9 +38,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.variable} ${instrumentSerif.variable}`}>
       <body className="bg-stone-50 text-navy-900 font-sans antialiased">
-        <Navbar />
-        {children}
-        <Footer />
+        <Providers>
+          <Navbar />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   )

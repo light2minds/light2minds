@@ -4,21 +4,33 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLang, type Lang } from '@/lib/language'
 
 const SHOP_SHADOW_GOLD  = '0 4px 0 #C4A800, 0 6px 14px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.45)'
 const SHOP_SHADOW_GREEN = '0 4px 0 #1E8E3E, 0 6px 14px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.30)'
 
-const links = [
-  { href: '/parents',       label: 'Families' },
-  { href: '/professionals', label: 'Professionals' },
-  { href: '/aba-center',    label: 'ABA Center' },
-  { href: '/tools',         label: 'Tools' },
-]
+const NAV_LINKS = {
+  en: [
+    { href: '/parents',       label: 'Families' },
+    { href: '/professionals', label: 'Professionals' },
+    { href: '/aba-center',    label: 'ABA Center' },
+    { href: '/tools',         label: 'Tools' },
+  ],
+  es: [
+    { href: '/parents',       label: 'Familias' },
+    { href: '/professionals', label: 'Profesionales' },
+    { href: '/aba-center',    label: 'Centro ABA' },
+    { href: '/tools',         label: 'Herramientas' },
+  ],
+}
+
+const SHOP_LABEL: Record<Lang, string> = { en: 'Shop', es: 'Tienda' }
 
 export default function Navbar() {
   const [scrolled, setScrolled]   = useState(false)
   const [menuOpen, setMenuOpen]   = useState(false)
   const pathname                  = usePathname()
+  const { lang, setLang }         = useLang()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -28,8 +40,9 @@ export default function Navbar() {
 
   useEffect(() => { setMenuOpen(false) }, [pathname])
 
-  const isHome      = pathname === '/'
-  const overHero    = isHome && !scrolled
+  const isHome   = pathname === '/'
+  const overHero = isHome && !scrolled
+  const links    = NAV_LINKS[lang]
 
   return (
     <>
@@ -65,7 +78,6 @@ export default function Navbar() {
                   ].join(' ')}
                 >
                   {l.label}
-                  {/* Tiny brand-green dot under the active link */}
                   {active && (
                     <span
                       className="absolute bottom-1 left-1/2 -translate-x-1/2 w-[5px] h-[5px] rounded-full"
@@ -77,14 +89,39 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Desktop CTA — yellow 3D pill */}
-          <Link
-            href="/parents"
-            className="hidden lg:inline-flex items-center text-[12.5px] font-semibold px-5 py-2.5 rounded-full transition-all duration-150 hover:translate-y-[2px] active:translate-y-[4px]"
-            style={{ backgroundColor: '#FFE030', color: '#0D1B2E', boxShadow: SHOP_SHADOW_GOLD }}
-          >
-            Shop
-          </Link>
+          <div className="hidden lg:flex items-center gap-3">
+            {/* Language toggle */}
+            <div className="flex items-center gap-0.5 text-[11px] font-bold tracking-[0.06em] uppercase">
+              <button
+                onClick={() => setLang('en')}
+                className={[
+                  'px-2 py-1 rounded transition-colors duration-150',
+                  lang === 'en'
+                    ? 'text-navy-900 bg-stone-100'
+                    : 'text-navy-500/60 hover:text-navy-800',
+                ].join(' ')}
+              >EN</button>
+              <span className="text-stone-300 select-none">|</span>
+              <button
+                onClick={() => setLang('es')}
+                className={[
+                  'px-2 py-1 rounded transition-colors duration-150',
+                  lang === 'es'
+                    ? 'text-navy-900 bg-stone-100'
+                    : 'text-navy-500/60 hover:text-navy-800',
+                ].join(' ')}
+              >ES</button>
+            </div>
+
+            {/* Shop button */}
+            <Link
+              href="/parents"
+              className="inline-flex items-center text-[12.5px] font-semibold px-5 py-2.5 rounded-full transition-all duration-150 hover:translate-y-[2px] active:translate-y-[4px]"
+              style={{ backgroundColor: '#FFE030', color: '#0D1B2E', boxShadow: SHOP_SHADOW_GOLD }}
+            >
+              {SHOP_LABEL[lang]}
+            </Link>
+          </div>
 
           {/* Mobile burger */}
           <button
@@ -93,24 +130,9 @@ export default function Navbar() {
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
           >
-            <span
-              className={[
-                'block w-[22px] h-[1.5px] bg-navy-900 transition-all duration-300 origin-center',
-                menuOpen ? 'rotate-45 translate-y-[6.5px]' : '',
-              ].join(' ')}
-            />
-            <span
-              className={[
-                'block w-[22px] h-[1.5px] bg-navy-900 transition-all duration-300',
-                menuOpen ? 'opacity-0 scale-x-0' : '',
-              ].join(' ')}
-            />
-            <span
-              className={[
-                'block w-[22px] h-[1.5px] bg-navy-900 transition-all duration-300 origin-center',
-                menuOpen ? '-rotate-45 -translate-y-[6.5px]' : '',
-              ].join(' ')}
-            />
+            <span className={['block w-[22px] h-[1.5px] bg-navy-900 transition-all duration-300 origin-center', menuOpen ? 'rotate-45 translate-y-[6.5px]' : ''].join(' ')} />
+            <span className={['block w-[22px] h-[1.5px] bg-navy-900 transition-all duration-300', menuOpen ? 'opacity-0 scale-x-0' : ''].join(' ')} />
+            <span className={['block w-[22px] h-[1.5px] bg-navy-900 transition-all duration-300 origin-center', menuOpen ? '-rotate-45 -translate-y-[6.5px]' : ''].join(' ')} />
           </button>
 
         </div>
@@ -141,15 +163,33 @@ export default function Navbar() {
                 >
                   <span
                     className="w-[5px] h-[5px] rounded-full flex-shrink-0 transition-opacity duration-150"
-                    style={{
-                      backgroundColor: '#2EBB50',
-                      opacity: active ? 1 : 0,
-                    }}
+                    style={{ backgroundColor: '#2EBB50', opacity: active ? 1 : 0 }}
                   />
                   {l.label}
                 </Link>
               )
             })}
+
+            {/* Language toggle row */}
+            <div className="flex items-center gap-2 px-4 py-3">
+              <span className="text-[11px] font-semibold text-navy-800/40 uppercase tracking-[0.1em] mr-1">
+                {lang === 'es' ? 'Idioma' : 'Language'}
+              </span>
+              {(['en', 'es'] as Lang[]).map((l) => (
+                <button
+                  key={l}
+                  onClick={() => setLang(l)}
+                  className={[
+                    'text-[12px] font-bold uppercase tracking-[0.06em] px-3 py-1.5 rounded-full transition-all duration-150',
+                    lang === l
+                      ? 'bg-navy-900 text-white'
+                      : 'bg-stone-100 text-navy-700 hover:bg-stone-200',
+                  ].join(' ')}
+                >
+                  {l === 'en' ? 'EN' : 'ES'}
+                </button>
+              ))}
+            </div>
 
             <div className="pt-3 mt-1 border-t border-stone-100/80">
               <Link
@@ -157,7 +197,7 @@ export default function Navbar() {
                 className="block w-full text-center text-[14px] font-semibold text-white py-4 rounded-xl transition-all duration-150 hover:translate-y-[2px] active:translate-y-[4px]"
                 style={{ backgroundColor: '#2EBB50', boxShadow: SHOP_SHADOW_GREEN }}
               >
-                Shop
+                {SHOP_LABEL[lang]}
               </Link>
             </div>
           </motion.div>
