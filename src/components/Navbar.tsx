@@ -134,7 +134,7 @@ export default function Navbar() {
                   <button
                     onClick={() => setLang(l)}
                     className={[
-                      'px-1.5 py-1 rounded transition-colors duration-150',
+                      'min-w-[44px] min-h-[44px] flex items-center justify-center px-2 rounded transition-colors duration-150',
                       lang === l
                         ? 'text-navy-900 font-extrabold'
                         : 'text-navy-500/50',
@@ -148,7 +148,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setMenuOpen((o) => !o)}
-              className="flex flex-col gap-[5px] p-2 -mr-2"
+              className="flex flex-col items-center justify-center gap-[5px] min-w-[44px] min-h-[44px] -mr-2"
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
             >

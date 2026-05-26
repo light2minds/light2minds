@@ -35,7 +35,7 @@ export default function CredentialsSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 items-start">
 
           {/* Photo placeholder */}
           <motion.div {...fade(0.08)}>

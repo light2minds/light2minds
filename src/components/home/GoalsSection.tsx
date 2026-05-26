@@ -79,7 +79,7 @@ export default function GoalsSection() {
         className="relative overflow-hidden py-24 lg:py-36 border-t border-stone-200/40"
       >
         <span
-          className="absolute bottom-0 right-6 text-[16rem] font-black leading-none select-none pointer-events-none"
+          className="absolute bottom-0 right-6 text-[clamp(4rem,20vw,16rem)] font-black leading-none select-none pointer-events-none"
           style={{ color: 'rgba(13,27,46,0.025)' }}
           aria-hidden="true"
         >
