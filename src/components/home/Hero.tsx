@@ -176,7 +176,7 @@ export default function Hero() {
       />
 
       {/* ── Headline: upper zone ── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-48 lg:pt-44">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-32 sm:pt-40 lg:pt-44">
         <motion.div
           style={{ y: contentY, opacity: contentOp }}
           className="max-w-xl lg:max-w-2xl"

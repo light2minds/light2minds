@@ -1,13 +1,7 @@
 import Hero from '@/components/home/Hero'
-import DisclaimerBanner from '@/components/home/DisclaimerBanner'
-import Pathways from '@/components/home/Pathways'
-import ServicesGrid from '@/components/home/ServicesGrid'
-import { FeatureFamilies, FeatureProfessionals } from '@/components/home/FeatureRows'
-import StatsStrip from '@/components/home/StatsStrip'
-import WhySection from '@/components/home/WhySection'
-import ConditionsSection from '@/components/home/ConditionsSection'
-import ResourcesSection from '@/components/home/ResourcesSection'
-import CtaBanner from '@/components/home/CtaBanner'
+import GoalsSection from '@/components/home/GoalsSection'
+import CredentialsSection from '@/components/home/CredentialsSection'
+import ContactSection from '@/components/home/ContactSection'
 
 export const metadata = {
   title: 'Light2minds — Behavioral & Neurodevelopmental Guidance · Florida',
@@ -19,16 +13,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <DisclaimerBanner />
-      <Pathways />
-      <ServicesGrid />
-      <FeatureFamilies />
-      <FeatureProfessionals />
-      <StatsStrip />
-      <WhySection />
-      <ConditionsSection />
-      <ResourcesSection />
-      <CtaBanner />
+      <GoalsSection />
+      <CredentialsSection />
+      <ContactSection />
     </>
   )
 }

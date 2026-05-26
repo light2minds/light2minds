@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useLang, type Lang } from '@/lib/language'
 
 const SHOP_SHADOW_GOLD  = '0 4px 0 #C4A800, 0 6px 14px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.45)'
-const SHOP_SHADOW_GREEN = '0 4px 0 #1E8E3E, 0 6px 14px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.30)'
 
 const NAV_LINKS = {
   en: [
@@ -40,12 +39,19 @@ export default function Navbar() {
 
   useEffect(() => { setMenuOpen(false) }, [pathname])
 
+  // Lock body scroll while mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
   const isHome   = pathname === '/'
-  const overHero = isHome && !scrolled
+  const overHero = isHome && !scrolled && !menuOpen
   const links    = NAV_LINKS[lang]
 
   return (
     <>
+      {/* ── Header bar ── */}
       <header
         className={[
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
@@ -60,7 +66,7 @@ export default function Navbar() {
             <LogoMark />
           </Link>
 
-          {/* Desktop nav */}
+          {/* ── Desktop nav ── */}
           <nav className="hidden lg:flex items-center" aria-label="Primary navigation">
             {links.map((l) => {
               const active = pathname.startsWith(l.href)
@@ -89,31 +95,8 @@ export default function Navbar() {
             })}
           </nav>
 
+          {/* ── Desktop right: Shop → Language ── */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* Language toggle */}
-            <div className="flex items-center gap-0.5 text-[11px] font-bold tracking-[0.06em] uppercase">
-              <button
-                onClick={() => setLang('en')}
-                className={[
-                  'px-2 py-1 rounded transition-colors duration-150',
-                  lang === 'en'
-                    ? 'text-navy-900 bg-stone-100'
-                    : 'text-navy-500/60 hover:text-navy-800',
-                ].join(' ')}
-              >EN</button>
-              <span className="text-stone-300 select-none">|</span>
-              <button
-                onClick={() => setLang('es')}
-                className={[
-                  'px-2 py-1 rounded transition-colors duration-150',
-                  lang === 'es'
-                    ? 'text-navy-900 bg-stone-100'
-                    : 'text-navy-500/60 hover:text-navy-800',
-                ].join(' ')}
-              >ES</button>
-            </div>
-
-            {/* Shop button */}
             <Link
               href="/parents"
               className="inline-flex items-center text-[12.5px] font-semibold px-5 py-2.5 rounded-full transition-all duration-150 hover:translate-y-[2px] active:translate-y-[4px]"
@@ -121,81 +104,107 @@ export default function Navbar() {
             >
               {SHOP_LABEL[lang]}
             </Link>
+
+            <div className="flex items-center gap-0.5 text-[11px] font-bold tracking-[0.06em] uppercase">
+              {(['en', 'es'] as Lang[]).map((l, i) => (
+                <span key={l} className="flex items-center">
+                  {i > 0 && <span className="text-stone-300 select-none mx-0.5">|</span>}
+                  <button
+                    onClick={() => setLang(l)}
+                    className={[
+                      'px-2 py-1 rounded transition-colors duration-150',
+                      lang === l
+                        ? 'text-navy-900 bg-stone-100'
+                        : 'text-navy-500/60 hover:text-navy-800',
+                    ].join(' ')}
+                  >
+                    {l.toUpperCase()}
+                  </button>
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* Mobile burger */}
-          <button
-            onClick={() => setMenuOpen((o) => !o)}
-            className="lg:hidden flex flex-col gap-[5px] p-2 -mr-2"
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-          >
-            <span className={['block w-[22px] h-[1.5px] bg-navy-900 transition-all duration-300 origin-center', menuOpen ? 'rotate-45 translate-y-[6.5px]' : ''].join(' ')} />
-            <span className={['block w-[22px] h-[1.5px] bg-navy-900 transition-all duration-300', menuOpen ? 'opacity-0 scale-x-0' : ''].join(' ')} />
-            <span className={['block w-[22px] h-[1.5px] bg-navy-900 transition-all duration-300 origin-center', menuOpen ? '-rotate-45 -translate-y-[6.5px]' : ''].join(' ')} />
-          </button>
+          {/* ── Mobile right: Language toggle + Burger ── */}
+          <div className="lg:hidden flex items-center gap-2">
+            <div className="flex items-center text-[11px] font-bold tracking-[0.06em] uppercase">
+              {(['en', 'es'] as Lang[]).map((l, i) => (
+                <span key={l} className="flex items-center">
+                  {i > 0 && <span className="text-stone-300/70 select-none mx-0.5">|</span>}
+                  <button
+                    onClick={() => setLang(l)}
+                    className={[
+                      'px-1.5 py-1 rounded transition-colors duration-150',
+                      lang === l
+                        ? 'text-navy-900 font-extrabold'
+                        : 'text-navy-500/50',
+                    ].join(' ')}
+                  >
+                    {l.toUpperCase()}
+                  </button>
+                </span>
+              ))}
+            </div>
+
+            <button
+              onClick={() => setMenuOpen((o) => !o)}
+              className="flex flex-col gap-[5px] p-2 -mr-2"
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+            >
+              <span className={['block w-[22px] h-[1.5px] bg-navy-900 transition-all duration-300 origin-center', menuOpen ? 'rotate-45 translate-y-[6.5px]' : ''].join(' ')} />
+              <span className={['block w-[22px] h-[1.5px] bg-navy-900 transition-all duration-300', menuOpen ? 'opacity-0 scale-x-0' : ''].join(' ')} />
+              <span className={['block w-[22px] h-[1.5px] bg-navy-900 transition-all duration-300 origin-center', menuOpen ? '-rotate-45 -translate-y-[6.5px]' : ''].join(' ')} />
+            </button>
+          </div>
 
         </div>
       </header>
 
-      {/* Mobile menu */}
+      {/* ── Full-screen mobile menu ── */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.18, ease: 'easeOut' }}
-            className="fixed top-[68px] left-0 right-0 z-40 bg-white/97 backdrop-blur-md border-b border-stone-100 px-5 py-3 flex flex-col gap-0.5 lg:hidden shadow-sm shadow-stone-100"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-40 bg-white flex flex-col lg:hidden"
           >
-            {links.map((l) => {
-              const active = pathname.startsWith(l.href)
-              return (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className={[
-                    'flex items-center gap-3 px-4 py-4 text-[15px] rounded-xl transition-colors duration-150',
-                    active
-                      ? 'font-semibold text-navy-900 bg-stone-50'
-                      : 'font-medium text-navy-700 hover:bg-stone-50/70 active:bg-stone-100',
-                  ].join(' ')}
-                >
-                  <span
-                    className="w-[5px] h-[5px] rounded-full flex-shrink-0 transition-opacity duration-150"
-                    style={{ backgroundColor: '#2EBB50', opacity: active ? 1 : 0 }}
-                  />
-                  {l.label}
-                </Link>
-              )
-            })}
+            {/* Spacer matching header height */}
+            <div className="h-[68px] flex-shrink-0 border-b border-stone-100" />
 
-            {/* Language toggle row */}
-            <div className="flex items-center gap-2 px-4 py-3">
-              <span className="text-[11px] font-semibold text-navy-800/40 uppercase tracking-[0.1em] mr-1">
-                {lang === 'es' ? 'Idioma' : 'Language'}
-              </span>
-              {(['en', 'es'] as Lang[]).map((l) => (
-                <button
-                  key={l}
-                  onClick={() => setLang(l)}
-                  className={[
-                    'text-[12px] font-bold uppercase tracking-[0.06em] px-3 py-1.5 rounded-full transition-all duration-150',
-                    lang === l
-                      ? 'bg-navy-900 text-white'
-                      : 'bg-stone-100 text-navy-700 hover:bg-stone-200',
-                  ].join(' ')}
-                >
-                  {l === 'en' ? 'EN' : 'ES'}
-                </button>
-              ))}
-            </div>
+            {/* Nav links */}
+            <nav className="flex-1 flex flex-col px-6 pt-4 pb-2 overflow-y-auto">
+              {links.map((l) => {
+                const active = pathname.startsWith(l.href)
+                return (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className={[
+                      'flex items-center gap-4 py-5 text-[1.35rem] tracking-[-0.01em] border-b border-stone-100 last:border-b-0 transition-colors duration-150',
+                      active
+                        ? 'font-bold text-navy-900'
+                        : 'font-medium text-navy-600 hover:text-navy-900',
+                    ].join(' ')}
+                  >
+                    <span
+                      className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-opacity"
+                      style={{ backgroundColor: '#2EBB50', opacity: active ? 1 : 0.18 }}
+                    />
+                    {l.label}
+                  </Link>
+                )
+              })}
+            </nav>
 
-            <div className="pt-3 mt-1 border-t border-stone-100/80">
+            {/* Shop CTA */}
+            <div className="px-6 pt-4 pb-10 border-t border-stone-100">
               <Link
                 href="/parents"
-                className="block w-full text-center text-[14px] font-semibold text-white py-4 rounded-xl transition-all duration-150 hover:translate-y-[2px] active:translate-y-[4px]"
-                style={{ backgroundColor: '#2EBB50', boxShadow: SHOP_SHADOW_GREEN }}
+                className="block w-full text-center text-[15px] font-bold text-navy-900 py-4 rounded-2xl transition-all duration-150 active:scale-[0.98]"
+                style={{ backgroundColor: '#FFE030', boxShadow: SHOP_SHADOW_GOLD }}
               >
                 {SHOP_LABEL[lang]}
               </Link>
