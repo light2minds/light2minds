@@ -98,7 +98,7 @@ export default function Navbar() {
           {/* ── Desktop right: Shop → Language ── */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
-              href="/parents"
+              href="/shop"
               className="inline-flex items-center text-[12.5px] font-semibold px-5 py-2.5 rounded-full transition-all duration-150 hover:translate-y-[2px] active:translate-y-[4px]"
               style={{ backgroundColor: '#FFE030', color: '#0D1B2E', boxShadow: SHOP_SHADOW_GOLD }}
             >
@@ -202,7 +202,7 @@ export default function Navbar() {
             {/* Shop CTA */}
             <div className="px-6 pt-4 pb-10 border-t border-stone-100">
               <Link
-                href="/parents"
+                href="/shop"
                 className="block w-full text-center text-[15px] font-bold text-navy-900 py-4 rounded-2xl transition-all duration-150 active:scale-[0.98]"
                 style={{ backgroundColor: '#FFE030', boxShadow: SHOP_SHADOW_GOLD }}
               >
