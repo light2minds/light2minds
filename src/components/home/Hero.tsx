@@ -202,9 +202,22 @@ export default function Hero() {
             className="text-[clamp(2.4rem,5.5vw,4.6rem)] font-bold leading-[1.04] tracking-[-0.03em]"
             style={HEADLINE_GRADIENT}
           >
-            {tx('Guiding families.', 'Guiando familias.')}<br />
-            {tx('Empowering professionals.', 'Empoderando profesionales.')}
+            {tx('Stop navigating your', 'Deja de navegar')}<br />
+            {tx("child's diagnosis alone.", 'el diagnóstico de tu hijo solo.')}
           </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.38, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-5 text-[15px] text-navy-800/60 leading-relaxed max-w-md"
+          >
+            {tx(
+              'Expert guidance for Florida families navigating autism, ADHD & developmental challenges — and the behavioral health professionals who serve them.',
+              'Orientación experta para familias de Florida que navegan el autismo, TDAH y desafíos del desarrollo — y los profesionales que los apoyan.'
+            )}
+          </motion.p>
         </motion.div>
       </div>
 
@@ -217,19 +230,24 @@ export default function Hero() {
         className="absolute z-10 bottom-12 sm:bottom-14 lg:bottom-16 left-0 right-0"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-end gap-3">
 
-            {/* Blue */}
-            <Link
-              href="/parents"
-              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
-              style={{ backgroundColor: '#5BC4F8', boxShadow: BTN_SHADOW_BLUE }}
-            >
-              {tx('For Families', 'Para Familias')}
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+            {/* Blue — PRIMARY: larger, families first */}
+            <div className="flex flex-col items-start gap-1.5">
+              <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-navy-700/40 ml-1">
+                {tx('Start here', 'Empieza aquí')} ↓
+              </span>
+              <Link
+                href="/parents"
+                className="inline-flex items-center gap-2.5 text-[15px] font-bold text-white px-8 py-4 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
+                style={{ backgroundColor: '#5BC4F8', boxShadow: BTN_SHADOW_BLUE }}
+              >
+                {tx('For Families', 'Para Familias')}
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
 
-            {/* Gold */}
+            {/* Gold — secondary */}
             <Link
               href="/professionals"
               className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
@@ -239,7 +257,7 @@ export default function Hero() {
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
-            {/* Green */}
+            {/* Green — secondary */}
             <Link
               href="/aba-center"
               className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
