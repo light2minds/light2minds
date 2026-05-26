@@ -1130,7 +1130,7 @@ export default function ShopPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <p className="text-[11.5px] text-navy-800/40 leading-relaxed max-w-3xl">
             <span className="font-semibold text-navy-800/55">Affiliate Disclosure:</span>{' '}
-            Light2Minds participates in affiliate advertising programs. Links marked "Shop now" may earn us a small commission at no additional cost to you. We only recommend products that have been reviewed or used by behavioral health professionals. Product recommendations are not clinical endorsements and do not constitute medical advice. Age recommendations and safety warnings noted in each product listing.
+            Light2Minds participates in affiliate advertising programs. Links marked &ldquo;Shop now&rdquo; may earn us a small commission at no additional cost to you. We only recommend products that have been reviewed or used by behavioral health professionals. Product recommendations are not clinical endorsements and do not constitute medical advice. Age recommendations and safety warnings noted in each product listing.
           </p>
         </div>
       </section>
