@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
@@ -540,6 +541,47 @@ export default function ToolsPage() {
                     <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-navy-800/30 whitespace-nowrap">Parent Resources &amp; Handouts</p>
                     <div className="flex-1 h-px bg-stone-100" />
                   </div>
+
+                  {/* AAC Board — featured download */}
+                  <div className="mb-6 bg-white border border-[#5BC4F8]/30 rounded-2xl overflow-hidden flex flex-col sm:flex-row">
+                    <div className="sm:w-64 flex-shrink-0 bg-stone-50 border-b sm:border-b-0 sm:border-r border-stone-100 flex items-center justify-center p-4">
+                      <Image
+                        src="/aac-communication-board.jpg"
+                        alt="AAC Core Vocabulary Communication Board"
+                        width={320}
+                        height={240}
+                        className="rounded-xl w-full h-auto object-cover"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-between p-6 flex-1">
+                      <div>
+                        <div className="flex flex-wrap items-center gap-2 mb-3">
+                          <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2.5 py-1 rounded-full bg-[#5BC4F8]/15 text-[#3A9ECE]">For Families</span>
+                          <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2.5 py-1 rounded-full bg-[#2EBB50]/12 text-[#1E8E3E]">AAC / Communication</span>
+                          <span className="text-[10px] font-bold tracking-[0.06em] uppercase bg-forest-50 text-forest-700 px-1.5 py-0.5 rounded">FREE</span>
+                        </div>
+                        <h4 className="text-[16px] font-bold text-navy-900 mb-2 leading-snug">AAC Core Vocabulary Communication Board</h4>
+                        <p className="text-[13.5px] text-navy-800/50 leading-relaxed">
+                          A full-color, print-ready AAC core vocabulary board featuring 80+ high-frequency words with visual symbols. Designed for children who use Augmentative and Alternative Communication — supports verbal and non-verbal learners in home, school, and therapy settings.
+                        </p>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-3 mt-5">
+                        <a
+                          href="/aac-communication-board.jpg"
+                          download="AAC-Core-Vocabulary-Board-Light2Minds.jpg"
+                          className="inline-flex items-center gap-2 text-[13px] font-bold text-white px-5 py-2.5 rounded-full transition-all duration-150 hover:-translate-y-[1px]"
+                          style={{ backgroundColor: '#2EBB50', boxShadow: '0 4px 0 #1E8E3E' }}
+                        >
+                          Download Free
+                          <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M7 1v8M4 6l3 3 3-3M2 11h10" />
+                          </svg>
+                        </a>
+                        <span className="text-[12px] text-navy-800/35">JPG · Print at full size for best results</span>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {parentTools.map((tool) => (
                       <ToolCardItem key={tool.title} tool={tool} accent="text-forest-700 border-forest-200 hover:bg-forest-700 hover:text-white hover:border-forest-700" />

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useLang } from '@/lib/language'
 
@@ -1083,6 +1084,58 @@ export default function ShopPage() {
                 ? 'Entrega instantánea. Sin inventario. Sin envíos. Los márgenes más altos de toda la tienda.'
                 : 'Instant delivery. No inventory. No shipping. The highest margins in the entire shop.'}
             </p>
+          </motion.div>
+
+          {/* AAC Board — free featured download */}
+          <motion.div {...fade(0)} className="mb-6">
+            <div className="rounded-2xl overflow-hidden border border-[#5BC4F8]/35 flex flex-col sm:flex-row bg-white">
+              <div className="sm:w-56 flex-shrink-0 bg-stone-50 border-b sm:border-b-0 sm:border-r border-stone-100 flex items-center justify-center p-4">
+                <Image
+                  src="/aac-communication-board.jpg"
+                  alt="AAC Core Vocabulary Communication Board"
+                  width={280}
+                  height={210}
+                  className="rounded-xl w-full h-auto object-cover"
+                />
+              </div>
+              <div className="p-6 flex flex-col justify-between flex-1">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 mb-3">
+                    <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2.5 py-1 rounded-full bg-[#5BC4F8]/15 text-[#3A9ECE]">
+                      {lang === 'es' ? 'Para Familias' : 'For Families'}
+                    </span>
+                    <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2.5 py-1 rounded-full bg-[#2EBB50]/12 text-[#1E8E3E]">AAC</span>
+                    <span className="text-[10px] font-bold tracking-[0.08em] uppercase px-2.5 py-1 rounded-full text-white" style={{ backgroundColor: '#2EBB50' }}>
+                      {lang === 'es' ? 'GRATIS' : 'FREE'}
+                    </span>
+                  </div>
+                  <h3 className="text-[16px] font-bold text-navy-900 leading-snug mb-2">
+                    {lang === 'es' ? 'Tablero de Comunicación AAC — Vocabulario Central' : 'AAC Core Vocabulary Communication Board'}
+                  </h3>
+                  <p className="text-[13px] text-navy-800/50 leading-relaxed">
+                    {lang === 'es'
+                      ? 'Tablero a color listo para imprimir con más de 80 palabras de alta frecuencia con símbolos visuales. Para niños verbales y no verbales en casa, escuela y terapia.'
+                      : 'Full-color, print-ready board with 80+ high-frequency words and visual symbols. For verbal and non-verbal learners — use at home, school, or in therapy.'}
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-3 mt-5">
+                  <a
+                    href="/aac-communication-board.jpg"
+                    download="AAC-Core-Vocabulary-Board-Light2Minds.jpg"
+                    className="inline-flex items-center gap-2 text-[13px] font-bold text-white px-5 py-2.5 rounded-full transition-all duration-150 hover:-translate-y-[1px]"
+                    style={{ backgroundColor: '#2EBB50', boxShadow: '0 4px 0 #1E8E3E' }}
+                  >
+                    {lang === 'es' ? 'Descargar Gratis' : 'Download Free'}
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M7 1v8M4 6l3 3 3-3M2 11h10" />
+                    </svg>
+                  </a>
+                  <span className="text-[12px] text-navy-800/35">
+                    {lang === 'es' ? 'JPG · Sin cuenta requerida' : 'JPG · No account required'}
+                  </span>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
