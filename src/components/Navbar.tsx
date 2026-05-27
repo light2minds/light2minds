@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLang, type Lang } from '@/lib/language'
 
-const SHOP_SHADOW_GOLD  = '0 4px 0 #C4A800, 0 6px 14px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.45)'
+const SHOP_SHADOW_GOLD  = '0 4px 0 #1E8E3E, 0 6px 14px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.25)'
 
 const NAV_LINKS = {
   en: [
@@ -100,7 +100,7 @@ export default function Navbar() {
             <Link
               href="/shop"
               className="inline-flex items-center text-[12.5px] font-semibold px-5 py-2.5 rounded-full transition-all duration-150 hover:translate-y-[2px] active:translate-y-[4px]"
-              style={{ backgroundColor: '#FFE030', color: '#0D1B2E', boxShadow: SHOP_SHADOW_GOLD }}
+              style={{ backgroundColor: '#2EBB50', color: '#fff', boxShadow: SHOP_SHADOW_GOLD }}
             >
               {SHOP_LABEL[lang]}
             </Link>
@@ -204,7 +204,7 @@ export default function Navbar() {
               <Link
                 href="/shop"
                 className="block w-full text-center text-[15px] font-bold text-navy-900 py-4 rounded-2xl transition-all duration-150 active:scale-[0.98]"
-                style={{ backgroundColor: '#FFE030', boxShadow: SHOP_SHADOW_GOLD }}
+                style={{ backgroundColor: '#2EBB50', color: '#fff', boxShadow: SHOP_SHADOW_GOLD }}
               >
                 {SHOP_LABEL[lang]}
               </Link>
