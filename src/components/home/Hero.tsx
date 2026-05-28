@@ -30,7 +30,6 @@ export default function Hero() {
   const ref = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const [reducedMotion, setReducedMotion] = useState(false)
-  const [videoPlaying, setVideoPlaying] = useState(true)
   const { lang } = useLang()
   const tx = (en: string, es: string) => lang === 'es' ? es : en
 
@@ -51,8 +50,8 @@ export default function Hero() {
         v.setAttribute('webkit-playsinline', 'true')
         v.setAttribute('x-webkit-airplay', 'deny')
         v.play().catch(() => {
-          // Autoplay blocked (e.g. low-power mode) — fall back to static poster
-          setVideoPlaying(false)
+          // Autoplay blocked (e.g. Low Power Mode) — video stays mounted,
+          // browser shows the poster image. CSS suppresses any native play button.
         })
       }
     }
@@ -70,7 +69,7 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full"
         aria-hidden="true"
       >
-        {!reducedMotion && videoPlaying ? (
+        {!reducedMotion ? (
           <video
             ref={videoRef}
             autoPlay
