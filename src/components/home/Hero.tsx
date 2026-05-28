@@ -180,24 +180,11 @@ export default function Hero() {
       />
 
       {/* ── Headline: upper zone ── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-32 sm:pt-40 lg:pt-44">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-24 sm:pt-32 lg:pt-36">
         <motion.div
           style={{ y: contentY, opacity: contentOp }}
           className="max-w-xl lg:max-w-2xl"
         >
-          {/* Eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex items-center gap-3 mb-7 sm:mb-8"
-          >
-            <span className="w-5 h-px flex-shrink-0" style={{ backgroundColor: '#2EBB50' }} />
-            <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-navy-700/60">
-              {tx('Compassionate Care · Brighter Futures', 'Cuidado Compasivo · Futuros Más Brillantes')}
-            </span>
-          </motion.div>
-
           {/* Headline — logo gradient with 3D extruded drop-shadows */}
           <motion.h1
             initial={{ opacity: 0, y: 26 }}
