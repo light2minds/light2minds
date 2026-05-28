@@ -1,7 +1,6 @@
 import Hero from '@/components/home/Hero'
 import GoalsSection from '@/components/home/GoalsSection'
 import FreeToolsSection from '@/components/home/FreeToolsSection'
-import CredentialsSection from '@/components/home/CredentialsSection'
 import ContactSection from '@/components/home/ContactSection'
 
 export const metadata = {
@@ -16,7 +15,6 @@ export default function HomePage() {
       <Hero />
       <GoalsSection />
       <FreeToolsSection />
-      <CredentialsSection />
       <ContactSection />
     </>
   )

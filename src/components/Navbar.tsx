@@ -14,12 +14,14 @@ const NAV_LINKS = {
     { href: '/professionals', label: 'Professionals' },
     { href: '/aba-center',    label: 'ABA Center' },
     { href: '/tools',         label: 'Tools' },
+    { href: '/about',         label: 'About Us' },
   ],
   es: [
     { href: '/parents',       label: 'Familias' },
     { href: '/professionals', label: 'Profesionales' },
     { href: '/aba-center',    label: 'Centro ABA' },
     { href: '/tools',         label: 'Herramientas' },
+    { href: '/about',         label: 'Nosotros' },
   ],
 }
 
