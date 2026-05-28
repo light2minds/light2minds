@@ -36,9 +36,17 @@
   video::-webkit-media-controls-panel-container,
   video::-webkit-media-controls-start-playback-button,
   video::-webkit-media-controls-overlay-play-button,
-  video::-webkit-media-controls-play-button {
+  video::-webkit-media-controls-play-button,
+  video::-webkit-media-controls-timeline,
+  video::-webkit-media-controls-current-time-display {
     display: none !important;
     -webkit-appearance: none !important;
     opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Prevent iOS from applying any video element default styling */
+  video {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
   }
 }

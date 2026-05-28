@@ -30,6 +30,7 @@ export default function Hero() {
   const ref = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const [reducedMotion, setReducedMotion] = useState(false)
+  const [videoPlaying, setVideoPlaying] = useState(true)
   const { lang } = useLang()
   const tx = (en: string, es: string) => lang === 'es' ? es : en
 
@@ -46,10 +47,13 @@ export default function Hero() {
     } else {
       const v = videoRef.current
       if (v) {
-        // Older iOS Safari attributes to suppress the play button overlay
+        // Suppress native iOS Safari play-button overlay
         v.setAttribute('webkit-playsinline', 'true')
         v.setAttribute('x-webkit-airplay', 'deny')
-        v.play().catch(() => {})
+        v.play().catch(() => {
+          // Autoplay blocked (e.g. low-power mode) — fall back to static poster
+          setVideoPlaying(false)
+        })
       }
     }
   }, [])
@@ -57,7 +61,7 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden min-h-screen"
       style={{ backgroundColor: WARM_BG, minHeight: '100svh' }}
     >
       {/* ── Cinematic full-bleed video ── */}
@@ -66,7 +70,7 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full"
         aria-hidden="true"
       >
-        {!reducedMotion ? (
+        {!reducedMotion && videoPlaying ? (
           <video
             ref={videoRef}
             autoPlay
@@ -75,9 +79,10 @@ export default function Hero() {
             playsInline
             preload="auto"
             disablePictureInPicture
+            disableRemotePlayback
             poster="/logo.jpg"
             className="w-full h-full object-cover"
-            style={{ pointerEvents: 'none' }}
+            style={{ pointerEvents: 'none', WebkitUserSelect: 'none' }}
           >
             <source src="/hero-video.mp4" type="video/mp4" />
           </video>
@@ -223,11 +228,14 @@ export default function Hero() {
 
       {/* ── CTAs: 3D raised pill buttons pinned to bottom ── */}
       <motion.div
-        style={{ opacity: contentOp }}
+        style={{
+          opacity: contentOp,
+          paddingBottom: 'max(3rem, calc(env(safe-area-inset-bottom, 0px) + 1.5rem))',
+        }}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.65, delay: 0.5 }}
-        className="absolute z-10 bottom-12 sm:bottom-14 lg:bottom-16 left-0 right-0"
+        className="absolute z-10 bottom-0 left-0 right-0"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-wrap items-end gap-3">

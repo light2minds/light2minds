@@ -99,8 +99,8 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/shop"
-              className="inline-flex items-center text-[12.5px] font-semibold px-5 py-2.5 rounded-full transition-all duration-150 hover:translate-y-[2px] active:translate-y-[4px]"
-              style={{ backgroundColor: '#2EBB50', color: '#fff', boxShadow: SHOP_SHADOW_GOLD }}
+              className="inline-flex items-center text-[13.5px] font-bold px-6 py-3 rounded-xl transition-all duration-150 hover:translate-y-[2px] active:translate-y-[4px]"
+              style={{ backgroundColor: '#FFE030', color: '#0D1B2E', boxShadow: SHOP_SHADOW_GOLD }}
             >
               {SHOP_LABEL[lang]}
             </Link>

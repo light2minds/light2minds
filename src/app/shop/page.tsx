@@ -46,9 +46,9 @@ type Digital = {
 // ─── Storefront config ───────────────────────────────────────────────────────
 
 const STOREFRONTS: { id: Storefront; label: string; labelEs: string; color: string }[] = [
-  { id: 'families',      label: 'Families',     labelEs: 'Familias',      color: '#5BC4F8' },
-  { id: 'montessori',    label: 'All Kids',      labelEs: 'Todos los Niños', color: '#2EBB50' },
-  { id: 'professionals', label: 'Professionals', labelEs: 'Profesionales',  color: '#FFE030' },
+  { id: 'families',      label: 'Families',           labelEs: 'Familias',       color: '#5BC4F8' },
+  { id: 'professionals', label: 'Professionals',       labelEs: 'Profesionales',  color: '#FFE030' },
+  { id: 'montessori',    label: 'ABA Center Start Up', labelEs: 'Centro ABA',     color: '#2EBB50' },
 ]
 
 const CATEGORIES: Record<Storefront, string[]> = {
@@ -851,7 +851,7 @@ export default function ShopPage() {
       </section>
 
       {/* ── Storefront tabs ── */}
-      <div className="sticky top-[68px] z-30 bg-white border-b border-stone-100 shadow-sm shadow-stone-100/80">
+      <div className="sticky top-[68px] z-30 border-b border-yellow-300 shadow-sm shadow-yellow-100/80" style={{ backgroundColor: '#FFE030' }}>
         <div className="max-w-7xl mx-auto px-4 lg:px-12">
           <div className="flex">
             {STOREFRONTS.map((sf) => (
@@ -859,12 +859,16 @@ export default function ShopPage() {
                 key={sf.id}
                 onClick={() => handleStorefront(sf.id)}
                 className={[
-                  'flex-1 py-4 text-[13px] font-semibold tracking-[0.02em] transition-all duration-200 border-b-2',
+                  sf.id === 'families'
+                    ? 'flex-[4] py-7 text-[20px]'
+                    : sf.id === 'professionals'
+                    ? 'flex-[2] py-4 text-[13px]'
+                    : 'flex-[1] py-3 text-[10px]',
+                  'font-semibold tracking-[0.02em] transition-all duration-200 border-b-2',
                   storefront === sf.id
-                    ? 'text-navy-900 border-current'
-                    : 'text-navy-500/60 border-transparent hover:text-navy-800 hover:border-stone-200',
+                    ? 'text-navy-900 border-navy-900'
+                    : 'text-navy-800/50 border-transparent hover:text-navy-900 hover:border-navy-900/30',
                 ].join(' ')}
-                style={storefront === sf.id ? { color: sf.color === '#FFE030' ? '#B8900E' : sf.color, borderColor: sf.color === '#FFE030' ? '#B8900E' : sf.color } : {}}
               >
                 {lang === 'es' ? sf.labelEs : sf.label}
               </button>
