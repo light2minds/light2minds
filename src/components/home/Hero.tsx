@@ -228,9 +228,6 @@ export default function Hero() {
 
             {/* Blue — PRIMARY: larger, families first */}
             <div className="flex flex-col items-start gap-1.5">
-              <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-navy-700/40 ml-1">
-                {tx('Start here', 'Empieza aquí')} ↓
-              </span>
               <Link
                 href="/parents"
                 className="inline-flex items-center gap-2.5 text-[15px] font-bold text-white px-8 py-4 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"

@@ -164,8 +164,8 @@ export default function CredentialsSection() {
             {lang === 'es'
               ? 'Comparte tu historia — '
               : 'Share your story — '}
-            <a href="mailto:hello@light2minds.com" className="underline underline-offset-2 hover:text-navy-600 transition-colors">
-              hello@light2minds.com
+            <a href="mailto:info@light2minds.com" className="underline underline-offset-2 hover:text-navy-600 transition-colors">
+              info@light2minds.com
             </a>
           </p>
         </motion.div>

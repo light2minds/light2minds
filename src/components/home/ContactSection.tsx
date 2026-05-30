@@ -49,7 +49,7 @@ export default function ContactSection() {
 
             <div className="space-y-4">
               <a
-                href="mailto:hello@light2minds.com"
+                href="mailto:info@light2minds.com"
                 className="flex items-center gap-3 text-[14px] text-navy-900 font-medium group"
               >
                 <span
@@ -61,7 +61,7 @@ export default function ContactSection() {
                     <path d="M1 5l7 5 7-5" />
                   </svg>
                 </span>
-                <span className="group-hover:text-navy-600 transition-colors">hello@light2minds.com</span>
+                <span className="group-hover:text-navy-600 transition-colors">info@light2minds.com</span>
               </a>
 
               <div className="flex items-center gap-3 text-[14px] text-navy-800/50">
