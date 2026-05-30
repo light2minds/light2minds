@@ -198,17 +198,25 @@ export default function Hero() {
           </motion.h1>
 
           {/* Subtitle */}
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.38, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-5 text-[15px] text-navy-800/60 leading-relaxed max-w-md"
+            className="mt-5 max-w-md"
           >
-            {tx(
-              'Expert guidance for Florida families navigating autism, ADHD & developmental challenges — and the behavioral health professionals who serve them.',
-              'Orientación experta para familias de Florida que navegan el autismo, TDAH y desafíos del desarrollo — y los profesionales que los apoyan.'
-            )}
-          </motion.p>
+            <p className="text-[16px] font-semibold text-navy-800/80 leading-snug">
+              {tx(
+                'Helping Families and Behavioral Health Professionals Thrive',
+                'Ayudando a Familias y Profesionales de Salud Conductual a Prosperar'
+              )}
+            </p>
+            <p className="mt-2 text-[14px] text-navy-800/55 leading-relaxed">
+              {tx(
+                'Expert guidance, resources and practical tools for Autism, ADHD, and developmental support.',
+                'Orientación experta, recursos y herramientas prácticas para autismo, TDAH y apoyo al desarrollo.'
+              )}
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 
