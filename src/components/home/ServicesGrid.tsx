@@ -36,19 +36,6 @@ function getServices(lang: Lang) {
     },
     {
       num: '03',
-      title: tx('ABA Center Startup', 'Inicio de Centro ABA'),
-      body: tx(
-        'Step-by-step guidance for opening your own ABA practice — business planning, staffing, compliance, billing workflow, and clinical operations.',
-        'Guía paso a paso para abrir tu propia práctica de ABA — planificación empresarial, personal, cumplimiento, flujo de facturación y operaciones clínicas.'
-      ),
-      href: '/aba-center',
-      label: tx('Get Started', 'Comenzar'),
-      bar: 'bg-gold-400',
-      numColor: 'text-gold-500',
-      hover: 'hover:border-gold-300',
-    },
-    {
-      num: '04',
       title: tx('Sensory & Developmental Tools', 'Herramientas Sensoriales y del Desarrollo'),
       body: tx(
         'Practical sensory tool recommendations, developmental activity guides, visual schedules, and reinforcement menus for home and classroom use.',

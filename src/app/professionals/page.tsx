@@ -109,7 +109,7 @@ const careerTools = [
   { title: 'Interview Preparation Guide', body: '30 common RBT interview questions with expert-coached answers and tips for demonstrating your knowledge and professionalism.' },
   { title: 'Career Pathway Map', body: 'A visual guide showing career progression from RBT to BCaBA to BCBA — including education, supervision, and exam requirements at each level.' },
   { title: 'Supervision Log Template', body: 'Track your required monthly supervision hours with this BACB-aligned log — essential for maintaining your RBT certification.' },
-  { title: 'ABA Center Startup Guide', body: 'Thinking beyond RBT? Our comprehensive startup guide walks you through opening your own ABA therapy practice in Florida.' },
+  { title: 'ABA Center Startup Support', body: 'Ready to open your own ABA practice? This is a specialized service. Contact us directly and we\'ll guide you through the process.' },
   { title: 'BCBA Pathway Overview', body: 'An overview of the requirements to pursue your BCBA — including education, fieldwork hours, and the exam.' },
 ]
 
@@ -499,11 +499,11 @@ export default function ProfessionalsPage() {
                 className="bg-white border border-stone-200/70 rounded-2xl p-7 hover:shadow-sm hover:shadow-stone-200/60 hover:-translate-y-0.5 transition-all duration-200">
                 <h3 className="text-[14px] font-semibold text-navy-900 mb-2">{tool.title}</h3>
                 <p className="text-[13px] text-navy-800/45 leading-relaxed mb-5">{tool.body}</p>
-                {tool.title === 'ABA Center Startup Guide' ? (
-                  <Link href="/aba-center"
+                {tool.title === 'ABA Center Startup Support' ? (
+                  <a href="mailto:info@light2minds.com"
                     className="text-[12px] font-semibold text-navy-700/55 hover:text-navy-900 transition-colors duration-150 flex items-center gap-2">
-                    View Startup Guide <span className="w-3 h-px bg-current" />
-                  </Link>
+                    Contact Us <span className="w-3 h-px bg-current" />
+                  </a>
                 ) : (
                   <button className="text-[12px] font-semibold text-navy-700/55 hover:text-navy-900 transition-colors duration-150 flex items-center gap-2">
                     Download <span className="w-3 h-px bg-current" />
@@ -569,10 +569,10 @@ export default function ProfessionalsPage() {
                 className="inline-flex items-center justify-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/20 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200">
                 Browse All Resources
               </Link>
-              <Link href="/aba-center"
+              <a href="mailto:info@light2minds.com"
                 className="inline-flex items-center justify-center gap-3 text-[13px] font-semibold text-navy-900 bg-gold-400 px-6 py-3 rounded-full hover:bg-gold-300 transition-colors duration-200">
-                ABA Center Startup Guide
-              </Link>
+                ABA Startup Support
+              </a>
             </div>
           </motion.div>
         </div>

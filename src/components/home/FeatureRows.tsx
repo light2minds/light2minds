@@ -75,7 +75,7 @@ export function FeatureProfessionals() {
     tx('Ethics module aligned with the BACB code', 'Módulo de ética alineado con el código del BACB'),
     tx('Session documentation templates and competency prep', 'Plantillas de documentación de sesiones y preparación de competencias'),
     tx('Resume writing, interview prep, and career resources', 'Redacción de currículum, preparación para entrevistas y recursos profesionales'),
-    tx('Step-by-step ABA center startup guide for entrepreneurs', 'Guía paso a paso de inicio de centro ABA para emprendedores'),
+    tx('ABA Center Startup Support — specialized guidance for professionals opening their own practice', 'Apoyo para inicio de centro ABA — orientación especializada para profesionales que abren su propia práctica'),
   ]
 
   return (

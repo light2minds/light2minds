@@ -22,16 +22,6 @@ const cols = [
     ],
   },
   {
-    heading: 'ABA Center',
-    links: [
-      { label: 'Business Planning', href: '/aba-center#business' },
-      { label: 'Operations Setup',  href: '/aba-center#operations' },
-      { label: 'Compliance Guide',  href: '/aba-center#compliance' },
-      { label: 'Billing Workflow',  href: '/aba-center#billing' },
-      { label: 'Templates',         href: '/aba-center#templates' },
-    ],
-  },
-  {
     heading: 'Resources',
     links: [
       { label: 'All Tools',         href: '/tools' },

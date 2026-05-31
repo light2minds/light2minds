@@ -10,7 +10,6 @@ const WARM_BG = '#F8F5EF'
 // 3D raised button shadows — each colour has a matching darker bottom edge
 const BTN_SHADOW_BLUE  = '0 5px 0 #3A9ECE, 0 8px 16px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.30)'
 const BTN_SHADOW_GOLD  = '0 5px 0 #C4A800, 0 8px 16px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.45)'
-const BTN_SHADOW_GREEN = '0 5px 0 #1E8E3E, 0 8px 16px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.30)'
 
 // Headline gradient: logo yellow → green, with 3D extruded drop-shadow
 const HEADLINE_GRADIENT = {
@@ -248,15 +247,6 @@ export default function Hero() {
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
-            {/* Green — secondary */}
-            <Link
-              href="/aba-center"
-              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
-              style={{ backgroundColor: '#2EBB50', boxShadow: BTN_SHADOW_GREEN }}
-            >
-              {tx('ABA Center Startup', 'Inicio Centro ABA')}
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
 
           </div>
         </div>
