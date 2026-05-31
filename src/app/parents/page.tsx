@@ -115,7 +115,7 @@ export default function ParentsPage() {
               {[
                 { href: '#diagnosis', label: 'Understanding Diagnosis' },
                 { href: '#strategies', label: 'Home Strategies' },
-                { href: '#sessions', label: 'Book a Session' },
+                { href: 'mailto:info@light2minds.com', label: 'Book a Session' },
               ].map(btn => (
                 <a key={btn.href} href={btn.href}
                   className="text-[12px] font-semibold text-navy-800/60 border border-stone-200 bg-white px-4 py-2 rounded-full hover:border-navy-900/30 hover:text-navy-900 transition-all duration-150">
@@ -477,11 +477,11 @@ export default function ParentsPage() {
                 ))}
               </ul>
               <div className="flex gap-3 flex-wrap">
-                <a href="mailto:hello@light2minds.com"
+                <a href="mailto:info@light2minds.com"
                   className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 bg-gold-400 px-6 py-3 rounded-full hover:bg-gold-300 transition-colors duration-200">
                   Book a Session
                 </a>
-                <a href="mailto:hello@light2minds.com"
+                <a href="mailto:info@light2minds.com"
                   className="inline-flex items-center gap-3 text-[13px] font-medium text-navy-700/50 hover:text-navy-900 transition-colors duration-200 px-2 py-3">
                   Email Us
                   <span className="w-4 h-px bg-current" />
@@ -564,7 +564,7 @@ export default function ParentsPage() {
                 className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/20 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200">
                 Browse All Resources
               </Link>
-              <a href="mailto:hello@light2minds.com"
+              <a href="mailto:info@light2minds.com"
                 className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 bg-gold-400 px-6 py-3 rounded-full hover:bg-gold-300 transition-colors duration-200">
                 Contact Us
               </a>

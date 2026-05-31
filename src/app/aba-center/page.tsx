@@ -833,7 +833,7 @@ export default function AbaCenterPage() {
               className="flex flex-wrap gap-4"
             >
               <a
-                href="mailto:hello@light2minds.com"
+                href="mailto:info@light2minds.com"
                 className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/20 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200"
               >
                 Contact Us for Guidance
