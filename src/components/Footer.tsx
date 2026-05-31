@@ -44,7 +44,7 @@ export default function Footer() {
               <span style={{ color: '#5BC4F8' }}>Light</span><span style={{ color: '#FFE030' }}>2</span><span style={{ color: '#2EBB50' }}>minds</span>
             </Link>
             <p className="text-sm text-navy-800/50 leading-relaxed">
-              Behavioral and neurodevelopmental guidance for Florida families and professionals.
+              Behavioral and neurodevelopmental guidance for families and professionals.
             </p>
             <p className="mt-4 text-xs text-navy-800/35 leading-relaxed">
               Florida, USA
