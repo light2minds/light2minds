@@ -6,7 +6,9 @@ import Accordion from '@/components/Accordion'
 import FlashCard from '@/components/FlashCard'
 
 const fade = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } }
+const up = (delay = 0) => ({ ...fade, transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] as const } })
 
+// ── Existing data (preserved) ──────────────────────────────────────────────────
 const flashcards = [
   { section: 'Section B · Skill Acquisition', term: 'Positive Reinforcement', definition: 'The addition of a stimulus following a behavior that increases the future frequency of that behavior. The stimulus added must be something the individual finds valuable or pleasurable.' },
   { section: 'Section C · Behavior Reduction', term: 'Extinction', definition: 'Withholding the reinforcer that has been maintaining a behavior, resulting in a decrease in the frequency of that behavior over time. Often produces an "extinction burst" initially.' },
@@ -14,9 +16,6 @@ const flashcards = [
   { section: 'Section B · Skill Acquisition', term: 'Discrete Trial Training (DTT)', definition: 'A structured teaching method involving a clear discriminative stimulus (SD), a prompt if needed, the learner\'s response, and a consequence (reinforcement or corrective feedback). Trials are repeated systematically.' },
   { section: 'Section C · Behavior Reduction', term: 'Four Functions of Behavior', definition: 'All behavior serves a purpose: (1) Access to tangibles, (2) Attention from others, (3) Escape/Avoidance of demands or situations, (4) Automatic/Sensory reinforcement. Identifying the function guides treatment.' },
   { section: 'Section B · Skill Acquisition', term: 'Prompting Hierarchy', definition: 'A systematic way of delivering prompts from most-to-least or least-to-most intrusive. Prompt types include: Full Physical, Partial Physical, Modeling, Gestural, and Verbal. The goal is to fade prompts and achieve independent responding.' },
-  { section: 'Section C · Behavior Reduction', term: 'Differential Reinforcement (DR)', definition: 'Reinforcing one behavior while placing another on extinction. Types: DRA (alternative behavior), DRI (incompatible behavior), DRO (other behavior / zero instances), DRL (low rates of behavior).' },
-  { section: 'Section A · Measurement', term: 'Interobserver Agreement (IOA)', definition: 'A measure of data reliability. Two observers independently collect data on the same behavior, and their results are compared. IOA ≥80% is generally considered acceptable. Formula: Agreements ÷ (Agreements + Disagreements) × 100.' },
-  { section: 'Section B · Skill Acquisition', term: 'Task Analysis', definition: 'Breaking down a complex skill into smaller, teachable steps. Used in chaining procedures. Each step is taught individually and then linked together. Example: hand-washing broken into 10–15 discrete steps.' },
 ]
 
 const terminologyItems = [
@@ -109,469 +108,674 @@ const careerTools = [
   { title: 'Interview Preparation Guide', body: '30 common RBT interview questions with expert-coached answers and tips for demonstrating your knowledge and professionalism.' },
   { title: 'Career Pathway Map', body: 'A visual guide showing career progression from RBT to BCaBA to BCBA — including education, supervision, and exam requirements at each level.' },
   { title: 'Supervision Log Template', body: 'Track your required monthly supervision hours with this BACB-aligned log — essential for maintaining your RBT certification.' },
-  { title: 'ABA Center Startup Support', body: 'Ready to open your own ABA practice? This is a specialized service. Contact us directly and we\'ll guide you through the process.' },
   { title: 'BCBA Pathway Overview', body: 'An overview of the requirements to pursue your BCBA — including education, fieldwork hours, and the exam.' },
+  { title: 'ABA Center Startup Support', body: 'Ready to open your own ABA practice? This is a specialized service. Contact us directly and we\'ll guide you through the process.' },
 ]
 
 const printableForms = [
   { title: 'ABC Data Sheet', body: 'Antecedent-Behavior-Consequence data collection form for functional behavior assessment.', format: 'PDF' },
   { title: 'Discrete Trial (DTT) Data Sheet', body: 'Track correct, incorrect, and prompted responses across multiple trials per session.', format: 'PDF' },
   { title: 'Behavior Frequency Tracking Sheet', body: 'Simple event recording form for tracking frequency of target behaviors across a session.', format: 'PDF' },
-  { title: 'Duration & Latency Recording Form', body: 'Track how long behaviors last and how quickly they occur after a prompt or stimulus.', format: 'PDF' },
   { title: 'Session Note Template', body: 'A structured session note format aligned with insurance billing requirements and BACB standards.', format: 'PDF + Word' },
+  { title: 'Duration & Latency Recording Form', body: 'Track how long behaviors last and how quickly they occur after a prompt or stimulus.', format: 'PDF' },
   { title: 'Interval Recording Data Sheet', body: 'Whole-interval and partial-interval recording sheets for structured observation periods.', format: 'PDF' },
 ]
 
+// ── New section data ────────────────────────────────────────────────────────────
+const PATHS = [
+  { id: 'aspiring-rbt', label: 'Aspiring RBT', sub: 'Starting your ABA career', icon: '🎯', color: '#5BC4F8', bg: '#EFF9FF', href: '#become-rbt', cta: 'See RBT Roadmap' },
+  { id: 'current-rbt', label: 'Current RBT', sub: 'Growing your skills & advancing', icon: '📈', color: '#2EBB50', bg: '#EDFAF1', href: '#mentorship', cta: 'Explore Mentorship' },
+  { id: 'future-bcba', label: 'Future BCaBA / BCBA', sub: 'Preparing for supervision & exam', icon: '🎓', color: '#8B5CF6', bg: '#EDE9FE', href: '#become-bcba', cta: 'See BCBA Roadmap' },
+  { id: 'practicing', label: 'Practicing BCaBA / BCBA', sub: 'Clinical growth & leadership', icon: '⭐', color: '#C4A800', bg: '#FFFCE8', href: '#mentorship', cta: 'Career Coaching' },
+]
+
+const RBT_STEPS = [
+  { num: '01', title: 'Eligibility Requirements', body: 'You must be at least 18 years old, hold a high school diploma or equivalent, and pass a criminal background check. No prior ABA experience is required to apply.' },
+  { num: '02', title: '40-Hour Training', body: 'Complete 40 hours of training covering the RBT Task List (2nd Ed.) — including measurement, skill acquisition, behavior reduction, documentation, and professional conduct.' },
+  { num: '03', title: 'Competency Assessment', body: 'A qualified BCBA must observe and assess your ability to perform each skill on the Task List. This live demonstration is a required gateway before you can sit for the exam.' },
+  { num: '04', title: 'Certification Exam', body: 'Pass the 85-question BACB RBT exam covering all six content areas. The exam is administered at Pearson VUE test centers or remotely. A passing score is required for certification.' },
+  { num: '05', title: 'Starting Your Career', body: 'Once certified, you\'ll work under the supervision of a BCBA, implementing individualized therapy programs, collecting data, and supporting clients with autism and developmental needs.' },
+]
+
+const BCBA_STEPS = [
+  { num: '01', title: 'Educational Requirements', body: 'You must hold a minimum of a master\'s degree from an accredited university. The degree must be in behavior analysis, psychology, education, or a related field.' },
+  { num: '02', title: 'BACB-Approved Coursework', body: 'Complete a BACB-approved course sequence covering applied behavior analysis concepts, ethics, experimental design, and behavior assessment and intervention.' },
+  { num: '03', title: 'Supervised Fieldwork', body: 'Accumulate 1,500–2,000 hours of supervised fieldwork under an approved supervisor. A minimum percentage of your hours must be in concentrated experience with clients.' },
+  { num: '04', title: 'Supervision Requirements', body: 'Supervised fieldwork requires structured supervision sessions, direct observation, and documented logs. Your supervisor must be a credentialed BCBA with appropriate experience.' },
+  { num: '05', title: 'BCBA Certification Exam', body: 'Pass the BACB BCBA exam — a rigorous assessment covering behavior analytic principles, ethical standards, and clinical application across all major content areas.' },
+  { num: '06', title: 'Career Growth & Leadership', body: 'BCBAs can move into supervisory roles, open their own practices, contribute to research, or specialize in areas such as organizational behavior management, autism, or feeding disorders.' },
+]
+
+const MENTORSHIP = [
+  {
+    id: 'rbt-guidance',
+    title: 'RBT Career Guidance',
+    sub: 'For aspiring & current RBTs',
+    color: '#5BC4F8',
+    bg: '#EFF9FF',
+    items: [
+      'Personalized exam preparation strategy',
+      'Competency assessment coaching & readiness review',
+      'Resume, interview prep, and job search support',
+      'Guidance on supervision requirements and documentation',
+    ],
+    cta: 'Book Guidance Session',
+    href: 'mailto:info@light2minds.com?subject=RBT Career Guidance Session',
+  },
+  {
+    id: 'competency',
+    title: 'Competency Assessment Service',
+    sub: 'Required for RBT certification',
+    color: '#2EBB50',
+    bg: '#EDFAF1',
+    featured: true,
+    items: [
+      'Live competency assessment conducted by a Board Certified Behavior Analyst',
+      'Covers all RBT Task List sections (A–F) as required by the BACB',
+      'Available virtually or in-person (select locations)',
+      'Receive written feedback and a completion certificate',
+    ],
+    cta: 'Book Competency Assessment',
+    href: 'mailto:info@light2minds.com?subject=RBT Competency Assessment Booking',
+  },
+  {
+    id: 'bcba-coaching',
+    title: 'BCaBA / BCBA Career Coaching',
+    sub: 'For supervisors & advanced clinicians',
+    color: '#8B5CF6',
+    bg: '#EDE9FE',
+    items: [
+      'Exam preparation strategy for the BCBA or BCaBA exam',
+      'Fieldwork and supervision planning review',
+      'Career trajectory and specialization guidance',
+      'Support for professionals transitioning to supervisory roles',
+    ],
+    cta: 'Book Career Consultation',
+    href: 'mailto:info@light2minds.com?subject=BCaBA/BCBA Career Coaching',
+  },
+  {
+    id: 'clinical-growth',
+    title: 'Professional Growth & Clinical Support',
+    sub: 'For practicing BCBAs & clinicians',
+    color: '#C4A800',
+    bg: '#FFFCE8',
+    items: [
+      'Clinical consultation on complex cases and behavior plans',
+      'Organizational behavior management support',
+      'Practice growth and team development guidance',
+      'Support for opening or scaling your own ABA practice',
+    ],
+    cta: 'Book Consultation',
+    href: 'mailto:info@light2minds.com?subject=Professional Growth Consultation',
+  },
+]
+
+const STUDY_GUIDES = [
+  {
+    id: 'rbt-guide',
+    title: 'RBT Study Guide',
+    credential: 'Registered Behavior Technician',
+    description: 'A comprehensive, task list–aligned study guide covering all six content areas of the BACB RBT exam. Includes definitions, examples, memory tips, and practice questions.',
+    benefits: ['Aligned to the RBT Task List 2nd Edition', 'Section-by-section breakdown (A–F)', 'Practice questions with rationale', 'Ethics and professional conduct module'],
+    accent: '#5BC4F8',
+    dark: '#1A7AC0',
+  },
+  {
+    id: 'bcaba-guide',
+    title: 'BCaBA Study Guide',
+    credential: 'Board Certified Assistant Behavior Analyst',
+    description: 'Targeted preparation for the BCaBA exam — covering behavior analytic principles, supervision responsibilities, and ethical standards at the assistant behavior analyst level.',
+    benefits: ['Coverage of all BCaBA task list areas', 'Supervision and fieldwork requirements', 'Ethics scenarios and decision-making', 'Exam-day strategies and practice sets'],
+    accent: '#8B5CF6',
+    dark: '#6D28D9',
+  },
+  {
+    id: 'bcba-guide',
+    title: 'BCBA Study Guide',
+    credential: 'Board Certified Behavior Analyst',
+    description: 'Advanced preparation for the BCBA exam — including experimental design, behavior measurement, assessment, behavior change procedures, and supervisory responsibilities.',
+    benefits: ['Full BCBA 5th Edition task list coverage', 'Applied case-based practice scenarios', 'Supervision and ethics deep-dive', 'Data analysis and graphing review'],
+    accent: '#2EBB50',
+    dark: '#1E8E3E',
+  },
+]
+
+const WHY_ITEMS = [
+  { icon: '🎓', title: 'Created by a Board Certified Behavior Analyst', body: 'All content is developed and reviewed by a practicing BCBA with direct clinical and supervisory experience.' },
+  { icon: '🔬', title: 'Evidence-Based ABA Practices', body: 'Every resource is grounded in the science of applied behavior analysis and aligned with BACB standards and ethics.' },
+  { icon: '🛤️', title: 'Resources for Every Career Stage', body: 'From your first day as an aspiring RBT to seasoned BCBAs — we support professionals at every step of the journey.' },
+  { icon: '🤝', title: 'Practical, Real-World Mentorship', body: 'Our mentorship and coaching sessions focus on what actually happens in the clinic — not just what\'s in the textbook.' },
+  { icon: '📋', title: 'Clinically Accurate & Exam-Ready', body: 'Study materials are written to match the exact language and expectations of the BACB, so you know you\'re preparing with the right content.' },
+]
+
+// ── Check icon ─────────────────────────────────────────────────────────────────
+function Check({ color = '#2EBB50' }: { color?: string }) {
+  return (
+    <svg className="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 16 16" fill="none">
+      <circle cx="8" cy="8" r="7" fill={color + '20'} />
+      <path d="M5 8l2 2 4-4" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 export default function ProfessionalsPage() {
   return (
     <main>
 
-      {/* Hero */}
-      <section className="bg-stone-50 pt-36 pb-24 lg:pt-44 lg:pb-32 relative overflow-hidden border-b border-stone-200/60">
-        <span className="absolute bottom-0 right-8 text-[18rem] font-bold leading-none text-navy-900/[0.03] select-none pointer-events-none" aria-hidden="true">ABA</span>
+      {/* ── 1. HERO ──────────────────────────────────────────────────────────── */}
+      <section className="bg-stone-50 pt-36 pb-20 lg:pt-44 lg:pb-28 relative overflow-hidden border-b border-stone-200/60">
+        <span className="absolute bottom-0 right-6 text-[16rem] font-bold leading-none text-navy-900/[0.025] select-none pointer-events-none" aria-hidden="true">ABA</span>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-          <motion.div {...fade} transition={{ duration: 0.65 }} className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6">
+          <motion.div {...up()} className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-5">
               <span className="block w-6 h-px bg-navy-700/30" />
-              <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40">For Professionals</p>
+              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40">For Behavioral Health Professionals</p>
             </div>
-            <h1 className="text-[clamp(2.25rem,5vw,4rem)] font-bold text-navy-900 tracking-[-0.03em] leading-[1.06] mb-6">
-              Professional Training Hub
+            <h1 className="text-[clamp(2.1rem,5vw,3.8rem)] font-bold text-navy-900 tracking-[-0.03em] leading-[1.06] mb-5">
+              Behavioral Health Professional Resources & Career Development
             </h1>
-            <p className="text-[clamp(1rem,1.5vw,1.15rem)] font-light text-navy-800/55 leading-relaxed max-w-xl mb-8">
-              Whether you&apos;re preparing for your RBT exam, building your clinical skills, or laying the groundwork for your own ABA practice — this is your dedicated space.
+            <p className="text-[clamp(1rem,1.4vw,1.1rem)] font-light text-navy-800/55 leading-relaxed max-w-2xl mb-8">
+              Resources, mentorship, exam preparation, and professional tools for aspiring and practicing RBTs, BCaBAs, and BCBAs.
             </p>
-            <div className="flex flex-wrap gap-3 mb-5">
-              {[
-                { href: '#exam', label: 'RBT Exam Prep' },
-                { href: '#materials', label: 'Study Materials' },
-                { href: '#career', label: 'Career Tools' },
-              ].map(btn => (
-                <a key={btn.href} href={btn.href}
-                  className="text-[12px] font-semibold text-navy-800/60 border border-stone-200 bg-white px-4 py-2 rounded-full hover:border-navy-900/30 hover:text-navy-900 transition-all duration-150">
-                  {btn.label}
-                </a>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-4">
-              {[
-                { href: '#exam', label: 'Exam Prep' },
-                { href: '#materials', label: 'Study Materials' },
-                { href: '#terminology', label: 'Terminology' },
-                { href: '#ethics', label: 'Ethics' },
-                { href: '#documentation', label: 'Documentation' },
-                { href: '#competency', label: 'Competency' },
-                { href: '#career', label: 'Career Tools' },
-                { href: '#forms', label: 'Forms' },
-              ].map(link => (
-                <a key={link.href} href={link.href}
-                  className="text-[11px] font-medium text-navy-800/45 hover:text-navy-800 transition-colors duration-150 underline underline-offset-2">
-                  {link.label}
-                </a>
-              ))}
+            <div className="flex flex-wrap gap-3">
+              <Link href="/shop"
+                className="inline-flex items-center gap-2.5 text-[14px] font-bold text-navy-900 bg-gold-400 px-7 py-3.5 rounded-full hover:bg-gold-300 transition-colors duration-200"
+                style={{ boxShadow: '0 4px 0 #C4A800' }}>
+                Shop Study Guides
+                <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </Link>
+              <a href="mailto:info@light2minds.com?subject=Book Mentorship Session"
+                className="inline-flex items-center gap-2.5 text-[14px] font-semibold text-navy-900 bg-white border border-stone-200 px-7 py-3.5 rounded-full hover:border-navy-900/30 transition-all duration-200">
+                Book Mentorship
+              </a>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* RBT Exam Prep */}
-      <section className="bg-white py-24 lg:py-32" id="exam">
+      {/* ── 2. CHOOSE YOUR PATH ───────────────────────────────────────────────── */}
+      <section className="bg-white py-16 lg:py-20 border-b border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.65 }} className="mb-12 max-w-2xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">RBT Exam Preparation</p>
-            <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
-              Pass your RBT exam with confidence.
-            </h2>
-            <p className="text-[15px] text-navy-800/50 leading-relaxed">
-              The RBT exam covers six content areas. Light2minds organizes your study materials to match the BACB Task List so you know exactly what to focus on.
-            </p>
+          <motion.div {...up()} className="mb-10">
+            <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-2">Where Are You in Your Journey?</p>
+            <h2 className="text-[clamp(1.5rem,3vw,2.1rem)] font-bold text-navy-900 tracking-[-0.025em]">Choose your path.</h2>
           </motion.div>
-
-          {/* Task List Table */}
-          <motion.div {...fade} transition={{ duration: 0.55 }} className="bg-stone-50 border border-stone-200/70 rounded-2xl overflow-hidden mb-10">
-            <div className="px-7 py-5 border-b border-stone-200/60">
-              <h3 className="text-[14px] font-semibold text-navy-900 mb-1">RBT Task List — Second Edition Overview</h3>
-              <p className="text-[12px] text-navy-800/40">The BACB RBT Task List (2nd Ed.) defines the competencies tested on the exam. Use the table below to guide your study.</p>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-stone-100">
-                    <th className="px-6 py-3 text-left text-[11px] font-bold tracking-[0.06em] text-navy-700/60 uppercase">Section</th>
-                    <th className="px-6 py-3 text-left text-[11px] font-bold tracking-[0.06em] text-navy-700/60 uppercase">Content Area</th>
-                    <th className="px-6 py-3 text-left text-[11px] font-bold tracking-[0.06em] text-navy-700/60 uppercase">Key Topics</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-stone-100">
-                  {[
-                    { sec: 'A', area: 'Measurement', topics: 'Continuous vs discontinuous measurement, data collection, graphing' },
-                    { sec: 'B', area: 'Skill Acquisition', topics: 'Discrete trial training, naturalistic teaching, prompting, shaping, chaining' },
-                    { sec: 'C', area: 'Behavior Reduction', topics: 'Extinction, differential reinforcement, antecedent modifications, function of behavior' },
-                    { sec: 'D', area: 'Documentation & Reporting', topics: 'Session notes, graphing, reporting to supervisors, data integrity' },
-                    { sec: 'E', area: 'Professional Conduct & Scope of Practice', topics: 'BACB ethics, scope of practice, supervisor relationship, confidentiality' },
-                    { sec: 'F', area: 'Competency Demonstration', topics: 'Direct skills, observational learning, generalization and maintenance' },
-                  ].map((row, i) => (
-                    <tr key={row.sec} className={i % 2 === 1 ? 'bg-stone-50/60' : 'bg-white'}>
-                      <td className="px-6 py-3.5 text-[13px] font-bold text-navy-900">{row.sec}</td>
-                      <td className="px-6 py-3.5 text-[13px] font-semibold text-navy-800/70">{row.area}</td>
-                      <td className="px-6 py-3.5 text-[13px] text-navy-800/45">{row.topics}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </motion.div>
-
-          {/* Exam prep cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              {
-                title: 'Mock Exams',
-                body: 'Timed practice exams that mirror the format and difficulty of the actual RBT exam. Available in full-length (85 questions) and section-specific formats.',
-                meta: '3 full-length exams available',
-                href: '/tools#rbt-tools',
-                label: 'Access Mock Exams',
-                color: 'bg-forest-50 border-forest-100',
-              },
-              {
-                title: 'Flashcard Decks',
-                body: 'Interactive flashcards covering ABA terminology, measurement concepts, behavior reduction strategies, and ethics — organized by task list section.',
-                meta: '150+ total flashcards',
-                href: '#materials',
-                label: 'Study Flashcards',
-                color: 'bg-navy-50 border-navy-100',
-              },
-              {
-                title: 'Study Guide',
-                body: 'Comprehensive chapter-by-chapter study guide aligned to each section of the RBT Task List, with definitions, examples, and memory tips.',
-                meta: 'Sections A through F',
-                href: '/tools#rbt-tools',
-                label: 'Download Study Guide',
-                color: 'bg-gold-50 border-gold-100',
-              },
-            ].map((card, i) => (
-              <motion.div key={card.title} {...fade} transition={{ duration: 0.4, delay: i * 0.08 }}
-                className={`border rounded-2xl p-7 ${card.color}`}>
-                <h3 className="text-[14px] font-semibold text-navy-900 mb-2">{card.title}</h3>
-                <p className="text-[13px] text-navy-800/50 leading-relaxed mb-4">{card.body}</p>
-                <p className="text-[11px] text-navy-800/35 mb-5">{card.meta}</p>
-                <Link href={card.href}
-                  className="text-[12px] font-semibold text-navy-700/60 hover:text-navy-900 transition-colors duration-150 flex items-center gap-2">
-                  {card.label} <span className="w-3 h-px bg-current" />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Flashcards */}
-      <section className="bg-stone-50 py-24 lg:py-32 border-t border-stone-200/60" id="materials">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.65 }} className="mb-12 max-w-2xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">Interactive Learning</p>
-            <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
-              ABA flashcards — click to flip.
-            </h2>
-            <p className="text-[15px] text-navy-800/50 leading-relaxed">
-              Click any card to reveal the definition. Study these terms to build the foundation you need for the RBT exam and your clinical practice.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-            {flashcards.map((card, i) => (
-              <motion.div key={card.term} {...fade} transition={{ duration: 0.4, delay: i * 0.04 }}>
-                <FlashCard section={card.section} term={card.term} definition={card.definition} />
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="flex flex-wrap gap-4">
-            <Link href="/tools#rbt-tools"
-              className="inline-flex items-center gap-3 text-[13px] font-semibold text-white bg-forest-500 px-6 py-3 rounded-full hover:bg-forest-600 transition-colors duration-200">
-              Download All Flashcard Decks
-            </Link>
-            <Link href="/tools#rbt-tools"
-              className="inline-flex items-center gap-3 text-[13px] font-medium text-navy-700/60 hover:text-navy-900 transition-colors duration-150 border border-stone-200 bg-white px-6 py-3 rounded-full">
-              Take a Mock Exam
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Terminology */}
-      <section className="bg-white py-24 lg:py-32 border-t border-stone-200/60" id="terminology">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.65 }} className="mb-12 max-w-2xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">ABA Terminology</p>
-            <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
-              Essential ABA terms &amp; concepts.
-            </h2>
-            <p className="text-[15px] text-navy-800/50 leading-relaxed">
-              A solid grasp of behavioral terminology is foundational for exam success and professional practice. Expand each category to review.
-            </p>
-          </motion.div>
-
-          <motion.div {...fade} transition={{ duration: 0.55 }} className="max-w-3xl mb-6">
-            <Accordion items={terminologyItems} openFirst />
-          </motion.div>
-
-          <Link href="/tools#rbt-tools"
-            className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/18 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200">
-            Download Full Terminology Glossary
-          </Link>
-        </div>
-      </section>
-
-      {/* Ethics */}
-      <section className="bg-navy-50 py-24 lg:py-32 border-t border-navy-100/60" id="ethics">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.65 }} className="mb-12 max-w-2xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">Professional Conduct</p>
-            <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
-              Ethics &amp; the RBT Code of Ethics.
-            </h2>
-            <p className="text-[15px] text-navy-800/50 leading-relaxed">
-              Ethics questions are guaranteed to appear on the RBT exam. More importantly, ethical practice protects your clients, your career, and the integrity of the field. This section covers what every RBT must know.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-            <motion.div {...fade} transition={{ duration: 0.55 }} className="bg-white border border-stone-200/70 rounded-2xl p-8">
-              <h3 className="text-[15px] font-semibold text-navy-900 mb-5">Core RBT Ethical Responsibilities</h3>
-              <ul className="space-y-3">
-                {[
-                  'Maintain confidentiality for all client information (HIPAA)',
-                  'Practice only within your scope — implement programs designed by the BCBA, do not modify them',
-                  'Report any concerns about client safety or welfare to your supervisor immediately',
-                  'Avoid dual relationships with clients and their families',
-                  'Complete RBT supervision requirements and document sessions accurately',
-                  'Use the least restrictive, most effective procedures',
-                  'Represent your credentials honestly',
-                  'Follow your organization\'s policies and the BACB Ethics Code',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-[13px] text-navy-800/60">
-                    <span className="w-4 h-4 rounded-full bg-navy-100 border border-navy-200 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <svg className="w-2 h-2 text-navy-600" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div {...fade} transition={{ duration: 0.55, delay: 0.1 }}>
-              <h3 className="text-[15px] font-semibold text-navy-900 mb-5">Ethics Scenarios — Exam Practice</h3>
-              <Accordion items={ethicsScenarios} />
-            </motion.div>
-          </div>
-
-          <Link href="/tools#rbt-tools"
-            className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/18 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200">
-            Download Ethics Quick-Reference Sheet
-          </Link>
-        </div>
-      </section>
-
-      {/* Documentation */}
-      <section className="bg-white py-24 lg:py-32 border-t border-stone-200/60" id="documentation">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.65 }} className="mb-12 max-w-2xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">Clinical Practice</p>
-            <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
-              Session documentation &amp; data integrity.
-            </h2>
-            <p className="text-[15px] text-navy-800/50 leading-relaxed">
-              Accurate documentation is a professional and ethical requirement. Understanding what to document — and how — is a testable skill and a daily responsibility.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              {
-                title: 'Session Notes',
-                body: 'Session notes document what occurred during therapy. They should include: date, time, duration, attendees, targets addressed, data summary, behavioral events, and any deviations from the plan. Notes must be objective — no interpretations.',
-                link: { label: 'Download Session Note Template', href: '/tools#clinical-tools' },
-                color: 'bg-navy-50 border-navy-100',
-              },
-              {
-                title: 'Graphing Data',
-                body: 'ABA is a data-driven field. RBTs plot session data on graphs so the BCBA can visually analyze progress and make clinical decisions. Learn to graph frequency, percentage correct, duration, and rate data accurately.',
-                link: { label: 'Graph Templates', href: '/tools#clinical-tools' },
-                color: 'bg-forest-50 border-forest-100',
-              },
-              {
-                title: 'Reporting to Supervisors',
-                body: 'RBTs are required to report concerns — about client safety, unexpected behaviors, deviations from the plan, or environmental hazards — to their supervising BCBA promptly. When in doubt, report it.',
-                link: { label: 'Incident Report Template', href: '/tools#clinical-tools' },
-                color: 'bg-stone-50 border-stone-200',
-              },
-            ].map((card, i) => (
-              <motion.div key={card.title} {...fade} transition={{ duration: 0.4, delay: i * 0.07 }}
-                className={`border rounded-2xl p-7 ${card.color}`}>
-                <h3 className="text-[14px] font-semibold text-navy-900 mb-2">{card.title}</h3>
-                <p className="text-[13px] text-navy-800/50 leading-relaxed mb-5">{card.body}</p>
-                <Link href={card.link.href}
-                  className="text-[12px] font-semibold text-navy-700/55 hover:text-navy-900 transition-colors duration-150 flex items-center gap-2">
-                  {card.link.label} <span className="w-3 h-px bg-current" />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Competency Assessment */}
-      <section className="bg-stone-50 py-24 lg:py-32 border-t border-stone-200/60" id="competency">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.65 }} className="mb-12 max-w-2xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">Competency Preparation</p>
-            <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
-              RBT competency assessment prep.
-            </h2>
-            <p className="text-[15px] text-navy-800/50 leading-relaxed">
-              Before you can call yourself an RBT, a BCBA must assess your ability to perform the skills on the Task List. Here&apos;s how to prepare.
-            </p>
-          </motion.div>
-
-          <div className="space-y-3 max-w-3xl mb-8">
-            {[
-              {
-                num: '1',
-                title: 'Measurement — Demonstrating Data Collection',
-                body: "You'll be asked to demonstrate event recording, interval recording, duration recording, and graphing data during a role-play or live observation.",
-              },
-              {
-                num: '2',
-                title: 'Skill Acquisition — Running Discrete Trials',
-                body: 'You must demonstrate delivering an SD, delivering prompts appropriately, recording correct/incorrect responses, and reinforcing behavior according to the program.',
-              },
-              {
-                num: '3',
-                title: 'Behavior Reduction — Implementing BIP Strategies',
-                body: 'You must be able to implement antecedent modifications, extinction procedures, and reinforcement-based reduction strategies as written in the BIP.',
-              },
-              {
-                num: '4',
-                title: 'Documentation — Completing Session Notes',
-                body: 'Demonstrate that you can complete a session note accurately, objectively, and in a timely manner following a simulated session.',
-              },
-              {
-                num: '5',
-                title: 'Communication — Reporting to Supervisor',
-                body: 'Role-play scenarios involving reporting behavioral events, safety concerns, or data anomalies to a supervising BCBA professionally and promptly.',
-              },
-            ].map((step, i) => (
-              <motion.div key={step.num} {...fade} transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="flex gap-5 bg-white border border-stone-200/70 rounded-2xl p-6">
-                <div className="w-8 h-8 rounded-full bg-navy-900 text-white text-[12px] font-bold flex items-center justify-center flex-shrink-0">{step.num}</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {PATHS.map((p, i) => (
+              <motion.a key={p.id} href={p.href} {...up(i * 0.07)}
+                className="group flex flex-col gap-4 p-6 rounded-2xl border border-stone-100 bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                style={{ '--hbg': p.bg } as React.CSSProperties}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = p.bg)}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = '')}>
+                <span className="text-3xl">{p.icon}</span>
                 <div>
-                  <h3 className="text-[14px] font-semibold text-navy-900 mb-1.5">{step.title}</h3>
-                  <p className="text-[13px] text-navy-800/50 leading-relaxed">{step.body}</p>
+                  <h3 className="text-[15px] font-bold text-navy-900 mb-1">{p.label}</h3>
+                  <p className="text-[12.5px] text-navy-800/50 leading-snug">{p.sub}</p>
+                </div>
+                <span className="mt-auto inline-flex items-center gap-1.5 text-[12px] font-semibold transition-colors duration-150" style={{ color: p.color }}>
+                  {p.cta}
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+                </span>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3. BECOME AN RBT ─────────────────────────────────────────────────── */}
+      <section className="bg-stone-50 py-20 lg:py-28 border-b border-stone-200/60" id="become-rbt">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+            <motion.div {...up()}>
+              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-4 flex items-center gap-3">
+                <span className="w-5 h-px bg-current" /> RBT Certification Roadmap
+              </p>
+              <h2 className="text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
+                Become a Registered Behavior Technician.
+              </h2>
+              <p className="text-[15px] text-navy-800/50 leading-relaxed mb-8">
+                The RBT credential is your first step into the field of applied behavior analysis. Here&apos;s exactly what you need to do — from eligibility to your first day on the job.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/shop"
+                  className="inline-flex items-center gap-2 text-[13px] font-bold text-navy-900 bg-gold-400 px-5 py-2.5 rounded-full hover:bg-gold-300 transition-colors">
+                  Shop Study Guides
+                </Link>
+                <a href="mailto:info@light2minds.com?subject=Book Guidance Session"
+                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-800/60 border border-stone-200 bg-white px-5 py-2.5 rounded-full hover:border-navy-300 hover:text-navy-900 transition-all">
+                  Book Guidance Session
+                </a>
+                <a href="mailto:info@light2minds.com?subject=Book Competency Assessment"
+                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-white px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity"
+                  style={{ backgroundColor: '#5BC4F8' }}>
+                  Book Competency Assessment
+                </a>
+              </div>
+            </motion.div>
+
+            <div className="space-y-3">
+              {RBT_STEPS.map((step, i) => (
+                <motion.div key={step.num} {...up(i * 0.06)}
+                  className="flex gap-5 bg-white border border-stone-200/70 rounded-2xl p-5">
+                  <div className="w-9 h-9 rounded-full bg-navy-900 text-white text-[12px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                    {step.num}
+                  </div>
+                  <div>
+                    <h3 className="text-[14px] font-semibold text-navy-900 mb-1">{step.title}</h3>
+                    <p className="text-[12.5px] text-navy-800/50 leading-relaxed">{step.body}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. BECOME A BCaBA / BCBA ─────────────────────────────────────────── */}
+      <section className="bg-white py-20 lg:py-28 border-b border-stone-200/60" id="become-bcba">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+            <div className="space-y-3 lg:order-2">
+              {BCBA_STEPS.map((step, i) => (
+                <motion.div key={step.num} {...up(i * 0.06)}
+                  className="flex gap-5 bg-stone-50 border border-stone-200/70 rounded-2xl p-5">
+                  <div className="w-9 h-9 rounded-full text-white text-[12px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5" style={{ backgroundColor: '#8B5CF6' }}>
+                    {step.num}
+                  </div>
+                  <div>
+                    <h3 className="text-[14px] font-semibold text-navy-900 mb-1">{step.title}</h3>
+                    <p className="text-[12.5px] text-navy-800/50 leading-relaxed">{step.body}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div {...up()} className="lg:order-1">
+              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-4 flex items-center gap-3">
+                <span className="w-5 h-px bg-current" /> BCaBA / BCBA Pathway
+              </p>
+              <h2 className="text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
+                Advance to BCaBA or BCBA.
+              </h2>
+              <p className="text-[15px] text-navy-800/50 leading-relaxed mb-8">
+                Becoming a Board Certified Behavior Analyst is one of the most rewarding professional paths in behavioral health. Here&apos;s the full roadmap — from coursework to certification.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/shop"
+                  className="inline-flex items-center gap-2 text-[13px] font-bold text-navy-900 bg-gold-400 px-5 py-2.5 rounded-full hover:bg-gold-300 transition-colors">
+                  Shop Study Guides
+                </Link>
+                <a href="mailto:info@light2minds.com?subject=Book Career Consultation"
+                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-white px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity"
+                  style={{ backgroundColor: '#8B5CF6' }}>
+                  Book Career Consultation
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. PROFESSIONAL MENTORSHIP ────────────────────────────────────────── */}
+      <section className="bg-stone-50 py-20 lg:py-28 border-b border-stone-200/60" id="mentorship">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <motion.div {...up()} className="mb-12">
+            <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-3 flex items-center gap-3">
+              <span className="w-5 h-px bg-current" /> Premium Services
+            </p>
+            <h2 className="text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
+              Professional Mentorship & Coaching.
+            </h2>
+            <p className="text-[15px] text-navy-800/50 leading-relaxed max-w-2xl">
+              Personalized, BCBA-led mentorship for professionals at every stage of their career. From competency assessments to clinical coaching — we&apos;re your trusted career partner.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+            {MENTORSHIP.map((svc, i) => (
+              <motion.div key={svc.id} {...up(i * 0.07)}
+                className={[
+                  'flex flex-col rounded-3xl overflow-hidden border transition-all duration-200',
+                  svc.featured ? 'shadow-xl shadow-forest-200/40' : 'border-stone-200/70 bg-white hover:shadow-md',
+                ].join(' ')}
+                style={svc.featured ? { borderColor: svc.color + '40', backgroundColor: svc.bg } : {}}>
+                <div className="h-1.5 w-full" style={{ backgroundColor: svc.color }} />
+                <div className="flex flex-col flex-1 p-7">
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <div>
+                      <h3 className="text-[16px] font-bold text-navy-900 mb-1">{svc.title}</h3>
+                      <p className="text-[12px] font-semibold" style={{ color: svc.color === '#C4A800' ? '#A37F00' : svc.color }}>{svc.sub}</p>
+                    </div>
+                    {svc.featured && (
+                      <span className="flex-shrink-0 text-[9px] font-bold tracking-[0.1em] uppercase px-2.5 py-1 rounded-full text-white" style={{ backgroundColor: svc.color }}>
+                        Featured
+                      </span>
+                    )}
+                  </div>
+                  <ul className="space-y-2.5 mb-7 flex-1">
+                    {svc.items.map(item => (
+                      <li key={item} className="flex items-start gap-2.5 text-[13px] text-navy-800/60 leading-relaxed">
+                        <Check color={svc.color} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href={svc.href}
+                    className="inline-flex items-center justify-center gap-2 text-[13px] font-bold px-6 py-3 rounded-full transition-all duration-200 hover:opacity-90"
+                    style={svc.featured
+                      ? { backgroundColor: svc.color, color: '#fff', boxShadow: `0 4px 0 #1A7A3A` }
+                      : { border: `1.5px solid ${svc.color}40`, color: svc.color === '#C4A800' ? '#A37F00' : svc.color, backgroundColor: svc.color + '12' }
+                    }>
+                    {svc.cta}
+                  </a>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          <Link href="/tools#rbt-tools"
-            className="inline-flex items-center gap-3 text-[13px] font-semibold text-white bg-forest-500 px-6 py-3 rounded-full hover:bg-forest-600 transition-colors duration-200">
-            Download Competency Self-Check Guide
-          </Link>
-        </div>
-      </section>
-
-      {/* Career Tools */}
-      <section className="bg-white py-24 lg:py-32 border-t border-stone-200/60" id="career">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.65 }} className="mb-12 max-w-2xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">Career Development</p>
-            <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
-              Build a rewarding career in ABA.
-            </h2>
-            <p className="text-[15px] text-navy-800/50 leading-relaxed">
-              The demand for RBTs and behavior analysts is growing rapidly. Use these tools to present yourself professionally and navigate your next career step.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-            {careerTools.map((tool, i) => (
-              <motion.div key={tool.title} {...fade} transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="bg-white border border-stone-200/70 rounded-2xl p-7 hover:shadow-sm hover:shadow-stone-200/60 hover:-translate-y-0.5 transition-all duration-200">
-                <h3 className="text-[14px] font-semibold text-navy-900 mb-2">{tool.title}</h3>
-                <p className="text-[13px] text-navy-800/45 leading-relaxed mb-5">{tool.body}</p>
-                {tool.title === 'ABA Center Startup Support' ? (
-                  <a href="mailto:info@light2minds.com"
-                    className="text-[12px] font-semibold text-navy-700/55 hover:text-navy-900 transition-colors duration-150 flex items-center gap-2">
-                    Contact Us <span className="w-3 h-px bg-current" />
+          {/* Competency Assessment deep-dive (existing content, improved) */}
+          <motion.div {...up()} id="competency">
+            <div className="bg-white border border-stone-200/60 rounded-3xl overflow-hidden">
+              <div className="h-1.5 w-full" style={{ background: 'linear-gradient(90deg, #2EBB50, #5BC4F8)' }} />
+              <div className="p-8 lg:p-10">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+                  <div className="max-w-2xl">
+                    <span className="inline-block text-[10px] font-bold tracking-[0.12em] uppercase text-forest-700 bg-forest-100 px-2.5 py-1 rounded-full mb-3">Competency Preparation</span>
+                    <h3 className="text-[clamp(1.3rem,2.5vw,1.8rem)] font-bold text-navy-900 mb-3">RBT Competency Assessment — What to Expect & How to Prepare.</h3>
+                    <p className="text-[14px] text-navy-800/50 leading-relaxed">
+                      Before receiving your RBT certification, a BCBA must observe and assess your ability to perform the skills on the Task List. This is a required live demonstration — not a written test. Preparation is everything.
+                    </p>
+                  </div>
+                  <a href="mailto:info@light2minds.com?subject=Book Competency Assessment"
+                    className="flex-shrink-0 inline-flex items-center gap-2 text-[13px] font-bold text-white px-7 py-3.5 rounded-full hover:opacity-90 transition-opacity self-start"
+                    style={{ backgroundColor: '#2EBB50', boxShadow: '0 4px 0 #1E8E3E' }}>
+                    Book Competency Assessment
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
                   </a>
-                ) : (
-                  <button className="text-[12px] font-semibold text-navy-700/55 hover:text-navy-900 transition-colors duration-150 flex items-center gap-2">
-                    Download <span className="w-3 h-px bg-current" />
-                  </button>
-                )}
-              </motion.div>
-            ))}
-          </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {[
+                    { num: '1', title: 'Measurement — Demonstrating Data Collection', body: "You'll demonstrate event recording, interval recording, duration recording, and graphing data during a role-play or live observation." },
+                    { num: '2', title: 'Skill Acquisition — Running Discrete Trials', body: 'Demonstrate delivering an SD, delivering prompts appropriately, recording responses, and reinforcing behavior according to the program.' },
+                    { num: '3', title: 'Behavior Reduction — Implementing BIP Strategies', body: 'Demonstrate antecedent modifications, extinction procedures, and reinforcement-based reduction strategies as written in the BIP.' },
+                    { num: '4', title: 'Documentation — Completing Session Notes', body: 'Complete a session note accurately, objectively, and in a timely manner following a simulated session observation.' },
+                    { num: '5', title: 'Communication — Reporting to Supervisor', body: 'Role-play scenarios involving reporting behavioral events, safety concerns, and data anomalies to a supervising BCBA professionally.' },
+                  ].map((step, i) => (
+                    <div key={step.num} className="flex gap-4 bg-stone-50 rounded-xl p-5 border border-stone-100">
+                      <div className="w-7 h-7 rounded-full bg-navy-900 text-white text-[11px] font-bold flex items-center justify-center flex-shrink-0">{step.num}</div>
+                      <div>
+                        <h4 className="text-[13px] font-semibold text-navy-900 mb-1 leading-snug">{step.title}</h4>
+                        <p className="text-[12px] text-navy-800/45 leading-relaxed">{step.body}</p>
+                      </div>
+                    </div>
+                  ))}
+                  <div className="flex flex-col items-start justify-between bg-forest-50 border border-forest-100 rounded-xl p-5">
+                    <p className="text-[13px] font-semibold text-navy-900 mb-2 leading-snug">Ready to schedule your assessment?</p>
+                    <p className="text-[12px] text-navy-800/50 leading-relaxed mb-4">Our BCBA conducts assessments virtually and in-person. Reach out to schedule and receive prep materials in advance.</p>
+                    <a href="mailto:info@light2minds.com?subject=Book Competency Assessment"
+                      className="text-[12px] font-bold text-forest-700 hover:text-forest-900 flex items-center gap-1.5 transition-colors">
+                      Book Now <span className="w-3 h-px bg-current" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Printable Forms */}
-      <section className="bg-stone-50 py-24 lg:py-32 border-t border-stone-200/60" id="forms">
+      {/* ── 6. FEATURED STUDY GUIDES ─────────────────────────────────────────── */}
+      <section className="py-20 lg:py-28 border-b border-navy-800" id="study-guides" style={{ backgroundColor: '#0D1B2E' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.65 }} className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+          <motion.div {...up()} className="mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div>
-              <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">Clinical Tools</p>
-              <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1]">
-                Printable data collection forms.
+              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/30 mb-3 flex items-center gap-3">
+                <span className="w-5 h-px bg-white/20" /> Premium Study Materials
+              </p>
+              <h2 className="text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-white tracking-[-0.025em] leading-[1.1]">
+                Study Guides for Every Credential.
               </h2>
-              <p className="text-[15px] text-navy-800/45 leading-relaxed mt-3 max-w-md">
-                Ready-to-use clinical forms for session documentation, data collection, and daily practice. All forms are printer-ready and free to download.
+              <p className="text-[15px] text-white/50 leading-relaxed mt-3 max-w-xl">
+                Clinically accurate, exam-aligned study guides written by a Board Certified Behavior Analyst. Everything you need to pass — in one resource.
               </p>
             </div>
-            <Link href="/tools#clinical-tools"
-              className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/18 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200 self-start lg:self-auto">
-              View All Clinical Forms
+            <Link href="/shop"
+              className="flex-shrink-0 inline-flex items-center gap-2.5 text-[14px] font-bold text-navy-900 bg-gold-400 px-8 py-3.5 rounded-full hover:bg-gold-300 transition-colors self-start lg:self-auto"
+              style={{ boxShadow: '0 4px 0 #C4A800' }}>
+              Visit the Shop
+              <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
             </Link>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {printableForms.map((form, i) => (
-              <motion.div key={form.title} {...fade} transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="bg-white border border-stone-200/70 rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                  <span className="text-[10px] font-bold tracking-[0.08em] text-navy-800/25 bg-stone-50 border border-stone-100 rounded px-1.5 py-0.5 mb-3 inline-block">{form.format}</span>
-                  <h3 className="text-[14px] font-semibold text-navy-900 mb-2">{form.title}</h3>
-                  <p className="text-[13px] text-navy-800/45 leading-relaxed">{form.body}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {STUDY_GUIDES.map((g, i) => (
+              <motion.div key={g.id} {...up(i * 0.08)}
+                className="flex flex-col rounded-3xl overflow-hidden border"
+                style={{ borderColor: g.accent + '30', backgroundColor: g.accent + '0A' }}>
+                <div className="h-1.5 w-full" style={{ backgroundColor: g.accent }} />
+                <div className="flex flex-col flex-1 p-7">
+                  <div className="mb-5">
+                    <p className="text-[10px] font-bold tracking-[0.12em] uppercase mb-2" style={{ color: g.accent }}>{g.credential}</p>
+                    <h3 className="text-[20px] font-bold text-white leading-tight mb-3">{g.title}</h3>
+                    <p className="text-[13px] text-white/50 leading-relaxed">{g.description}</p>
+                  </div>
+                  <ul className="space-y-2.5 mb-7 flex-1">
+                    {g.benefits.map(b => (
+                      <li key={b} className="flex items-start gap-2.5 text-[12.5px] text-white/60">
+                        <svg className="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 16 16" fill="none">
+                          <circle cx="8" cy="8" r="7" fill={g.accent + '25'} />
+                          <path d="M5 8l2 2 4-4" stroke={g.accent} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/shop"
+                    className="inline-flex items-center justify-center gap-2 text-[13px] font-bold px-6 py-3 rounded-full transition-all duration-200 hover:opacity-90"
+                    style={{ backgroundColor: g.accent, color: '#fff', boxShadow: `0 3px 0 ${g.dark}` }}>
+                    Shop Now
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+                  </Link>
                 </div>
-                <button className="mt-5 text-[12px] font-semibold text-navy-600/50 hover:text-navy-900 transition-colors duration-150 flex items-center gap-2 self-start">
-                  Download <span className="w-3 h-px bg-current" />
-                </button>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ── 7. FREE ABA RESOURCE CENTER ──────────────────────────────────────── */}
+      <section className="bg-white py-20 lg:py-28 border-b border-stone-200/60" id="resources">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <motion.div {...up()} className="mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <div>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-[10px] font-bold tracking-[0.12em] uppercase px-2.5 py-1 rounded-full text-white bg-forest-500">FREE</span>
+                <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40">ABA Resource Center</p>
+              </div>
+              <h2 className="text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
+                Free tools to build your foundation.
+              </h2>
+              <p className="text-[15px] text-navy-800/50 leading-relaxed max-w-xl">
+                All resources below are completely free. Use them to study, practice, and prepare. For the full library, visit the Tools page.
+              </p>
+            </div>
+            <Link href="/tools"
+              className="flex-shrink-0 inline-flex items-center gap-2 text-[13px] font-semibold text-navy-900 border border-navy-900/20 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200 self-start lg:self-auto">
+              View All Free Resources
+              <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+            </Link>
+          </motion.div>
+
+          {/* A. Interactive Flashcards */}
+          <div className="mb-16" id="materials">
+            <div className="flex items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full text-forest-700 bg-forest-100">FREE</span>
+                <h3 className="text-[15px] font-bold text-navy-900">Interactive Learning — ABA Flashcards</h3>
+              </div>
+              <p className="text-[12px] text-navy-800/35 hidden sm:block">Click a card to flip</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
+              {flashcards.map((card, i) => (
+                <motion.div key={card.term} {...up(i * 0.04)}>
+                  <FlashCard section={card.section} term={card.term} definition={card.definition} />
+                </motion.div>
+              ))}
+            </div>
+            <Link href="/tools#rbt-tools"
+              className="inline-flex items-center gap-2 text-[12.5px] font-semibold text-forest-700 hover:text-forest-900 transition-colors">
+              See all flashcard decks on the Tools page <span className="w-3 h-px bg-current" />
+            </Link>
+          </div>
+
+          {/* B. ABA Terminology */}
+          <div className="mb-16" id="terminology">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full text-forest-700 bg-forest-100">FREE</span>
+              <h3 className="text-[15px] font-bold text-navy-900">ABA Terminology — Essential Concepts</h3>
+            </div>
+            <div className="max-w-3xl mb-4">
+              <Accordion items={terminologyItems} openFirst />
+            </div>
+            <Link href="/tools#rbt-tools"
+              className="inline-flex items-center gap-2 text-[12.5px] font-semibold text-forest-700 hover:text-forest-900 transition-colors">
+              Download full glossary on the Tools page <span className="w-3 h-px bg-current" />
+            </Link>
+          </div>
+
+          {/* C. Professional Conduct */}
+          <div className="mb-16" id="ethics">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full text-forest-700 bg-forest-100">FREE</span>
+              <h3 className="text-[15px] font-bold text-navy-900">Professional Conduct & Ethics</h3>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-4">
+              <div className="bg-navy-50 border border-navy-100 rounded-2xl p-7">
+                <h4 className="text-[14px] font-semibold text-navy-900 mb-4">Core RBT Ethical Responsibilities</h4>
+                <ul className="space-y-2.5">
+                  {[
+                    'Maintain confidentiality for all client information (HIPAA)',
+                    'Practice only within your scope — implement programs designed by the BCBA',
+                    'Report any concerns about client safety or welfare to your supervisor immediately',
+                    'Avoid dual relationships with clients and their families',
+                    'Complete RBT supervision requirements and document sessions accurately',
+                    'Use the least restrictive, most effective procedures',
+                    'Represent your credentials honestly',
+                  ].map(item => (
+                    <li key={item} className="flex items-start gap-2.5 text-[12.5px] text-navy-800/60">
+                      <Check color="#5BC4F8" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-[14px] font-semibold text-navy-900 mb-4">Ethics Scenarios — Exam Practice</h4>
+                <Accordion items={ethicsScenarios} />
+              </div>
+            </div>
+            <Link href="/tools#rbt-tools"
+              className="inline-flex items-center gap-2 text-[12.5px] font-semibold text-forest-700 hover:text-forest-900 transition-colors">
+              Download ethics quick-reference on the Tools page <span className="w-3 h-px bg-current" />
+            </Link>
+          </div>
+
+          {/* D. Career Development */}
+          <div className="mb-12" id="career">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full text-forest-700 bg-forest-100">FREE</span>
+              <h3 className="text-[15px] font-bold text-navy-900">Career Development Tools</h3>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
+              {careerTools.map((tool, i) => (
+                <motion.div key={tool.title} {...up(i * 0.05)}
+                  className="bg-stone-50 border border-stone-200/70 rounded-2xl p-6 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200">
+                  <h4 className="text-[13.5px] font-semibold text-navy-900 mb-2">{tool.title}</h4>
+                  <p className="text-[12px] text-navy-800/45 leading-relaxed mb-4">{tool.body}</p>
+                  {tool.title === 'ABA Center Startup Support' ? (
+                    <a href="mailto:info@light2minds.com"
+                      className="text-[11.5px] font-semibold text-sky-600 hover:text-sky-800 transition-colors flex items-center gap-1.5">
+                      Contact Us <span className="w-3 h-px bg-current" />
+                    </a>
+                  ) : (
+                    <Link href="/tools"
+                      className="text-[11.5px] font-semibold text-forest-700 hover:text-forest-900 transition-colors flex items-center gap-1.5">
+                      Get on Tools page <span className="w-3 h-px bg-current" />
+                    </Link>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Additional free resources row */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { label: 'Mock Exams', sub: '3 full-length RBT practice exams', href: '/tools#rbt-tools' },
+              { label: 'Printable Resources', sub: 'Visual schedules, data sheets, charts', href: '/tools' },
+              { label: 'Clinical Tools', sub: 'Session notes, graphing templates', href: '/tools#clinical-tools' },
+              { label: 'Downloadable Worksheets', sub: 'ABC sheets, token boards, and more', href: '/tools' },
+            ].map(item => (
+              <Link key={item.label} href={item.href}
+                className="group flex flex-col gap-2 p-4 rounded-2xl border border-stone-100 bg-stone-50 hover:border-forest-200 hover:bg-forest-50 transition-all duration-200">
+                <div className="flex items-center gap-2">
+                  <span className="text-[9px] font-bold tracking-[0.1em] uppercase text-forest-700 bg-forest-100 px-1.5 py-0.5 rounded-full">FREE</span>
+                </div>
+                <p className="text-[13px] font-semibold text-navy-900 group-hover:text-forest-800">{item.label}</p>
+                <p className="text-[11.5px] text-navy-800/45 leading-snug">{item.sub}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 8. WHY LIGHT2MINDS ───────────────────────────────────────────────── */}
+      <section className="bg-stone-50 py-20 lg:py-24 border-b border-stone-200/60">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <motion.div {...up()} className="mb-12 text-center max-w-2xl mx-auto">
+            <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-3">Why Light2Minds</p>
+            <h2 className="text-[clamp(1.7rem,3.5vw,2.3rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1]">
+              Built by clinicians. Designed for you.
+            </h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {WHY_ITEMS.map((item, i) => (
+              <motion.div key={item.title} {...up(i * 0.07)}
+                className="bg-white border border-stone-100 rounded-2xl p-6 text-center hover:shadow-md transition-all duration-200">
+                <div className="text-3xl mb-4">{item.icon}</div>
+                <h3 className="text-[13px] font-bold text-navy-900 mb-2 leading-snug">{item.title}</h3>
+                <p className="text-[12px] text-navy-800/45 leading-relaxed">{item.body}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 9. FINAL CTA ─────────────────────────────────────────────────────── */}
       <section className="bg-white py-20 border-t border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.65 }} className="bg-stone-50 border border-stone-200/60 rounded-3xl px-10 py-12 lg:px-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-            <div>
-              <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
-                Ready to pass your RBT exam?
+          <motion.div {...up()}
+            className="bg-navy-900 rounded-3xl px-8 py-14 lg:px-16 lg:py-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10">
+            <div className="max-w-xl">
+              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/30 mb-4">Take the Next Step</p>
+              <h2 className="text-[clamp(1.6rem,3.5vw,2.4rem)] font-bold text-white tracking-[-0.025em] leading-[1.1] mb-4">
+                Ready to Advance Your Behavioral Health Career?
               </h2>
-              <p className="text-[15px] text-navy-800/50 leading-relaxed max-w-lg">
-                Access all study materials, mock exams, flashcards, and career tools — free and available now. Start your preparation today.
+              <p className="text-[15px] text-white/50 leading-relaxed">
+                Whether you&apos;re preparing for your first exam or growing into a senior clinical role — Light2Minds is your dedicated partner at every stage.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-              <Link href="/tools"
-                className="inline-flex items-center justify-center gap-3 text-[13px] font-semibold text-navy-900 border border-navy-900/20 px-6 py-3 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200">
-                Browse All Resources
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 flex-shrink-0">
+              <Link href="/shop"
+                className="inline-flex items-center justify-center gap-2.5 text-[14px] font-bold text-navy-900 bg-gold-400 px-8 py-3.5 rounded-full hover:bg-gold-300 transition-colors"
+                style={{ boxShadow: '0 4px 0 #C4A800' }}>
+                Shop Study Guides
+                <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
               </Link>
-              <a href="mailto:info@light2minds.com"
-                className="inline-flex items-center justify-center gap-3 text-[13px] font-semibold text-navy-900 bg-gold-400 px-6 py-3 rounded-full hover:bg-gold-300 transition-colors duration-200">
-                ABA Startup Support
+              <a href="mailto:info@light2minds.com?subject=Book Mentorship Session"
+                className="inline-flex items-center justify-center gap-2 text-[13px] font-semibold text-white border border-white/20 px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors">
+                Book Mentorship
               </a>
             </div>
           </motion.div>
