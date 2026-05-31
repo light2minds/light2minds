@@ -16,7 +16,7 @@ const up = (delay = 0) => ({
 })
 
 // ── Types ──────────────────────────────────────────────────────────────────────
-type Storefront = 'families' | 'montessori' | 'professionals'
+type Storefront = 'families' | 'professionals'
 
 type Product = {
   id: string; name: string; brand: string; description: string
@@ -36,20 +36,7 @@ type Digital = {
 // ── Storefronts ────────────────────────────────────────────────────────────────
 const STOREFRONTS: { id: Storefront; en: string; es: string; color: string }[] = [
   { id: 'families',      en: 'For Families',      es: 'Para Familias',       color: '#5BC4F8' },
-  { id: 'montessori',    en: 'Learning & Play',   es: 'Aprendizaje y Juego', color: '#2EBB50' },
   { id: 'professionals', en: 'For Professionals', es: 'Para Profesionales',  color: '#C4A800' },
-]
-
-// ── Shop by Need ───────────────────────────────────────────────────────────────
-const NEEDS = [
-  { id: 'sensory',  en: 'Sensory',         es: 'Sensorial',      icon: 'sensory',  color: '#3FB5F5', bg: '#EFF9FF', sf: 'families' as Storefront, cat: 'Sensory' },
-  { id: 'comm',     en: 'Communication',   es: 'Comunicación',   icon: 'speech',   color: '#2EBB50', bg: '#EDFAF1', sf: 'families' as Storefront, cat: 'Communication' },
-  { id: 'behavior', en: 'Behavior',        es: 'Conducta',       icon: 'timer',    color: '#8B5CF6', bg: '#EDE9FE', sf: 'families' as Storefront, cat: 'Behavior' },
-  { id: 'motor',    en: 'Motor Skills',    es: 'Habilidades',    icon: 'hand',     color: '#F97316', bg: '#FFF7ED', sf: 'families' as Storefront, cat: 'Motor' },
-  { id: 'books',    en: 'Parent Reads',    es: 'Libros',         icon: 'book',     color: '#D97706', bg: '#FFFBEB', sf: 'families' as Storefront, cat: 'Books' },
-  { id: 'safety',   en: 'Safety & GPS',    es: 'Seguridad',      icon: 'shield',   color: '#EF4444', bg: '#FEF2F2', sf: 'families' as Storefront, cat: 'Safety & GPS' },
-  { id: 'apparel',  en: 'Sensory Apparel', es: 'Ropa Sensorial', icon: 'shirt',    color: '#EC4899', bg: '#FDF2F8', sf: 'families' as Storefront, cat: 'Apparel' },
-  { id: 'play',     en: 'Play & Learning', es: 'Juego',          icon: 'blocks',   color: '#2EBB50', bg: '#EDFAF1', sf: 'montessori' as Storefront, cat: 'All' },
 ]
 
 // ── Category visual bg ─────────────────────────────────────────────────────────
@@ -63,7 +50,6 @@ const CAT_BG: Record<string, string> = {
 
 const CATS: Record<Storefront, string[]> = {
   families:      ['All', 'Sensory', 'Communication', 'Behavior', 'Motor', 'Books', 'Safety & GPS', 'Apparel'],
-  montessori:    ['All', 'Montessori', 'Open-Ended Play', 'STEM', 'Arts & Music', 'Books'],
   professionals: ['All', 'Reference Books', 'Clinical Supplies', 'Career Tools', 'Data Sheets'],
 }
 
@@ -107,21 +93,6 @@ const PRODUCTS: Product[] = [
   { id: 'calm-wear-shirt', name: 'Compression Shirt', brand: 'Calm Wear', description: 'Proprioceptive compression shirt for everyday wear. Calming deep-pressure input under regular clothing — invisible sensory support at school and home.', price: '$35–50', storefront: 'families', category: 'Apparel', href: 'https://www.calmwear.com', accent: '#5BC4F8', ot: true },
   { id: 'smartknit-socks', name: 'SeamFree Socks', brand: 'SmartKnitKIDS', description: 'Completely seamless socks for children with tactile hypersensitivity. One of the most-requested items by families of sensory-sensitive children.', price: '$10–20', storefront: 'families', category: 'Apparel', href: 'https://www.amazon.com/s?k=SmartKnitKIDS+seamless+socks', accent: '#5BC4F8' },
   { id: 'tommy-adaptive', name: 'Tommy Adaptive Line', brand: 'Tommy Hilfiger', description: 'Adaptive clothing with magnetic closures, one-handed buttons, and sensory-friendly fabrics. Full line for kids and adults.', price: '$25–80', storefront: 'families', category: 'Apparel', href: 'https://www.amazon.com/s?k=Tommy+Hilfiger+Adaptive+kids', accent: '#5BC4F8' },
-  // LEARNING & PLAY
-  { id: 'magna-tiles', name: 'Magna-Tiles 32-Piece Starter Set', brand: 'Magna-Tiles', description: 'The original magnetic tile set. Open-ended building for ages 3–12. STEM, creativity, and spatial reasoning in one beloved toy.', price: '$60–120', storefront: 'montessori', category: 'Open-Ended Play', href: 'https://www.amazon.com/s?k=Magna-Tiles+32+piece+starter+set', accent: '#2EBB50', topPick: true },
-  { id: 'lovevery-kit', name: 'Lovevery Play Kit Subscription', brand: 'Lovevery', description: 'Stage-based developmental play kits delivered every 2–3 months from birth through age 4. Expert-designed by child development specialists.', price: '$80–120/box', storefront: 'montessori', category: 'Montessori', href: 'https://lovevery.com/products/the-play-kits', accent: '#2EBB50', topPick: true },
-  { id: 'grapat-loose-parts', name: 'Grapat Loose Parts Set', brand: 'Grapat', description: 'Premium Spanish wooden loose parts in natural dyes. Gold standard for open-ended Montessori play and sorting. Beloved worldwide.', price: '$30–80', storefront: 'montessori', category: 'Open-Ended Play', href: 'https://www.amazon.com/s?k=Grapat+loose+parts+wooden', accent: '#2EBB50' },
-  { id: 'grimms-rainbow', name: 'Rainbow Stacker', brand: "Grimm's", description: 'Iconic German wooden rainbow stacker — open-ended building, stacking, and imaginative play. Sustainably sourced linden wood, non-toxic dyes.', price: '$60–120', storefront: 'montessori', category: 'Open-Ended Play', href: 'https://www.amazon.com/s?k=Grimms+rainbow+stacker+wooden', accent: '#2EBB50' },
-  { id: 'object-permanence', name: 'Object Permanence Box', brand: 'Various / Etsy Makers', description: 'Classic Montessori infant material. A wooden ball drops into a box and reappears through a drawer — teaching object permanence at 8–12 months.', price: '$25–50', storefront: 'montessori', category: 'Montessori', href: 'https://www.amazon.com/s?k=Montessori+object+permanence+box+wooden', accent: '#2EBB50' },
-  { id: 'sandpaper-letters', name: 'Sandpaper Letters (Print)', brand: 'Various', description: 'Montessori sandpaper letter tiles — children trace each letter while saying its phonetic sound, linking tactile, auditory, and visual learning.', price: '$30–80', storefront: 'montessori', category: 'Montessori', href: 'https://www.amazon.com/s?k=Montessori+sandpaper+letters+print', accent: '#2EBB50' },
-  { id: 'pink-tower', name: 'Pink Tower', brand: 'Various', description: 'Ten wooden pink cubes graded in size. Foundational Montessori sensorial material developing discrimination of size, order, and concentration.', price: '$30–60', storefront: 'montessori', category: 'Montessori', href: 'https://www.amazon.com/s?k=Montessori+pink+tower+wooden', accent: '#2EBB50' },
-  { id: 'learning-tower', name: 'Learning Tower Kitchen Helper', brand: 'Little Partners', description: 'Adjustable toddler tower bringing children safely to counter height for practical life activities — cooking, washing, setting the table.', price: '$130–250', storefront: 'montessori', category: 'Montessori', href: 'https://www.amazon.com/s?k=learning+tower+kitchen+helper+toddler', accent: '#2EBB50' },
-  { id: 'cubetto', name: 'Cubetto Coding Robot (Screen-Free)', brand: 'Primo Toys', description: 'Award-winning screen-free coding toy for ages 3+. Children program a wooden robot by arranging physical blocks on a board.', price: '$200–300', storefront: 'montessori', category: 'STEM', href: 'https://www.primotoys.com', accent: '#2EBB50' },
-  { id: 'snap-circuits', name: 'Snap Circuits Jr. (100 projects)', brand: 'Elenco', description: 'Electronics kit for ages 8+ — build real working circuits with snap-together components. No soldering required. 20 years of awards.', price: '$30–80', storefront: 'montessori', category: 'STEM', href: 'https://www.amazon.com/s?k=Snap+Circuits+Jr+electronics+kit', accent: '#2EBB50' },
-  { id: 'national-geo-kits', name: 'National Geographic Science Kits', brand: 'National Geographic', description: 'Crystal growing, gemstone dig, volcano, and slime kits. High engagement, curriculum-aligned, great for reluctant learners.', price: '$20–50', storefront: 'montessori', category: 'STEM', href: 'https://www.amazon.com/s?k=National+Geographic+science+kit+kids', accent: '#2EBB50' },
-  { id: 'stockmar-crayons', name: 'Beeswax Block Crayons', brand: 'Stockmar', description: 'Premium German beeswax crayons beloved by educators. Rich pigment, perfect grip for small hands, completely non-toxic.', price: '$25–40', storefront: 'montessori', category: 'Arts & Music', href: 'https://www.amazon.com/s?k=Stockmar+beeswax+block+crayons', accent: '#2EBB50' },
-  { id: 'kala-ukulele', name: 'Ukulele Starter Bundle', brand: 'Kala', description: 'Beginner ukulele for children from age 5. Includes online lessons, tuner, and carry bag. Builds musical confidence from the first day.', price: '$50–80', storefront: 'montessori', category: 'Arts & Music', href: 'https://www.amazon.com/s?k=Kala+ukulele+kids+starter+bundle', accent: '#2EBB50' },
-  { id: 'mo-willems-box', name: 'Mo Willems Collection (8 books)', brand: 'Mo Willems', description: 'The beloved Elephant & Piggie and Pigeon series — perfect for emerging readers. Builds social-emotional skills through humor and relatable characters.', price: '$25–40', storefront: 'montessori', category: 'Books', href: 'https://bookshop.org/search?keywords=Mo+Willems+Elephant+Piggie', accent: '#2EBB50' },
   // PROFESSIONALS
   { id: 'cooper-aba-textbook', name: 'Applied Behavior Analysis (3rd Ed.)', brand: 'Cooper, Heron & Heward', description: 'The definitive ABA textbook — used in every BCBA training program. Essential for every ABA professional\'s shelf.', price: '$130–180', storefront: 'professionals', category: 'Reference Books', href: 'https://www.amazon.com/s?k=Cooper+Heron+Heward+Applied+Behavior+Analysis+3rd', accent: '#C4A800', topPick: true, bcba: true },
   { id: 'tt-professional', name: 'Time Timer Plus 20-min', brand: 'Time Timer', description: 'Professional-grade Time Timer for clinical use — 20-minute range, durable housing, clean face ideal for session work.', price: '$40–60', storefront: 'professionals', category: 'Clinical Supplies', href: 'https://www.timetimer.com', accent: '#C4A800' },
@@ -154,22 +125,6 @@ const DIGITALS: Digital[] = [
   { id: 'dp-reinforcer', name: 'Preference Assessment & Reinforcer Menu', description: 'BCBA-designed preference assessment forms + reinforcer menu templates for home and clinic use.', price: '$12', pages: '10 forms' },
   { id: 'dp-full-bundle', name: 'Full Digital Family Bundle', description: 'Every printable in the digital library — all 7 products at one bundled price. Best value for families who want it all.', price: '$79' },
 ]
-
-// ── Icon helpers ─────────────────────────────────────────────────────────────────
-function NeedIcon({ type, size = 22, color }: { type: string; size?: number; color: string }) {
-  const s = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: color, strokeWidth: 1.8, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const }
-  switch (type) {
-    case 'sensory':  return <svg {...s}><path d="M12 2a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/><path d="M8 12a4 4 0 0 0 8 0"/><path d="M12 16v4"/><path d="M9 20h6"/></svg>
-    case 'speech':   return <svg {...s}><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="13" y2="14"/></svg>
-    case 'timer':    return <svg {...s}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    case 'hand':     return <svg {...s}><path d="M18 11V6a2 2 0 0 0-4 0"/><path d="M14 10V4a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
-    case 'book':     return <svg {...s}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-    case 'shield':   return <svg {...s}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-    case 'shirt':    return <svg {...s}><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
-    case 'blocks':   return <svg {...s}><rect x="2" y="3" width="8" height="8" rx="1"/><rect x="14" y="3" width="8" height="8" rx="1"/><rect x="2" y="13" width="8" height="8" rx="1"/><rect x="14" y="13" width="8" height="8" rx="1"/></svg>
-    default:         return <svg {...s}><circle cx="12" cy="12" r="10"/></svg>
-  }
-}
 
 function CatIcon({ cat, size = 38 }: { cat: string; size?: number }) {
   const s = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const }
@@ -205,7 +160,6 @@ export default function ShopPage() {
   const activeSF = STOREFRONTS.find(s => s.id === storefront)!
 
   const handleStorefront = (sf: Storefront) => { setStorefront(sf); setCategory('All'); setSearch('') }
-  const handleNeed = (n: typeof NEEDS[0]) => { setStorefront(n.sf); setCategory(n.cat); setSearch(''); document.getElementById('product-grid')?.scrollIntoView({ behavior: 'smooth' }) }
 
   const filtered = useMemo(() => {
     let pool = PRODUCTS.filter(p => p.storefront === storefront)
@@ -310,41 +264,6 @@ export default function ShopPage() {
                 </div>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SHOP BY NEED ──────────────────────────────────────────────────────── */}
-      <section className="bg-white py-12 lg:py-16 border-b border-stone-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...up()} className="mb-7">
-            <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-1">
-              {tx('Shop by Need', 'Comprar por Necesidad')}
-            </p>
-            <h2 className="text-[clamp(1.3rem,2.5vw,1.7rem)] font-bold text-navy-900 tracking-[-0.02em]">
-              {tx("What does your child need most right now?", "¿Qué necesita tu hijo más ahora?")}
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-            {NEEDS.map((n, i) => (
-              <motion.button
-                key={n.id}
-                {...up(i * 0.04)}
-                onClick={() => handleNeed(n)}
-                className="group flex flex-col items-center gap-2.5 p-4 rounded-2xl border border-stone-100 bg-white hover:border-transparent hover:shadow-md transition-all duration-200 text-center"
-                style={{ '--hover-bg': n.bg } as React.CSSProperties}
-                onMouseEnter={e => (e.currentTarget.style.backgroundColor = n.bg)}
-                onMouseLeave={e => (e.currentTarget.style.backgroundColor = '')}
-              >
-                <span className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: n.bg }}>
-                  <NeedIcon type={n.icon} size={20} color={n.color} />
-                </span>
-                <span className="text-[11.5px] font-semibold text-navy-800/70 leading-tight group-hover:text-navy-900">
-                  {lang === 'es' ? n.es : n.en}
-                </span>
-              </motion.button>
-            ))}
           </div>
         </div>
       </section>
