@@ -233,11 +233,11 @@ const STUDY_GUIDES = [
 ]
 
 const WHY_ITEMS = [
-  { title: 'Created by a Board Certified Behavior Analyst', body: 'All content is developed and reviewed by a practicing BCBA with direct clinical and supervisory experience.' },
-  { title: 'Evidence-Based ABA Practices', body: 'Every resource is grounded in the science of applied behavior analysis and aligned with BACB standards and ethics.' },
-  { title: 'Resources for Every Career Stage', body: 'From your first day as an aspiring RBT to seasoned BCBAs — we support professionals at every step of the journey.' },
-  { title: 'Practical, Real-World Mentorship', body: 'Our mentorship and coaching sessions focus on what actually happens in the clinic — not just what\'s in the textbook.' },
-  { title: 'Clinically Accurate & Exam-Ready', body: 'Study materials are written to match the exact language and expectations of the BACB, so you know you\'re preparing with the right content.' },
+  { title: 'Created by a Board Certified Behavior Analyst', body: 'All content is developed and reviewed by a practicing BCBA with direct clinical and supervisory experience.', accent: '#5BC4F8' },
+  { title: 'Evidence-Based ABA Practices', body: 'Every resource is grounded in the science of applied behavior analysis and aligned with BACB standards and ethics.', accent: '#2EBB50' },
+  { title: 'Resources for Every Career Stage', body: 'From your first day as an aspiring RBT to seasoned BCBAs — we support professionals at every step of the journey.', accent: '#8B5CF6' },
+  { title: 'Practical, Real-World Mentorship', body: 'Our mentorship and coaching sessions focus on what actually happens in the clinic — not just what\'s in the textbook.', accent: '#C4A800' },
+  { title: 'Clinically Accurate & Exam-Ready', body: 'Study materials are written to match the exact language and expectations of the BACB, so you know you\'re preparing with the right content.', accent: '#5BC4F8' },
 ]
 
 // ── Check icon ─────────────────────────────────────────────────────────────────
@@ -709,28 +709,48 @@ export default function ProfessionalsPage() {
       </section>
 
       {/* ── 8. WHY LIGHT2MINDS ───────────────────────────────────────────────── */}
-      <section className="bg-stone-50 py-20 lg:py-24 border-b border-stone-200/60">
+      <section className="bg-stone-50 py-20 lg:py-28 border-b border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...up()} className="mb-12 text-center max-w-2xl mx-auto">
-            <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-3">Why Light2Minds</p>
-            <h2 className="text-[clamp(1.7rem,3.5vw,2.3rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1]">
-              Built by clinicians. Designed for you.
-            </h2>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {WHY_ITEMS.map((item, i) => (
-              <motion.div key={item.title} {...up(i * 0.07)}
-                className="bg-white border border-stone-100 rounded-2xl p-6 hover:shadow-md transition-all duration-200 flex flex-col gap-4">
-                <svg className="w-5 h-5 text-navy-900/25 flex-shrink-0" viewBox="0 0 20 20" fill="none">
-                  <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.4" />
-                  <path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <div>
-                  <h3 className="text-[13px] font-bold text-navy-900 mb-2 leading-snug">{item.title}</h3>
-                  <p className="text-[12px] text-navy-800/45 leading-relaxed">{item.body}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-16 lg:gap-24 items-start">
+
+            {/* Left — sticky headline block */}
+            <motion.div {...up()} className="lg:sticky lg:top-32">
+              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-4">Why Light2Minds</p>
+              <h2 className="text-[clamp(1.9rem,3.5vw,2.6rem)] font-bold text-navy-900 tracking-[-0.03em] leading-[1.08] mb-5">
+                Built by clinicians.<br />Designed for you.
+              </h2>
+              <p className="text-[14px] text-navy-800/45 leading-relaxed mb-8 max-w-xs">
+                Every resource, tool, and mentorship session is grounded in evidence-based practice — created by someone who has worked in the clinic.
+              </p>
+              <a href="mailto:info@light2minds.com?subject=Learn More"
+                className="inline-flex items-center gap-2.5 text-[13px] font-bold text-navy-900 bg-gold-400 px-6 py-3 rounded-full hover:bg-gold-300 transition-colors duration-200"
+                style={{ boxShadow: '0 3px 0 #C4A800' }}>
+                Get in Touch
+                <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+              </a>
+            </motion.div>
+
+            {/* Right — numbered editorial list */}
+            <div>
+              {WHY_ITEMS.map((item, i) => (
+                <motion.div key={item.title} {...up(i * 0.08)}
+                  className="flex gap-6 py-8 border-b border-stone-200/60 last:border-0 last:pb-0 group">
+                  <div className="flex-shrink-0 pt-0.5">
+                    <span className="block text-[11px] font-bold tracking-[0.1em] tabular-nums" style={{ color: item.accent }}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start gap-3 mb-2">
+                      <div className="w-0.5 h-full rounded-full flex-shrink-0 self-stretch mt-1" style={{ backgroundColor: item.accent + '40' }} />
+                      <h3 className="text-[15px] font-bold text-navy-900 leading-snug">{item.title}</h3>
+                    </div>
+                    <p className="text-[13.5px] text-navy-800/50 leading-relaxed pl-3.5">{item.body}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
           </div>
         </div>
       </section>
