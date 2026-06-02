@@ -121,14 +121,6 @@ const printableForms = [
   { title: 'Interval Recording Data Sheet', body: 'Whole-interval and partial-interval recording sheets for structured observation periods.', format: 'PDF' },
 ]
 
-// ── New section data ────────────────────────────────────────────────────────────
-const PATHS = [
-  { id: 'aspiring-rbt', label: 'Aspiring RBT', sub: 'Starting your ABA career', icon: '🎯', color: '#5BC4F8', bg: '#EFF9FF', href: '#become-rbt', cta: 'See RBT Roadmap' },
-  { id: 'current-rbt', label: 'Current RBT', sub: 'Growing your skills & advancing', icon: '📈', color: '#2EBB50', bg: '#EDFAF1', href: '#mentorship', cta: 'Explore Mentorship' },
-  { id: 'future-bcba', label: 'Future BCaBA / BCBA', sub: 'Preparing for supervision & exam', icon: '🎓', color: '#8B5CF6', bg: '#EDE9FE', href: '#become-bcba', cta: 'See BCBA Roadmap' },
-  { id: 'practicing', label: 'Practicing BCaBA / BCBA', sub: 'Clinical growth & leadership', icon: '⭐', color: '#C4A800', bg: '#FFFCE8', href: '#mentorship', cta: 'Career Coaching' },
-]
-
 const RBT_STEPS = [
   { num: '01', title: 'Eligibility Requirements', body: 'You must be at least 18 years old, hold a high school diploma or equivalent, and pass a criminal background check. No prior ABA experience is required to apply.' },
   { num: '02', title: '40-Hour Training', body: 'Complete 40 hours of training covering the RBT Task List (2nd Ed.) — including measurement, skill acquisition, behavior reduction, documentation, and professional conduct.' },
@@ -241,11 +233,11 @@ const STUDY_GUIDES = [
 ]
 
 const WHY_ITEMS = [
-  { icon: '🎓', title: 'Created by a Board Certified Behavior Analyst', body: 'All content is developed and reviewed by a practicing BCBA with direct clinical and supervisory experience.' },
-  { icon: '🔬', title: 'Evidence-Based ABA Practices', body: 'Every resource is grounded in the science of applied behavior analysis and aligned with BACB standards and ethics.' },
-  { icon: '🛤️', title: 'Resources for Every Career Stage', body: 'From your first day as an aspiring RBT to seasoned BCBAs — we support professionals at every step of the journey.' },
-  { icon: '🤝', title: 'Practical, Real-World Mentorship', body: 'Our mentorship and coaching sessions focus on what actually happens in the clinic — not just what\'s in the textbook.' },
-  { icon: '📋', title: 'Clinically Accurate & Exam-Ready', body: 'Study materials are written to match the exact language and expectations of the BACB, so you know you\'re preparing with the right content.' },
+  { title: 'Created by a Board Certified Behavior Analyst', body: 'All content is developed and reviewed by a practicing BCBA with direct clinical and supervisory experience.' },
+  { title: 'Evidence-Based ABA Practices', body: 'Every resource is grounded in the science of applied behavior analysis and aligned with BACB standards and ethics.' },
+  { title: 'Resources for Every Career Stage', body: 'From your first day as an aspiring RBT to seasoned BCBAs — we support professionals at every step of the journey.' },
+  { title: 'Practical, Real-World Mentorship', body: 'Our mentorship and coaching sessions focus on what actually happens in the clinic — not just what\'s in the textbook.' },
+  { title: 'Clinically Accurate & Exam-Ready', body: 'Study materials are written to match the exact language and expectations of the BACB, so you know you\'re preparing with the right content.' },
 ]
 
 // ── Check icon ─────────────────────────────────────────────────────────────────
@@ -278,7 +270,7 @@ export default function ProfessionalsPage() {
             <p className="text-[clamp(1rem,1.4vw,1.1rem)] font-light text-navy-800/55 leading-relaxed max-w-2xl mb-8">
               Resources, mentorship, exam preparation, and professional tools for aspiring and practicing RBTs, BCaBAs, and BCBAs.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 mb-7">
               <Link href="/shop"
                 className="inline-flex items-center gap-2.5 text-[14px] font-bold text-navy-900 bg-gold-400 px-7 py-3.5 rounded-full hover:bg-gold-300 transition-colors duration-200"
                 style={{ boxShadow: '0 4px 0 #C4A800' }}>
@@ -290,36 +282,22 @@ export default function ProfessionalsPage() {
                 Book Mentorship
               </a>
             </div>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              <span className="text-[11px] font-semibold tracking-[0.08em] uppercase text-navy-700/35">Jump to</span>
+              {[
+                { label: 'RBT Roadmap', href: '#become-rbt' },
+                { label: 'BCBA Pathway', href: '#become-bcba' },
+                { label: 'Mentorship & Coaching', href: '#mentorship' },
+                { label: 'Study Guides', href: '#study-guides' },
+                { label: 'Free Resources', href: '#resources' },
+              ].map(link => (
+                <a key={link.href} href={link.href}
+                  className="text-[12px] font-semibold text-navy-800/50 hover:text-navy-900 underline underline-offset-4 decoration-navy-900/20 hover:decoration-navy-900/50 transition-all duration-150">
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* ── 2. CHOOSE YOUR PATH ───────────────────────────────────────────────── */}
-      <section className="bg-white py-16 lg:py-20 border-b border-stone-200/60">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...up()} className="mb-10">
-            <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-2">Where Are You in Your Journey?</p>
-            <h2 className="text-[clamp(1.5rem,3vw,2.1rem)] font-bold text-navy-900 tracking-[-0.025em]">Choose your path.</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {PATHS.map((p, i) => (
-              <motion.a key={p.id} href={p.href} {...up(i * 0.07)}
-                className="group flex flex-col gap-4 p-6 rounded-2xl border border-stone-100 bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
-                style={{ '--hbg': p.bg } as React.CSSProperties}
-                onMouseEnter={e => (e.currentTarget.style.backgroundColor = p.bg)}
-                onMouseLeave={e => (e.currentTarget.style.backgroundColor = '')}>
-                <span className="text-3xl">{p.icon}</span>
-                <div>
-                  <h3 className="text-[15px] font-bold text-navy-900 mb-1">{p.label}</h3>
-                  <p className="text-[12.5px] text-navy-800/50 leading-snug">{p.sub}</p>
-                </div>
-                <span className="mt-auto inline-flex items-center gap-1.5 text-[12px] font-semibold transition-colors duration-150" style={{ color: p.color }}>
-                  {p.cta}
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
-                </span>
-              </motion.a>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -742,10 +720,15 @@ export default function ProfessionalsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {WHY_ITEMS.map((item, i) => (
               <motion.div key={item.title} {...up(i * 0.07)}
-                className="bg-white border border-stone-100 rounded-2xl p-6 text-center hover:shadow-md transition-all duration-200">
-                <div className="text-3xl mb-4">{item.icon}</div>
-                <h3 className="text-[13px] font-bold text-navy-900 mb-2 leading-snug">{item.title}</h3>
-                <p className="text-[12px] text-navy-800/45 leading-relaxed">{item.body}</p>
+                className="bg-white border border-stone-100 rounded-2xl p-6 hover:shadow-md transition-all duration-200 flex flex-col gap-4">
+                <svg className="w-5 h-5 text-navy-900/25 flex-shrink-0" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.4" />
+                  <path d="M6.5 10l2.5 2.5 4.5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <div>
+                  <h3 className="text-[13px] font-bold text-navy-900 mb-2 leading-snug">{item.title}</h3>
+                  <p className="text-[12px] text-navy-800/45 leading-relaxed">{item.body}</p>
+                </div>
               </motion.div>
             ))}
           </div>
