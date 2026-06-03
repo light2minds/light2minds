@@ -314,15 +314,6 @@ export default function ParentsPage() {
         </div>
       </section>
 
-      {/* ── Disclaimer ── */}
-      <div className="bg-white border-b border-stone-200/60 py-4">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <p className="text-[12px] text-navy-800/40 leading-relaxed max-w-4xl">
-            <span className="font-semibold text-navy-800/55">Educational content only:</span>{' '}
-            This page provides general guidance and is not a substitute for professional medical evaluation, diagnosis, or clinical supervision.
-          </p>
-        </div>
-      </div>
 
       {/* ── Understanding Diagnosis ── */}
       <section className="bg-white py-16 lg:py-24" id="diagnosis">
