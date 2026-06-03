@@ -23,9 +23,9 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="bg-white py-24 lg:py-36 border-t border-stone-200/40" id="contact">
+    <section className="bg-white py-16 lg:py-24 border-t border-stone-200/40" id="contact">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16">
 
           {/* Left — info */}
           <motion.div {...fade()}>
@@ -41,7 +41,7 @@ export default function ContactSection() {
                 : <>Let&apos;s talk.<br />We&apos;re here to help.</>
               }
             </h2>
-            <p className="text-[15px] text-navy-800/50 leading-relaxed mb-10 max-w-md">
+            <p className="text-[15px] text-navy-800/50 leading-relaxed mb-6 max-w-md">
               {lang === 'es'
                 ? 'Ya sea que seas una familia buscando orientación, un profesional con preguntas, o alguien interesado en colaborar — nos encantaría saber de ti.'
                 : "Whether you're a family seeking guidance, a professional with questions, or someone interested in collaborating — we'd love to hear from you."}

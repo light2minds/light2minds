@@ -16,10 +16,10 @@ const pillars = [
     label: 'Standards',
   },
   {
-    title: 'Florida-Based & Focused',
-    body: 'Built for Florida families and providers, with state-specific regulatory, educational, and Medicaid considerations where relevant.',
+    title: 'Bilingual & Inclusive',
+    body: 'Available in English and Spanish — designed for Florida\'s diverse families and professionals, with state-specific regulatory, educational, and Medicaid guidance where relevant.',
     color: '#FFE030',
-    label: 'Florida',
+    label: 'EN · ES',
   },
   {
     title: 'Free & Accessible Tools',

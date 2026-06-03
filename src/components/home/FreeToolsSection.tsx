@@ -29,7 +29,7 @@ const tools = [
     ),
   },
   {
-    color: '#2EBB50',
+    color: '#5BC4F8',
     audience: { en: 'For Families', es: 'Para Familias' },
     title: { en: 'Autism & ADHD Diagnosis Glossary', es: 'Glosario de Diagnóstico de Autismo y TDAH' },
     desc: {
@@ -58,6 +58,21 @@ const tools = [
       </svg>
     ),
   },
+  {
+    color: '#FFE030',
+    audience: { en: 'For Professionals', es: 'Para Profesionales' },
+    title: { en: 'ABC Data Collection Sheet', es: 'Hoja de Recolección de Datos ABC' },
+    desc: {
+      en: 'Track antecedents, behaviors, and consequences with precision. Printable form for daily clinical documentation and FBA support.',
+      es: 'Rastrea antecedentes, comportamientos y consecuencias. Formulario imprimible para documentación clínica diaria y apoyo de FBA.',
+    },
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <path d="M3 9h18M9 21V9M3 15h6" />
+      </svg>
+    ),
+  },
 ]
 
 export default function FreeToolsSection() {
@@ -73,10 +88,10 @@ export default function FreeToolsSection() {
   }
 
   return (
-    <section className="bg-white py-24 lg:py-32 border-t border-stone-200/40">
+    <section className="bg-white py-16 lg:py-24 border-t border-stone-200/40">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-        <motion.div {...fade()} className="mb-12">
+        <motion.div {...fade()} className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <span className="w-5 h-px flex-shrink-0" style={{ backgroundColor: '#2EBB50' }} />
             <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-navy-700/50">
@@ -99,7 +114,7 @@ export default function FreeToolsSection() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
           {tools.map((tool, i) => (
             <motion.div key={i} {...fade(i * 0.08)}>
               <Link
@@ -133,7 +148,7 @@ export default function FreeToolsSection() {
                   className="inline-flex items-center gap-2 text-[12.5px] font-bold transition-opacity opacity-70 group-hover:opacity-100"
                   style={{ color: tool.color === '#FFE030' ? '#B8900E' : tool.color }}
                 >
-                  {lang === 'es' ? 'Descargar gratis' : 'Download free'}
+                  {lang === 'es' ? 'Ver recurso' : 'View resource'}
                   <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M7 1v8M4 6l3 3 3-3M2 11h10" />
                   </svg>
@@ -152,12 +167,12 @@ export default function FreeToolsSection() {
           <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
             <div className="flex-1">
               <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-navy-700/40 mb-1.5">
-                {lang === 'es' ? 'Sin spam. Cancela cuando quieras.' : 'No spam. Unsubscribe anytime.'}
+                {lang === 'es' ? 'Sin spam. Cancela cuando quieras.' : 'Free resources for families & professionals · No spam'}
               </p>
               <h3 className="text-[1.2rem] font-bold text-navy-900 tracking-[-0.02em]">
                 {lang === 'es'
                   ? 'Recibe nuevos recursos en tu bandeja de entrada.'
-                  : 'Get new resources delivered to your inbox.'}
+                  : 'New resources, delivered when they launch.'}
               </h3>
             </div>
 
@@ -183,7 +198,7 @@ export default function FreeToolsSection() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder={lang === 'es' ? 'tu@correo.com' : 'you@example.com'}
+                    placeholder={lang === 'es' ? 'tu@correo.com' : 'Enter your email address'}
                     className="flex-1 min-w-0 px-4 py-3 rounded-xl border border-stone-200 text-[14px] text-navy-900 placeholder-navy-800/25 outline-none focus:border-sky-400 transition-colors duration-150 bg-white"
                   />
                   <button

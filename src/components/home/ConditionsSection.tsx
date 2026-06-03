@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 const conditions = [
@@ -7,31 +8,37 @@ const conditions = [
     title: 'Autism Spectrum Disorder',
     body: 'Diagnosis, ABA, social skills, sensory support, and transition planning.',
     color: '#5BC4F8',
+    href: '/parents',
   },
   {
     title: 'ADHD',
     body: 'Attention, executive function, school support, and behavior management strategies.',
     color: '#2EBB50',
+    href: '/parents',
   },
   {
     title: 'Developmental Delays',
     body: 'Early intervention, milestone tracking, therapy options, and family support.',
     color: '#FFE030',
+    href: '/parents',
   },
   {
     title: 'Language Delays',
     body: 'Communication strategies, AAC tools, speech therapy collaboration, and home practice.',
     color: '#5BC4F8',
+    href: '/tools',
   },
   {
     title: 'Sensory Difficulties',
     body: 'Sensory processing basics, calming tools, sensory diets, and environmental modifications.',
     color: '#2EBB50',
+    href: '/tools',
   },
   {
     title: 'Behavioral Challenges',
     body: 'Understanding behavior functions, proactive strategies, and working with a behavior analyst.',
     color: '#FFE030',
+    href: '/parents',
   },
 ]
 
@@ -48,9 +55,17 @@ function ConditionRow({ c, i }: { c: (typeof conditions)[0]; i: number }) {
         className="w-[3px] rounded-full flex-shrink-0 self-stretch mt-[3px]"
         style={{ backgroundColor: c.color }}
       />
-      <div className="min-w-0">
+      <div className="min-w-0 flex-1">
         <h3 className="text-[14px] font-semibold text-navy-900 mb-1.5 leading-snug">{c.title}</h3>
-        <p className="text-[13px] text-navy-800/50 leading-relaxed">{c.body}</p>
+        <p className="text-[13px] text-navy-800/50 leading-relaxed mb-2.5">{c.body}</p>
+        <Link
+          href={c.href}
+          className="inline-flex items-center gap-1.5 text-[11.5px] font-semibold transition-opacity duration-150 opacity-60 hover:opacity-100"
+          style={{ color: c.color === '#FFE030' ? '#B8900E' : c.color }}
+        >
+          Explore resources
+          <span className="w-3 h-px bg-current" />
+        </Link>
       </div>
     </motion.div>
   )
@@ -74,7 +89,7 @@ export default function ConditionsSection() {
               Supporting children across the spectrum.
             </h2>
             <p className="text-[15px] text-navy-800/45 leading-relaxed max-w-sm sm:text-right">
-              Every child&apos;s journey is unique. We cover the full range of neurodevelopmental and behavioral conditions.
+              Most children we support present with more than one of these conditions — our resources reflect that reality.
             </p>
           </div>
         </motion.div>

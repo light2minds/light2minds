@@ -1,5 +1,9 @@
 import Hero from '@/components/home/Hero'
+import MissionSection from '@/components/home/MissionSection'
+import StatsStrip from '@/components/home/StatsStrip'
 import GoalsSection from '@/components/home/GoalsSection'
+import FamilyJourney from '@/components/home/FamilyJourney'
+import ProfessionalEcosystem from '@/components/home/ProfessionalEcosystem'
 import FreeToolsSection from '@/components/home/FreeToolsSection'
 import ContactSection from '@/components/home/ContactSection'
 
@@ -13,7 +17,11 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <MissionSection />
+      <StatsStrip />
       <GoalsSection />
+      <FamilyJourney />
+      <ProfessionalEcosystem />
       <FreeToolsSection />
       <ContactSection />
     </>
