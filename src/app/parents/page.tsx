@@ -379,12 +379,12 @@ export default function ParentsPage() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <motion.div {...fade} transition={{ duration: 0.65 }} className="mb-12 max-w-2xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">After the Diagnosis</p>
+            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">What&apos;s Next</p>
             <h2 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
-              A clear roadmap for the first 90 days
+              What to expect after diagnosis.
             </h2>
             <p className="text-[15px] text-navy-800/50 leading-relaxed">
-              The period after a diagnosis is overwhelming. Here&apos;s exactly what to do — and in what order — so nothing important falls through the cracks.
+              The period after a diagnosis is overwhelming. Here&apos;s a roadmap of what typically comes next, and how to navigate it.
             </p>
           </motion.div>
 
