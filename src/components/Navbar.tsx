@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLang, type Lang } from '@/lib/language'
+import { useCart } from '@/context/CartContext'
 
 const SHOP_SHADOW_GREEN = '0 4px 0 #1E8E3E, 0 6px 14px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.25)'
 
@@ -30,6 +31,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen]   = useState(false)
   const pathname                  = usePathname()
   const { lang, setLang }         = useLang()
+  const { itemCount, openCart }   = useCart()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -95,8 +97,29 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* ── Desktop right: Shop → Language ── */}
+          {/* ── Desktop right: Cart → Shop → Language ── */}
           <div className="hidden lg:flex items-center gap-3">
+            {/* Cart icon */}
+            <button
+              onClick={openCart}
+              className="relative w-10 h-10 flex items-center justify-center rounded-xl transition-colors hover:bg-stone-100"
+              aria-label={`Open cart${itemCount > 0 ? ` (${itemCount} items)` : ''}`}
+            >
+              <svg className="w-5 h-5 text-navy-900/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+              </svg>
+              {itemCount > 0 && (
+                <span
+                  className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold text-white"
+                  style={{ backgroundColor: '#5BC4F8' }}
+                >
+                  {itemCount}
+                </span>
+              )}
+            </button>
+
             <Link
               href="/shop"
               className="inline-flex items-center text-[13.5px] font-bold px-6 py-3 rounded-xl transition-all duration-150 hover:translate-y-[2px] active:translate-y-[4px]"
