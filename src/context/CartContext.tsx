@@ -1,76 +1,107 @@
 'use client'
 
-import { createContext, useContext, useReducer, ReactNode } from 'react'
+import {
+  createContext, useContext, useEffect, useState, useCallback, ReactNode
+} from 'react'
+import {
+  ShopifyCart, CartLine,
+  cartCreate, cartLinesAdd, cartLinesRemove, cartLinesUpdate, getCart
+} from '@/lib/shopify'
 
-export type CartItem = {
-  id: string
-  name: string
-  price: number
-  quantity: number
-  tag?: string
-  tier?: string
-}
-
-type CartState = { items: CartItem[]; isOpen: boolean }
-
-type CartAction =
-  | { type: 'ADD_ITEM'; item: CartItem }
-  | { type: 'REMOVE_ITEM'; id: string }
-  | { type: 'UPDATE_QTY'; id: string; qty: number }
-  | { type: 'OPEN_CART' }
-  | { type: 'CLOSE_CART' }
-  | { type: 'CLEAR_CART' }
-
-function reducer(state: CartState, action: CartAction): CartState {
-  switch (action.type) {
-    case 'ADD_ITEM': {
-      const idx = state.items.findIndex(i => i.id === action.item.id)
-      const items = idx >= 0
-        ? state.items.map((i, j) => j === idx ? { ...i, quantity: i.quantity + 1 } : i)
-        : [...state.items, { ...action.item, quantity: 1 }]
-      return { ...state, items, isOpen: true }
-    }
-    case 'REMOVE_ITEM':
-      return { ...state, items: state.items.filter(i => i.id !== action.id) }
-    case 'UPDATE_QTY':
-      if (action.qty < 1) return { ...state, items: state.items.filter(i => i.id !== action.id) }
-      return { ...state, items: state.items.map(i => i.id === action.id ? { ...i, quantity: action.qty } : i) }
-    case 'OPEN_CART': return { ...state, isOpen: true }
-    case 'CLOSE_CART': return { ...state, isOpen: false }
-    case 'CLEAR_CART': return { items: [], isOpen: false }
-    default: return state
-  }
-}
+const CART_STORAGE_KEY = 'l2m_cart_id'
 
 type CartContextValue = {
-  items: CartItem[]
+  cart: ShopifyCart | null
+  lines: CartLine[]
   isOpen: boolean
-  addItem: (item: Omit<CartItem, 'quantity'>) => void
-  removeItem: (id: string) => void
-  updateQty: (id: string, qty: number) => void
+  isLoading: boolean
+  itemCount: number
+  subtotal: string
+  currencyCode: string
   openCart: () => void
   closeCart: () => void
-  clearCart: () => void
-  subtotal: number
-  itemCount: number
+  addItem: (variantId: string, quantity?: number) => Promise<void>
+  removeItem: (lineId: string) => Promise<void>
+  updateQty: (lineId: string, quantity: number) => Promise<void>
+  goToCheckout: () => void
 }
 
 const CartContext = createContext<CartContextValue | null>(null)
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(reducer, { items: [], isOpen: false })
-  const subtotal = state.items.reduce((s, i) => s + i.price * i.quantity, 0)
-  const itemCount = state.items.reduce((s, i) => s + i.quantity, 0)
+  const [cart,      setCart]      = useState<ShopifyCart | null>(null)
+  const [isOpen,    setIsOpen]    = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
+  // Restore cart from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem(CART_STORAGE_KEY)
+    if (!stored) return
+    getCart(stored).then(c => {
+      if (c) setCart(c)
+      else localStorage.removeItem(CART_STORAGE_KEY)
+    })
+  }, [])
+
+  const persist = (c: ShopifyCart) => {
+    setCart(c)
+    localStorage.setItem(CART_STORAGE_KEY, c.id)
+  }
+
+  const addItem = useCallback(async (variantId: string, quantity = 1) => {
+    setIsLoading(true)
+    try {
+      const stored = localStorage.getItem(CART_STORAGE_KEY)
+      const updated = stored
+        ? await cartLinesAdd(stored, [{ merchandiseId: variantId, quantity }])
+        : await cartCreate([{ merchandiseId: variantId, quantity }])
+      persist(updated)
+      setIsOpen(true)
+    } catch (err) {
+      console.error('[Cart] addItem error:', err)
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+
+  const removeItem = useCallback(async (lineId: string) => {
+    const stored = localStorage.getItem(CART_STORAGE_KEY)
+    if (!stored) return
+    setIsLoading(true)
+    try {
+      persist(await cartLinesRemove(stored, [lineId]))
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+
+  const updateQty = useCallback(async (lineId: string, quantity: number) => {
+    if (quantity < 1) { await removeItem(lineId); return }
+    const stored = localStorage.getItem(CART_STORAGE_KEY)
+    if (!stored) return
+    setIsLoading(true)
+    try {
+      persist(await cartLinesUpdate(stored, [{ id: lineId, quantity }]))
+    } finally {
+      setIsLoading(false)
+    }
+  }, [removeItem])
+
+  const goToCheckout = useCallback(() => {
+    if (cart?.checkoutUrl) window.location.href = cart.checkoutUrl
+  }, [cart])
+
+  const lines        = cart?.lines.edges.map(e => e.node) ?? []
+  const itemCount    = cart?.totalQuantity ?? 0
+  const subtotal     = cart?.cost.subtotalAmount.amount    ?? '0.00'
+  const currencyCode = cart?.cost.subtotalAmount.currencyCode ?? 'USD'
+
   return (
     <CartContext.Provider value={{
-      items: state.items, isOpen: state.isOpen,
-      addItem: (item) => dispatch({ type: 'ADD_ITEM', item: { ...item, quantity: 1 } }),
-      removeItem: (id) => dispatch({ type: 'REMOVE_ITEM', id }),
-      updateQty: (id, qty) => dispatch({ type: 'UPDATE_QTY', id, qty }),
-      openCart: () => dispatch({ type: 'OPEN_CART' }),
-      closeCart: () => dispatch({ type: 'CLOSE_CART' }),
-      clearCart: () => dispatch({ type: 'CLEAR_CART' }),
-      subtotal, itemCount,
+      cart, lines, isOpen, isLoading, itemCount, subtotal, currencyCode,
+      openCart:     () => setIsOpen(true),
+      closeCart:    () => setIsOpen(false),
+      addItem, removeItem, updateQty, goToCheckout,
     }}>
       {children}
     </CartContext.Provider>
