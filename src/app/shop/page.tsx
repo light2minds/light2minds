@@ -16,7 +16,6 @@ export const metadata = {
 // ── Brand palette ─────────────────────────────────────────────────────────────
 const B  = '#3BA7F0'   // blue
 const G  = '#22C55E'   // green
-const Y  = '#F5C842'   // yellow
 const TX = '#0F172A'   // near-black text
 const MT = '#64748B'   // muted text (slate-500)
 
@@ -178,20 +177,6 @@ function ProductCard({
   )
 }
 
-// ── Hero preview tiles (decorative) ──────────────────────────────────────────
-function HeroTile({ title, price, accent, label }: { title: string; price: string; accent: string; label: string }) {
-  return (
-    <div className="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
-      <div className="h-1.5 w-full" style={{ backgroundColor: accent }} />
-      <div className="p-4">
-        <p className="text-[9.5px] font-bold tracking-[0.12em] uppercase mb-1.5" style={{ color: accent }}>{label}</p>
-        <p className="text-[13px] font-semibold leading-snug mb-3" style={{ color: TX }}>{title}</p>
-        <p className="text-[15px] font-bold" style={{ color: TX }}>{price}</p>
-      </div>
-    </div>
-  )
-}
-
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default async function ShopPage() {
   const configured    = isShopifyConfigured()
@@ -221,153 +206,52 @@ export default async function ShopPage() {
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="pt-28 pb-16 lg:pt-36 lg:pb-24 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-            {/* Left — copy */}
-            <div className="max-w-xl">
-              <p className="text-[11px] font-bold tracking-[0.18em] uppercase mb-5" style={{ color: B }}>
-                Light 2 Minds Shop
-              </p>
-              <h1 className="text-[clamp(2.1rem,4.5vw,3.1rem)] font-bold tracking-[-0.03em] leading-[1.07] mb-5">
-                Shop Resources That<br />Support Growth
-              </h1>
-              <p className="text-[16px] leading-relaxed mb-8" style={{ color: MT }}>
-                Practical tools, study guides, and curated kits designed for families and behavior professionals.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 mb-10">
-                <Link
-                  href="#families"
-                  className="inline-flex items-center justify-center gap-2 text-[13.5px] font-semibold px-6 py-3.5 rounded-xl text-white transition-all hover:-translate-y-px"
-                  style={{ backgroundColor: G, boxShadow: '0 1px 3px rgba(34,197,94,0.25)' }}
-                >
-                  Shop Family Resources <Arrow />
-                </Link>
-                <Link
-                  href="#professionals"
-                  className="inline-flex items-center justify-center gap-2 text-[13.5px] font-semibold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-px"
-                  style={{ color: B, border: `1.5px solid ${B}20`, backgroundColor: B + '08' }}
-                >
-                  Shop Professional Resources <Arrow />
-                </Link>
-              </div>
-
-              {/* Trust row */}
-              <div className="flex flex-wrap gap-x-6 gap-y-2">
-                {[
-                  { label: 'Created by certified professionals', color: B },
-                  { label: 'Evidence-informed methodology',       color: G },
-                  { label: 'Trusted by families and clinicians',  color: Y },
-                ].map(t => (
-                  <span key={t.label} className="flex items-center gap-2 text-[12px]" style={{ color: MT }}>
-                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: t.color }} />
-                    {t.label}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Right — product preview grid */}
-            <div className="hidden lg:grid grid-cols-2 gap-3">
-              <HeroTile title="BCBA / BCaBA Study Guide"       price="$149.99" accent={B} label="Study Guide"   />
-              <HeroTile title="Behavior Therapist Starter Kit" price="$79.99"  accent={G} label="Professional Kit" />
-              <HeroTile title="Sensory Travel Kit"             price="$59.99"  accent={Y} label="Family Kit"    />
-              <HeroTile title="RBT Exam Study Guide"           price="$59.99"  accent={B} label="Study Guide"   />
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════════════
-          SECTION 2 — SHOP BY CATEGORY
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section className="py-20 lg:py-28" style={{ backgroundColor: '#F8FAFC' }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="mb-12 text-center">
-            <p className="text-[11px] font-bold tracking-[0.18em] uppercase mb-3" style={{ color: MT }}>
-              Browse by Audience
+          <div className="max-w-2xl">
+            <p className="text-[11px] font-bold tracking-[0.18em] uppercase mb-5" style={{ color: B }}>
+              Light 2 Minds Shop
             </p>
-            <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold tracking-[-0.025em]">
-              Find Your Resources
-            </h2>
-          </div>
+            <h1 className="text-[clamp(2.1rem,4.5vw,3.1rem)] font-bold tracking-[-0.03em] leading-[1.07] mb-5">
+              Shop Resources That<br />Support Growth
+            </h1>
+            <p className="text-[16px] leading-relaxed mb-8" style={{ color: MT }}>
+              Practical tools, study guides, and curated kits designed for families and behavior professionals.
+            </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-            {/* Families card */}
-            <div className="bg-white rounded-2xl border border-slate-100 p-8 lg:p-10 flex flex-col" style={{ boxShadow: '0 2px 16px rgba(34,197,94,0.06)' }}>
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-6 flex-shrink-0" style={{ backgroundColor: G + '14' }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={G} strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-              </div>
-              <p className="text-[10.5px] font-bold tracking-[0.15em] uppercase mb-2" style={{ color: G }}>For Families</p>
-              <h3 className="text-[1.25rem] font-bold leading-snug mb-3">
-                Helping children build regulation, independence, and confidence.
-              </h3>
-              <p className="text-[13.5px] leading-relaxed mb-6" style={{ color: MT }}>
-                Practical kits and tools for everyday life — designed by behavior professionals for use at home, on the go, and at school.
-              </p>
-              <ul className="space-y-2 mb-8 flex-1">
-                {['Sensory Travel Kit', 'Bedtime Regulation Box', 'Calm & Focus Box'].map(item => (
-                  <li key={item} className="flex items-center gap-2.5 text-[13px]" style={{ color: TX }}>
-                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: G }} />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div className="flex flex-col sm:flex-row gap-3 mb-10">
               <Link
                 href="#families"
-                className="inline-flex items-center gap-2 text-[13.5px] font-semibold px-6 py-3.5 rounded-xl text-white self-start transition-all hover:-translate-y-px"
+                className="inline-flex items-center justify-center gap-2 text-[13.5px] font-semibold px-6 py-3.5 rounded-xl text-white transition-all hover:-translate-y-px"
                 style={{ backgroundColor: G, boxShadow: '0 1px 3px rgba(34,197,94,0.25)' }}
               >
-                Explore Family Resources <Arrow />
+                Shop Family Resources <Arrow />
               </Link>
-            </div>
-
-            {/* Professionals card */}
-            <div className="bg-white rounded-2xl border border-slate-100 p-8 lg:p-10 flex flex-col" style={{ boxShadow: '0 2px 16px rgba(59,167,240,0.06)' }}>
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-6 flex-shrink-0" style={{ backgroundColor: B + '12' }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={B} strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="7" width="20" height="14" rx="2" />
-                  <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-                  <line x1="12" y1="12" x2="12" y2="16" />
-                  <line x1="10" y1="14" x2="14" y2="14" />
-                </svg>
-              </div>
-              <p className="text-[10.5px] font-bold tracking-[0.15em] uppercase mb-2" style={{ color: B }}>For Professionals</p>
-              <h3 className="text-[1.25rem] font-bold leading-snug mb-3">
-                Tools and study resources for ABA success.
-              </h3>
-              <p className="text-[13.5px] leading-relaxed mb-6" style={{ color: MT }}>
-                From passing your RBT exam to starting your first session, these resources are built for real-world application in behavioral health.
-              </p>
-              <ul className="space-y-2 mb-8 flex-1">
-                {['Behavior Therapist Starter Kit', 'RBT Exam Study Guide (3rd Ed)', 'RBT Exam Study Guide (Spanish)', 'BCBA / BCaBA Study Guide'].map(item => (
-                  <li key={item} className="flex items-center gap-2.5 text-[13px]" style={{ color: TX }}>
-                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: B }} />
-                    {item}
-                  </li>
-                ))}
-              </ul>
               <Link
                 href="#professionals"
-                className="inline-flex items-center gap-2 text-[13.5px] font-semibold px-6 py-3.5 rounded-xl text-white self-start transition-all hover:-translate-y-px"
-                style={{ backgroundColor: B, boxShadow: '0 1px 3px rgba(59,167,240,0.25)' }}
+                className="inline-flex items-center justify-center gap-2 text-[13.5px] font-semibold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-px"
+                style={{ color: B, border: `1.5px solid ${B}20`, backgroundColor: B + '08' }}
               >
-                Explore Professional Resources <Arrow />
+                Shop Professional Resources <Arrow />
               </Link>
             </div>
 
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              {[
+                { label: 'Created by certified professionals', color: B },
+                { label: 'Evidence-informed methodology',       color: G },
+                { label: 'Trusted by families and clinicians',  color: '#F5C842' },
+              ].map(t => (
+                <span key={t.label} className="flex items-center gap-2 text-[12px]" style={{ color: MT }}>
+                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: t.color }} />
+                  {t.label}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          SECTION 3 — PROFESSIONAL RESOURCES
+          SECTION 2 — PROFESSIONAL RESOURCES
       ══════════════════════════════════════════════════════════════════════ */}
       <section id="professionals" className="py-20 lg:py-28 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -429,87 +313,7 @@ export default async function ShopPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          SECTION 5 — WHY LIGHT 2 MINDS
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section className="py-20 lg:py-28 border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="text-center mb-14">
-            <p className="text-[11px] font-bold tracking-[0.18em] uppercase mb-3" style={{ color: MT }}>
-              Our Commitment
-            </p>
-            <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold tracking-[-0.025em]">
-              Why Light 2 Minds
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                color: B,
-                icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                    <line x1="9" y1="9" x2="15" y2="9" />
-                    <line x1="9" y1="13" x2="13" y2="13" />
-                  </svg>
-                ),
-                title: 'Evidence-Informed',
-                desc: 'Created with practical strategies inspired by behavior analytic principles.',
-              },
-              {
-                color: G,
-                icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                ),
-                title: 'Family Friendly',
-                desc: 'Easy-to-use tools built for real families navigating real challenges every day.',
-              },
-              {
-                color: Y,
-                icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="8" r="6" />
-                    <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
-                  </svg>
-                ),
-                title: 'Professional Quality',
-                desc: 'Resources built for real-world application by credentialed ABA professionals.',
-              },
-              {
-                color: B,
-                icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <circle cx="12" cy="12" r="6" />
-                    <circle cx="12" cy="12" r="2" />
-                  </svg>
-                ),
-                title: 'Designed With Purpose',
-                desc: 'Every product serves a meaningful developmental or educational goal.',
-              },
-            ].map(({ color, icon, title, desc }) => (
-              <div key={title}>
-                <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
-                  style={{ backgroundColor: color + '12', color }}
-                >
-                  {icon}
-                </div>
-                <h3 className="text-[15px] font-semibold mb-2" style={{ color: TX }}>{title}</h3>
-                <p className="text-[13.5px] leading-relaxed" style={{ color: MT }}>{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════════════
-          SECTION 6 — FEATURED BUNDLE
+          SECTION 4 — FEATURED BUNDLE
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="py-20 lg:py-28 border-t border-slate-100" style={{ backgroundColor: '#F8FAFC' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
