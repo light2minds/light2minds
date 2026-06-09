@@ -15,7 +15,8 @@ export const metadata = {
 
 // ── Brand palette ─────────────────────────────────────────────────────────────
 const B  = '#3BA7F0'   // blue
-const G  = '#22C55E'   // green
+const Y  = '#F5C842'   // yellow (button fill)
+const YT = '#9A6F00'   // dark amber — yellow text readable on white
 const TX = '#0F172A'   // near-black text
 const MT = '#64748B'   // muted text (slate-500)
 
@@ -221,14 +222,14 @@ export default async function ShopPage() {
               <Link
                 href="#families"
                 className="inline-flex items-center justify-center gap-2 text-[13.5px] font-semibold px-6 py-3.5 rounded-xl text-white transition-all hover:-translate-y-px"
-                style={{ backgroundColor: G, boxShadow: '0 1px 3px rgba(34,197,94,0.25)' }}
+                style={{ backgroundColor: B, boxShadow: '0 1px 3px rgba(59,167,240,0.30)' }}
               >
                 Shop Family Resources <Arrow />
               </Link>
               <Link
                 href="#professionals"
                 className="inline-flex items-center justify-center gap-2 text-[13.5px] font-semibold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-px"
-                style={{ color: B, border: `1.5px solid ${B}20`, backgroundColor: B + '08' }}
+                style={{ backgroundColor: Y, color: TX, boxShadow: '0 1px 3px rgba(245,200,66,0.35)' }}
               >
                 Shop Professional Resources <Arrow />
               </Link>
@@ -237,7 +238,7 @@ export default async function ShopPage() {
             <div className="flex flex-wrap gap-x-6 gap-y-2">
               {[
                 { label: 'Created by certified professionals', color: B },
-                { label: 'Evidence-informed methodology',       color: G },
+                { label: 'Evidence-informed methodology',       color: '#22C55E' },
                 { label: 'Trusted by families and clinicians',  color: '#F5C842' },
               ].map(t => (
                 <span key={t.label} className="flex items-center gap-2 text-[12px]" style={{ color: MT }}>
@@ -251,44 +252,13 @@ export default async function ShopPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          SECTION 2 — PROFESSIONAL RESOURCES
+          SECTION 2 — FAMILY RESOURCES
       ══════════════════════════════════════════════════════════════════════ */}
-      <section id="professionals" className="py-20 lg:py-28 border-t border-slate-100">
+      <section id="families" className="py-20 lg:py-28 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
             <div>
               <p className="text-[11px] font-bold tracking-[0.18em] uppercase mb-3" style={{ color: B }}>
-                For Professionals
-              </p>
-              <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold tracking-[-0.025em] mb-2">
-                Professional Resources
-              </h2>
-              <p className="text-[14.5px] max-w-md" style={{ color: MT }}>
-                Designed for aspiring and practicing behavior professionals.
-              </p>
-            </div>
-          </div>
-
-          {proProducts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {proProducts.map(product => (
-                <ProductCard key={product.id} product={product} accent={B} isPlaceholder={isPlaceholder} />
-              ))}
-            </div>
-          ) : (
-            <EmptySection label="professional" />
-          )}
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════════════
-          SECTION 4 — FAMILY RESOURCES
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section id="families" className="py-20 lg:py-28 border-t border-slate-100" style={{ backgroundColor: '#F8FAFC' }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
-            <div>
-              <p className="text-[11px] font-bold tracking-[0.18em] uppercase mb-3" style={{ color: G }}>
                 For Families
               </p>
               <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold tracking-[-0.025em] mb-2">
@@ -303,11 +273,42 @@ export default async function ShopPage() {
           {famProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {famProducts.map(product => (
-                <ProductCard key={product.id} product={product} accent={G} isPlaceholder={isPlaceholder} />
+                <ProductCard key={product.id} product={product} accent={B} isPlaceholder={isPlaceholder} />
               ))}
             </div>
           ) : (
             <EmptySection label="family" />
+          )}
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          SECTION 3 — PROFESSIONAL RESOURCES
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section id="professionals" className="py-20 lg:py-28 border-t border-slate-100" style={{ backgroundColor: '#F8FAFC' }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+            <div>
+              <p className="text-[11px] font-bold tracking-[0.18em] uppercase mb-3" style={{ color: YT }}>
+                For Professionals
+              </p>
+              <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold tracking-[-0.025em] mb-2">
+                Professional Resources
+              </h2>
+              <p className="text-[14.5px] max-w-md" style={{ color: MT }}>
+                Designed for aspiring and practicing behavior professionals.
+              </p>
+            </div>
+          </div>
+
+          {proProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {proProducts.map(product => (
+                <ProductCard key={product.id} product={product} accent={YT} isPlaceholder={isPlaceholder} />
+              ))}
+            </div>
+          ) : (
+            <EmptySection label="professional" />
           )}
         </div>
       </section>
@@ -387,14 +388,14 @@ export default async function ShopPage() {
             <Link
               href="#families"
               className="inline-flex items-center justify-center gap-2 text-[13.5px] font-semibold px-7 py-3.5 rounded-xl text-white transition-all hover:-translate-y-px"
-              style={{ backgroundColor: G, boxShadow: '0 1px 3px rgba(34,197,94,0.25)' }}
+              style={{ backgroundColor: B, boxShadow: '0 1px 3px rgba(59,167,240,0.30)' }}
             >
               Shop Family Resources <Arrow />
             </Link>
             <Link
               href="#professionals"
-              className="inline-flex items-center justify-center gap-2 text-[13.5px] font-semibold px-7 py-3.5 rounded-xl text-white transition-all hover:-translate-y-px"
-              style={{ backgroundColor: B, boxShadow: '0 1px 3px rgba(59,167,240,0.25)' }}
+              className="inline-flex items-center justify-center gap-2 text-[13.5px] font-semibold px-7 py-3.5 rounded-xl transition-all hover:-translate-y-px"
+              style={{ backgroundColor: Y, color: TX, boxShadow: '0 1px 3px rgba(245,200,66,0.35)' }}
             >
               Shop Professional Resources <Arrow />
             </Link>
