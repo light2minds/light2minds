@@ -299,6 +299,13 @@ export async function getCart(cartId: string): Promise<ShopifyCart | null> {
   }
 }
 
+// ── Configuration ────────────────────────────────────────────────────────────
+
+export function isShopifyConfigured(): boolean {
+  const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN
+  return !!token && token !== 'your_storefront_access_token_here'
+}
+
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 export function formatPrice(amount: string, currencyCode = 'USD'): string {
