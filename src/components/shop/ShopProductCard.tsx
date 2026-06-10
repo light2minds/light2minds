@@ -40,11 +40,13 @@ export default function ShopProductCard({
   accentBar,
   accentText,
   isPlaceholder,
+  buyLabel,
 }: {
   product: ShopifyProduct
   accentBar: string
   accentText: string
   isPlaceholder?: boolean
+  buyLabel?: string
 }) {
   const image          = getFirstImage(product)
   const defaultVariant = getDefaultVariant(product)
@@ -53,9 +55,9 @@ export default function ShopProductCard({
     product.priceRange.minVariantPrice.amount,
     product.priceRange.minVariantPrice.currencyCode,
   )
-  const isKit     = ['kit', 'box'].some(k => product.productType.toLowerCase().includes(k))
-  const isDigital = ['guide', 'digital'].some(k => product.productType.toLowerCase().includes(k))
-  const buyLabel  = isDigital ? 'Buy Digital Guide' : 'Buy Now'
+  const isKit        = ['kit', 'box'].some(k => product.productType.toLowerCase().includes(k))
+  const isDigital    = ['guide', 'digital'].some(k => product.productType.toLowerCase().includes(k))
+  const resolvedLabel = buyLabel ?? (isDigital ? 'Buy Digital Guide' : 'Buy Now')
   const available = !!(defaultVariant?.availableForSale && product.availableForSale)
 
   return (
@@ -117,7 +119,7 @@ export default function ShopProductCard({
             <BuyNowButton
               variantId={defaultVariant?.id ?? ''}
               available={available}
-              label={buyLabel}
+              label={resolvedLabel}
             />
           )}
 
