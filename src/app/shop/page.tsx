@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import {
-  getAllCollections, getCollection, isShopifyConfigured,
-  formatPrice, getFirstImage,
+  getAllCollections, getConsultationProducts, isShopifyConfigured,
   ShopifyProduct, ShopifyCollection,
 } from '@/lib/shopify'
 import ShopProductCard from '@/components/shop/ShopProductCard'
@@ -81,13 +80,17 @@ const PLACEHOLDER_SERVICES: ShopifyProduct[] = [
 ]
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-function EmptySection({ label }: { label: string }) {
+function EmptySection({ label, message }: { label: string; message?: string }) {
   return (
     <div className="text-center py-12 rounded-2xl border border-dashed border-stone-200">
-      <p className="text-[14px] font-medium text-navy-800/40 mb-1">No {label} products found</p>
-      <p className="text-[13px] text-navy-800/30">
-        Add products to the <strong>{label}</strong> collection in your Shopify store.
+      <p className="text-[14px] font-medium text-navy-800/40 mb-1">
+        {message ?? `No ${label} products found`}
       </p>
+      {!message && (
+        <p className="text-[13px] text-navy-800/30">
+          Add products to the <strong>{label}</strong> collection in your Shopify store.
+        </p>
+      )}
     </div>
   )
 }
@@ -102,9 +105,7 @@ export default async function ShopPage() {
   const famProducts = collections.find(c => c.handle === 'families')?.products.edges.map(e => e.node) ?? []
   const proProducts = collections.find(c => c.handle === 'professionals')?.products.edges.map(e => e.node) ?? []
 
-  const liveServices = configured
-    ? ((await getCollection('services'))?.products.edges.map(e => e.node) ?? [])
-    : []
+  const liveServices = configured ? await getConsultationProducts() : []
   const svcProducts = liveServices.length > 0 ? liveServices : (configured ? [] : PLACEHOLDER_SERVICES)
 
   return (
@@ -252,7 +253,10 @@ export default async function ShopPage() {
               ))}
             </div>
           ) : (
-            <EmptySection label="services" />
+            <EmptySection
+              label="services"
+              message="No consultation or professional service products are currently available."
+            />
           )}
 
           {/* Why Work With Light 2 Minds */}

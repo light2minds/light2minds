@@ -185,6 +185,60 @@ export async function getAllCollections(): Promise<ShopifyCollection[]> {
     .filter(Boolean) as ShopifyCollection[]
 }
 
+// Candidate collection handles for Consultation & Professional Services,
+// ordered by most-likely match first.
+const CONSULTATION_HANDLES = [
+  'consultation-professional-services',
+  'consultation-and-professional-services',
+  'services',
+  'consultation-services',
+  'professional-services',
+  'consultations',
+]
+
+export async function getProductsByQuery(
+  queryString: string,
+  first = 50
+): Promise<ShopifyProduct[]> {
+  try {
+    const data = await shopify<{ products: { edges: { node: ShopifyProduct }[] } }>(
+      `query getProductsByQuery($query: String!, $first: Int!) {
+        products(first: $first, query: $query) {
+          edges { node { ${PRODUCT_FIELDS} } }
+        }
+      }`,
+      { query: queryString, first },
+      { revalidate: 60 }
+    )
+    return data.products.edges.map(e => e.node)
+  } catch {
+    return []
+  }
+}
+
+// Tries every known collection handle in parallel, returns the first non-empty
+// result. Falls back to a broad product-type / tag query so new products added
+// under ANY of those handles (or tagged "consultation") appear automatically.
+export async function getConsultationProducts(first = 50): Promise<ShopifyProduct[]> {
+  const results = await Promise.allSettled(
+    CONSULTATION_HANDLES.map(h => getCollection(h, first))
+  )
+
+  for (const result of results) {
+    if (result.status === 'fulfilled' && result.value?.products.edges.length) {
+      return result.value.products.edges.map(e => e.node)
+    }
+  }
+
+  // Fallback: search directly by product type or tag
+  return getProductsByQuery(
+    'product_type:Consultation OR product_type:Assessment OR product_type:Mentorship ' +
+    'OR product_type:Service OR product_type:Coaching OR product_type:Professional Services ' +
+    'OR tag:consultation OR tag:services OR tag:professional-services',
+    first
+  )
+}
+
 // ── Products ─────────────────────────────────────────────────────────────────
 
 export async function getProduct(handle: string): Promise<ShopifyProduct | null> {
