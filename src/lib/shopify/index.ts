@@ -355,9 +355,11 @@ export async function getCart(cartId: string): Promise<ShopifyCart | null> {
 
 // ── Configuration ────────────────────────────────────────────────────────────
 
+// The store domain is always set (hardcoded fallback), and the Storefront API
+// for this store works without an access token, so we check the domain only.
 export function isShopifyConfigured(): boolean {
-  const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN
-  return !!token && token !== 'your_storefront_access_token_here'
+  const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN ?? DOMAIN
+  return !!domain && !domain.includes('your-store')
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
