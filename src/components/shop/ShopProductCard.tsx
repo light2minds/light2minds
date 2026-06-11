@@ -61,21 +61,21 @@ export default function ShopProductCard({
   const available = !!(defaultVariant?.availableForSale && product.availableForSale)
 
   return (
-    <div className="bg-white border border-stone-200/60 rounded-2xl overflow-hidden flex flex-col group hover:-translate-y-0.5 hover:shadow-lg hover:shadow-stone-200/70 transition-all duration-200">
-      <div className="h-[3px] w-full" style={{ backgroundColor: accentBar }} />
+    <div className="bg-white border border-stone-200/60 rounded-2xl overflow-hidden flex flex-col h-full group hover:-translate-y-0.5 hover:shadow-lg hover:shadow-stone-200/70 transition-all duration-200">
+      <div className="h-[3px] w-full flex-shrink-0" style={{ backgroundColor: accentBar }} />
 
-      {/* Image — links to product page */}
-      <Link href={`/products/${product.handle}`} className="relative block aspect-square bg-stone-50 overflow-hidden">
+      {/* Image — fixed height, object-contain so photo is always centered */}
+      <Link href={`/products/${product.handle}`} className="relative block h-[180px] flex-shrink-0 overflow-hidden" style={{ backgroundColor: accentBar + '08' }}>
         {image ? (
           <Image
             src={image.url}
             alt={image.altText ?? product.title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            className="object-contain p-3 transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: accentBar + '0C' }}>
+          <div className="w-full h-full flex items-center justify-center">
             {isKit ? <BoxSvg color={accentText} /> : <BookSvg color={accentText} />}
           </div>
         )}
@@ -109,10 +109,10 @@ export default function ShopProductCard({
 
         {/* Price + actions */}
         <div className="mt-auto pt-3 border-t border-stone-100 space-y-2">
-          <p className="text-[17px] font-bold text-navy-900">{price}</p>
+          <p className="text-[16px] font-bold text-navy-900">{price}</p>
 
           {isPlaceholder ? (
-            <button disabled className="w-full py-3 rounded-xl text-[13px] font-medium text-navy-800/30 bg-stone-100 border border-stone-200 cursor-not-allowed">
+            <button disabled className="w-full py-2.5 rounded-xl text-[13px] font-medium text-navy-800/30 bg-stone-100 border border-stone-200 cursor-not-allowed">
               Preview Only
             </button>
           ) : (
