@@ -111,8 +111,8 @@ export function FeatureProfessionals() {
             </p>
             <Link
               href="/professionals"
-              className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 px-6 py-3 rounded-full transition-all duration-200"
-              style={{ backgroundColor: '#5BC4F8', color: '#fff' }}
+              className="inline-flex items-center gap-3 text-[13px] font-semibold text-white px-6 py-3 rounded-full transition-all duration-200 hover:-translate-y-0.5"
+              style={{ backgroundColor: '#2EBB50', boxShadow: '0 4px 0 #1A7A3C, 0 6px 14px rgba(0,0,0,0.08)' }}
             >
               {tx('Professional Hub', 'Centro Profesional')}
               <span className="w-4 h-px bg-current" />

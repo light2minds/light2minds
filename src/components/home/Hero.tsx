@@ -237,11 +237,11 @@ export default function Hero() {
               </Link>
             </div>
 
-            {/* Gold — secondary */}
+            {/* Green — professionals */}
             <Link
               href="/professionals"
-              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
-              style={{ backgroundColor: '#FFE030', color: '#0D1B2E', boxShadow: BTN_SHADOW_GOLD }}
+              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
+              style={{ backgroundColor: '#2EBB50', boxShadow: '0 5px 0 #1A7A3C, 0 8px 16px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.20)' }}
             >
               {tx('For Professionals', 'Para Profesionales')}
               <ArrowRight className="w-3.5 h-3.5" />

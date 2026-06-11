@@ -47,8 +47,8 @@ export default function CtaBanner() {
           </Link>
           <Link
             href="/professionals"
-            className="inline-flex items-center gap-3 text-[13px] font-semibold text-navy-900 px-6 py-3 rounded-full transition-all duration-200 hover:-translate-y-0.5"
-            style={{ backgroundColor: '#FFE030', boxShadow: '0 4px 0 #C4A800, 0 6px 14px rgba(0,0,0,0.08)' }}
+            className="inline-flex items-center gap-3 text-[13px] font-semibold text-white px-6 py-3 rounded-full transition-all duration-200 hover:-translate-y-0.5"
+            style={{ backgroundColor: '#2EBB50', boxShadow: '0 4px 0 #1A7A3C, 0 6px 14px rgba(0,0,0,0.08)' }}
           >
             I&apos;m an RBT / Professional
             <span className="w-4 h-px bg-current" />
