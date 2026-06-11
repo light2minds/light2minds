@@ -223,30 +223,37 @@ export default function Hero() {
         className="absolute z-10 bottom-0 left-0 right-0"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex flex-wrap items-end gap-3">
+          <div className="flex flex-wrap items-center gap-3">
 
-            {/* Blue — PRIMARY: larger, families first */}
-            <div className="flex flex-col items-start gap-1.5">
-              <Link
-                href="/parents"
-                className="inline-flex items-center gap-2.5 text-[15px] font-bold text-white px-8 py-4 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
-                style={{ backgroundColor: '#5BC4F8', boxShadow: BTN_SHADOW_BLUE }}
-              >
-                {tx('For Families', 'Para Familias')}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+            {/* Blue — families */}
+            <Link
+              href="/parents"
+              className="inline-flex items-center gap-2.5 text-[14px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
+              style={{ backgroundColor: '#5BC4F8', boxShadow: BTN_SHADOW_BLUE }}
+            >
+              {tx('For Families', 'Para Familias')}
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
 
             {/* Green — professionals */}
             <Link
               href="/professionals"
-              className="inline-flex items-center gap-2.5 text-[13.5px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
+              className="inline-flex items-center gap-2.5 text-[14px] font-semibold text-white px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
               style={{ backgroundColor: '#2EBB50', boxShadow: '0 5px 0 #1A7A3C, 0 8px 16px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.20)' }}
             >
               {tx('For Professionals', 'Para Profesionales')}
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
+            {/* Yellow — shop */}
+            <Link
+              href="/shop"
+              className="inline-flex items-center gap-2.5 text-[14px] font-semibold px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[3px] active:translate-y-[5px]"
+              style={{ backgroundColor: '#FFE030', color: '#0D1B2E', boxShadow: BTN_SHADOW_GOLD }}
+            >
+              {tx('Shop', 'Tienda')}
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
 
           </div>
         </div>
