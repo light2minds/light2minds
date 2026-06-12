@@ -360,48 +360,6 @@ export default function ParentsPage() {
             })}
           </div>
 
-          {/* Family Consultation CTA banner */}
-          <motion.div
-            {...fade}
-            transition={{ duration: 0.55, delay: 0.2 }}
-            className="rounded-2xl overflow-hidden"
-            style={{ backgroundColor: '#0D1B2E' }}
-          >
-            <div className="px-8 py-8 lg:px-12 lg:py-10 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
-              <div className="flex-1">
-                <p className="text-[11px] font-semibold tracking-[0.14em] uppercase mb-3" style={{ color: 'rgba(255,224,48,0.7)' }}>
-                  Family Consultation
-                </p>
-                <h3 className="text-[clamp(1.2rem,2.5vw,1.6rem)] font-bold text-white leading-[1.15] mb-3">
-                  Every family&apos;s situation is different.<br />Let&apos;s talk about yours.
-                </h3>
-                <p className="text-[14px] leading-relaxed max-w-lg" style={{ color: 'rgba(255,255,255,0.50)' }}>
-                  Our Family Consultation connects you with a behavioral health specialist who will walk through your child&apos;s evaluation, answer your questions, and build a personalized plan — so you leave every meeting prepared and confident.
-                </p>
-                <div className="flex flex-wrap gap-4 mt-5 text-[12px]" style={{ color: 'rgba(255,255,255,0.35)' }}>
-                  {['60-minute session', 'Available online', 'Evidence-based guidance', '$50'].map(tag => (
-                    <span key={tag} className="flex items-center gap-1.5">
-                      <span className="w-1 h-1 rounded-full bg-current opacity-60" />
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="flex-shrink-0">
-                <a
-                  href="https://light-2-minds.myshopify.com/products/book-a-family-consultation"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 text-[14px] font-bold text-navy-900 px-8 py-4 rounded-full transition-all duration-150 hover:-translate-y-0.5 whitespace-nowrap"
-                  style={{ backgroundColor: GOLD, boxShadow: '0 5px 0 #C4A800, 0 8px 20px rgba(0,0,0,0.25)' }}
-                >
-                  Book Family Consultation
-                  <ArrowRight />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
         </div>
       </section>
 
@@ -477,28 +435,32 @@ export default function ParentsPage() {
         </div>
       </section>
 
-      {/* ── Personalized Support ── */}
-      <section style={{ backgroundColor: WARM_BG }} className="py-10 lg:py-14 border-t border-stone-200/60" id="sessions">
+      {/* ── Family Consultation (merged) ── */}
+      <section style={{ backgroundColor: '#0D1B2E' }} className="py-12 lg:py-16 border-t border-navy-900" id="sessions">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+            {/* Left — copy + CTA */}
             <motion.div {...fade} transition={{ duration: 0.6 }}>
-              <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-3">Personalized Support</p>
-              <h2 className="text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1] mb-4">
-                Sometimes a guide isn&apos;t enough.
-              </h2>
-              <p className="text-[14px] text-navy-800/50 leading-relaxed mb-5">
-                Our 1-on-1 parent education sessions give you dedicated time with a behavioral health specialist — to ask every question and leave with a clear, personalized plan.
+              <p className="text-[11px] font-semibold tracking-[0.14em] uppercase mb-4" style={{ color: 'rgba(255,224,48,0.7)' }}>
+                Family Consultation
               </p>
-              <ul className="space-y-2.5 mb-6">
+              <h2 className="text-[clamp(1.5rem,3vw,2.1rem)] font-bold text-white tracking-[-0.025em] leading-[1.12] mb-4">
+                Every family&apos;s situation is different.<br />Let&apos;s talk about yours.
+              </h2>
+              <p className="text-[14px] leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.50)' }}>
+                A 1-on-1 session with a behavioral health specialist — dedicated time to understand your child&apos;s diagnosis, answer every question, and leave with a clear, personalized plan.
+              </p>
+              <ul className="space-y-3 mb-8">
                 {[
-                  'Understanding your child\'s specific diagnosis and developmental profile',
+                  'Understanding your child\'s diagnosis and developmental profile',
                   'Reviewing evaluation reports and therapy recommendations',
                   'Preparing for IEP meetings and advocating effectively',
                   'Building a home support strategy tailored to your family',
                   'Guidance on selecting and evaluating therapists and providers',
                 ].map(item => (
-                  <li key={item} className="flex items-start gap-3 text-[13px] text-navy-800/60 leading-relaxed">
-                    <span className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ backgroundColor: 'rgba(46,187,80,0.12)' }}>
+                  <li key={item} className="flex items-start gap-3 text-[13px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                    <span className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ backgroundColor: 'rgba(46,187,80,0.18)' }}>
                       <svg className="w-2.5 h-2.5" viewBox="0 0 10 8" fill="none">
                         <path d="M1 4L3.5 6.5L9 1" stroke="#2EBB50" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -507,13 +469,13 @@ export default function ParentsPage() {
                   </li>
                 ))}
               </ul>
-              <div className="flex gap-3 flex-wrap">
+              <div className="flex flex-wrap gap-3">
                 <a
                   href="https://light-2-minds.myshopify.com/products/book-a-family-consultation"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 text-[13.5px] font-bold text-navy-900 px-6 py-3 rounded-full transition-all duration-150 hover:-translate-y-0.5"
-                  style={{ backgroundColor: GOLD, boxShadow: '0 4px 0 #C4A800, 0 6px 14px rgba(0,0,0,0.08)' }}
+                  className="inline-flex items-center gap-2.5 text-[14px] font-bold text-navy-900 px-7 py-3.5 rounded-full transition-all duration-150 hover:-translate-y-0.5"
+                  style={{ backgroundColor: GOLD, boxShadow: '0 5px 0 #C4A800, 0 8px 20px rgba(0,0,0,0.3)' }}
                 >
                   Book Family Consultation
                   <ArrowRight />
@@ -522,37 +484,44 @@ export default function ParentsPage() {
                   href="https://wa.me/15613772473"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[13px] font-medium text-navy-700/50 hover:text-navy-900 transition-colors px-2 py-3"
+                  className="inline-flex items-center gap-2 text-[13px] font-medium px-2 py-3.5 transition-colors"
+                  style={{ color: 'rgba(255,255,255,0.40)' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.85)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.40)')}
                 >
                   Message on WhatsApp
-                  <span className="w-4 h-px bg-current" />
+                  <span className="w-4 h-px bg-current ml-1" />
                 </a>
               </div>
             </motion.div>
 
+            {/* Right — testimonials */}
             <motion.div {...fade} transition={{ duration: 0.5, delay: 0.12 }}>
-              <div className="bg-white rounded-2xl p-6 border border-stone-200/60">
-                <h3 className="text-[13.5px] font-semibold text-navy-900 mb-4">What parents say</h3>
-                <div className="space-y-5">
+              <div className="rounded-2xl p-6 border" style={{ backgroundColor: 'rgba(255,255,255,0.04)', borderColor: 'rgba(255,255,255,0.08)' }}>
+                <p className="text-[11px] font-semibold tracking-[0.12em] uppercase mb-5" style={{ color: 'rgba(255,255,255,0.30)' }}>
+                  What parents say
+                </p>
+                <div className="space-y-6">
                   <blockquote>
                     <Stars />
-                    <p className="text-[13px] italic text-navy-800/65 leading-relaxed mb-2">
+                    <p className="text-[13.5px] italic leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.65)' }}>
                       &ldquo;After our session I finally understood my daughter&apos;s evaluation report. I went to the IEP meeting prepared, and for the first time I actually advocated for what she needed.&rdquo;
                     </p>
-                    <cite className="text-[11px] font-semibold text-navy-800/35 not-italic tracking-[0.04em] uppercase">— Florida Parent</cite>
+                    <cite className="text-[11px] font-semibold not-italic tracking-[0.06em] uppercase" style={{ color: 'rgba(255,255,255,0.25)' }}>— Florida Parent</cite>
                   </blockquote>
-                  <div className="border-t border-stone-100 pt-5">
+                  <div className="pt-6" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
                     <blockquote>
                       <Stars />
-                      <p className="text-[13px] italic text-navy-800/65 leading-relaxed mb-2">
+                      <p className="text-[13.5px] italic leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.65)' }}>
                         &ldquo;The session gave me a roadmap I didn&apos;t know I needed — and the confidence to use it.&rdquo;
                       </p>
-                      <cite className="text-[11px] font-semibold text-navy-800/35 not-italic tracking-[0.04em] uppercase">— Florida Parent</cite>
+                      <cite className="text-[11px] font-semibold not-italic tracking-[0.06em] uppercase" style={{ color: 'rgba(255,255,255,0.25)' }}>— Florida Parent</cite>
                     </blockquote>
                   </div>
                 </div>
               </div>
             </motion.div>
+
           </div>
         </div>
       </section>
