@@ -94,30 +94,36 @@ const conditions = [
   },
 ]
 
-const afterDiagnosisItems = [
+const afterDiagnosisSteps = [
   {
-    trigger: '01 — Give Yourself Grace',
-    content: <p>It&apos;s normal to feel grief, relief, fear, or all three at once. A diagnosis doesn&apos;t change who your child is — it gives your team a clearer picture of how they experience the world. Give yourself time before making any major decisions.</p>,
+    num: '01', color: SKY,
+    title: 'Give Yourself Grace',
+    body: "It's normal to feel grief, relief, fear, or all three at once. A diagnosis doesn't change who your child is — it gives your team a clearer picture of how they experience the world. Give yourself time before making any major decisions.",
   },
   {
-    trigger: '02 — Request the Full Evaluation Report',
-    content: <p>Get a written copy of every evaluation. This document is the foundation of your child&apos;s support plan — required for school services, insurance authorization, and therapy referrals. Ask for it in plain language if anything is unclear.</p>,
+    num: '02', color: GREEN,
+    title: 'Request the Full Evaluation Report',
+    body: "Get a written copy of every evaluation. This document is the foundation of your child's support plan — required for school services, insurance authorization, and therapy referrals. Ask for it in plain language if anything is unclear.",
   },
   {
-    trigger: '03 — Connect with Early Intervention or School Services',
-    content: <p>In Florida, children under 3 may qualify for Early Steps. Children 3+ are entitled to a free appropriate public education (FAPE) — including an IEP — through their school district. Contact your district&apos;s ESE department as soon as possible.</p>,
+    num: '03', color: GOLD,
+    title: 'Connect with Early Intervention',
+    body: "In Florida, children under 3 may qualify for Early Steps. Children 3+ are entitled to a free appropriate public education (FAPE) — including an IEP. Contact your school district's ESE department as soon as possible.",
   },
   {
-    trigger: '04 — Explore Therapy Options',
-    content: <p>Depending on the diagnosis, your child may benefit from ABA therapy, speech-language therapy, occupational therapy, physical therapy, or a combination. Ask your pediatrician for referrals and verify which providers are covered by your insurance.</p>,
+    num: '04', color: SKY,
+    title: 'Explore Therapy Options',
+    body: "Depending on the diagnosis, your child may benefit from ABA therapy, speech-language therapy, occupational therapy, or a combination. Ask your pediatrician for referrals and verify which providers are covered by your insurance.",
   },
   {
-    trigger: '05 — Understand Your Insurance Coverage',
-    content: <p>Florida law requires most insurance plans to cover autism spectrum disorder treatment, including ABA therapy. Contact your insurer to confirm benefits, co-pays, and prior authorization requirements before scheduling services.</p>,
+    num: '05', color: GREEN,
+    title: 'Understand Your Insurance Coverage',
+    body: "Florida law requires most insurance plans to cover autism spectrum disorder treatment, including ABA therapy. Contact your insurer to confirm benefits, co-pays, and prior authorization requirements before scheduling.",
   },
   {
-    trigger: '06 — Build Your Support Network',
-    content: <p>Connect with other families, join parent advocacy groups, and consider working with a parent advocate if IEP meetings feel difficult. You learn fastest from people who&apos;ve been exactly where you are.</p>,
+    num: '06', color: GOLD,
+    title: 'Build Your Support Network',
+    body: "Connect with other families, join parent advocacy groups, and consider a parent advocate if IEP meetings feel overwhelming. You learn fastest from people who've been exactly where you are.",
   },
 ]
 
@@ -302,30 +308,100 @@ export default function ParentsPage() {
       </section>
 
       {/* ── After Diagnosis ── */}
-      <section style={{ backgroundColor: WARM_BG }} className="py-10 lg:py-14 border-t border-stone-200/60" id="after-diagnosis">
+      <section style={{ backgroundColor: WARM_BG }} className="py-12 lg:py-18 border-t border-stone-200/60" id="after-diagnosis">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.55 }} className="mb-6 max-w-xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-2">What&apos;s Next</p>
-            <h2 className="text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
+
+          {/* Header */}
+          <motion.div {...fade} transition={{ duration: 0.55 }} className="mb-10">
+            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-3">What&apos;s Next</p>
+            <h2 className="text-[clamp(1.6rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
               What to expect after diagnosis.
             </h2>
+            <p className="text-[15px] text-navy-800/50 leading-relaxed max-w-xl">
+              The period right after a diagnosis can feel overwhelming. Here&apos;s a clear roadmap — so you know exactly what to do and in what order.
+            </p>
           </motion.div>
-          <motion.div {...fade} transition={{ duration: 0.5, delay: 0.1 }} className="max-w-2xl">
-            <Accordion items={afterDiagnosisItems} />
+
+          {/* Steps grid — fully visible */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+            {afterDiagnosisSteps.map((step, i) => {
+              const numColor = step.color === GOLD ? '#8A6A00' : step.color === SKY ? '#1A6B96' : '#1A7A3C'
+              return (
+                <motion.div
+                  key={step.num}
+                  {...fade}
+                  transition={{ duration: 0.45, delay: i * 0.07 }}
+                  className="relative bg-white rounded-2xl overflow-hidden border border-stone-200/60 p-6 flex flex-col"
+                  style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.04)' }}
+                >
+                  {/* Colored left accent bar */}
+                  <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl" style={{ backgroundColor: step.color }} />
+
+                  {/* Number watermark */}
+                  <span
+                    className="absolute top-3 right-4 text-[4rem] font-black leading-none select-none pointer-events-none"
+                    style={{ color: step.color + '12' }}
+                  >
+                    {step.num}
+                  </span>
+
+                  {/* Badge */}
+                  <span
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-full text-[12px] font-bold mb-4 flex-shrink-0"
+                    style={{ backgroundColor: step.color + '18', color: numColor }}
+                  >
+                    {step.num}
+                  </span>
+
+                  <h3 className="text-[14.5px] font-bold text-navy-900 leading-snug mb-2">{step.title}</h3>
+                  <p className="text-[13px] text-navy-800/55 leading-relaxed flex-1">{step.body}</p>
+                </motion.div>
+              )
+            })}
+          </div>
+
+          {/* Family Consultation CTA banner */}
+          <motion.div
+            {...fade}
+            transition={{ duration: 0.55, delay: 0.2 }}
+            className="rounded-2xl overflow-hidden"
+            style={{ backgroundColor: '#0D1B2E' }}
+          >
+            <div className="px-8 py-8 lg:px-12 lg:py-10 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
+              <div className="flex-1">
+                <p className="text-[11px] font-semibold tracking-[0.14em] uppercase mb-3" style={{ color: 'rgba(255,224,48,0.7)' }}>
+                  Family Consultation
+                </p>
+                <h3 className="text-[clamp(1.2rem,2.5vw,1.6rem)] font-bold text-white leading-[1.15] mb-3">
+                  Every family&apos;s situation is different.<br />Let&apos;s talk about yours.
+                </h3>
+                <p className="text-[14px] leading-relaxed max-w-lg" style={{ color: 'rgba(255,255,255,0.50)' }}>
+                  Our Family Consultation connects you with a behavioral health specialist who will walk through your child&apos;s evaluation, answer your questions, and build a personalized plan — so you leave every meeting prepared and confident.
+                </p>
+                <div className="flex flex-wrap gap-4 mt-5 text-[12px]" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                  {['60-minute session', 'Available online', 'Evidence-based guidance', '$50'].map(tag => (
+                    <span key={tag} className="flex items-center gap-1.5">
+                      <span className="w-1 h-1 rounded-full bg-current opacity-60" />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="flex-shrink-0">
+                <a
+                  href="https://light-2-minds.myshopify.com/products/book-a-family-consultation"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 text-[14px] font-bold text-navy-900 px-8 py-4 rounded-full transition-all duration-150 hover:-translate-y-0.5 whitespace-nowrap"
+                  style={{ backgroundColor: GOLD, boxShadow: '0 5px 0 #C4A800, 0 8px 20px rgba(0,0,0,0.25)' }}
+                >
+                  Book Family Consultation
+                  <ArrowRight />
+                </a>
+              </div>
+            </div>
           </motion.div>
-          <motion.div {...fade} transition={{ duration: 0.4, delay: 0.15 }} className="mt-6 flex items-center gap-4">
-            <p className="text-[13px] text-navy-800/45">Questions about these steps?</p>
-            <a
-              href="https://light-2-minds.myshopify.com/products/book-a-family-consultation"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[12.5px] font-semibold text-navy-900 px-4 py-2 rounded-full flex-shrink-0 hover:-translate-y-0.5 transition-all"
-              style={{ backgroundColor: GOLD, boxShadow: '0 3px 0 #C4A800' }}
-            >
-              Book Family Consultation
-              <ArrowRight />
-            </a>
-          </motion.div>
+
         </div>
       </section>
 
