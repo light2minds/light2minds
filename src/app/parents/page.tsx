@@ -278,7 +278,7 @@ export default function ParentsPage() {
             </p>
             <div className="flex flex-wrap gap-3 mb-7">
               <a
-                href="https://light-2-minds.myshopify.com/cart/47209073672363:1"
+                href="https://light-2-minds.myshopify.com/products/book-a-family-consultation"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 text-[13.5px] font-bold text-navy-900 px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[-1px]"
@@ -416,7 +416,7 @@ export default function ParentsPage() {
           <motion.div {...fade} transition={{ duration: 0.5, delay: 0.2 }} className="mt-10 flex items-center gap-4 max-w-5xl">
             <p className="text-[14px] text-navy-800/45">Have questions about these steps?</p>
             <a
-              href="https://light-2-minds.myshopify.com/cart/47209073672363:1"
+              href="https://light-2-minds.myshopify.com/products/book-a-family-consultation"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-900 px-5 py-2.5 rounded-full transition-all duration-200 flex-shrink-0 hover:translate-y-[-1px]"
@@ -660,7 +660,7 @@ export default function ParentsPage() {
               </ul>
               <div className="flex gap-3 flex-wrap">
                 <a
-                  href="https://light-2-minds.myshopify.com/cart/47209073672363:1"
+                  href="https://light-2-minds.myshopify.com/products/book-a-family-consultation"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2.5 text-[13.5px] font-bold text-navy-900 px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[-1px]"
