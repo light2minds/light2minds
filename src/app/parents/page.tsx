@@ -643,15 +643,15 @@ export default function ParentsPage() {
                 You&apos;re not navigating this alone.
               </h2>
               <p className="text-[14px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                Everything we&apos;ve built is here for your family — clear answers, practical tools, and the confidence to advocate for your child.
+                Our Family Resource Bundles give you everything in one place — curated guides, checklists, and tools designed specifically for parents of children with autism and ADHD. Skip the searching. Get what actually works.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-              <Link href="/tools"
+              <Link href="/shop#families"
                 className="inline-flex items-center justify-center gap-2.5 text-[13.5px] font-bold text-navy-900 px-6 py-3 rounded-full transition-all duration-150 hover:-translate-y-0.5"
                 style={{ backgroundColor: GOLD, boxShadow: '0 4px 0 #C4A800' }}
               >
-                Browse All Resources <ArrowRight />
+                Family Resources <ArrowRight />
               </Link>
               <a href="mailto:info@light2minds.com"
                 className="inline-flex items-center justify-center gap-2.5 text-[13.5px] font-semibold text-white px-6 py-3 rounded-full border transition-all duration-200 hover:bg-white hover:text-navy-900"
