@@ -318,7 +318,7 @@ export default function ParentsPage() {
               What to expect after diagnosis.
             </h2>
             <p className="text-[15px] text-navy-800/50 leading-relaxed max-w-xl">
-              The period right after a diagnosis can feel overwhelming. Here&apos;s a clear roadmap — so you know exactly what to do and in what order.
+              The period right after a diagnosis can feel overwhelming. Here&apos;s a clear roadmap, so you know what to do.
             </p>
           </motion.div>
 
