@@ -99,7 +99,7 @@ export default function FreeToolsSection() {
             </span>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <h2 className="text-[clamp(1.3rem,2.5vw,1.8rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1]">
+            <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1]">
               {lang === 'es' ? 'Pruébalo gratis. Sin cuenta.' : 'Try it free. No account required.'}
             </h2>
             <Link
@@ -136,10 +136,10 @@ export default function FreeToolsSection() {
                   </span>
                 </div>
 
-                <h3 className="text-[12.5px] font-bold text-navy-900 leading-snug mb-2 flex-1">
+                <h3 className="text-[13.5px] font-bold text-navy-900 leading-snug mb-2 flex-1">
                   {t(tool.title)}
                 </h3>
-                <p className="text-[11.5px] text-navy-800/50 leading-relaxed mb-3">
+                <p className="text-[12.5px] text-navy-800/50 leading-relaxed mb-3">
                   {t(tool.desc)}
                 </p>
 

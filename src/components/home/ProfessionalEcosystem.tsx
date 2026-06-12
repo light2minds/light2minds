@@ -64,7 +64,7 @@ export default function ProfessionalEcosystem() {
             <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">
               Professional Ecosystem
             </p>
-            <h2 className="text-[clamp(1.85rem,3.8vw,2.75rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
+            <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
               A complete system for<br />ABA professionals.
             </h2>
             <p className="text-[13px] text-navy-800/40 leading-relaxed max-w-sm">
@@ -108,10 +108,10 @@ export default function ProfessionalEcosystem() {
                     </span>
                   )}
                 </div>
-                <h3 className="text-[15px] font-semibold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors duration-200">
+                <h3 className="text-[13.5px] font-semibold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors duration-200">
                   {area.title}
                 </h3>
-                <p className="text-[13px] text-navy-800/50 leading-relaxed">{area.body}</p>
+                <p className="text-[12.5px] text-navy-800/50 leading-relaxed">{area.body}</p>
               </Link>
             </motion.div>
           ))}

@@ -35,7 +35,7 @@ export default function ContactSection() {
                 {lang === 'es' ? 'Contáctanos' : 'Contact Us'}
               </span>
             </div>
-            <h2 className="text-[clamp(1.8rem,3.8vw,2.8rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-6">
+            <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-6">
               {lang === 'es'
                 ? <>Hablemos.<br />Estamos aquí para ayudar.</>
                 : <>Let&apos;s talk.<br />We&apos;re here to help.</>

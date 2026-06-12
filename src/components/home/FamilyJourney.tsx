@@ -85,7 +85,7 @@ export default function FamilyJourney() {
           <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-3">
             The Family Journey
           </p>
-          <h2 className="text-[clamp(1.45rem,2.8vw,2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.15]">
+          <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.15]">
             From uncertainty to confidence.
           </h2>
         </motion.div>
@@ -111,7 +111,7 @@ export default function FamilyJourney() {
               </div>
               <div className="pt-0.5">
                 <h3 className="text-[13.5px] font-semibold text-navy-900 mb-1">{step.title}</h3>
-                <p className="text-[12px] text-navy-800/45 leading-relaxed">{step.body}</p>
+                <p className="text-[12.5px] text-navy-800/45 leading-relaxed">{step.body}</p>
               </div>
             </motion.div>
           ))}
