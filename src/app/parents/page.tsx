@@ -643,7 +643,7 @@ export default function ParentsPage() {
                 You&apos;re not navigating this alone.
               </h2>
               <p className="text-[14px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                Our Family Resource Bundles give you everything in one place — curated guides, checklists, and tools designed specifically for parents of children with autism and ADHD. Skip the searching. Get what actually works.
+                Our Family Resource Bundles give you everything in one place — curated guides, checklists, and tools designed for parents who want real answers and practical support. Skip the searching. Get what actually works.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
