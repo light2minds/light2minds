@@ -182,12 +182,12 @@ const abaFaqItems = [
 ]
 
 const downloads = [
-  { color: SKY, title: 'IEP Meeting Preparation Checklist', body: 'Know exactly what to bring, what to ask, and what to look out for in your child\'s IEP meeting.' },
-  { color: GREEN, title: 'Behavior Observation Log', body: 'Track behaviors at home to share with your child\'s therapy team — includes time, trigger, and outcome fields.' },
-  { color: GOLD, title: 'Visual Daily Schedule Template', body: 'A customizable visual schedule for home use — ideal for children who benefit from routine and predictability.' },
-  { color: SKY, title: 'Sensory Profile Questionnaire', body: 'Help identify your child\'s sensory sensitivities and preferences to share with their occupational therapist.' },
-  { color: GREEN, title: 'ABA Terms for Parents Glossary', body: 'A plain-language guide to the therapy terms your child\'s ABA team will use — so you always know what they mean.' },
-  { color: GOLD, title: 'Provider Interview Question Guide', body: '25 questions to ask before choosing an ABA provider, speech therapist, or occupational therapist.' },
+  { color: SKY,   title: 'IEP Meeting Preparation Checklist', body: 'What to bring, ask, and expect — in plain language.' },
+  { color: GREEN, title: 'Behavior Observation Log',           body: 'Track behaviors at home to share with your therapy team.' },
+  { color: GOLD,  title: 'Visual Daily Schedule Template',     body: 'Printable visual schedule — great for routine-based kids.' },
+  { color: SKY,   title: 'Sensory Profile Questionnaire',      body: 'Identify sensory sensitivities to share with your OT.' },
+  { color: GREEN, title: 'ABA Terms for Parents Glossary',     body: 'Plain-language guide to therapy terms your team uses.' },
+  { color: GOLD,  title: 'Provider Interview Question Guide',  body: '25 questions to ask before choosing any provider.' },
 ]
 
 // ── Expandable condition card ─────────────────────────────────────────────────
@@ -598,34 +598,34 @@ export default function ParentsPage() {
       </section>
 
       {/* ── Downloads ── */}
-      <section className="bg-stone-50 py-10 lg:py-14 border-t border-stone-200/60" id="downloads">
+      <section className="bg-stone-50 py-7 lg:py-10 border-t border-stone-200/60" id="downloads">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.55 }} className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
+          <motion.div {...fade} transition={{ duration: 0.55 }} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
             <div>
-              <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-2">Free Resources</p>
-              <h2 className="text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
+              <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-1">Free Resources</p>
+              <h2 className="text-[clamp(1.1rem,2.2vw,1.5rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
                 Your parent toolkit — free.
               </h2>
             </div>
-            <Link href="/tools" className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-900 border border-navy-900/15 px-5 py-2.5 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200 flex-shrink-0">
+            <Link href="/tools" className="inline-flex items-center gap-2 text-[12.5px] font-semibold text-navy-900 border border-navy-900/15 px-4 py-2 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200 flex-shrink-0">
               View all tools <ArrowRight />
             </Link>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
             {downloads.map((d, i) => (
-              <motion.div key={d.title} {...fade} transition={{ duration: 0.35, delay: i * 0.05 }}
-                className="bg-white border border-stone-200/70 rounded-2xl overflow-hidden flex flex-col">
+              <motion.div key={d.title} {...fade} transition={{ duration: 0.3, delay: i * 0.04 }}
+                className="bg-white border border-stone-200/60 rounded-xl overflow-hidden flex flex-col">
                 <div className="h-[3px] w-full" style={{ backgroundColor: d.color }} />
-                <div className="p-5 flex flex-col flex-1">
-                  <h3 className="text-[13.5px] font-semibold text-navy-900 mb-1.5 leading-snug">{d.title}</h3>
-                  <p className="text-[12px] text-navy-800/45 leading-relaxed flex-1 mb-4">{d.body}</p>
+                <div className="p-4 flex flex-col flex-1">
+                  <h3 className="text-[12.5px] font-semibold text-navy-900 mb-1 leading-snug">{d.title}</h3>
+                  <p className="text-[11.5px] text-navy-800/45 leading-relaxed flex-1 mb-3">{d.body}</p>
                   <button
-                    className="inline-flex items-center gap-2 text-[12px] font-bold self-start px-3.5 py-1.5 rounded-full transition-all duration-150 hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-1.5 text-[11.5px] font-bold self-start px-3 py-1.5 rounded-full transition-all duration-150 hover:-translate-y-0.5"
                     style={{ backgroundColor: d.color + '15', color: d.color === GOLD ? '#B8900E' : d.color }}
                   >
                     Download Free
-                    <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" /></svg>
+                    <svg className="w-3 h-3" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" /></svg>
                   </button>
                 </div>
               </motion.div>
