@@ -44,7 +44,7 @@ const tools = [
     ),
   },
   {
-    color: '#FFE030',
+    color: '#2EBB50',
     audience: { en: 'For Professionals', es: 'Para Profesionales' },
     title: { en: 'RBT Exam Quick Reference', es: 'Referencia Rápida para el Examen RBT' },
     desc: {
@@ -59,7 +59,7 @@ const tools = [
     ),
   },
   {
-    color: '#FFE030',
+    color: '#2EBB50',
     audience: { en: 'For Professionals', es: 'Para Profesionales' },
     title: { en: 'ABC Data Collection Sheet', es: 'Hoja de Recolección de Datos ABC' },
     desc: {
