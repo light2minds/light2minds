@@ -642,8 +642,8 @@ export default function ParentsPage() {
               <h2 className="text-[clamp(1.4rem,2.8vw,2rem)] font-bold text-white tracking-[-0.025em] leading-[1.1] mb-3">
                 You&apos;re not navigating this alone.
               </h2>
-              <p className="text-[14px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                Our Family Resource Bundles give you everything in one place — curated guides, checklists, and tools designed for parents who want real answers and practical support. Skip the searching. Get what actually works.
+              <p className="text-[14px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.70)' }}>
+                Our Family Resource Bundles give you everything in one place — curated guides, checklists, and tools designed for parents who want practical support. Skip the searching. Get what actually works.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
