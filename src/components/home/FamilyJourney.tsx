@@ -123,23 +123,29 @@ export default function FamilyJourney() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.18 }}
-          className="flex items-center gap-4 py-4 px-5 rounded-2xl border border-stone-200/70 bg-stone-50/60 mb-4"
+          className="rounded-2xl overflow-hidden mb-4"
+          style={{ backgroundColor: 'rgba(91,196,248,0.08)', border: '1px solid rgba(91,196,248,0.25)' }}
         >
-          <span className="text-xl flex-shrink-0">🧸</span>
-          <div className="flex-1 min-w-0">
-            <p className="text-[12.5px] font-semibold text-navy-900 leading-snug">Sensory kits built for your family&apos;s real life.</p>
-            <p className="text-[11.5px] text-navy-800/45 leading-relaxed">Travel kit, Calm &amp; Focus Box, Bedtime Regulation Box — curated tools that actually help.</p>
+          <div className="h-[3px] w-full" style={{ backgroundColor: '#5BC4F8' }} />
+          <div className="px-5 py-4">
+            <p className="text-[13px] font-bold text-navy-900 mb-1">
+              Sensory kits built for your family&apos;s real life.
+            </p>
+            <p className="text-[12px] text-navy-800/60 leading-relaxed mb-3">
+              Curated bundles of sensory tools to help children stay regulated — at home, on the go, and at bedtime.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {['Sensory Travel Kit', 'Calm & Focus Box', 'Bedtime Regulation Box'].map(name => (
+                <span
+                  key={name}
+                  className="text-[11px] font-semibold px-3 py-1 rounded-full"
+                  style={{ backgroundColor: 'rgba(91,196,248,0.15)', color: '#1A6B96' }}
+                >
+                  {name}
+                </span>
+              ))}
+            </div>
           </div>
-          <Link
-            href="/shop#families"
-            className="inline-flex items-center gap-1.5 text-[11.5px] font-bold flex-shrink-0 px-3.5 py-1.5 rounded-full transition-all duration-150 hover:-translate-y-0.5"
-            style={{ backgroundColor: '#FFE030', color: '#0D1B2E', boxShadow: '0 3px 0 #C4A800' }}
-          >
-            Shop
-            <svg className="w-3 h-3" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M2 7h10M8 3l4 4-4 4" />
-            </svg>
-          </Link>
         </motion.div>
 
         {/* Two CTAs */}
