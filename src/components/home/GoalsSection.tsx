@@ -45,21 +45,21 @@ export default function GoalsSection() {
   const t = (obj: { en: string; es: string }) => obj[lang]
 
   return (
-    <section className="bg-white py-16 lg:py-24 border-t border-stone-200/40">
+    <section className="bg-white py-10 lg:py-14 border-t border-stone-200/40">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-        <motion.div {...fade()} className="mb-14 max-w-xl">
-          <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">
+        <motion.div {...fade()} className="mb-8 max-w-xl">
+          <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-3">
             {lang === 'es' ? 'Dos Caminos' : 'Two Pathways'}
           </p>
-          <h2 className="text-[clamp(1.8rem,3.8vw,2.8rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1]">
+          <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1]">
             {lang === 'es'
               ? 'Todo lo que necesitas, en un solo lugar.'
               : 'Everything you need, in one place.'}
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {pillars.map((p, i) => (
             <motion.div key={p.num} {...fade(i * 0.1)}>
               <Link
@@ -74,8 +74,8 @@ export default function GoalsSection() {
                 {/* Colored top bar */}
                 <div className="h-1 w-full flex-shrink-0" style={{ backgroundColor: p.color }} />
 
-                <div className="flex flex-col flex-1 p-8">
-                  <div className="flex items-center gap-3 mb-5">
+                <div className="flex flex-col flex-1 p-6">
+                  <div className="flex items-center gap-3 mb-4">
                     <span
                       className="text-[11px] font-bold tracking-[0.12em]"
                       style={{ color: p.color === '#FFE030' ? '#B8900E' : p.color }}
@@ -93,11 +93,7 @@ export default function GoalsSection() {
                     </span>
                   </div>
 
-                  <h3 className="text-[1.2rem] font-bold text-navy-900 tracking-[-0.02em] leading-snug mb-4">
-                    {t(p.title)}
-                  </h3>
-
-                  <p className="text-[13.5px] text-navy-800/55 leading-relaxed flex-1 mb-7">
+                  <p className="text-[13.5px] text-navy-800/55 leading-relaxed flex-1 mb-5">
                     {t(p.body)}
                   </p>
 
