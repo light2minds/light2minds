@@ -6,20 +6,20 @@ import { motion } from 'framer-motion'
 import { useLang } from '@/lib/language'
 
 const fade = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] as const },
+  transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] as const },
 })
 
 const tools = [
   {
     color: '#5BC4F8',
     audience: { en: 'For Families', es: 'Para Familias' },
-    title: { en: 'IEP Meeting Preparation Checklist', es: 'Lista de Preparación para Reunión del IEP' },
+    title: { en: 'IEP Meeting Preparation Checklist', es: 'Lista de Preparación para el IEP' },
     desc: {
-      en: 'Walk into your child\'s IEP meeting prepared. Know what to ask, what to bring, and what to expect — in plain language.',
-      es: 'Entra a la reunión del IEP de tu hijo preparado. Sabe qué preguntar, qué llevar y qué esperar — en lenguaje claro.',
+      en: 'What to ask, what to bring, and what to expect — in plain language.',
+      es: 'Qué preguntar, qué llevar y qué esperar — en lenguaje claro.',
     },
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -31,10 +31,10 @@ const tools = [
   {
     color: '#5BC4F8',
     audience: { en: 'For Families', es: 'Para Familias' },
-    title: { en: 'Autism & ADHD Diagnosis Glossary', es: 'Glosario de Diagnóstico de Autismo y TDAH' },
+    title: { en: 'Diagnosis Glossary', es: 'Glosario de Diagnóstico' },
     desc: {
-      en: 'Decode the clinical language. 60+ terms explained in parent-friendly language — from ABA to sensory processing.',
-      es: 'Descifra el lenguaje clínico. Más de 60 términos explicados para padres — desde ABA hasta procesamiento sensorial.',
+      en: '60+ clinical terms explained in plain, parent-friendly language.',
+      es: 'Más de 60 términos clínicos explicados en lenguaje para padres.',
     },
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -46,10 +46,10 @@ const tools = [
   {
     color: '#2EBB50',
     audience: { en: 'For Professionals', es: 'Para Profesionales' },
-    title: { en: 'RBT Exam Quick Reference', es: 'Referencia Rápida para el Examen RBT' },
+    title: { en: 'RBT Exam Quick Reference', es: 'Referencia Rápida RBT' },
     desc: {
-      en: 'Core concepts, task list summaries, and key definitions — everything you need for the RBT competency assessment.',
-      es: 'Conceptos clave, resúmenes de la lista de tareas y definiciones — todo lo que necesitas para la evaluación de competencia RBT.',
+      en: 'Core concepts and key definitions for the RBT competency assessment.',
+      es: 'Conceptos clave y definiciones para la evaluación de competencia RBT.',
     },
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -61,10 +61,10 @@ const tools = [
   {
     color: '#2EBB50',
     audience: { en: 'For Professionals', es: 'Para Profesionales' },
-    title: { en: 'ABC Data Collection Sheet', es: 'Hoja de Recolección de Datos ABC' },
+    title: { en: 'ABC Data Collection Sheet', es: 'Hoja de Recolección ABC' },
     desc: {
-      en: 'Track antecedents, behaviors, and consequences with precision. Printable form for daily clinical documentation and FBA support.',
-      es: 'Rastrea antecedentes, comportamientos y consecuencias. Formulario imprimible para documentación clínica diaria y apoyo de FBA.',
+      en: 'Printable form for daily clinical documentation and FBA support.',
+      es: 'Formulario imprimible para documentación clínica y apoyo de FBA.',
     },
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -83,30 +83,28 @@ export default function FreeToolsSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Wire up to Mailchimp / ConvertKit / Formspree
     setSubmitted(true)
   }
 
   return (
-    <section className="bg-white py-16 lg:py-24 border-t border-stone-200/40">
+    <section className="bg-white py-8 lg:py-12 border-t border-stone-200/40">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-        <motion.div {...fade()} className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="w-5 h-px flex-shrink-0" style={{ backgroundColor: '#2EBB50' }} />
+        {/* Header */}
+        <motion.div {...fade()} className="mb-5">
+          <div className="flex items-center gap-2.5 mb-2">
+            <span className="w-4 h-px flex-shrink-0" style={{ backgroundColor: '#2EBB50' }} />
             <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-navy-700/50">
               {lang === 'es' ? 'Recursos Gratuitos' : 'Free Resources'}
             </span>
           </div>
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-            <h2 className="text-[clamp(1.8rem,3.8vw,2.8rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1]">
-              {lang === 'es'
-                ? <>Try it free.<br />No account required.</>
-                : <>Try it free.<br />No account required.</>}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <h2 className="text-[clamp(1.3rem,2.5vw,1.8rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1]">
+              {lang === 'es' ? 'Pruébalo gratis. Sin cuenta.' : 'Try it free. No account required.'}
             </h2>
             <Link
               href="/tools"
-              className="text-[13px] font-semibold text-navy-600 hover:text-navy-900 transition-colors flex items-center gap-2 flex-shrink-0"
+              className="text-[12.5px] font-semibold text-navy-600 hover:text-navy-900 transition-colors flex items-center gap-2 flex-shrink-0"
             >
               {lang === 'es' ? 'Ver todos los recursos' : 'Browse all 40+ tools'}
               <span className="w-4 h-px bg-current" />
@@ -114,42 +112,43 @@ export default function FreeToolsSection() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+        {/* Tool cards */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
           {tools.map((tool, i) => (
-            <motion.div key={i} {...fade(i * 0.08)}>
+            <motion.div key={i} {...fade(i * 0.06)}>
               <Link
                 href="/tools"
-                className="group flex flex-col h-full rounded-2xl border p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg bg-stone-50/60"
-                style={{ borderColor: tool.color + '35' }}
+                className="group flex flex-col h-full rounded-xl border p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md bg-stone-50/60"
+                style={{ borderColor: tool.color + '30' }}
               >
-                <div className="flex items-start justify-between mb-5">
+                <div className="flex items-start justify-between mb-3">
                   <span
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: tool.color + '18', color: tool.color === '#FFE030' ? '#B8900E' : tool.color }}
+                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: tool.color + '18', color: tool.color }}
                   >
-                    <span className="w-5 h-5">{tool.icon}</span>
+                    <span className="w-4 h-4">{tool.icon}</span>
                   </span>
                   <span
-                    className="text-[10px] font-bold tracking-[0.1em] uppercase px-2.5 py-1 rounded-full"
-                    style={{ backgroundColor: tool.color + '18', color: tool.color === '#FFE030' ? '#B8900E' : tool.color }}
+                    className="text-[9.5px] font-bold tracking-[0.08em] uppercase px-2 py-0.5 rounded-full"
+                    style={{ backgroundColor: tool.color + '18', color: tool.color }}
                   >
                     {t(tool.audience)}
                   </span>
                 </div>
 
-                <h3 className="text-[1rem] font-bold text-navy-900 tracking-[-0.015em] leading-snug mb-3 flex-1">
+                <h3 className="text-[12.5px] font-bold text-navy-900 leading-snug mb-2 flex-1">
                   {t(tool.title)}
                 </h3>
-                <p className="text-[13px] text-navy-800/55 leading-relaxed mb-5">
+                <p className="text-[11.5px] text-navy-800/50 leading-relaxed mb-3">
                   {t(tool.desc)}
                 </p>
 
                 <span
-                  className="inline-flex items-center gap-2 text-[12.5px] font-bold transition-opacity opacity-70 group-hover:opacity-100"
-                  style={{ color: tool.color === '#FFE030' ? '#B8900E' : tool.color }}
+                  className="inline-flex items-center gap-1.5 text-[11.5px] font-bold transition-opacity opacity-60 group-hover:opacity-100"
+                  style={{ color: tool.color }}
                 >
                   {lang === 'es' ? 'Ver recurso' : 'View resource'}
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="w-3 h-3" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M7 1v8M4 6l3 3 3-3M2 11h10" />
                   </svg>
                 </span>
@@ -158,62 +157,51 @@ export default function FreeToolsSection() {
           ))}
         </div>
 
-        {/* Email capture strip */}
+        {/* Email capture */}
         <motion.div
-          {...fade(0.2)}
-          className="rounded-2xl p-8 md:p-10 border border-stone-200/70"
+          {...fade(0.15)}
+          className="rounded-xl px-5 py-4 border border-stone-200/70 flex flex-col sm:flex-row sm:items-center gap-4"
           style={{ backgroundColor: 'rgba(91,196,248,0.05)' }}
         >
-          <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
-            <div className="flex-1">
-              <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-navy-700/40 mb-1.5">
-                {lang === 'es' ? 'Sin spam. Cancela cuando quieras.' : 'Free resources for families & professionals · No spam'}
-              </p>
-              <h3 className="text-[1.2rem] font-bold text-navy-900 tracking-[-0.02em]">
-                {lang === 'es'
-                  ? 'Recibe nuevos recursos en tu bandeja de entrada.'
-                  : 'New resources, delivered when they launch.'}
-              </h3>
-            </div>
-
-            <div className="flex-shrink-0 w-full md:w-auto md:min-w-[380px]">
-              {submitted ? (
-                <div className="flex items-center gap-3 py-3">
-                  <span
-                    className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: 'rgba(46,187,80,0.12)' }}
-                  >
-                    <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="#2EBB50" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M3 8l3 3 7-6" />
-                    </svg>
-                  </span>
-                  <p className="text-[14px] font-semibold text-navy-900">
-                    {lang === 'es' ? '¡Listo! Te llegará el primer recurso pronto.' : "You're in! First resource on its way."}
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex gap-2">
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder={lang === 'es' ? 'tu@correo.com' : 'Enter your email address'}
-                    className="flex-1 min-w-0 px-4 py-3 rounded-xl border border-stone-200 text-[14px] text-navy-900 placeholder-navy-800/25 outline-none focus:border-sky-400 transition-colors duration-150 bg-white"
-                  />
-                  <button
-                    type="submit"
-                    className="flex-shrink-0 px-5 py-3 rounded-xl text-[13.5px] font-bold text-navy-900 transition-all duration-150 hover:translate-y-[-1px] active:translate-y-[1px] whitespace-nowrap"
-                    style={{
-                      backgroundColor: '#FFE030',
-                      boxShadow: '0 4px 0 #C4A800, 0 6px 14px rgba(0,0,0,0.08)',
-                    }}
-                  >
-                    {lang === 'es' ? 'Suscribirme' : 'Get free resources'}
-                  </button>
-                </form>
-              )}
-            </div>
+          <div className="flex-1">
+            <p className="text-[10.5px] font-semibold tracking-[0.12em] uppercase text-navy-700/35 mb-0.5">
+              {lang === 'es' ? 'Sin spam. Cancela cuando quieras.' : 'No spam · Unsubscribe anytime'}
+            </p>
+            <p className="text-[13px] font-bold text-navy-900">
+              {lang === 'es' ? 'Recibe nuevos recursos cuando salen.' : 'New resources, delivered when they launch.'}
+            </p>
+          </div>
+          <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[340px]">
+            {submitted ? (
+              <div className="flex items-center gap-2.5">
+                <span className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'rgba(46,187,80,0.12)' }}>
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="#2EBB50" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 8l3 3 7-6" />
+                  </svg>
+                </span>
+                <p className="text-[13px] font-semibold text-navy-900">
+                  {lang === 'es' ? '¡Listo! Te llegará el primer recurso pronto.' : "You're in! First resource on its way."}
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex gap-2">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={lang === 'es' ? 'tu@correo.com' : 'Your email address'}
+                  className="flex-1 min-w-0 px-3.5 py-2.5 rounded-lg border border-stone-200 text-[13px] text-navy-900 placeholder-navy-800/25 outline-none focus:border-sky-400 transition-colors bg-white"
+                />
+                <button
+                  type="submit"
+                  className="flex-shrink-0 px-4 py-2.5 rounded-lg text-[12.5px] font-bold text-navy-900 transition-all duration-150 hover:-translate-y-px whitespace-nowrap"
+                  style={{ backgroundColor: '#FFE030', boxShadow: '0 3px 0 #C4A800' }}
+                >
+                  {lang === 'es' ? 'Suscribirme' : 'Get free resources'}
+                </button>
+              </form>
+            )}
           </div>
         </motion.div>
 
