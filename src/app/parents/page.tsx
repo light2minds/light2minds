@@ -490,24 +490,95 @@ export default function ParentsPage() {
       </section>
 
       {/* ── IEP & School ── */}
-      <section className="bg-stone-50 py-10 lg:py-14 border-t border-stone-200/60" id="iep">
+      <section className="bg-stone-50 py-12 lg:py-16 border-t border-stone-200/60" id="iep">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.55 }} className="mb-6 max-w-xl">
+
+          <motion.div {...fade} transition={{ duration: 0.55 }} className="mb-8 max-w-2xl">
             <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-2">School &amp; IEP</p>
-            <h2 className="text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
+            <h2 className="text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1] mb-3">
               Your child has legal rights at school.
             </h2>
+            <p className="text-[13.5px] text-navy-800/50 leading-relaxed">
+              Under IDEA, every eligible child is entitled to a Free Appropriate Public Education. Here&apos;s what that means in practice.
+            </p>
           </motion.div>
-          <motion.div {...fade} transition={{ duration: 0.5, delay: 0.08 }} className="max-w-2xl">
-            <Accordion items={iepItems} />
+
+          {/* Two main panels */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+
+            {/* Rights */}
+            <motion.div {...fade} transition={{ duration: 0.4, delay: 0.05 }}
+              className="bg-white rounded-2xl overflow-hidden border border-sky-100"
+              style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+            >
+              <div className="h-[3px] w-full" style={{ backgroundColor: SKY }} />
+              <div className="p-6">
+                <h3 className="text-[13.5px] font-bold mb-4" style={{ color: '#1A6B96' }}>Your Rights as a Parent</h3>
+                <ul className="space-y-2.5">
+                  {[
+                    'You are a full and equal member of your child\'s IEP team.',
+                    'You can request an evaluation at no cost if you believe your child has a disability.',
+                    'You must receive written notice before any change to placement or services.',
+                    'You can request an Independent Educational Evaluation (IEE) if you disagree with the school\'s assessment.',
+                    'You can bring a support person or advocate to any IEP meeting.',
+                    'You are entitled to a copy of all educational records — at no cost.',
+                  ].map(item => (
+                    <li key={item} className="flex items-start gap-3 text-[12.5px] text-navy-800/60 leading-relaxed">
+                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5" style={{ backgroundColor: SKY }} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* IEP components */}
+            <motion.div {...fade} transition={{ duration: 0.4, delay: 0.1 }}
+              className="bg-white rounded-2xl overflow-hidden border border-green-100"
+              style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+            >
+              <div className="h-[3px] w-full" style={{ backgroundColor: GREEN }} />
+              <div className="p-6">
+                <h3 className="text-[13.5px] font-bold mb-4" style={{ color: '#1A7A3C' }}>What an IEP Must Include</h3>
+                <ul className="space-y-2.5">
+                  {[
+                    'Present levels of academic achievement and functional performance',
+                    'Annual measurable goals — academic and functional',
+                    'Special education and related services (speech, OT, ABA)',
+                    'Accommodation and modification list',
+                    'Least restrictive environment (LRE) statement',
+                    'Transition plan (required at age 16 in Florida)',
+                  ].map(item => (
+                    <li key={item} className="flex items-start gap-3 text-[12.5px] text-navy-800/60 leading-relaxed">
+                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5" style={{ backgroundColor: GREEN }} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+
+          </div>
+
+          {/* Florida ESE callout */}
+          <motion.div {...fade} transition={{ duration: 0.4, delay: 0.15 }}
+            className="rounded-2xl px-6 py-5 mb-6 border"
+            style={{ backgroundColor: GOLD + '12', borderColor: GOLD + '50' }}
+          >
+            <p className="text-[12px] font-bold uppercase tracking-[0.1em] mb-1" style={{ color: '#8A6A00' }}>Florida Families — ESE Services</p>
+            <p className="text-[13px] text-navy-800/60 leading-relaxed">
+              Florida&apos;s term for special education is <strong className="text-navy-900/70">Exceptional Student Education (ESE)</strong>. Contact your school district&apos;s ESE office — they are legally required to respond to your evaluation request within 60 days and provide services at no cost.
+            </p>
           </motion.div>
-          <motion.div {...fade} transition={{ duration: 0.4, delay: 0.12 }} className="mt-5">
+
+          <motion.div {...fade} transition={{ duration: 0.4, delay: 0.18 }}>
             <Link href="/tools#parent-tools"
               className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-900 border border-navy-900/15 px-5 py-2.5 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200">
               IEP Prep Checklist
               <ArrowRight />
             </Link>
           </motion.div>
+
         </div>
       </section>
 
