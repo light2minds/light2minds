@@ -164,14 +164,14 @@ const iepItems = [
   },
 ]
 
-const strategies = [
-  { num: '01', color: SKY,   title: 'Build a Predictable Routine',      body: 'Use visual schedules and warn before transitions ("In 5 minutes we\'re leaving"). Predictability reduces anxiety and challenging behavior.' },
-  { num: '02', color: GREEN, title: 'Follow Your Child\'s Lead',         body: 'During play, join what your child is already doing. Child-led play builds joint attention, language, and social connection.' },
-  { num: '03', color: GOLD,  title: 'Use Clear, Simple Language',        body: 'Keep instructions short and specific. Instead of "stop it," say "hands down." Match your language to their level, then add one word.' },
-  { num: '04', color: SKY,   title: 'Catch the Positives',               body: 'Aim for 4–5 specific positive comments for every correction. Specific praise ("great job putting your shoes on!") teaches far more than "good job."' },
-  { num: '05', color: GREEN, title: 'Understand What Behavior Communicates', body: 'Before reacting, ask: what is my child trying to get or avoid? Most behavior serves one of four functions: attention, access, escape, or sensory.' },
-  { num: '06', color: GOLD,  title: 'Create a Sensory-Friendly Home',   body: 'Dim harsh lights, reduce background noise, create a quiet corner. Offer sensory input your child seeks: a swing, textured toys, or movement breaks.' },
-  { num: '07', color: SKY,   title: 'Take Care of Yourself Too',         body: 'Caregiver burnout directly affects your child. Connect with a parent support group and ask for respite care. You can\'t pour from an empty cup.' },
+const strategyItems = [
+  { trigger: '1 — Build a Predictable Routine', content: <p className="text-[13px] text-navy-800/60 leading-relaxed">Use visual schedules to show what&apos;s coming next. Warn your child before transitions (&ldquo;In 5 minutes we&apos;re leaving&rdquo;). Predictability reduces anxiety and challenging behavior significantly.</p> },
+  { trigger: '2 — Follow Your Child\'s Lead', content: <p className="text-[13px] text-navy-800/60 leading-relaxed">During play, join what your child is already doing. Get on the floor, imitate their actions, and comment on what you see. Child-led play builds joint attention, language, and social connection.</p> },
+  { trigger: '3 — Use Clear, Simple Language', content: <p className="text-[13px] text-navy-800/60 leading-relaxed">Keep instructions short and specific. Instead of &ldquo;stop it,&rdquo; say &ldquo;hands down.&rdquo; For children with limited language, use their level plus one word: &ldquo;Ball!&rdquo; → &ldquo;Roll ball!&rdquo;</p> },
+  { trigger: '4 — Catch the Positives', content: <p className="text-[13px] text-navy-800/60 leading-relaxed">For every correction, aim for 4–5 specific positive comments. &ldquo;I love how you put your shoes on by yourself&rdquo; teaches far more than a generic &ldquo;Good job!&rdquo;</p> },
+  { trigger: '5 — Understand the Function of Behavior', content: <p className="text-[13px] text-navy-800/60 leading-relaxed">Before reacting, ask: what is my child trying to get or avoid? Most behavior serves one of four functions: attention, access, escape, or sensory stimulation.</p> },
+  { trigger: '6 — Create a Sensory-Friendly Home', content: <p className="text-[13px] text-navy-800/60 leading-relaxed">Reduce overwhelming stimuli — dim harsh lights, minimize background noise, create a quiet space. Offer sensory input your child seeks: a swing, textured toys, or movement breaks.</p> },
+  { trigger: '7 — Take Care of Yourself Too', content: <p className="text-[13px] text-navy-800/60 leading-relaxed">Caregiver burnout directly affects your child&apos;s wellbeing. Connect with a parent support group, ask for respite care. You cannot give your child what you don&apos;t have.</p> },
 ]
 
 const abaFaqItems = [
@@ -512,40 +512,17 @@ export default function ParentsPage() {
       </section>
 
       {/* ── Home Strategies ── */}
-      <section style={{ backgroundColor: WARM_BG }} className="py-12 lg:py-16 border-t border-stone-200/60" id="strategies">
+      <section className="bg-white py-10 lg:py-14 border-t border-stone-200/60" id="strategies">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-
-          <motion.div {...fade} transition={{ duration: 0.55 }} className="mb-8 max-w-xl">
+          <motion.div {...fade} transition={{ duration: 0.55 }} className="mb-6 max-w-xl">
             <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-2">Home Life</p>
             <h2 className="text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
               7 strategies that work — even on the hardest days.
             </h2>
           </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {strategies.map((s, i) => {
-              const accentColor = s.color === GOLD ? '#8A6A00' : s.color
-              return (
-                <motion.div
-                  key={s.num}
-                  {...fade}
-                  transition={{ duration: 0.35, delay: i * 0.05 }}
-                  className="bg-white rounded-2xl overflow-hidden border border-stone-200/60"
-                  style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
-                >
-                  <div className="h-[3px] w-full" style={{ backgroundColor: s.color }} />
-                  <div className="p-5">
-                    <div className="flex items-start justify-between gap-2 mb-3">
-                      <h3 className="text-[13.5px] font-bold text-navy-900 leading-snug">{s.title}</h3>
-                      <span className="text-[11px] font-bold flex-shrink-0 mt-0.5" style={{ color: accentColor + '80' }}>{s.num}</span>
-                    </div>
-                    <p className="text-[12.5px] text-navy-800/55 leading-relaxed">{s.body}</p>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </div>
-
+          <motion.div {...fade} transition={{ duration: 0.5, delay: 0.08 }} className="max-w-2xl">
+            <Accordion items={strategyItems} />
+          </motion.div>
         </div>
       </section>
 
