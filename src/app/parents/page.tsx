@@ -363,78 +363,6 @@ export default function ParentsPage() {
         </div>
       </section>
 
-      {/* ── ABA Therapy ── */}
-      <section className="bg-white py-10 lg:py-14 border-t border-stone-200/60" id="aba">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.55 }} className="mb-6 max-w-xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-2">ABA Therapy</p>
-            <h2 className="text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
-              What every parent should understand about ABA
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
-            {[
-              { color: SKY, title: 'What Is ABA?', body: 'ABA applies our understanding of how behavior works to real-life situations — then uses that knowledge to teach skills and improve quality of life.' },
-              { color: GREEN, title: 'Who Is on the Team?', body: 'A BCBA designs and supervises the program. Registered Behavior Technicians (RBTs) implement it directly with your child.' },
-              { color: GOLD, title: 'What Does a Session Look Like?', body: 'Sessions use naturalistic play, skill-building exercises, and positive reinforcement — at home, school, or a clinic.' },
-            ].map((card, i) => (
-              <motion.div key={card.title} {...fade} transition={{ duration: 0.35, delay: i * 0.06 }}
-                className="rounded-2xl overflow-hidden border"
-                style={{ borderColor: card.color + '30', backgroundColor: card.color + '08' }}
-              >
-                <div className="h-[3px] w-full" style={{ backgroundColor: card.color }} />
-                <div className="p-5">
-                  <h3 className="text-[13.5px] font-semibold text-navy-900 mb-2">{card.title}</h3>
-                  <p className="text-[12.5px] text-navy-800/55 leading-relaxed">{card.body}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div {...fade} transition={{ duration: 0.5, delay: 0.1 }} className="max-w-2xl">
-            <Accordion items={abaFaqItems} openFirst />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── IEP & School ── */}
-      <section className="bg-stone-50 py-10 lg:py-14 border-t border-stone-200/60" id="iep">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.55 }} className="mb-6 max-w-xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-2">School &amp; IEP</p>
-            <h2 className="text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
-              Your child has legal rights at school.
-            </h2>
-          </motion.div>
-          <motion.div {...fade} transition={{ duration: 0.5, delay: 0.08 }} className="max-w-2xl">
-            <Accordion items={iepItems} />
-          </motion.div>
-          <motion.div {...fade} transition={{ duration: 0.4, delay: 0.12 }} className="mt-5">
-            <Link href="/tools#parent-tools"
-              className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-900 border border-navy-900/15 px-5 py-2.5 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200">
-              IEP Prep Checklist
-              <ArrowRight />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Home Strategies ── */}
-      <section className="bg-white py-10 lg:py-14 border-t border-stone-200/60" id="strategies">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fade} transition={{ duration: 0.55 }} className="mb-6 max-w-xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-2">Home Life</p>
-            <h2 className="text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
-              7 strategies that work — even on the hardest days.
-            </h2>
-          </motion.div>
-          <motion.div {...fade} transition={{ duration: 0.5, delay: 0.08 }} className="max-w-2xl">
-            <Accordion items={strategyItems} />
-          </motion.div>
-        </div>
-      </section>
-
       {/* ── Family Consultation (merged) ── */}
       <section style={{ backgroundColor: '#0D1B2E' }} className="py-12 lg:py-16 border-t border-navy-900" id="sessions">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -523,6 +451,78 @@ export default function ParentsPage() {
             </motion.div>
 
           </div>
+        </div>
+      </section>
+
+      {/* ── ABA Therapy ── */}
+      <section className="bg-white py-10 lg:py-14 border-t border-stone-200/60" id="aba">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <motion.div {...fade} transition={{ duration: 0.55 }} className="mb-6 max-w-xl">
+            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-2">ABA Therapy</p>
+            <h2 className="text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
+              What every parent should understand about ABA
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+            {[
+              { color: SKY, title: 'What Is ABA?', body: 'ABA applies our understanding of how behavior works to real-life situations — then uses that knowledge to teach skills and improve quality of life.' },
+              { color: GREEN, title: 'Who Is on the Team?', body: 'A BCBA designs and supervises the program. Registered Behavior Technicians (RBTs) implement it directly with your child.' },
+              { color: GOLD, title: 'What Does a Session Look Like?', body: 'Sessions use naturalistic play, skill-building exercises, and positive reinforcement — at home, school, or a clinic.' },
+            ].map((card, i) => (
+              <motion.div key={card.title} {...fade} transition={{ duration: 0.35, delay: i * 0.06 }}
+                className="rounded-2xl overflow-hidden border"
+                style={{ borderColor: card.color + '30', backgroundColor: card.color + '08' }}
+              >
+                <div className="h-[3px] w-full" style={{ backgroundColor: card.color }} />
+                <div className="p-5">
+                  <h3 className="text-[13.5px] font-semibold text-navy-900 mb-2">{card.title}</h3>
+                  <p className="text-[12.5px] text-navy-800/55 leading-relaxed">{card.body}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div {...fade} transition={{ duration: 0.5, delay: 0.1 }} className="max-w-2xl">
+            <Accordion items={abaFaqItems} openFirst />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── IEP & School ── */}
+      <section className="bg-stone-50 py-10 lg:py-14 border-t border-stone-200/60" id="iep">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <motion.div {...fade} transition={{ duration: 0.55 }} className="mb-6 max-w-xl">
+            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-2">School &amp; IEP</p>
+            <h2 className="text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
+              Your child has legal rights at school.
+            </h2>
+          </motion.div>
+          <motion.div {...fade} transition={{ duration: 0.5, delay: 0.08 }} className="max-w-2xl">
+            <Accordion items={iepItems} />
+          </motion.div>
+          <motion.div {...fade} transition={{ duration: 0.4, delay: 0.12 }} className="mt-5">
+            <Link href="/tools#parent-tools"
+              className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-900 border border-navy-900/15 px-5 py-2.5 rounded-full hover:bg-navy-900 hover:text-white transition-all duration-200">
+              IEP Prep Checklist
+              <ArrowRight />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Home Strategies ── */}
+      <section className="bg-white py-10 lg:py-14 border-t border-stone-200/60" id="strategies">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <motion.div {...fade} transition={{ duration: 0.55 }} className="mb-6 max-w-xl">
+            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-2">Home Life</p>
+            <h2 className="text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
+              7 strategies that work — even on the hardest days.
+            </h2>
+          </motion.div>
+          <motion.div {...fade} transition={{ duration: 0.5, delay: 0.08 }} className="max-w-2xl">
+            <Accordion items={strategyItems} />
+          </motion.div>
         </div>
       </section>
 
