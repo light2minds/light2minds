@@ -281,8 +281,8 @@ export default function ParentsPage() {
                 href="https://light-2-minds.myshopify.com/cart/47209073672363:1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 text-[13.5px] font-bold text-white px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[-1px]"
-                style={{ backgroundColor: '#2EBB50', boxShadow: '0 4px 0 #1A7A3C, 0 6px 14px rgba(0,0,0,0.08)' }}
+                className="inline-flex items-center gap-2.5 text-[13.5px] font-bold text-navy-900 px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[-1px]"
+                style={{ backgroundColor: '#FFE030', boxShadow: '0 4px 0 #C4A800, 0 6px 14px rgba(0,0,0,0.08)' }}
               >
                 Book Family Consultation
                 <ArrowRight />
@@ -419,8 +419,8 @@ export default function ParentsPage() {
               href="https://light-2-minds.myshopify.com/cart/47209073672363:1"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[13px] font-semibold text-white px-5 py-2.5 rounded-full transition-all duration-200 flex-shrink-0 hover:translate-y-[-1px]"
-              style={{ backgroundColor: '#2EBB50', boxShadow: '0 3px 0 #1A7A3C' }}
+              className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-900 px-5 py-2.5 rounded-full transition-all duration-200 flex-shrink-0 hover:translate-y-[-1px]"
+              style={{ backgroundColor: '#FFE030', boxShadow: '0 3px 0 #C4A800' }}
             >
               Book Family Consultation
               <ArrowRight />
@@ -663,8 +663,8 @@ export default function ParentsPage() {
                   href="https://light-2-minds.myshopify.com/cart/47209073672363:1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 text-[13.5px] font-bold text-white px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[-1px]"
-                  style={{ backgroundColor: '#2EBB50', boxShadow: '0 4px 0 #1A7A3C, 0 6px 14px rgba(0,0,0,0.08)' }}
+                  className="inline-flex items-center gap-2.5 text-[13.5px] font-bold text-navy-900 px-7 py-3.5 rounded-full transition-all duration-150 hover:translate-y-[-1px]"
+                  style={{ backgroundColor: '#FFE030', boxShadow: '0 4px 0 #C4A800, 0 6px 14px rgba(0,0,0,0.08)' }}
                 >
                   Book Family Consultation
                   <ArrowRight />
