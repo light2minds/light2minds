@@ -117,16 +117,41 @@ export default function FamilyJourney() {
           ))}
         </div>
 
+        {/* Sensory kits teaser */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, delay: 0.18 }}
+          className="flex items-center gap-4 py-4 px-5 rounded-2xl border border-stone-200/70 bg-stone-50/60 mb-4"
+        >
+          <span className="text-xl flex-shrink-0">🧸</span>
+          <div className="flex-1 min-w-0">
+            <p className="text-[12.5px] font-semibold text-navy-900 leading-snug">Sensory kits built for your family&apos;s real life.</p>
+            <p className="text-[11.5px] text-navy-800/45 leading-relaxed">Travel kit, Calm &amp; Focus Box, Bedtime Regulation Box — curated tools that actually help.</p>
+          </div>
+          <Link
+            href="/shop#families"
+            className="inline-flex items-center gap-1.5 text-[11.5px] font-bold flex-shrink-0 px-3.5 py-1.5 rounded-full transition-all duration-150 hover:-translate-y-0.5"
+            style={{ backgroundColor: '#FFE030', color: '#0D1B2E', boxShadow: '0 3px 0 #C4A800' }}
+          >
+            Shop
+            <svg className="w-3 h-3" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M2 7h10M8 3l4 4-4 4" />
+            </svg>
+          </Link>
+        </motion.div>
+
         {/* Two CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.22 }}
           className="flex flex-wrap gap-3 pt-2 border-t border-stone-100"
         >
           <Link
-            href="/parents"
+            href="/shop#families"
             className="inline-flex items-center gap-2.5 text-[13px] font-semibold text-white px-6 py-2.5 rounded-full transition-all duration-150 hover:-translate-y-0.5"
             style={{ backgroundColor: '#5BC4F8', boxShadow: '0 3px 0 #3A9ECE' }}
           >
