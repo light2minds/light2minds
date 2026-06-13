@@ -632,28 +632,22 @@ export default function ProfessionalsPage() {
 
           {/* D. Career Development */}
           <div className="mb-7" id="career">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full text-forest-700 bg-forest-100">FREE</span>
-              <h3 className="text-[15px] font-bold text-navy-900">Career Development Tools</h3>
+            <div className="flex items-center justify-between gap-4 mb-4">
+              <div className="flex items-center gap-3">
+                <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full text-forest-700 bg-forest-100">FREE</span>
+                <h3 className="text-[15px] font-bold text-navy-900">Career Development Tools</h3>
+              </div>
+              <Link href="/tools"
+                className="text-[12px] font-semibold text-forest-700 hover:text-forest-900 flex items-center gap-1.5 transition-colors flex-shrink-0">
+                View all <span className="w-3 h-px bg-current" />
+              </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
-              {careerTools.map((tool, i) => (
-                <motion.div key={tool.title} {...up(i * 0.05)}
-                  className="bg-stone-50 border border-stone-200/70 rounded-2xl p-6 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200">
-                  <h4 className="text-[13.5px] font-semibold text-navy-900 mb-2">{tool.title}</h4>
-                  <p className="text-[12px] text-navy-800/45 leading-relaxed mb-4">{tool.body}</p>
-                  {tool.title === 'ABA Center Startup Support' ? (
-                    <a href="mailto:info@light2minds.com"
-                      className="text-[11.5px] font-semibold text-sky-600 hover:text-sky-800 transition-colors flex items-center gap-1.5">
-                      Contact Us <span className="w-3 h-px bg-current" />
-                    </a>
-                  ) : (
-                    <Link href="/tools"
-                      className="text-[11.5px] font-semibold text-forest-700 hover:text-forest-900 transition-colors flex items-center gap-1.5">
-                      Get on Tools page <span className="w-3 h-px bg-current" />
-                    </Link>
-                  )}
-                </motion.div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {careerTools.map(tool => (
+                <div key={tool.title} className="flex items-center gap-3 py-2.5 px-3 rounded-xl border border-stone-100 bg-white">
+                  <Check color="#2EBB50" />
+                  <span className="text-[13px] font-medium text-navy-900">{tool.title}</span>
+                </div>
               ))}
             </div>
           </div>
