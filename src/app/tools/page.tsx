@@ -12,7 +12,7 @@ type ToolCard = {
   description: string
   format: string
   audience: string
-  category: 'clinical' | 'parent' | 'sensory' | 'developmental' | 'rbt' | 'center'
+  category: 'clinical' | 'parent' | 'developmental' | 'rbt' | 'center'
   searchTerms?: string
 }
 
@@ -150,48 +150,6 @@ const parentTools: ToolCard[] = [
   },
 ]
 
-const sensoryItems = [
-  {
-    title: 'Weighted Vests & Blankets',
-    body: 'Deep pressure tools that provide proprioceptive input to help calm and regulate children who seek heavy work or have trouble with sensory modulation.',
-    tag: 'Deep Pressure',
-  },
-  {
-    title: 'Noise-Canceling Headphones',
-    body: 'Helpful for children with auditory hypersensitivity — in classrooms, grocery stores, or any high-stimulation environment. Available in child sizes.',
-    tag: 'Auditory',
-  },
-  {
-    title: 'Wobble Seats & Cushions',
-    body: 'Provides vestibular and proprioceptive input for children who need movement to focus. Great for classroom or homework desk use.',
-    tag: 'Vestibular',
-  },
-  {
-    title: 'Fidget Tools',
-    body: 'Textured fidgets, stress balls, and hand spinners provide tactile input and help channel sensory-seeking behavior in a controlled way during learning activities.',
-    tag: 'Tactile',
-  },
-  {
-    title: 'Oral Sensory Tools',
-    body: 'Chew necklaces, vibrating oral tools, and chewy tubes for children who are oral sensory seekers — a safer, socially appropriate alternative to chewing clothing or objects.',
-    tag: 'Oral',
-  },
-  {
-    title: 'Sensory Bins & Play Materials',
-    body: 'Sand, water, kinetic sand, slime, and rice bins provide controlled tactile and proprioceptive exploration — often used in sensory diets prescribed by OTs.',
-    tag: 'Tactile',
-  },
-  {
-    title: 'Visual Sensory Tools',
-    body: 'Sunglasses for light sensitivity, visual timers (like Time Timer), calm-down glitter jars, and visual schedules to reduce visual overstimulation and support transitions.',
-    tag: 'Visual',
-  },
-  {
-    title: 'Calming Corner Essentials',
-    body: 'A designated, low-stimulation area with soft lighting, a bean bag or crash pad, weighted lap pad, noise-canceling headphones, and a feelings chart for self-regulation.',
-    tag: 'Self-Regulation',
-  },
-]
 
 const developmentalTools: ToolCard[] = [
   {
@@ -334,7 +292,6 @@ const TABS = [
   { id: 'all', label: 'All Resources' },
   { id: 'clinical', label: 'Clinical Forms' },
   { id: 'parent', label: 'Parent Resources' },
-  { id: 'sensory', label: 'Sensory Tools' },
   { id: 'developmental', label: 'Developmental Guides' },
   { id: 'rbt', label: 'RBT Study' },
   { id: 'center', label: 'ABA Center' },
@@ -396,7 +353,7 @@ export default function ToolsPage() {
 
   const stats = [
     { value: '40+', label: 'Free Downloads', color: 'text-navy-700' },
-    { value: '6', label: 'Resource Categories', color: 'text-forest-700' },
+    { value: '5', label: 'Resource Categories', color: 'text-forest-700' },
     { value: 'PDF', label: 'Print-Ready Formats', color: 'text-gold-600' },
     { value: 'Free', label: 'No Sign-Up Required', color: 'text-sage-700' },
   ]
@@ -421,7 +378,7 @@ export default function ToolsPage() {
             <div className="flex flex-wrap gap-3">
               <a href="#clinical-tools" className="inline-flex items-center text-[12px] font-semibold text-navy-900/60 border border-stone-200 px-4 py-2 rounded-full hover:bg-navy-900 hover:text-white hover:border-navy-900 transition-all duration-150">Clinical Forms</a>
               <a href="#parent-tools" className="inline-flex items-center text-[12px] font-semibold text-navy-900/60 border border-stone-200 px-4 py-2 rounded-full hover:bg-navy-900 hover:text-white hover:border-navy-900 transition-all duration-150">Parent Resources</a>
-              <a href="#sensory-tools" className="inline-flex items-center text-[12px] font-semibold text-navy-900/60 border border-stone-200 px-4 py-2 rounded-full hover:bg-navy-900 hover:text-white hover:border-navy-900 transition-all duration-150">Sensory Tools</a>
+              <a href="#rbt-tools" className="inline-flex items-center text-[12px] font-semibold text-navy-900/60 border border-stone-200 px-4 py-2 rounded-full hover:bg-navy-900 hover:text-white hover:border-navy-900 transition-all duration-150">RBT Study</a>
             </div>
           </motion.div>
         </div>
@@ -586,40 +543,6 @@ export default function ToolsPage() {
                     {parentTools.map((tool) => (
                       <ToolCardItem key={tool.title} tool={tool} accent="text-forest-700 border-forest-200 hover:bg-forest-700 hover:text-white hover:border-forest-700" />
                     ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Sensory Tools */}
-              {showSection('sensory') && (
-                <div id="sensory-tools" className="mb-16">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="flex-1 h-px bg-stone-100" />
-                    <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-navy-800/30 whitespace-nowrap">Sensory Tool Recommendations</p>
-                    <div className="flex-1 h-px bg-stone-100" />
-                  </div>
-                  <p className="text-[14px] text-navy-800/50 leading-relaxed mb-8 max-w-2xl">
-                    These are general sensory tool categories recommended by occupational therapists. Always consult an OT for individualized recommendations for your child.
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                    {sensoryItems.map((item) => (
-                      <div key={item.title} className="bg-white border border-stone-200/70 rounded-2xl p-5">
-                        <h4 className="text-[14px] font-semibold text-navy-900 mb-2">{item.title}</h4>
-                        <p className="text-[13px] text-navy-800/45 leading-relaxed mb-3">{item.body}</p>
-                        <span className="inline-block text-[10px] font-bold tracking-[0.08em] uppercase bg-forest-50 text-forest-700 border border-forest-100 px-2 py-0.5 rounded-full">
-                          {item.tag}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="bg-forest-50 border border-forest-100 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                    <p className="text-[13px] text-navy-800/65 flex-1">
-                      <span className="font-semibold text-forest-700">Download: </span>
-                      Sensory Profile Questionnaire — help identify your child&apos;s sensory profile to share with their occupational therapist.
-                    </p>
-                    <button className="text-[12px] font-semibold text-forest-700 border border-forest-200 px-4 py-2 rounded-full hover:bg-forest-700 hover:text-white hover:border-forest-700 transition-all duration-150 flex-shrink-0">
-                      Download Free
-                    </button>
                   </div>
                 </div>
               )}
