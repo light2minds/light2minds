@@ -680,48 +680,25 @@ export default function ProfessionalsPage() {
       </section>
 
       {/* ── 8. WHY LIGHT2MINDS ───────────────────────────────────────────────── */}
-      <section className="bg-stone-50 py-12 lg:py-16 border-b border-stone-200/60">
+      <section className="bg-stone-50 py-10 lg:py-12 border-b border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10 lg:gap-16 items-start">
-
-            {/* Left — sticky headline block */}
-            <motion.div {...up()} className="lg:sticky lg:top-32">
-              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-3">Why Light2Minds</p>
-              <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.03em] leading-[1.08] mb-4">
-                Built by clinicians.<br />Designed for you.
-              </h2>
-              <p className="text-[13.5px] text-navy-800/45 leading-relaxed mb-6 max-w-xs">
-                Every resource, tool, and mentorship session is grounded in evidence-based practice — created by someone who has worked in the clinic.
-              </p>
-              <a href="mailto:info@light2minds.com?subject=Learn More"
-                className="inline-flex items-center gap-2.5 text-[13px] font-bold text-navy-900 bg-gold-400 px-6 py-3 rounded-full hover:bg-gold-300 transition-colors duration-200"
-                style={{ boxShadow: '0 3px 0 #C4A800' }}>
-                Get in Touch
-                <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
-              </a>
-            </motion.div>
-
-            {/* Right — numbered editorial list */}
-            <div>
-              {WHY_ITEMS.map((item, i) => (
-                <motion.div key={item.title} {...up(i * 0.08)}
-                  className="flex gap-6 py-5 border-b border-stone-200/60 last:border-0 last:pb-0 group">
-                  <div className="flex-shrink-0 pt-0.5">
-                    <span className="block text-[11px] font-bold tracking-[0.1em] tabular-nums" style={{ color: item.accent }}>
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-start gap-3 mb-2">
-                      <div className="w-0.5 h-full rounded-full flex-shrink-0 self-stretch mt-1" style={{ backgroundColor: item.accent + '40' }} />
-                      <h3 className="text-[15px] font-bold text-navy-900 leading-snug">{item.title}</h3>
-                    </div>
-                    <p className="text-[13.5px] text-navy-800/50 leading-relaxed pl-3.5">{item.body}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
+          <motion.div {...up()} className="mb-6">
+            <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-2">Why Light2Minds</p>
+            <h2 className="text-[clamp(1.3rem,2.5vw,1.8rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1]">
+              Built by clinicians. Designed for you.
+            </h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {WHY_ITEMS.map((item, i) => (
+              <motion.div key={item.title} {...up(i * 0.06)}
+                className="flex items-start gap-3 bg-white border border-stone-200/60 rounded-xl p-4">
+                <Check color={item.accent} />
+                <div>
+                  <p className="text-[13px] font-semibold text-navy-900 leading-snug mb-0.5">{item.title}</p>
+                  <p className="text-[12px] text-navy-800/45 leading-relaxed">{item.body}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
