@@ -152,7 +152,7 @@ const MENTORSHIP = [
       'Guidance on supervision requirements and documentation',
     ],
     cta: 'Book Guidance Session',
-    href: 'mailto:info@light2minds.com?subject=RBT Career Guidance Session',
+    href: '/shop#services',
   },
   {
     id: 'competency',
@@ -183,7 +183,7 @@ const MENTORSHIP = [
       'Support for professionals transitioning to supervisory roles',
     ],
     cta: 'Book Career Consultation',
-    href: 'mailto:info@light2minds.com?subject=BCaBA/BCBA Career Coaching',
+    href: '/shop#services',
   },
   {
     id: 'clinical-growth',
@@ -198,7 +198,7 @@ const MENTORSHIP = [
       'Support for opening or scaling your own ABA practice',
     ],
     cta: 'Book Consultation',
-    href: 'mailto:info@light2minds.com?subject=Professional Growth Consultation',
+    href: '/shop#services',
   },
 ]
 
