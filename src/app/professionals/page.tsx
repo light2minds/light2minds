@@ -376,7 +376,7 @@ export default function ProfessionalsPage() {
                 Professional Mentorship & Coaching.
               </h2>
               <p className="text-[13.5px] text-navy-800/50 leading-relaxed mb-7">
-                BCBA-led, one-on-one sessions tailored to your career stage. Whether you&apos;re preparing for your first exam, moving into supervision, or growing a practice — we&apos;re your dedicated career partner.
+                Behavioral professional-led, one-on-one sessions tailored to your career stage. Whether you&apos;re preparing for your first exam, moving into supervision, or growing a practice — we&apos;re your dedicated career partner.
               </p>
               <ul className="space-y-3 mb-8">
                 {MENTORSHIP_FEATURES.map(f => (
@@ -413,7 +413,7 @@ export default function ProfessionalsPage() {
                   </div>
                   <div className="mt-7 pt-6 border-t border-stone-100">
                     <p className="text-[12px] text-navy-800/40 leading-relaxed">
-                      Sessions are conducted virtually by a Board Certified Behavior Analyst. Available in English and Spanish.
+                      Sessions are conducted virtually by a Behavior Professional. Available in English and Spanish.
                     </p>
                   </div>
                 </div>
@@ -422,45 +422,44 @@ export default function ProfessionalsPage() {
 
           </div>
 
-          {/* Competency Assessment deep-dive (existing content, improved) */}
+          {/* Competency Assessment deep-dive */}
           <motion.div {...up()} id="competency">
-            <div className="bg-white border border-stone-200/60 rounded-3xl overflow-hidden">
-              <div className="h-1.5 w-full" style={{ background: 'linear-gradient(90deg, #2EBB50, #5BC4F8)' }} />
-              <div className="p-8 lg:p-10">
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
-                  <div className="max-w-2xl">
-                    <span className="inline-block text-[10px] font-bold tracking-[0.12em] uppercase text-forest-700 bg-forest-100 px-2.5 py-1 rounded-full mb-3">Competency Preparation</span>
-                    <h3 className="text-[clamp(1.3rem,2.5vw,1.8rem)] font-bold text-navy-900 mb-3">RBT Competency Assessment — What to Expect & How to Prepare.</h3>
-                    <p className="text-[14px] text-navy-800/50 leading-relaxed">
-                      Before receiving your RBT certification, a BCBA must observe and assess your ability to perform the skills on the Task List. This is a required live demonstration — not a written test. Preparation is everything.
+            <div className="bg-white border border-stone-200/60 rounded-2xl overflow-hidden">
+              <div className="h-1 w-full" style={{ background: 'linear-gradient(90deg, #2EBB50, #5BC4F8)' }} />
+              <div className="p-5 lg:p-7">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-5">
+                  <div className="max-w-xl">
+                    <span className="inline-block text-[10px] font-bold tracking-[0.12em] uppercase text-forest-700 bg-forest-100 px-2.5 py-1 rounded-full mb-2">Competency Preparation</span>
+                    <h3 className="text-[15px] font-bold text-navy-900 mb-2">RBT Competency Assessment — What to Expect.</h3>
+                    <p className="text-[13px] text-navy-800/50 leading-relaxed">
+                      Before receiving your RBT certification, a BCBA/BCaBA must assess your ability to perform the skills on the Task List. This is a required live demonstration — not a written test.
                     </p>
                   </div>
                   <Link href="/shop#services"
-                    className="flex-shrink-0 inline-flex items-center gap-2 text-[13px] font-bold text-white px-7 py-3.5 rounded-full hover:opacity-90 transition-opacity self-start"
-                    style={{ backgroundColor: '#2EBB50', boxShadow: '0 4px 0 #1E8E3E' }}>
-                    Book Competency Assessment
-                    <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+                    className="flex-shrink-0 inline-flex items-center gap-2 text-[12.5px] font-bold text-white px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity self-start"
+                    style={{ backgroundColor: '#2EBB50', boxShadow: '0 3px 0 #1E8E3E' }}>
+                    Book Assessment
+                    <svg className="w-3 h-3" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
                   </Link>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                   {[
-                    { num: '1', title: 'Measurement — Demonstrating Data Collection', body: "You'll demonstrate event recording, interval recording, duration recording, and graphing data during a role-play or live observation." },
-                    { num: '2', title: 'Skill Acquisition — Running Discrete Trials', body: 'Demonstrate delivering an SD, delivering prompts appropriately, recording responses, and reinforcing behavior according to the program.' },
-                    { num: '3', title: 'Behavior Reduction — Implementing BIP Strategies', body: 'Demonstrate antecedent modifications, extinction procedures, and reinforcement-based reduction strategies as written in the BIP.' },
-                    { num: '4', title: 'Documentation — Completing Session Notes', body: 'Complete a session note accurately, objectively, and in a timely manner following a simulated session observation.' },
-                    { num: '5', title: 'Communication — Reporting to Supervisor', body: 'Role-play scenarios involving reporting behavioral events, safety concerns, and data anomalies to a supervising BCBA professionally.' },
-                  ].map((step, i) => (
-                    <div key={step.num} className="flex gap-4 bg-stone-50 rounded-xl p-5 border border-stone-100">
-                      <div className="w-7 h-7 rounded-full bg-navy-900 text-white text-[11px] font-bold flex items-center justify-center flex-shrink-0">{step.num}</div>
+                    { num: '1', title: 'Measurement', body: 'Event recording, interval recording, duration, and graphing — demonstrated in a role-play or live observation.' },
+                    { num: '2', title: 'Skill Acquisition', body: 'Deliver an SD, use prompts correctly, record responses, and reinforce behavior per the program.' },
+                    { num: '3', title: 'Behavior Reduction', body: 'Demonstrate antecedent modifications, extinction, and reinforcement-based strategies per the BIP.' },
+                    { num: '4', title: 'Documentation', body: 'Complete a session note accurately and objectively following a simulated session.' },
+                    { num: '5', title: 'Communication', body: 'Role-play reporting behavioral events, safety concerns, and data anomalies to your supervisor.' },
+                  ].map(step => (
+                    <div key={step.num} className="flex gap-3 bg-stone-50 rounded-xl p-4 border border-stone-100">
+                      <div className="w-6 h-6 rounded-full bg-navy-900 text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">{step.num}</div>
                       <div>
-                        <h4 className="text-[13px] font-semibold text-navy-900 mb-1 leading-snug">{step.title}</h4>
-                        <p className="text-[12px] text-navy-800/45 leading-relaxed">{step.body}</p>
+                        <h4 className="text-[12.5px] font-semibold text-navy-900 mb-0.5 leading-snug">{step.title}</h4>
+                        <p className="text-[11.5px] text-navy-800/45 leading-relaxed">{step.body}</p>
                       </div>
                     </div>
                   ))}
-                  <div className="flex flex-col items-start justify-between bg-forest-50 border border-forest-100 rounded-xl p-5">
-                    <p className="text-[13px] font-semibold text-navy-900 mb-2 leading-snug">Ready to schedule your assessment?</p>
-                    <p className="text-[12px] text-navy-800/50 leading-relaxed mb-4">Our BCBA conducts assessments virtually and in-person. Reach out to schedule and receive prep materials in advance.</p>
+                  <div className="flex flex-col justify-between bg-forest-50 border border-forest-100 rounded-xl p-4">
+                    <p className="text-[12.5px] font-semibold text-navy-900 mb-3">Ready to schedule?</p>
                     <Link href="/shop#services"
                       className="text-[12px] font-bold flex items-center gap-1.5 transition-colors hover:opacity-80"
                       style={{ color: '#2EBB50' }}>
