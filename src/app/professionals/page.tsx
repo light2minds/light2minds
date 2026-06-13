@@ -289,7 +289,7 @@ export default function ProfessionalsPage() {
                   Shop Study Guides
                 </Link>
                 <Link href="/shop#services"
-                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-800/50 border border-stone-200/70 px-5 py-2.5 rounded-full hover:border-navy-900/30 hover:text-navy-900 transition-all">
+                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-900 border border-stone-300 px-5 py-2.5 rounded-full hover:border-navy-900/50 transition-all">
                   Book Mentorship
                 </Link>
                 <Link href="/shop#services"
@@ -353,7 +353,7 @@ export default function ProfessionalsPage() {
                   Shop Study Guides
                 </Link>
                 <Link href="/shop#services"
-                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-800/50 border border-stone-200/70 px-5 py-2.5 rounded-full hover:border-navy-900/30 hover:text-navy-900 transition-all">
+                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-900 border border-stone-300 px-5 py-2.5 rounded-full hover:border-navy-900/50 transition-all">
                   Book Mentorship
                 </Link>
               </div>
