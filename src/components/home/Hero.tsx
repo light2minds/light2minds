@@ -192,8 +192,8 @@ export default function Hero() {
             className="text-[clamp(2.4rem,5.5vw,4.6rem)] font-bold leading-[1.04] tracking-[-0.03em]"
             style={HEADLINE_GRADIENT}
           >
-            {tx('Stop navigating your', 'Deja de navegar')}<br />
-            {tx("child's diagnosis alone.", 'el diagnóstico de tu hijo solo.')}
+            {tx('Supporting Families.', 'Apoyando Familias.')}<br />
+            {tx('Empowering Professionals.', 'Empoderando Profesionales.')}
           </motion.h1>
 
           {/* Subtitle */}
