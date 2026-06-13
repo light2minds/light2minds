@@ -172,8 +172,8 @@ const STUDY_GUIDES = [
     id: 'rbt-guide',
     title: 'RBT Exam Study Guide (3rd Ed)',
     credential: 'Registered Behavior Technician',
-    description: 'A comprehensive, task list–aligned study guide covering all six content areas of the BACB RBT exam. Includes definitions, examples, memory tips, and practice questions.',
-    benefits: ['Aligned to the RBT Task List 2nd Edition', 'Section-by-section breakdown (A–F)', 'Practice questions with rationale', 'Ethics and professional conduct module'],
+    description: 'A comprehensive, task list–aligned study guide covering all six content areas of the RBT exam. Includes definitions, examples, memory tips, and practice questions.',
+    benefits: ['Aligned to the RBT Task List 3rd Edition', 'Section-by-section breakdown (A–F)', 'Practice questions with rationale', 'Ethics and professional conduct module'],
     accent: '#5BC4F8',
     dark: '#1A7AC0',
     checkout: `${CHECKOUT}/47184621600939:1`,
@@ -182,8 +182,8 @@ const STUDY_GUIDES = [
     id: 'rbt-guide-es',
     title: 'RBT Exam Study Guide (Español)',
     credential: 'Registered Behavior Technician · En Español',
-    description: 'Guía de estudio completa en español alineada al Task List del RBT. Cubre las seis áreas de contenido del examen BACB con definiciones, ejemplos y preguntas de práctica.',
-    benefits: ['Alineada al RBT Task List 2nd Edition', 'Desglose sección por sección (A–F)', 'Preguntas de práctica con justificación', 'Módulo de ética y conducta profesional'],
+    description: 'Guía de estudio completa en español alineada al Task List del RBT. Cubre las seis áreas de contenido del examen RBT con definiciones, ejemplos y preguntas de práctica.',
+    benefits: ['Alineada al RBT Task List 3rd Edition', 'Desglose sección por sección (A–F)', 'Preguntas de práctica con justificación', 'Módulo de ética y conducta profesional'],
     accent: '#FFE030',
     dark: '#C4A800',
     checkout: `${CHECKOUT}/47208775942315:1`,
@@ -485,7 +485,7 @@ export default function ProfessionalsPage() {
                 Study Guides for Every Credential.
               </h2>
               <p className="text-[13.5px] text-white/50 leading-relaxed mt-3 max-w-xl">
-                Clinically accurate, exam-aligned study guides written by a Board Certified Behavior Analyst. Everything you need to pass — in one resource.
+                Clinically accurate, exam-aligned study guides written by a Behavioral Professional. Everything you need to pass — in one resource.
               </p>
             </div>
             <Link href="/shop#professionals"
