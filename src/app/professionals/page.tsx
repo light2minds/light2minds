@@ -138,67 +138,30 @@ const BCBA_STEPS = [
   { num: '06', title: 'Career Growth & Leadership', body: 'BCBAs can move into supervisory roles, open their own practices, contribute to research, or specialize in areas such as organizational behavior management, autism, or feeding disorders.' },
 ]
 
-const MENTORSHIP = [
+const MENTORSHIP_FEATURES = [
+  'RBT exam preparation strategy & study planning',
+  'Resume, interview prep, and job search support',
+  'BCaBA / BCBA exam preparation & task list review',
+  'Fieldwork and supervision planning guidance',
+  'Career trajectory mapping from RBT to BCBA',
+  'Clinical consultation and practice growth support',
+]
+
+const MENTORSHIP_STAGES = [
   {
-    id: 'rbt-guidance',
-    title: 'RBT Career Guidance',
-    sub: 'For aspiring & current RBTs',
+    label: 'Aspiring & Current RBTs',
     color: '#5BC4F8',
-    bg: '#EFF9FF',
-    items: [
-      'Personalized exam preparation strategy',
-      'Competency assessment coaching & readiness review',
-      'Resume, interview prep, and job search support',
-      'Guidance on supervision requirements and documentation',
-    ],
-    cta: 'Book Guidance Session',
-    href: '/shop#services',
+    desc: 'Exam prep, competency readiness, first job, and career direction.',
   },
   {
-    id: 'competency',
-    title: 'Competency Assessment Service',
-    sub: 'Required for RBT certification',
-    color: '#2EBB50',
-    bg: '#EDFAF1',
-    featured: true,
-    items: [
-      'Live competency assessment conducted by a Board Certified Behavior Analyst',
-      'Covers all RBT Task List sections (A–F) as required by the BACB',
-      'Available virtually or in-person (select locations)',
-      'Receive written feedback and a completion certificate',
-    ],
-    cta: 'Book Competency Assessment',
-    href: '/shop#services',
-  },
-  {
-    id: 'bcba-coaching',
-    title: 'BCaBA / BCBA Career Coaching',
-    sub: 'For supervisors & advanced clinicians',
+    label: 'BCaBA / BCBA Candidates',
     color: '#8B5CF6',
-    bg: '#EDE9FE',
-    items: [
-      'Exam preparation strategy for the BCBA or BCaBA exam',
-      'Fieldwork and supervision planning review',
-      'Career trajectory and specialization guidance',
-      'Support for professionals transitioning to supervisory roles',
-    ],
-    cta: 'Book Career Consultation',
-    href: '/shop#services',
+    desc: 'Supervision hours, exam strategy, and transition into leadership.',
   },
   {
-    id: 'clinical-growth',
-    title: 'Professional Growth & Clinical Support',
-    sub: 'For practicing BCBAs & clinicians',
-    color: '#C4A800',
-    bg: '#FFFCE8',
-    items: [
-      'Clinical consultation on complex cases and behavior plans',
-      'Organizational behavior management support',
-      'Practice growth and team development guidance',
-      'Support for opening or scaling your own ABA practice',
-    ],
-    cta: 'Book Consultation',
-    href: '/shop#services',
+    label: 'Practicing BCBAs & Clinicians',
+    color: '#2EBB50',
+    desc: 'Clinical consultation, team development, and practice growth.',
   },
 ]
 
@@ -403,58 +366,61 @@ export default function ProfessionalsPage() {
       {/* ── 5. PROFESSIONAL MENTORSHIP ────────────────────────────────────────── */}
       <section className="bg-stone-50 py-12 lg:py-16 border-b border-stone-200/60" id="mentorship">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...up()} className="mb-7">
-            <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-3 flex items-center gap-3">
-              <span className="w-5 h-px bg-current" /> Premium Services
-            </p>
-            <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
-              Professional Mentorship & Coaching.
-            </h2>
-            <p className="text-[13.5px] text-navy-800/50 leading-relaxed max-w-2xl">
-              Personalized, BCBA-led mentorship for professionals at every stage of their career. From competency assessments to clinical coaching — we&apos;re your trusted career partner.
-            </p>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-            {MENTORSHIP.map((svc, i) => (
-              <motion.div key={svc.id} {...up(i * 0.07)}
-                className={[
-                  'flex flex-col rounded-3xl overflow-hidden border transition-all duration-200',
-                  svc.featured ? 'shadow-xl shadow-forest-200/40' : 'border-stone-200/70 bg-white hover:shadow-md',
-                ].join(' ')}
-                style={svc.featured ? { borderColor: svc.color + '40', backgroundColor: svc.bg } : {}}>
-                <div className="h-1.5 w-full" style={{ backgroundColor: svc.color }} />
-                <div className="flex flex-col flex-1 p-7">
-                  <div className="flex items-start justify-between gap-3 mb-4">
-                    <div>
-                      <h3 className="text-[16px] font-bold text-navy-900 mb-1">{svc.title}</h3>
-                      <p className="text-[12px] font-semibold" style={{ color: svc.color === '#C4A800' ? '#A37F00' : svc.color }}>{svc.sub}</p>
-                    </div>
-                    {svc.featured && (
-                      <span className="flex-shrink-0 text-[9px] font-bold tracking-[0.1em] uppercase px-2.5 py-1 rounded-full text-white" style={{ backgroundColor: svc.color }}>
-                        Featured
-                      </span>
-                    )}
-                  </div>
-                  <ul className="space-y-2.5 mb-7 flex-1">
-                    {svc.items.map(item => (
-                      <li key={item} className="flex items-start gap-2.5 text-[13px] text-navy-800/60 leading-relaxed">
-                        <Check color={svc.color} />
-                        {item}
-                      </li>
+            {/* Left — value proposition + features + CTA */}
+            <motion.div {...up()}>
+              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-3 flex items-center gap-3">
+                <span className="w-5 h-px bg-current" /> Premium Services
+              </p>
+              <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
+                Professional Mentorship & Coaching.
+              </h2>
+              <p className="text-[13.5px] text-navy-800/50 leading-relaxed mb-7">
+                BCBA-led, one-on-one sessions tailored to your career stage. Whether you&apos;re preparing for your first exam, moving into supervision, or growing a practice — we&apos;re your dedicated career partner.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {MENTORSHIP_FEATURES.map(f => (
+                  <li key={f} className="flex items-start gap-3 text-[13px] text-navy-800/65 leading-relaxed">
+                    <Check color="#2EBB50" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/shop#services"
+                className="inline-flex items-center gap-2.5 text-[14px] font-bold text-white px-7 py-3.5 rounded-full hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: '#2EBB50', boxShadow: '0 4px 0 #1E8E3E' }}>
+                Book a Mentorship Session
+                <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+              </Link>
+            </motion.div>
+
+            {/* Right — who is this for */}
+            <motion.div {...up(0.1)}>
+              <div className="bg-white border border-stone-200/60 rounded-2xl overflow-hidden">
+                <div className="h-[3px] w-full" style={{ background: 'linear-gradient(90deg, #5BC4F8, #8B5CF6, #2EBB50)' }} />
+                <div className="p-7">
+                  <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-navy-700/40 mb-5">Who is this for?</p>
+                  <div className="space-y-4">
+                    {MENTORSHIP_STAGES.map(stage => (
+                      <div key={stage.label} className="flex gap-4 items-start">
+                        <div className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5" style={{ backgroundColor: stage.color }} />
+                        <div>
+                          <p className="text-[13.5px] font-semibold text-navy-900 mb-0.5">{stage.label}</p>
+                          <p className="text-[12.5px] text-navy-800/50 leading-relaxed">{stage.desc}</p>
+                        </div>
+                      </div>
                     ))}
-                  </ul>
-                  <a href={svc.href}
-                    className="inline-flex items-center justify-center gap-2 text-[13px] font-bold px-6 py-3 rounded-full transition-all duration-200 hover:opacity-90"
-                    style={svc.featured
-                      ? { backgroundColor: svc.color, color: '#fff', boxShadow: `0 4px 0 #1A7A3A` }
-                      : { border: `1.5px solid ${svc.color}40`, color: svc.color === '#C4A800' ? '#A37F00' : svc.color, backgroundColor: svc.color + '12' }
-                    }>
-                    {svc.cta}
-                  </a>
+                  </div>
+                  <div className="mt-7 pt-6 border-t border-stone-100">
+                    <p className="text-[12px] text-navy-800/40 leading-relaxed">
+                      Sessions are conducted virtually by a Board Certified Behavior Analyst. Available in English and Spanish.
+                    </p>
+                  </div>
                 </div>
-              </motion.div>
-            ))}
+              </div>
+            </motion.div>
+
           </div>
 
           {/* Competency Assessment deep-dive (existing content, improved) */}
