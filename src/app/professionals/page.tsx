@@ -207,7 +207,7 @@ const CHECKOUT = 'https://light-2-minds.myshopify.com/cart'
 const STUDY_GUIDES = [
   {
     id: 'rbt-guide',
-    title: 'RBT Study Guide',
+    title: 'RBT Exam Study Guide (3rd Ed)',
     credential: 'Registered Behavior Technician',
     description: 'A comprehensive, task list–aligned study guide covering all six content areas of the BACB RBT exam. Includes definitions, examples, memory tips, and practice questions.',
     benefits: ['Aligned to the RBT Task List 2nd Edition', 'Section-by-section breakdown (A–F)', 'Practice questions with rationale', 'Ethics and professional conduct module'],
@@ -216,21 +216,21 @@ const STUDY_GUIDES = [
     checkout: `${CHECKOUT}/47184621600939:1`,
   },
   {
-    id: 'bcaba-guide',
-    title: 'BCaBA Study Guide',
-    credential: 'Board Certified Assistant Behavior Analyst',
-    description: 'Targeted preparation for the BCaBA exam — covering behavior analytic principles, supervision responsibilities, and ethical standards at the assistant behavior analyst level.',
-    benefits: ['Coverage of all BCaBA task list areas', 'Supervision and fieldwork requirements', 'Ethics scenarios and decision-making', 'Exam-day strategies and practice sets'],
-    accent: '#8B5CF6',
-    dark: '#6D28D9',
-    checkout: `${CHECKOUT}/47184628809899:1`,
+    id: 'rbt-guide-es',
+    title: 'RBT Exam Study Guide (Español)',
+    credential: 'Registered Behavior Technician · En Español',
+    description: 'Guía de estudio completa en español alineada al Task List del RBT. Cubre las seis áreas de contenido del examen BACB con definiciones, ejemplos y preguntas de práctica.',
+    benefits: ['Alineada al RBT Task List 2nd Edition', 'Desglose sección por sección (A–F)', 'Preguntas de práctica con justificación', 'Módulo de ética y conducta profesional'],
+    accent: '#FFE030',
+    dark: '#C4A800',
+    checkout: `${CHECKOUT}/47208775942315:1`,
   },
   {
     id: 'bcba-guide',
-    title: 'BCBA Study Guide',
-    credential: 'Board Certified Behavior Analyst',
-    description: 'Advanced preparation for the BCBA exam — including experimental design, behavior measurement, assessment, behavior change procedures, and supervisory responsibilities.',
-    benefits: ['Full BCBA 5th Edition task list coverage', 'Applied case-based practice scenarios', 'Supervision and ethics deep-dive', 'Data analysis and graphing review'],
+    title: 'BCBA/BCaBA Exam Study Guide (6th Ed)',
+    credential: 'Board Certified Behavior Analyst · BCaBA',
+    description: 'Advanced preparation for the BCBA and BCaBA exams — covering behavior measurement, assessment, behavior change procedures, ethics, and supervisory responsibilities.',
+    benefits: ['Full 6th Edition task list coverage', 'Applied case-based practice scenarios', 'Supervision and ethics deep-dive', 'Data analysis and graphing review'],
     accent: '#2EBB50',
     dark: '#1E8E3E',
     checkout: `${CHECKOUT}/47184628809899:1`,
@@ -554,12 +554,12 @@ export default function ProfessionalsPage() {
                       </li>
                     ))}
                   </ul>
-                  <a href={g.checkout}
+                  <Link href="/shop#professionals"
                     className="inline-flex items-center justify-center gap-2 text-[13px] font-bold px-6 py-3 rounded-full transition-all duration-200 hover:opacity-90"
-                    style={{ backgroundColor: g.accent, color: '#fff', boxShadow: `0 3px 0 ${g.dark}` }}>
-                    Buy Now
+                    style={{ backgroundColor: g.accent, color: g.accent === '#FFE030' ? '#0D1B2E' : '#fff', boxShadow: `0 3px 0 ${g.dark}` }}>
+                    Ver en Shop
                     <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
-                  </a>
+                  </Link>
                 </div>
               </motion.div>
             ))}
