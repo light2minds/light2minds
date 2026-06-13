@@ -362,23 +362,46 @@ export default function ToolsPage() {
     <main>
 
       {/* Hero */}
-      <section className="bg-stone-50 pt-36 pb-16 lg:pt-44 lg:pb-20 border-b border-stone-200/60">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }} className="max-w-3xl">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-6 flex items-center gap-3">
-              <span className="block w-6 h-px bg-navy-700/30" />
+      <section className="relative overflow-hidden pt-28 pb-8 lg:pt-32 lg:pb-10 border-b border-navy-800" style={{ backgroundColor: '#0D1B2E' }}>
+        <span className="absolute bottom-0 right-8 text-[8rem] font-bold leading-none select-none pointer-events-none" style={{ color: 'rgba(255,255,255,0.025)' }} aria-hidden="true">FREE</span>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <p className="text-[11px] font-bold tracking-[0.18em] uppercase mb-3 flex items-center gap-3" style={{ color: 'rgba(255,255,255,0.30)' }}>
+              <span className="block w-5 h-px" style={{ backgroundColor: 'rgba(255,255,255,0.20)' }} />
               Free Resources
             </p>
-            <h1 className="text-[clamp(2.25rem,5vw,3.75rem)] font-bold text-navy-900 tracking-[-0.03em] leading-[1.06] mb-6">
+            <h1 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-white tracking-[-0.03em] leading-[1.08] mb-3">
               Tools &amp; Resources
             </h1>
-            <p className="text-[clamp(1rem,1.5vw,1.1rem)] font-light text-navy-800/55 leading-relaxed max-w-xl mb-8">
-              A growing library of free, practical tools for families and ABA professionals — printable, downloadable, and ready to use.
+            <p className="text-[14px] leading-relaxed mb-6 max-w-xl" style={{ color: 'rgba(255,255,255,0.45)' }}>
+              Free, printable tools for families and ABA professionals — ready to download, no sign-up required.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <a href="#clinical-tools" className="inline-flex items-center text-[12px] font-semibold text-navy-900/60 border border-stone-200 px-4 py-2 rounded-full hover:bg-navy-900 hover:text-white hover:border-navy-900 transition-all duration-150">Clinical Forms</a>
-              <a href="#parent-tools" className="inline-flex items-center text-[12px] font-semibold text-navy-900/60 border border-stone-200 px-4 py-2 rounded-full hover:bg-navy-900 hover:text-white hover:border-navy-900 transition-all duration-150">Parent Resources</a>
-              <a href="#rbt-tools" className="inline-flex items-center text-[12px] font-semibold text-navy-900/60 border border-stone-200 px-4 py-2 rounded-full hover:bg-navy-900 hover:text-white hover:border-navy-900 transition-all duration-150">RBT Study</a>
+            <div className="flex flex-wrap gap-2.5">
+              <a href="#clinical-tools"
+                className="inline-flex items-center text-[12.5px] font-semibold text-white px-4 py-2 rounded-full transition-all duration-150 hover:opacity-85"
+                style={{ backgroundColor: '#5BC4F8', color: '#0D1B2E' }}>
+                Clinical Forms
+              </a>
+              <a href="#parent-tools"
+                className="inline-flex items-center text-[12.5px] font-semibold px-4 py-2 rounded-full transition-all duration-150 hover:opacity-85"
+                style={{ backgroundColor: '#2EBB50', color: '#fff' }}>
+                Parent Resources
+              </a>
+              <a href="#rbt-tools"
+                className="inline-flex items-center text-[12.5px] font-semibold px-4 py-2 rounded-full transition-all duration-150 hover:opacity-85"
+                style={{ backgroundColor: '#FFE030', color: '#0D1B2E' }}>
+                RBT Study
+              </a>
+              <a href="#developmental-tools"
+                className="inline-flex items-center text-[12.5px] font-semibold text-white px-4 py-2 rounded-full border transition-all duration-150 hover:bg-white/10"
+                style={{ borderColor: 'rgba(255,255,255,0.18)' }}>
+                Developmental
+              </a>
+              <a href="#center-tools"
+                className="inline-flex items-center text-[12.5px] font-semibold text-white px-4 py-2 rounded-full border transition-all duration-150 hover:bg-white/10"
+                style={{ borderColor: 'rgba(255,255,255,0.18)' }}>
+                ABA Center
+              </a>
             </div>
           </motion.div>
         </div>
