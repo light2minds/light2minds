@@ -130,9 +130,9 @@ const RBT_STEPS = [
 ]
 
 const BCBA_STEPS = [
-  { num: '01', title: 'Educational Requirements', body: 'You must hold a minimum of a master\'s degree from an accredited university. The degree must be in behavior analysis, psychology, education, or a related field.' },
-  { num: '02', title: 'BACB-Approved Coursework', body: 'Complete a BACB-approved course sequence covering applied behavior analysis concepts, ethics, experimental design, and behavior assessment and intervention.' },
-  { num: '03', title: 'Supervised Fieldwork', body: 'Accumulate 1,500–2,000 hours of supervised fieldwork under an approved supervisor. A minimum percentage of your hours must be in concentrated experience with clients.' },
+  { num: '01', title: 'Educational Requirements', body: 'You must hold a minimum of an accredited university Bachelor\'s degree to apply to BCaBA and a master\'s degree to apply to BCBA. The degree must be from an accredited university.' },
+  { num: '02', title: 'ABA-Approved Coursework', body: 'Complete a minimum 1 year ABA-Approved Coursework sequence covering applied behavior analysis concepts, ethics, experimental design, and behavior assessment and intervention.' },
+  { num: '03', title: 'Supervised Fieldwork', body: 'Accumulate 1,500 (BCaBA)–2,000 (BCBA) hours of supervised fieldwork under an approved supervisor. A minimum percentage of your hours must be in concentrated experience with clients.' },
   { num: '04', title: 'Supervision Requirements', body: 'Supervised fieldwork requires structured supervision sessions, direct observation, and documented logs. Your supervisor must be a credentialed BCBA with appropriate experience.' },
   { num: '05', title: 'BCBA Certification Exam', body: 'Pass the BACB BCBA exam — a rigorous assessment covering behavior analytic principles, ethical standards, and clinical application across all major content areas.' },
   { num: '06', title: 'Career Growth & Leadership', body: 'BCBAs can move into supervisory roles, open their own practices, contribute to research, or specialize in areas such as organizational behavior management, autism, or feeding disorders.' },
