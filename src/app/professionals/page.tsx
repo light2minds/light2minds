@@ -201,11 +201,11 @@ const STUDY_GUIDES = [
 ]
 
 const WHY_ITEMS = [
-  { title: 'Created by a Board Certified Behavior Analyst', body: 'All content is developed and reviewed by a practicing BCBA with direct clinical and supervisory experience.', accent: '#5BC4F8' },
+  { title: 'Created by Behavioral Professionals', body: 'All content is developed and reviewed by Behavioral Professionals with direct clinical and supervisory experience in the field.', accent: '#5BC4F8' },
   { title: 'Evidence-Based ABA Practices', body: 'Every resource is grounded in the science of applied behavior analysis and aligned with BACB standards and ethics.', accent: '#2EBB50' },
-  { title: 'Resources for Every Career Stage', body: 'From your first day as an aspiring RBT to seasoned BCBAs — we support professionals at every step of the journey.', accent: '#8B5CF6' },
-  { title: 'Practical, Real-World Mentorship', body: 'Our mentorship and coaching sessions focus on what actually happens in the clinic — not just what\'s in the textbook.', accent: '#C4A800' },
-  { title: 'Clinically Accurate & Exam-Ready', body: 'Study materials are written to match the exact language and expectations of the BACB, so you know you\'re preparing with the right content.', accent: '#5BC4F8' },
+  { title: 'Support at Every Career Stage', body: 'From your first steps as an aspiring RBT to practicing BCBAs and practice owners — we support professionals at every level.', accent: '#8B5CF6' },
+  { title: 'Real-World Mentorship', body: 'One-on-one sessions focused on what actually happens in the clinic — practical guidance, not just theory.', accent: '#C4A800' },
+  { title: 'Exam-Ready Study Materials', body: 'Study guides are written to match the exact language and task list expectations of the BACB, so you prepare with the right content.', accent: '#5BC4F8' },
 ]
 
 // ── Check icon ─────────────────────────────────────────────────────────────────
