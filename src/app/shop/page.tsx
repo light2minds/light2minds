@@ -129,12 +129,16 @@ export default async function ShopPage() {
       ══════════════════════════════════════════════════════════════════════ */}
       <section
         style={{ backgroundColor: WARM_BG }}
-        className="pt-[82px] pb-5 border-b border-stone-200/60"
+        className="pt-[82px] pb-6 border-b border-stone-200/60"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h1 className="text-[1.5rem] sm:text-[1.75rem] lg:text-[2rem] font-bold text-navy-900 tracking-[-0.02em] mb-4">
-            Shop Resources That Support Growth
+          <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-navy-700/40 mb-2">Shop</p>
+          <h1 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-1.5">
+            Resources That Support Growth
           </h1>
+          <p className="text-[13.5px] text-navy-800/45 mb-5">
+            Kits, study guides, and expert services for families and behavioral health professionals.
+          </p>
           <div className="flex flex-wrap gap-2.5">
             <Link
               href="#families"
@@ -164,14 +168,15 @@ export default async function ShopPage() {
       {/* ══════════════════════════════════════════════════════════════════════
           FAMILY RESOURCES
       ══════════════════════════════════════════════════════════════════════ */}
-      <section id="families" className="bg-white py-10 lg:py-14">
+      <section id="families" className="bg-white py-8 lg:py-12">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="mb-6">
-            <h2 className="text-[1.25rem] sm:text-[1.4rem] font-bold text-navy-900 tracking-[-0.02em]">
+          <div className="mb-5">
+            <p className="text-[11px] font-semibold tracking-[0.15em] uppercase mb-1" style={{ color: SKY }}>For Families</p>
+            <h2 className="text-[clamp(1.2rem,2.5vw,1.6rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
               Family Resources
             </h2>
-            <p className="text-[13.5px] text-navy-800/45 mt-1">
-              Practical kits to support regulation, routine, and development at home.
+            <p className="text-[13px] text-navy-800/45 mt-1">
+              Sensory kits and tools to support regulation, routine, and development at home.
             </p>
           </div>
 
@@ -196,14 +201,15 @@ export default async function ShopPage() {
       {/* ══════════════════════════════════════════════════════════════════════
           PROFESSIONAL RESOURCES
       ══════════════════════════════════════════════════════════════════════ */}
-      <section id="professionals" className="bg-stone-50 py-10 lg:py-14 border-t border-stone-200/60">
+      <section id="professionals" className="bg-stone-50 py-8 lg:py-12 border-t border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="mb-6">
-            <h2 className="text-[1.25rem] sm:text-[1.4rem] font-bold text-navy-900 tracking-[-0.02em]">
+          <div className="mb-5">
+            <p className="text-[11px] font-semibold tracking-[0.15em] uppercase mb-1" style={{ color: GOLD_TEXT }}>For Professionals</p>
+            <h2 className="text-[clamp(1.2rem,2.5vw,1.6rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
               Professional Resources
             </h2>
-            <p className="text-[13.5px] text-navy-800/45 mt-1">
-              Study guides and tools for RBTs, BCaBAs, BCBAs, and behavior therapists.
+            <p className="text-[13px] text-navy-800/45 mt-1">
+              Study guides and starter kits for RBTs, BCaBAs, BCBAs, and behavior therapists.
             </p>
           </div>
 
@@ -228,19 +234,20 @@ export default async function ShopPage() {
       {/* ══════════════════════════════════════════════════════════════════════
           CONSULTATION & PROFESSIONAL SERVICES
       ══════════════════════════════════════════════════════════════════════ */}
-      <section id="services" className="bg-white py-10 lg:py-14 border-t border-stone-200/60">
+      <section id="services" className="bg-white py-8 lg:py-12 border-t border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="mb-6">
-            <h2 className="text-[1.25rem] sm:text-[1.4rem] font-bold text-navy-900 tracking-[-0.02em]">
+          <div className="mb-5">
+            <p className="text-[11px] font-semibold tracking-[0.15em] uppercase mb-1" style={{ color: GREEN_TEXT }}>Expert Services</p>
+            <h2 className="text-[clamp(1.2rem,2.5vw,1.6rem)] font-bold text-navy-900 tracking-[-0.02em] leading-[1.1]">
               Consultation &amp; Professional Services
             </h2>
-            <p className="text-[13.5px] text-navy-800/45 mt-1">
-              Personalized support for families, caregivers, and behavior professionals — available for purchase and scheduling through Shopify.
+            <p className="text-[13px] text-navy-800/45 mt-1">
+              1-on-1 sessions for families and professionals — book and pay directly through our secure checkout.
             </p>
           </div>
 
           {svcProducts.length > 0 ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 items-stretch mb-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 items-stretch">
               {svcProducts.map(product => (
                 <ShopProductCard
                   key={product.id}
@@ -258,57 +265,32 @@ export default async function ShopPage() {
               message="No consultation or professional service products are currently available."
             />
           )}
-
-          {/* Why Work With Light 2 Minds */}
-          <div className="bg-stone-50 border border-stone-200/60 rounded-2xl px-6 py-5">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/45 mb-4">
-              Why Work With Light 2 Minds?
-            </p>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-              {[
-                'Personalized support',
-                'Evidence-based recommendations',
-                'Practical real-world experience',
-                'Flexible virtual appointments',
-              ].map(item => (
-                <div key={item} className="flex items-center gap-2.5">
-                  <span
-                    className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: 'rgba(46,187,80,0.12)' }}
-                  >
-                    <svg className="w-2.5 h-2.5" viewBox="0 0 10 8" fill="none">
-                      <path d="M1 4L3.5 6.5L9 1" stroke="#2EBB50" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
-                  <p className="text-[12.5px] text-navy-800/60">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          TRUST STRIP — minimal
+          WHY LIGHT 2 MINDS — subtle footer strip
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="border-t border-stone-200/60 py-5 bg-white">
+      <section className="border-t border-stone-200/50 py-5 bg-stone-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center sm:justify-start">
+          <p className="text-[10px] font-semibold tracking-[0.14em] uppercase text-navy-800/30 mb-3">
+            Why Work With Light 2 Minds?
+          </p>
+          <div className="flex flex-wrap gap-x-5 gap-y-2">
             {[
+              'Personalized support',
+              'Evidence-based recommendations',
+              'Practical real-world experience',
+              'Flexible virtual appointments',
               'Created by certified professionals',
               'Evidence-based methodology',
               'Trusted by families and clinicians',
               'Secure Shopify checkout',
             ].map(item => (
-              <span key={item} className="flex items-center gap-2 text-[12px] text-navy-800/40">
-                <span
-                  className="w-3.5 h-3.5 rounded-full flex-shrink-0 flex items-center justify-center"
-                  style={{ backgroundColor: 'rgba(91,196,248,0.15)' }}
-                >
-                  <svg className="w-2 h-2" viewBox="0 0 10 8" fill="none">
-                    <path d="M1 4L3.5 6.5L9 1" stroke="#5BC4F8" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
+              <span key={item} className="flex items-center gap-1.5 text-[11.5px] text-navy-800/35">
+                <svg className="w-2.5 h-2.5 flex-shrink-0" viewBox="0 0 10 8" fill="none">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="#2EBB50" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
                 {item}
               </span>
             ))}
