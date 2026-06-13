@@ -168,7 +168,7 @@ const MENTORSHIP = [
       'Receive written feedback and a completion certificate',
     ],
     cta: 'Book Competency Assessment',
-    href: 'mailto:info@light2minds.com?subject=RBT Competency Assessment Booking',
+    href: '/shop#services',
   },
   {
     id: 'bcba-coaching',
@@ -329,11 +329,11 @@ export default function ProfessionalsPage() {
                   className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-800/60 border border-stone-200 bg-white px-5 py-2.5 rounded-full hover:border-navy-300 hover:text-navy-900 transition-all">
                   Book Guidance Session
                 </a>
-                <a href="mailto:info@light2minds.com?subject=Book Competency Assessment"
+                <Link href="/shop#services"
                   className="inline-flex items-center gap-2 text-[13px] font-semibold text-white px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity"
-                  style={{ backgroundColor: '#5BC4F8' }}>
+                  style={{ backgroundColor: '#2EBB50' }}>
                   Book Competency Assessment
-                </a>
+                </Link>
               </div>
             </motion.div>
 
@@ -470,12 +470,12 @@ export default function ProfessionalsPage() {
                       Before receiving your RBT certification, a BCBA must observe and assess your ability to perform the skills on the Task List. This is a required live demonstration — not a written test. Preparation is everything.
                     </p>
                   </div>
-                  <a href="mailto:info@light2minds.com?subject=Book Competency Assessment"
+                  <Link href="/shop#services"
                     className="flex-shrink-0 inline-flex items-center gap-2 text-[13px] font-bold text-white px-7 py-3.5 rounded-full hover:opacity-90 transition-opacity self-start"
                     style={{ backgroundColor: '#2EBB50', boxShadow: '0 4px 0 #1E8E3E' }}>
                     Book Competency Assessment
                     <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
-                  </a>
+                  </Link>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                   {[
@@ -496,10 +496,11 @@ export default function ProfessionalsPage() {
                   <div className="flex flex-col items-start justify-between bg-forest-50 border border-forest-100 rounded-xl p-5">
                     <p className="text-[13px] font-semibold text-navy-900 mb-2 leading-snug">Ready to schedule your assessment?</p>
                     <p className="text-[12px] text-navy-800/50 leading-relaxed mb-4">Our BCBA conducts assessments virtually and in-person. Reach out to schedule and receive prep materials in advance.</p>
-                    <a href="mailto:info@light2minds.com?subject=Book Competency Assessment"
-                      className="text-[12px] font-bold text-forest-700 hover:text-forest-900 flex items-center gap-1.5 transition-colors">
+                    <Link href="/shop#services"
+                      className="text-[12px] font-bold flex items-center gap-1.5 transition-colors hover:opacity-80"
+                      style={{ color: '#2EBB50' }}>
                       Book Now <span className="w-3 h-px bg-current" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
