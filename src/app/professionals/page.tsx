@@ -256,21 +256,21 @@ export default function ProfessionalsPage() {
     <main>
 
       {/* ── 1. HERO ──────────────────────────────────────────────────────────── */}
-      <section className="bg-stone-50 pt-36 pb-20 lg:pt-44 lg:pb-28 relative overflow-hidden border-b border-stone-200/60">
-        <span className="absolute bottom-0 right-6 text-[16rem] font-bold leading-none text-navy-900/[0.025] select-none pointer-events-none" aria-hidden="true">ABA</span>
+      <section className="bg-stone-50 pt-28 pb-8 lg:pt-32 lg:pb-10 relative overflow-hidden border-b border-stone-200/60">
+        <span className="absolute bottom-0 right-6 text-[8rem] font-bold leading-none text-navy-900/[0.025] select-none pointer-events-none" aria-hidden="true">ABA</span>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
           <motion.div {...up()} className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-5">
+            <div className="flex items-center gap-3 mb-3">
               <span className="block w-6 h-px bg-navy-700/30" />
               <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40">For Behavioral Health Professionals</p>
             </div>
-            <h1 className="text-[clamp(2.1rem,5vw,3.8rem)] font-bold text-navy-900 tracking-[-0.03em] leading-[1.06] mb-5">
-              Behavioral Health Professional Resources & Career Development
+            <h1 className="text-[clamp(1.7rem,3.5vw,2.5rem)] font-bold text-navy-900 tracking-[-0.03em] leading-[1.08] mb-3">
+              Professional Resources & Career Development
             </h1>
-            <p className="text-[clamp(1rem,1.4vw,1.1rem)] font-light text-navy-800/55 leading-relaxed max-w-2xl mb-8">
+            <p className="text-[14px] font-light text-navy-800/55 leading-relaxed max-w-2xl mb-5">
               Resources, mentorship, exam preparation, and professional tools for aspiring and practicing RBTs, BCaBAs, and BCBAs.
             </p>
-            <div className="flex flex-wrap gap-3 mb-7">
+            <div className="flex flex-wrap gap-3 mb-4">
               <Link href="/shop"
                 className="inline-flex items-center gap-2.5 text-[14px] font-bold text-navy-900 bg-gold-400 px-7 py-3.5 rounded-full hover:bg-gold-300 transition-colors duration-200"
                 style={{ boxShadow: '0 4px 0 #C4A800' }}>
@@ -302,17 +302,17 @@ export default function ProfessionalsPage() {
       </section>
 
       {/* ── 3. BECOME AN RBT ─────────────────────────────────────────────────── */}
-      <section className="bg-stone-50 py-20 lg:py-28 border-b border-stone-200/60" id="become-rbt">
+      <section className="bg-stone-50 py-12 lg:py-16 border-b border-stone-200/60" id="become-rbt">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
             <motion.div {...up()}>
-              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-4 flex items-center gap-3">
+              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-3 flex items-center gap-3">
                 <span className="w-5 h-px bg-current" /> RBT Certification Roadmap
               </p>
-              <h2 className="text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
+              <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
                 Become a Registered Behavior Technician.
               </h2>
-              <p className="text-[15px] text-navy-800/50 leading-relaxed mb-8">
+              <p className="text-[13.5px] text-navy-800/50 leading-relaxed mb-6">
                 The RBT credential is your first step into the field of applied behavior analysis. Here&apos;s exactly what you need to do — from eligibility to your first day on the job.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -351,9 +351,9 @@ export default function ProfessionalsPage() {
       </section>
 
       {/* ── 4. BECOME A BCaBA / BCBA ─────────────────────────────────────────── */}
-      <section className="bg-white py-20 lg:py-28 border-b border-stone-200/60" id="become-bcba">
+      <section className="bg-white py-12 lg:py-16 border-b border-stone-200/60" id="become-bcba">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
             <div className="space-y-3 lg:order-2">
               {BCBA_STEPS.map((step, i) => (
                 <motion.div key={step.num} {...up(i * 0.06)}
@@ -370,13 +370,13 @@ export default function ProfessionalsPage() {
             </div>
 
             <motion.div {...up()} className="lg:order-1">
-              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-4 flex items-center gap-3">
+              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-3 flex items-center gap-3">
                 <span className="w-5 h-px bg-current" /> BCaBA / BCBA Pathway
               </p>
-              <h2 className="text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
+              <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
                 Advance to BCaBA or BCBA.
               </h2>
-              <p className="text-[15px] text-navy-800/50 leading-relaxed mb-8">
+              <p className="text-[13.5px] text-navy-800/50 leading-relaxed mb-6">
                 Becoming a Board Certified Behavior Analyst is one of the most rewarding professional paths in behavioral health. Here&apos;s the full roadmap — from coursework to certification.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -396,21 +396,21 @@ export default function ProfessionalsPage() {
       </section>
 
       {/* ── 5. PROFESSIONAL MENTORSHIP ────────────────────────────────────────── */}
-      <section className="bg-stone-50 py-20 lg:py-28 border-b border-stone-200/60" id="mentorship">
+      <section className="bg-stone-50 py-12 lg:py-16 border-b border-stone-200/60" id="mentorship">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...up()} className="mb-12">
+          <motion.div {...up()} className="mb-7">
             <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-3 flex items-center gap-3">
               <span className="w-5 h-px bg-current" /> Premium Services
             </p>
-            <h2 className="text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
+            <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
               Professional Mentorship & Coaching.
             </h2>
-            <p className="text-[15px] text-navy-800/50 leading-relaxed max-w-2xl">
+            <p className="text-[13.5px] text-navy-800/50 leading-relaxed max-w-2xl">
               Personalized, BCBA-led mentorship for professionals at every stage of their career. From competency assessments to clinical coaching — we&apos;re your trusted career partner.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
             {MENTORSHIP.map((svc, i) => (
               <motion.div key={svc.id} {...up(i * 0.07)}
                 className={[
@@ -504,17 +504,17 @@ export default function ProfessionalsPage() {
       </section>
 
       {/* ── 6. FEATURED STUDY GUIDES ─────────────────────────────────────────── */}
-      <section className="py-20 lg:py-28 border-b border-navy-800" id="study-guides" style={{ backgroundColor: '#0D1B2E' }}>
+      <section className="py-12 lg:py-16 border-b border-navy-800" id="study-guides" style={{ backgroundColor: '#0D1B2E' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...up()} className="mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+          <motion.div {...up()} className="mb-7 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div>
               <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/30 mb-3 flex items-center gap-3">
                 <span className="w-5 h-px bg-white/20" /> Premium Study Materials
               </p>
-              <h2 className="text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-white tracking-[-0.025em] leading-[1.1]">
+              <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-white tracking-[-0.025em] leading-[1.1]">
                 Study Guides for Every Credential.
               </h2>
-              <p className="text-[15px] text-white/50 leading-relaxed mt-3 max-w-xl">
+              <p className="text-[13.5px] text-white/50 leading-relaxed mt-3 max-w-xl">
                 Clinically accurate, exam-aligned study guides written by a Board Certified Behavior Analyst. Everything you need to pass — in one resource.
               </p>
             </div>
@@ -563,18 +563,18 @@ export default function ProfessionalsPage() {
       </section>
 
       {/* ── 7. FREE ABA RESOURCE CENTER ──────────────────────────────────────── */}
-      <section className="bg-white py-20 lg:py-28 border-b border-stone-200/60" id="resources">
+      <section className="bg-white py-12 lg:py-16 border-b border-stone-200/60" id="resources">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...up()} className="mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+          <motion.div {...up()} className="mb-7 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div>
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-[10px] font-bold tracking-[0.12em] uppercase px-2.5 py-1 rounded-full text-white bg-forest-500">FREE</span>
                 <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40">ABA Resource Center</p>
               </div>
-              <h2 className="text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
+              <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-3">
                 Free tools to build your foundation.
               </h2>
-              <p className="text-[15px] text-navy-800/50 leading-relaxed max-w-xl">
+              <p className="text-[13.5px] text-navy-800/50 leading-relaxed max-w-xl">
                 All resources below are completely free. Use them to study, practice, and prepare. For the full library, visit the Tools page.
               </p>
             </div>
@@ -586,7 +586,7 @@ export default function ProfessionalsPage() {
           </motion.div>
 
           {/* A. Interactive Flashcards */}
-          <div className="mb-16" id="materials">
+          <div className="mb-8" id="materials">
             <div className="flex items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full text-forest-700 bg-forest-100">FREE</span>
@@ -608,7 +608,7 @@ export default function ProfessionalsPage() {
           </div>
 
           {/* B. ABA Terminology */}
-          <div className="mb-16" id="terminology">
+          <div className="mb-8" id="terminology">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full text-forest-700 bg-forest-100">FREE</span>
               <h3 className="text-[15px] font-bold text-navy-900">ABA Terminology — Essential Concepts</h3>
@@ -623,7 +623,7 @@ export default function ProfessionalsPage() {
           </div>
 
           {/* C. Professional Conduct */}
-          <div className="mb-16" id="ethics">
+          <div className="mb-8" id="ethics">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full text-forest-700 bg-forest-100">FREE</span>
               <h3 className="text-[15px] font-bold text-navy-900">Professional Conduct & Ethics</h3>
@@ -660,7 +660,7 @@ export default function ProfessionalsPage() {
           </div>
 
           {/* D. Career Development */}
-          <div className="mb-12" id="career">
+          <div className="mb-7" id="career">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full text-forest-700 bg-forest-100">FREE</span>
               <h3 className="text-[15px] font-bold text-navy-900">Career Development Tools</h3>
@@ -709,17 +709,17 @@ export default function ProfessionalsPage() {
       </section>
 
       {/* ── 8. WHY LIGHT2MINDS ───────────────────────────────────────────────── */}
-      <section className="bg-stone-50 py-20 lg:py-28 border-b border-stone-200/60">
+      <section className="bg-stone-50 py-12 lg:py-16 border-b border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-16 lg:gap-24 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10 lg:gap-16 items-start">
 
             {/* Left — sticky headline block */}
             <motion.div {...up()} className="lg:sticky lg:top-32">
-              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-4">Why Light2Minds</p>
-              <h2 className="text-[clamp(1.9rem,3.5vw,2.6rem)] font-bold text-navy-900 tracking-[-0.03em] leading-[1.08] mb-5">
+              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-navy-700/40 mb-3">Why Light2Minds</p>
+              <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.03em] leading-[1.08] mb-4">
                 Built by clinicians.<br />Designed for you.
               </h2>
-              <p className="text-[14px] text-navy-800/45 leading-relaxed mb-8 max-w-xs">
+              <p className="text-[13.5px] text-navy-800/45 leading-relaxed mb-6 max-w-xs">
                 Every resource, tool, and mentorship session is grounded in evidence-based practice — created by someone who has worked in the clinic.
               </p>
               <a href="mailto:info@light2minds.com?subject=Learn More"
@@ -734,7 +734,7 @@ export default function ProfessionalsPage() {
             <div>
               {WHY_ITEMS.map((item, i) => (
                 <motion.div key={item.title} {...up(i * 0.08)}
-                  className="flex gap-6 py-8 border-b border-stone-200/60 last:border-0 last:pb-0 group">
+                  className="flex gap-6 py-5 border-b border-stone-200/60 last:border-0 last:pb-0 group">
                   <div className="flex-shrink-0 pt-0.5">
                     <span className="block text-[11px] font-bold tracking-[0.1em] tabular-nums" style={{ color: item.accent }}>
                       {String(i + 1).padStart(2, '0')}
@@ -756,16 +756,16 @@ export default function ProfessionalsPage() {
       </section>
 
       {/* ── 9. FINAL CTA ─────────────────────────────────────────────────────── */}
-      <section className="bg-white py-20 border-t border-stone-200/60">
+      <section className="bg-white py-10 border-t border-stone-200/60">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <motion.div {...up()}
-            className="bg-navy-900 rounded-3xl px-8 py-14 lg:px-16 lg:py-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10">
+            className="bg-navy-900 rounded-3xl px-8 py-10 lg:px-16 lg:py-12 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
             <div className="max-w-xl">
-              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/30 mb-4">Take the Next Step</p>
-              <h2 className="text-[clamp(1.6rem,3.5vw,2.4rem)] font-bold text-white tracking-[-0.025em] leading-[1.1] mb-4">
+              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/30 mb-3">Take the Next Step</p>
+              <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-white tracking-[-0.025em] leading-[1.1] mb-3">
                 Ready to Advance Your Behavioral Health Career?
               </h2>
-              <p className="text-[15px] text-white/50 leading-relaxed">
+              <p className="text-[13.5px] text-white/50 leading-relaxed">
                 Whether you&apos;re preparing for your first exam or growing into a senior clinical role — Light2Minds is your dedicated partner at every stage.
               </p>
             </div>
