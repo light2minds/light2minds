@@ -288,10 +288,10 @@ export default function ProfessionalsPage() {
                   className="inline-flex items-center gap-2 text-[13px] font-bold text-navy-900 bg-gold-400 px-5 py-2.5 rounded-full hover:bg-gold-300 transition-colors">
                   Shop Study Guides
                 </Link>
-                <a href="mailto:info@light2minds.com?subject=Book Guidance Session"
-                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-800/60 border border-stone-200 bg-white px-5 py-2.5 rounded-full hover:border-navy-300 hover:text-navy-900 transition-all">
-                  Book Guidance Session
-                </a>
+                <Link href="/shop#services"
+                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-800/50 border border-stone-200/70 px-5 py-2.5 rounded-full hover:border-navy-900/30 hover:text-navy-900 transition-all">
+                  Book Mentorship
+                </Link>
                 <Link href="/shop#services"
                   className="inline-flex items-center gap-2 text-[13px] font-semibold text-white px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity"
                   style={{ backgroundColor: '#2EBB50' }}>
@@ -352,11 +352,10 @@ export default function ProfessionalsPage() {
                   className="inline-flex items-center gap-2 text-[13px] font-bold text-navy-900 bg-gold-400 px-5 py-2.5 rounded-full hover:bg-gold-300 transition-colors">
                   Shop Study Guides
                 </Link>
-                <a href="mailto:info@light2minds.com?subject=Book Career Consultation"
-                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-white px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity"
-                  style={{ backgroundColor: '#8B5CF6' }}>
-                  Book Career Consultation
-                </a>
+                <Link href="/shop#services"
+                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-800/50 border border-stone-200/70 px-5 py-2.5 rounded-full hover:border-navy-900/30 hover:text-navy-900 transition-all">
+                  Book Mentorship
+                </Link>
               </div>
             </motion.div>
           </div>
