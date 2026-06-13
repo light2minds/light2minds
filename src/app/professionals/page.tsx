@@ -123,10 +123,10 @@ const printableForms = [
 
 const RBT_STEPS = [
   { num: '01', title: 'Eligibility Requirements', body: 'You must be at least 18 years old, hold a high school diploma or equivalent, and pass a criminal background check. No prior ABA experience is required to apply.' },
-  { num: '02', title: '40-Hour Training', body: 'Complete 40 hours of training covering the RBT Task List (2nd Ed.) — including measurement, skill acquisition, behavior reduction, documentation, and professional conduct.' },
-  { num: '03', title: 'Competency Assessment', body: 'A qualified BCBA must observe and assess your ability to perform each skill on the Task List. This live demonstration is a required gateway before you can sit for the exam.' },
-  { num: '04', title: 'Certification Exam', body: 'Pass the 85-question BACB RBT exam covering all six content areas. The exam is administered at Pearson VUE test centers or remotely. A passing score is required for certification.' },
-  { num: '05', title: 'Starting Your Career', body: 'Once certified, you\'ll work under the supervision of a BCBA, implementing individualized therapy programs, collecting data, and supporting clients with autism and developmental needs.' },
+  { num: '02', title: '40-Hour Training', body: 'Complete 40 hours of training covering the RBT Task List (3rd Ed.) — including measurement, skill acquisition, behavior reduction, documentation, and professional conduct.' },
+  { num: '03', title: 'Competency Assessment', body: 'A qualified BCBA/BCaBA must assess your ability to perform each skill on the Task List. This live demonstration is a required gateway before you can sit for the exam.' },
+  { num: '04', title: 'Certification Exam', body: 'Pass the 85-question BACB RBT exam covering all six content areas. The exam is administered at Pearson VUE test centers. A passing score is required for certification.' },
+  { num: '05', title: 'Starting Your Career', body: 'Once certified, you\'ll work under the supervision of a BCBA/BCaBA, implementing individualized therapy programs, collecting data, and supporting clients with autism and developmental needs.' },
 ]
 
 const BCBA_STEPS = [
