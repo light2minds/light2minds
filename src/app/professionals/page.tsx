@@ -202,6 +202,8 @@ const MENTORSHIP = [
   },
 ]
 
+const CHECKOUT = 'https://light-2-minds.myshopify.com/cart'
+
 const STUDY_GUIDES = [
   {
     id: 'rbt-guide',
@@ -211,6 +213,7 @@ const STUDY_GUIDES = [
     benefits: ['Aligned to the RBT Task List 2nd Edition', 'Section-by-section breakdown (A–F)', 'Practice questions with rationale', 'Ethics and professional conduct module'],
     accent: '#5BC4F8',
     dark: '#1A7AC0',
+    checkout: `${CHECKOUT}/47184621600939:1`,
   },
   {
     id: 'bcaba-guide',
@@ -220,6 +223,7 @@ const STUDY_GUIDES = [
     benefits: ['Coverage of all BCaBA task list areas', 'Supervision and fieldwork requirements', 'Ethics scenarios and decision-making', 'Exam-day strategies and practice sets'],
     accent: '#8B5CF6',
     dark: '#6D28D9',
+    checkout: `${CHECKOUT}/47184628809899:1`,
   },
   {
     id: 'bcba-guide',
@@ -229,6 +233,7 @@ const STUDY_GUIDES = [
     benefits: ['Full BCBA 5th Edition task list coverage', 'Applied case-based practice scenarios', 'Supervision and ethics deep-dive', 'Data analysis and graphing review'],
     accent: '#2EBB50',
     dark: '#1E8E3E',
+    checkout: `${CHECKOUT}/47184628809899:1`,
   },
 ]
 
@@ -271,13 +276,13 @@ export default function ProfessionalsPage() {
               Resources, mentorship, exam preparation, and professional tools for aspiring and practicing RBTs, BCaBAs, and BCBAs.
             </p>
             <div className="flex flex-wrap gap-3 mb-4">
-              <Link href="/shop"
+              <Link href="/shop#professionals"
                 className="inline-flex items-center gap-2.5 text-[14px] font-bold text-navy-900 bg-gold-400 px-7 py-3.5 rounded-full hover:bg-gold-300 transition-colors duration-200"
                 style={{ boxShadow: '0 4px 0 #C4A800' }}>
                 Shop Study Guides
                 <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
               </Link>
-              <a href="mailto:info@light2minds.com?subject=Book Mentorship Session"
+              <a href={`${CHECKOUT}/47209074819243:1`}
                 className="inline-flex items-center gap-2.5 text-[14px] font-semibold text-navy-900 bg-white border border-stone-200 px-7 py-3.5 rounded-full hover:border-navy-900/30 transition-all duration-200">
                 Book Mentorship
               </a>
@@ -316,7 +321,7 @@ export default function ProfessionalsPage() {
                 The RBT credential is your first step into the field of applied behavior analysis. Here&apos;s exactly what you need to do — from eligibility to your first day on the job.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link href="/shop"
+                <Link href="/shop#professionals"
                   className="inline-flex items-center gap-2 text-[13px] font-bold text-navy-900 bg-gold-400 px-5 py-2.5 rounded-full hover:bg-gold-300 transition-colors">
                   Shop Study Guides
                 </Link>
@@ -380,7 +385,7 @@ export default function ProfessionalsPage() {
                 Becoming a Board Certified Behavior Analyst is one of the most rewarding professional paths in behavioral health. Here&apos;s the full roadmap — from coursework to certification.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link href="/shop"
+                <Link href="/shop#professionals"
                   className="inline-flex items-center gap-2 text-[13px] font-bold text-navy-900 bg-gold-400 px-5 py-2.5 rounded-full hover:bg-gold-300 transition-colors">
                   Shop Study Guides
                 </Link>
@@ -518,7 +523,7 @@ export default function ProfessionalsPage() {
                 Clinically accurate, exam-aligned study guides written by a Board Certified Behavior Analyst. Everything you need to pass — in one resource.
               </p>
             </div>
-            <Link href="/shop"
+            <Link href="/shop#professionals"
               className="flex-shrink-0 inline-flex items-center gap-2.5 text-[14px] font-bold text-navy-900 bg-gold-400 px-8 py-3.5 rounded-full hover:bg-gold-300 transition-colors self-start lg:self-auto"
               style={{ boxShadow: '0 4px 0 #C4A800' }}>
               Visit the Shop
@@ -549,12 +554,12 @@ export default function ProfessionalsPage() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/shop"
+                  <a href={g.checkout}
                     className="inline-flex items-center justify-center gap-2 text-[13px] font-bold px-6 py-3 rounded-full transition-all duration-200 hover:opacity-90"
                     style={{ backgroundColor: g.accent, color: '#fff', boxShadow: `0 3px 0 ${g.dark}` }}>
-                    Shop Now
+                    Buy Now
                     <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
-                  </Link>
+                  </a>
                 </div>
               </motion.div>
             ))}
@@ -770,13 +775,13 @@ export default function ProfessionalsPage() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row lg:flex-col gap-3 flex-shrink-0">
-              <Link href="/shop"
+              <Link href="/shop#professionals"
                 className="inline-flex items-center justify-center gap-2.5 text-[14px] font-bold text-navy-900 bg-gold-400 px-8 py-3.5 rounded-full hover:bg-gold-300 transition-colors"
                 style={{ boxShadow: '0 4px 0 #C4A800' }}>
                 Shop Study Guides
                 <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
               </Link>
-              <a href="mailto:info@light2minds.com?subject=Book Mentorship Session"
+              <a href={`${CHECKOUT}/47209074819243:1`}
                 className="inline-flex items-center justify-center gap-2 text-[13px] font-semibold text-white border border-white/20 px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors">
                 Book Mentorship
               </a>
