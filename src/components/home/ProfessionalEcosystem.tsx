@@ -7,37 +7,42 @@ const areas = [
   {
     id: '01',
     title: 'RBT Preparation',
-    body: 'Task list coverage, mock exams, interactive flashcards, and ethics — structured to pass the RBT exam on the first attempt.',
+    body: 'Task list coverage, mock exams, flashcards, and ethics — structured to pass the RBT exam on the first attempt.',
     href: '/professionals#exam',
     badge: 'Start Here',
+    external: false,
   },
   {
     id: '02',
-    title: 'ABA Documentation',
-    body: 'Session notes, data sheets, supervision logs, and reporting systems for daily clinical use.',
-    href: '/professionals#documentation',
+    title: 'ABA Documentation & Clinical Tools',
+    body: 'Session notes, data sheets, ABC forms, interval recording, supervision logs, and task analysis templates for daily clinical use.',
+    href: '/tools',
     badge: null,
+    external: false,
   },
   {
     id: '03',
-    title: 'Clinical Tools',
-    body: 'ABC data forms, interval recording sheets, task analysis templates, and preference assessments.',
-    href: '/tools#clinical-tools',
-    badge: null,
+    title: 'Get Ready for Your First Session',
+    body: 'Everything you need for your first ABA sessions — tools, forms, and resources in one ready-to-use kit.',
+    href: 'https://light-2-minds.myshopify.com/products/behavior-therapist-starter-kit',
+    badge: 'Shop',
+    external: true,
   },
   {
     id: '04',
-    title: 'Career Development',
-    body: 'Resume templates, interview preparation, mentorship, career pathway maps from RBT to BCBA, and licensure guidance.',
-    href: '/professionals#career',
+    title: 'BCBA / BCaBA Preparation',
+    body: 'Supervision hours tracking, exam content area review, ethics case studies, and study frameworks for board certification.',
+    href: '/professionals#bcba',
     badge: null,
+    external: false,
   },
   {
     id: '05',
-    title: 'BCBA / BCaBA Preparation',
-    body: 'Supervision hours tracking, exam content area review, ethics case studies, and study frameworks for the BCBA and BCaBA examinations.',
-    href: '/professionals#bcba',
+    title: 'Career Development',
+    body: 'Resume templates, interview prep, mentorship, and career pathway maps from RBT to BCBA and beyond.',
+    href: '/tools',
     badge: null,
+    external: false,
   },
   {
     id: '06',
@@ -45,6 +50,7 @@ const areas = [
     body: 'A complete guide to opening your own ABA practice — from entity formation to your first client session.',
     href: '/aba-center',
     badge: null,
+    external: false,
   },
 ]
 
@@ -98,17 +104,24 @@ export default function ProfessionalEcosystem() {
             >
               <Link
                 href={area.href}
+                target={area.external ? '_blank' : undefined}
+                rel={area.external ? 'noopener noreferrer' : undefined}
                 className="group block bg-white hover:bg-stone-50 p-5 h-full transition-colors duration-300"
               >
                 <div className="flex items-center justify-between mb-5">
                   <p className="text-[11px] font-bold text-navy-900/20 tracking-[0.1em]">{area.id}</p>
                   {area.badge && (
-                    <span className="text-[9.5px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full bg-gold-400/20 text-gold-700">
+                    <span
+                      className="text-[9.5px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full"
+                      style={area.badge === 'Shop'
+                        ? { backgroundColor: 'rgba(255,224,48,0.25)', color: '#8A6A00' }
+                        : { backgroundColor: 'rgba(46,187,80,0.15)', color: '#1A7A3C' }}
+                    >
                       {area.badge}
                     </span>
                   )}
                 </div>
-                <h3 className="text-[13.5px] font-semibold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors duration-200">
+                <h3 className="text-[13.5px] font-semibold text-navy-900 mb-3 group-hover:text-green-600 transition-colors duration-200">
                   {area.title}
                 </h3>
                 <p className="text-[12.5px] text-navy-800/50 leading-relaxed">{area.body}</p>
