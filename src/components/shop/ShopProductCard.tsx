@@ -6,14 +6,13 @@ import { formatPrice, getFirstImage, getDefaultVariant, ShopifyProduct } from '@
 import BuyNowButton from '@/components/shop/BuyNowButton'
 
 const BLURBS: Record<string, string> = {
-  'bcba-bcaba-study-guide':         'Comprehensive preparation for board certification.',
-  'rbt-exam-study-guide':           'Everything you need to pass the RBT competency assessment.',
-  'rbt-exam-study-guide-3rd':       'Everything you need to pass the RBT competency assessment.',
-  'rbt-exam-study-guide-spanish':   'Guía completa en español para el examen de competencia RBT.',
-  'behavior-therapist-starter-kit': 'Essential tools and resources for your first ABA sessions.',
-  'sensory-travel-kit':             'Keep your child regulated and comfortable wherever you go.',
-  'bedtime-regulation-box':         'Build a calming nighttime routine that works every night.',
-  'calm-and-focus-box':             'Sensory tools to help children regulate, focus, and thrive.',
+  'bcba-bcaba-study-guide':       'Comprehensive preparation for board certification.',
+  'rbt-study-guide':              'Everything you need to pass the RBT competency assessment.',
+  'rbt-exam-study-guide-spanish': 'Guía completa en español para el examen de competencia RBT.',
+  'professional-therapy-box™':    'Essential tools and resources for your first ABA sessions.',
+  'sensory-travel-kit':           'Keep your child regulated and comfortable wherever you go.',
+  'bedtime-regulation-box':       'Build a calming nighttime routine that works every night.',
+  'calm-focus-box':               'Sensory tools to help children regulate, focus, and thrive.',
 }
 
 function BookSvg({ color }: { color: string }) {

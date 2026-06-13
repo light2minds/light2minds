@@ -1,17 +1,13 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { getProduct, getProductHandles, getFirstImage } from '@/lib/shopify'
+import { getProduct, getFirstImage } from '@/lib/shopify'
 import ProductDetails from '@/components/shop/ProductDetails'
 
 export const revalidate = 60
+export const dynamicParams = true
 
 type Props = { params: Promise<{ handle: string }> }
-
-export async function generateStaticParams() {
-  const handles = await getProductHandles()
-  return handles.map(handle => ({ handle }))
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { handle } = await params
