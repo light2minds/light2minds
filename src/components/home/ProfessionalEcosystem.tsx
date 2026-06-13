@@ -24,9 +24,9 @@ const areas = [
     id: '03',
     title: 'Get Ready for Your First Session',
     body: 'Everything you need for your first ABA sessions — tools, forms, and resources in one ready-to-use kit.',
-    href: 'https://light-2-minds.myshopify.com/products/behavior-therapist-starter-kit',
+    href: '/shop#professionals',
     badge: 'Shop',
-    external: true,
+    external: false,
   },
   {
     id: '04',
