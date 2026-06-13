@@ -51,7 +51,7 @@ export default function MissionSection() {
   return (
     <section
       style={{ backgroundColor: WARM_BG }}
-      className="relative overflow-hidden py-16 lg:py-24 border-t border-stone-200/40"
+      className="relative overflow-hidden py-10 lg:py-14 border-t border-stone-200/40"
     >
       {/* Ghost watermark */}
       <span
@@ -65,11 +65,11 @@ export default function MissionSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
 
         {/* ── Layer 1: Mission headline (left) + trust checkpoints (right) ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
 
           {/* Left — sticky on scroll */}
           <motion.div {...fade()} className="lg:sticky lg:top-28">
-            <div className="flex items-center gap-3 mb-7">
+            <div className="flex items-center gap-3 mb-4">
               <span className="w-5 h-px flex-shrink-0" style={{ backgroundColor: '#2EBB50' }} />
               <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-navy-700/50">
                 {lang === 'es' ? 'Nuestra Misión' : 'Our Mission'}
@@ -77,7 +77,7 @@ export default function MissionSection() {
             </div>
 
             <h2
-              className="text-[clamp(2.2rem,5vw,4rem)] font-bold leading-[1.06] tracking-[-0.03em] mb-7"
+              className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-[1.06] tracking-[-0.03em] mb-4"
               style={GRAD_TEXT}
             >
               {lang === 'es'

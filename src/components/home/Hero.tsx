@@ -204,8 +204,8 @@ export default function Hero() {
             className="mt-5 text-[15px] text-navy-800/60 leading-relaxed max-w-md"
           >
             {tx(
-              'Helping Families and Behavioral Health Professionals Thrive. Expert guidance, resources and practical tools for Autism, ADHD, and developmental support.',
-              'Ayudando a Familias y Profesionales de Salud Conductual a Prosperar. Orientación experta, recursos y herramientas prácticas para autismo, TDAH y apoyo al desarrollo.'
+              'Helping children, families, and behavioral health professionals thrive. Shop sensory products, explore study guides, and access trusted resources and expert support for Autism, ADHD, and developmental needs.',
+              'Ayudando a niños, familias y profesionales de salud conductual a prosperar. Compra productos sensoriales, explora guías de estudio y accede a recursos confiables y apoyo experto para autismo, TDAH y necesidades del desarrollo.'
             )}
           </motion.p>
         </motion.div>

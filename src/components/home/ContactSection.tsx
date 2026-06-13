@@ -23,19 +23,19 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="bg-white py-16 lg:py-24 border-t border-stone-200/40" id="contact">
+    <section className="bg-white py-10 lg:py-14 border-t border-stone-200/40" id="contact">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
 
           {/* Left — info */}
           <motion.div {...fade()}>
-            <div className="flex items-center gap-3 mb-7">
+            <div className="flex items-center gap-3 mb-4">
               <span className="w-5 h-px flex-shrink-0" style={{ backgroundColor: '#FFE030' }} />
               <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-navy-700/50">
                 {lang === 'es' ? 'Contáctanos' : 'Contact Us'}
               </span>
             </div>
-            <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-6">
+            <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.1] mb-4">
               {lang === 'es'
                 ? <>Hablemos.<br />Estamos aquí para ayudar.</>
                 : <>Let&apos;s talk.<br />We&apos;re here to help.</>

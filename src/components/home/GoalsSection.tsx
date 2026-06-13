@@ -20,8 +20,8 @@ const pillars = [
     borderColor: 'rgba(91,196,248,0.35)',
     title: { en: 'For Families', es: 'Para Familias' },
     body: {
-      en: "You shouldn't need a clinical degree to advocate for your child. We translate diagnoses, therapy plans, IEP meetings, and school systems into clear, actionable guidance — so you walk into every room prepared, confident, and heard.",
-      es: 'No necesitas un título clínico para abogar por tu hijo. Traducimos diagnósticos, planes de terapia, reuniones del IEP y sistemas escolares en orientación clara — para que entres a cada reunión preparado, con confianza.',
+      en: "You don't need a clinical degree to advocate for your child. We translate diagnoses, therapy plans, IEP meetings, and school systems into clear guidance — so you walk in prepared and heard.",
+      es: 'No necesitas un título clínico para abogar por tu hijo. Traducimos diagnósticos, planes de terapia y reuniones del IEP en orientación clara — para que entres a cada reunión preparado y con confianza.',
     },
     href: '/parents',
     cta: { en: 'Parent Resource Center', es: 'Centro de Recursos' },
@@ -32,8 +32,8 @@ const pillars = [
     borderColor: 'rgba(46,187,80,0.35)',
     title: { en: 'For Professionals', es: 'Para Profesionales' },
     body: {
-      en: 'From RBT exam preparation to opening your own therapy center — study guides, mentorship, clinical tools, and career frameworks to support every stage of your professional journey.',
-      es: 'Desde la preparación para el examen RBT hasta abrir tu propio centro de terapia — guías de estudio, mentoría, herramientas clínicas y marcos de carrera para cada etapa de tu camino profesional.',
+      en: 'From RBT exam prep to opening your own practice — study guides, mentorship, clinical tools, and career frameworks for every stage of your professional journey.',
+      es: 'Desde la preparación para el examen RBT hasta abrir tu propio centro — guías de estudio, mentoría, herramientas clínicas y marcos de carrera para cada etapa de tu camino.',
     },
     href: '/professionals',
     cta: { en: 'Professional Hub', es: 'Centro Profesional' },

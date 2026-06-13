@@ -50,7 +50,7 @@ const areas = [
 
 export default function ProfessionalEcosystem() {
   return (
-    <section className="bg-stone-50 py-16 lg:py-24">
+    <section className="bg-stone-50 py-10 lg:py-14">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         <motion.div
@@ -58,7 +58,7 @@ export default function ProfessionalEcosystem() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.65 }}
-          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10"
+          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-7"
         >
           <div>
             <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-4">
@@ -98,7 +98,7 @@ export default function ProfessionalEcosystem() {
             >
               <Link
                 href={area.href}
-                className="group block bg-white hover:bg-stone-50 p-8 h-full transition-colors duration-300"
+                className="group block bg-white hover:bg-stone-50 p-5 h-full transition-colors duration-300"
               >
                 <div className="flex items-center justify-between mb-5">
                   <p className="text-[11px] font-bold text-navy-900/20 tracking-[0.1em]">{area.id}</p>
