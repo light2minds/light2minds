@@ -9,9 +9,20 @@ export const dynamicParams = true
 
 type Props = { params: Promise<{ handle: string }> }
 
+async function resolveProduct(raw: string) {
+  const product = await getProduct(raw)
+  if (product) return product
+  // Fallback: handle may arrive still percent-encoded from some routing layers
+  try {
+    const decoded = decodeURIComponent(raw)
+    if (decoded !== raw) return getProduct(decoded)
+  } catch {}
+  return null
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { handle } = await params
-  const product = await getProduct(handle)
+  const product = await resolveProduct(handle)
   if (!product) return { title: 'Product Not Found' }
   const image = getFirstImage(product)
   return {
@@ -23,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { handle } = await params
-  const product = await getProduct(handle)
+  const product = await resolveProduct(handle)
   if (!product) notFound()
 
   return (
