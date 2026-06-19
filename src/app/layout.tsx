@@ -36,6 +36,16 @@ export const metadata: Metadata = {
   description:
     'Light2Minds supports Florida families navigating neurodevelopmental diagnoses and prepares ABA professionals for rewarding careers in behavioral health.',
   metadataBase: new URL('https://www.light2minds.com'),
+  icons: {
+    icon: [
+      { url: '/favicon.ico',  sizes: '32x32', type: 'image/x-icon' },
+      { url: '/icon.png',     sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
