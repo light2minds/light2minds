@@ -6,6 +6,31 @@ import Link from 'next/link'
 import { formatPrice, ShopifyProduct, ShopifyVariant } from '@/lib/shopify'
 import AddToCartButton from '@/components/shop/AddToCartButton'
 
+function ShareButton({ title }: { title: string }) {
+  const share = () => {
+    if (navigator.share) {
+      navigator.share({ title, url: window.location.href }).catch(() => {})
+    } else {
+      navigator.clipboard.writeText(window.location.href)
+        .then(() => alert('Link copied!'))
+        .catch(() => {})
+    }
+  }
+
+  return (
+    <button
+      onClick={share}
+      className="flex items-center gap-2 text-[12.5px] text-navy-800/40 hover:text-navy-800 transition-colors"
+    >
+      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+      </svg>
+      Share this product
+    </button>
+  )
+}
+
 export default function ProductDetails({ product }: { product: ShopifyProduct }) {
   const [selected, setSelected] = useState<ShopifyVariant | null>(
     product.variants.edges[0]?.node ?? null
@@ -129,26 +154,7 @@ export default function ProductDetails({ product }: { product: ShopifyProduct })
             />
           )}
 
-          <div className="space-y-2.5 pt-2">
-            {(() => {
-              const isDigital = ['guide', 'digital', 'download'].some(k =>
-                product.productType.toLowerCase().includes(k) || product.tags.some(t => t.toLowerCase().includes(k))
-              )
-              const badges = [
-                isDigital
-                  ? { icon: '⚡', text: 'Instant digital download after purchase' }
-                  : { icon: '📦', text: 'Ships from Florida, USA' },
-                { icon: '🔒', text: 'Secure checkout — 256-bit SSL' },
-                { icon: '↩', text: '7-day satisfaction guarantee' },
-              ]
-              return badges.map(t => (
-                <div key={t.text} className="flex items-center gap-2.5 text-[12.5px] text-navy-800/45">
-                  <span>{t.icon}</span>
-                  {t.text}
-                </div>
-              ))
-            })()}
-          </div>
+          <ShareButton title={product.title} />
 
           {product.tags.length > 0 && (
             <div className="flex flex-wrap gap-1.5 pt-2">
