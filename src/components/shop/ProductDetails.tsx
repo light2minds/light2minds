@@ -84,8 +84,12 @@ export default function ProductDetails({ product }: { product: ShopifyProduct })
             )}
           </div>
 
-          {product.description && (
-            <p className="text-[14.5px] text-navy-800/60 leading-relaxed">{product.description}</p>
+          {product.descriptionHtml && (
+            <div
+              className="prose prose-sm max-w-none text-[14px] text-navy-800/65 leading-relaxed
+                [&_p]:mb-3 [&_ul]:my-2 [&_ul]:pl-4 [&_li]:mb-1 [&_strong]:text-navy-900 [&_strong]:font-semibold"
+              dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+            />
           )}
 
           {hasOptions && (
@@ -126,16 +130,24 @@ export default function ProductDetails({ product }: { product: ShopifyProduct })
           )}
 
           <div className="space-y-2.5 pt-2">
-            {[
-              { icon: '⚡', text: 'Instant digital download after purchase' },
-              { icon: '🔒', text: 'Secure checkout — 256-bit SSL' },
-              { icon: '↩', text: '7-day satisfaction guarantee' },
-            ].map(t => (
-              <div key={t.text} className="flex items-center gap-2.5 text-[12.5px] text-navy-800/45">
-                <span>{t.icon}</span>
-                {t.text}
-              </div>
-            ))}
+            {(() => {
+              const isDigital = ['guide', 'digital', 'download'].some(k =>
+                product.productType.toLowerCase().includes(k) || product.tags.some(t => t.toLowerCase().includes(k))
+              )
+              const badges = [
+                isDigital
+                  ? { icon: '⚡', text: 'Instant digital download after purchase' }
+                  : { icon: '📦', text: 'Ships from Florida, USA' },
+                { icon: '🔒', text: 'Secure checkout — 256-bit SSL' },
+                { icon: '↩', text: '7-day satisfaction guarantee' },
+              ]
+              return badges.map(t => (
+                <div key={t.text} className="flex items-center gap-2.5 text-[12.5px] text-navy-800/45">
+                  <span>{t.icon}</span>
+                  {t.text}
+                </div>
+              ))
+            })()}
           </div>
 
           {product.tags.length > 0 && (
@@ -149,16 +161,6 @@ export default function ProductDetails({ product }: { product: ShopifyProduct })
           )}
         </div>
       </div>
-
-      {product.descriptionHtml && product.descriptionHtml !== `<p>${product.description}</p>` && (
-        <div className="mt-16 max-w-3xl">
-          <h2 className="text-[1.2rem] font-bold text-navy-900 mb-6">Product Details</h2>
-          <div
-            className="prose prose-sm prose-navy max-w-none text-navy-800/65 leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-          />
-        </div>
-      )}
 
       <div className="mt-12">
         <Link
