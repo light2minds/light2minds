@@ -27,7 +27,7 @@ const cols = [
       { label: 'All Tools',         href: '/tools' },
       { label: 'Parent Handouts',   href: '/tools#parent-tools' },
       { label: 'Data Forms',        href: '/tools#clinical-tools' },
-      { label: 'ABA Center',         href: '/tools#center-tools' },
+      { label: 'RBT Study',           href: '/tools#rbt-tools' },
       { label: 'RBT Study',         href: '/tools#rbt-tools' },
     ],
   },

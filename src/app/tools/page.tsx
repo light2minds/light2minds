@@ -12,7 +12,7 @@ type ToolCard = {
   description: string
   format: string
   audience: string
-  category: 'clinical' | 'parent' | 'developmental' | 'rbt' | 'center'
+  category: 'clinical' | 'parent' | 'developmental' | 'rbt'
   searchTerms?: string
 }
 
@@ -253,48 +253,12 @@ const rbtTools: ToolCard[] = [
   },
 ]
 
-const centerTools: ToolCard[] = [
-  {
-    title: 'Client Intake Packet',
-    description: 'Complete intake packet template — consent for treatment, HIPAA notice, developmental history form, financial agreement, and authorization forms. Fully customizable.',
-    format: 'PDF + Word',
-    audience: '',
-    category: 'center',
-    searchTerms: 'Intake Packet Client Consent Forms ABA Practice',
-  },
-  {
-    title: 'ABA Center Launch Checklist',
-    description: 'A comprehensive pre-launch checklist covering legal, clinical, operational, HIPAA, and staffing milestones — so nothing falls through the cracks before you open your doors.',
-    format: 'PDF',
-    audience: '',
-    category: 'center',
-    searchTerms: 'Center Launch Checklist Startup ABA Practice Opening',
-  },
-  {
-    title: 'ABA Billing Workflow Guide',
-    description: 'Step-by-step billing workflow, CPT code reference card, prior authorization tracking log, and a denial management tracking sheet — all in one downloadable package.',
-    format: 'PDF + Excel',
-    audience: '',
-    category: 'center',
-    searchTerms: 'Billing Workflow CPT Codes ABA Insurance',
-  },
-  {
-    title: 'Treatment Plan Template',
-    description: 'BCBA-aligned treatment plan format with sections for present levels, long-term goals, short-term objectives, methodology, generalization plan, and parent training goals.',
-    format: 'Word',
-    audience: '',
-    category: 'center',
-    searchTerms: 'Treatment Plan Template BCBA Goals Objectives',
-  },
-]
-
 const TABS = [
   { id: 'all', label: 'All Resources' },
   { id: 'clinical', label: 'Clinical Forms' },
   { id: 'parent', label: 'Parent Resources' },
   { id: 'developmental', label: 'Developmental Guides' },
   { id: 'rbt', label: 'RBT Study' },
-  { id: 'center', label: 'ABA Center' },
 ]
 
 function ToolCardItem({ tool, accent }: { tool: ToolCard; accent: string }) {
@@ -334,7 +298,7 @@ export default function ToolsPage() {
   const [activeTab, setActiveTab] = useState('all')
   const [query, setQuery] = useState('')
 
-  const allTools = useMemo(() => [...clinicalTools, ...parentTools, ...developmentalTools, ...rbtTools, ...centerTools], [])
+  const allTools = useMemo(() => [...clinicalTools, ...parentTools, ...developmentalTools, ...rbtTools], [])
 
   const filterTools = (tools: ToolCard[]) => {
     if (!query.trim()) return tools
@@ -353,7 +317,7 @@ export default function ToolsPage() {
 
   const stats = [
     { value: '40+', label: 'Free Downloads', color: 'text-navy-700' },
-    { value: '5', label: 'Resource Categories', color: 'text-forest-700' },
+    { value: '4', label: 'Resource Categories', color: 'text-forest-700' },
     { value: 'PDF', label: 'Print-Ready Formats', color: 'text-gold-600' },
     { value: 'Free', label: 'No Sign-Up Required', color: 'text-sage-700' },
   ]
@@ -396,11 +360,6 @@ export default function ToolsPage() {
                 className="inline-flex items-center text-[12.5px] font-semibold text-white px-4 py-2 rounded-full border transition-all duration-150 hover:bg-white/10"
                 style={{ borderColor: 'rgba(255,255,255,0.18)' }}>
                 Developmental
-              </a>
-              <a href="#center-tools"
-                className="inline-flex items-center text-[12.5px] font-semibold text-white px-4 py-2 rounded-full border transition-all duration-150 hover:bg-white/10"
-                style={{ borderColor: 'rgba(255,255,255,0.18)' }}>
-                ABA Center
               </a>
             </div>
           </motion.div>
@@ -602,21 +561,6 @@ export default function ToolsPage() {
                 </div>
               )}
 
-              {/* ABA Center Templates */}
-              {showSection('center') && (
-                <div id="center-tools" className="mb-4">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="flex-1 h-px bg-stone-100" />
-                    <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-navy-800/30 whitespace-nowrap">ABA Center Startup Templates</p>
-                    <div className="flex-1 h-px bg-stone-100" />
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {centerTools.map((tool) => (
-                      <ToolCardItem key={tool.title} tool={tool} accent="text-gold-700 border-gold-200 hover:bg-gold-600 hover:text-white hover:border-gold-600" />
-                    ))}
-                  </div>
-                </div>
-              )}
             </>
           )}
         </div>
