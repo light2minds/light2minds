@@ -27,7 +27,6 @@ const cols = [
       { label: 'All Tools',         href: '/tools' },
       { label: 'Parent Handouts',   href: '/tools#parent-tools' },
       { label: 'Data Forms',        href: '/tools#clinical-tools' },
-      { label: 'RBT Study',           href: '/tools#rbt-tools' },
       { label: 'RBT Study',         href: '/tools#rbt-tools' },
     ],
   },
@@ -82,7 +81,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 flex-1">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 flex-1">
             {cols.map((col) => (
               <div key={col.heading}>
                 <p className="text-[11px] font-semibold tracking-[0.12em] uppercase text-navy-700/40 mb-4">
