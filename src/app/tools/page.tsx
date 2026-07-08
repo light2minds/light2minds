@@ -12,7 +12,7 @@ type ToolCard = {
   description: string
   format: string
   audience: string
-  category: 'clinical' | 'parent' | 'developmental' | 'rbt'
+  category: 'clinical' | 'parent' | 'rbt'
   searchTerms?: string
 }
 
@@ -151,57 +151,6 @@ const parentTools: ToolCard[] = [
 ]
 
 
-const developmentalTools: ToolCard[] = [
-  {
-    title: 'Early Language Development Activity Guide',
-    description: '25 simple, play-based activities to support communication development in young children — from first words to two-word combinations. No materials required beyond everyday objects.',
-    format: 'PDF',
-    audience: '',
-    category: 'developmental',
-    searchTerms: 'Early Language Development Activities Play',
-  },
-  {
-    title: 'Social Skills Activity Cards',
-    description: '30 printable activity cards for building social skills at home — turn-taking, sharing, requesting, greeting, and perspective-taking activities for ages 3–10.',
-    format: 'PDF',
-    audience: '',
-    category: 'developmental',
-    searchTerms: 'Social Skills Play Activities Children Peers',
-  },
-  {
-    title: 'Fine Motor Activity Guide',
-    description: 'Easy fine motor activities to support hand strength, coordination, and pre-writing skills — using household materials like play-doh, tweezers, and stickers.',
-    format: 'PDF',
-    audience: '',
-    category: 'developmental',
-    searchTerms: 'Fine Motor Activities Development Children Preschool',
-  },
-  {
-    title: 'Emotions & Feelings Cards',
-    description: 'Printable emotions flashcards and a feelings check-in chart for children — supports emotional vocabulary and regulation skills. Available in simple and detailed versions.',
-    format: 'PDF',
-    audience: '',
-    category: 'developmental',
-    searchTerms: 'Emotion Feelings Regulation Cards Children',
-  },
-  {
-    title: 'Developmental Milestone Checklist',
-    description: 'Age-by-age developmental milestone checklist (birth to age 8) covering motor, language, cognitive, and social-emotional development. Use to track progress and identify areas of concern.',
-    format: 'PDF',
-    audience: '',
-    category: 'developmental',
-    searchTerms: 'Milestone Checklist Developmental Ages Stages',
-  },
-  {
-    title: 'Daily Living Skills Task Cards',
-    description: 'Visual step-by-step cards for common daily living skills — hand-washing, getting dressed, brushing teeth, and making a simple snack. Print, laminate, and post at eye level.',
-    format: 'PDF',
-    audience: '',
-    category: 'developmental',
-    searchTerms: 'Daily Living Skills Self Care Chores Independence',
-  },
-]
-
 const rbtTools: ToolCard[] = [
   {
     title: 'RBT Terminology Glossary',
@@ -257,7 +206,6 @@ const TABS = [
   { id: 'all', label: 'All Resources' },
   { id: 'clinical', label: 'Clinical Forms' },
   { id: 'parent', label: 'Parent Resources' },
-  { id: 'developmental', label: 'Developmental Guides' },
   { id: 'rbt', label: 'RBT Study' },
 ]
 
@@ -298,7 +246,7 @@ export default function ToolsPage() {
   const [activeTab, setActiveTab] = useState('all')
   const [query, setQuery] = useState('')
 
-  const allTools = useMemo(() => [...clinicalTools, ...parentTools, ...developmentalTools, ...rbtTools], [])
+  const allTools = useMemo(() => [...clinicalTools, ...parentTools, ...rbtTools], [])
 
   const filterTools = (tools: ToolCard[]) => {
     if (!query.trim()) return tools
@@ -317,7 +265,7 @@ export default function ToolsPage() {
 
   const stats = [
     { value: '40+', label: 'Free Downloads', color: 'text-navy-700' },
-    { value: '4', label: 'Resource Categories', color: 'text-forest-700' },
+    { value: '3', label: 'Resource Categories', color: 'text-forest-700' },
     { value: 'PDF', label: 'Print-Ready Formats', color: 'text-gold-600' },
     { value: 'Free', label: 'No Sign-Up Required', color: 'text-sage-700' },
   ]
@@ -355,11 +303,6 @@ export default function ToolsPage() {
                 className="inline-flex items-center text-[12.5px] font-semibold px-4 py-2 rounded-full transition-all duration-150 hover:opacity-85"
                 style={{ backgroundColor: '#FFE030', color: '#0D1B2E' }}>
                 RBT Study
-              </a>
-              <a href="#developmental-tools"
-                className="inline-flex items-center text-[12.5px] font-semibold text-white px-4 py-2 rounded-full border transition-all duration-150 hover:bg-white/10"
-                style={{ borderColor: 'rgba(255,255,255,0.18)' }}>
-                Developmental
               </a>
             </div>
           </motion.div>
@@ -523,22 +466,6 @@ export default function ToolsPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {parentTools.map((tool) => (
-                      <ToolCardItem key={tool.title} tool={tool} accent="text-forest-700 border-forest-200 hover:bg-forest-700 hover:text-white hover:border-forest-700" />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Developmental Guides */}
-              {showSection('developmental') && (
-                <div id="developmental-tools" className="mb-16">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="flex-1 h-px bg-stone-100" />
-                    <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-navy-800/30 whitespace-nowrap">Developmental Activity Guides</p>
-                    <div className="flex-1 h-px bg-stone-100" />
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {developmentalTools.map((tool) => (
                       <ToolCardItem key={tool.title} tool={tool} accent="text-forest-700 border-forest-200 hover:bg-forest-700 hover:text-white hover:border-forest-700" />
                     ))}
                   </div>
