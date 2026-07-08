@@ -204,9 +204,9 @@ const rbtTools: ToolCard[] = [
 
 const TABS = [
   { id: 'all', label: 'All Resources' },
-  { id: 'clinical', label: 'Clinical Forms' },
   { id: 'parent', label: 'Parent Resources' },
-  { id: 'rbt', label: 'RBT Study' },
+  { id: 'clinical', label: 'Clinical Forms' },
+  { id: 'rbt', label: 'Therapist Study' },
 ]
 
 function ToolCardItem({ tool, accent }: { tool: ToolCard; accent: string }) {
@@ -289,20 +289,20 @@ export default function ToolsPage() {
               Free, printable tools for families and ABA professionals — ready to download, no sign-up required.
             </p>
             <div className="flex flex-wrap gap-2.5">
-              <a href="#clinical-tools"
-                className="inline-flex items-center text-[12.5px] font-semibold text-white px-4 py-2 rounded-full transition-all duration-150 hover:opacity-85"
-                style={{ backgroundColor: '#5BC4F8', color: '#0D1B2E' }}>
-                Clinical Forms
-              </a>
               <a href="#parent-tools"
                 className="inline-flex items-center text-[12.5px] font-semibold px-4 py-2 rounded-full transition-all duration-150 hover:opacity-85"
                 style={{ backgroundColor: '#2EBB50', color: '#fff' }}>
                 Parent Resources
               </a>
+              <a href="#clinical-tools"
+                className="inline-flex items-center text-[12.5px] font-semibold text-white px-4 py-2 rounded-full transition-all duration-150 hover:opacity-85"
+                style={{ backgroundColor: '#5BC4F8', color: '#0D1B2E' }}>
+                Clinical Forms
+              </a>
               <a href="#rbt-tools"
                 className="inline-flex items-center text-[12.5px] font-semibold px-4 py-2 rounded-full transition-all duration-150 hover:opacity-85"
                 style={{ backgroundColor: '#FFE030', color: '#0D1B2E' }}>
-                RBT Study
+                Therapist Study
               </a>
             </div>
           </motion.div>
@@ -399,22 +399,6 @@ export default function ToolsPage() {
 
           {!searchActive && (
             <>
-              {/* Clinical Forms */}
-              {showSection('clinical') && (
-                <div id="clinical-tools" className="mb-16">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="flex-1 h-px bg-stone-100" />
-                    <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-navy-800/30 whitespace-nowrap">Clinical Data Forms</p>
-                    <div className="flex-1 h-px bg-stone-100" />
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {clinicalTools.map((tool) => (
-                      <ToolCardItem key={tool.title} tool={tool} accent="text-navy-700 border-navy-900/15 hover:bg-navy-900 hover:text-white hover:border-navy-900" />
-                    ))}
-                  </div>
-                </div>
-              )}
-
               {/* Parent Resources */}
               {showSection('parent') && (
                 <div id="parent-tools" className="mb-16">
@@ -472,12 +456,28 @@ export default function ToolsPage() {
                 </div>
               )}
 
-              {/* RBT Study Materials */}
+              {/* Clinical Forms */}
+              {showSection('clinical') && (
+                <div id="clinical-tools" className="mb-16">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="flex-1 h-px bg-stone-100" />
+                    <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-navy-800/30 whitespace-nowrap">Clinical Data Forms</p>
+                    <div className="flex-1 h-px bg-stone-100" />
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {clinicalTools.map((tool) => (
+                      <ToolCardItem key={tool.title} tool={tool} accent="text-navy-700 border-navy-900/15 hover:bg-navy-900 hover:text-white hover:border-navy-900" />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Therapist Study Materials */}
               {showSection('rbt') && (
                 <div id="rbt-tools" className="mb-16">
                   <div className="flex items-center gap-4 mb-8">
                     <div className="flex-1 h-px bg-stone-100" />
-                    <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-navy-800/30 whitespace-nowrap">RBT Study Materials</p>
+                    <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-navy-800/30 whitespace-nowrap">Therapist Study Materials</p>
                     <div className="flex-1 h-px bg-stone-100" />
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -526,7 +526,7 @@ export default function ToolsPage() {
                 href="/professionals"
                 className="inline-flex items-center gap-3 text-[13px] font-medium text-navy-700/50 hover:text-navy-900 transition-colors duration-200 px-2 py-3"
               >
-                RBT Professional Hub
+                Therapist Professional Hub
                 <span className="w-4 h-px bg-current" />
               </Link>
             </motion.div>
