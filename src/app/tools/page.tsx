@@ -117,6 +117,7 @@ const parentTools: ToolCard[] = [
     audience: 'For Families',
     category: 'parent',
     searchTerms: 'ABA Glossary Terms Parents Plain Language',
+    file: '/downloads/Light2Minds_ABA_Terms_for_Parents_Glossary.pdf',
   },
   {
     title: 'Provider Interview Question Guide',
@@ -141,6 +142,7 @@ const parentTools: ToolCard[] = [
     audience: 'For Families',
     category: 'parent',
     searchTerms: 'First Diagnosis Guide What to Do After Autism ADHD',
+    file: '/downloads/After_the_Diagnosis_Roadmap-L2M.pdf',
   },
   {
     title: 'Reinforcement Menu for Home',
