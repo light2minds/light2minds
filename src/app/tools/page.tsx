@@ -122,6 +122,15 @@ const parentTools: ToolCard[] = [
     file: '/downloads/Visual_Bedtime_Routine-L2M.pdf',
   },
   {
+    title: 'Bedtime Schedule Card — Boy & Girl',
+    description: 'A simple, single-page bedtime schedule card with matching boy and girl versions. A quick, ready-to-print alternative to the full bedtime routine chart.',
+    format: 'PDF',
+    audience: 'For Families',
+    category: 'parent',
+    searchTerms: 'Bedtime Schedule Card Boy Girl Simple Routine',
+    file: '/downloads/Bedtime_Schedule_Boy_and_Girl-L2M.pdf',
+  },
+  {
     title: 'ABA Terms for Parents — Glossary',
     description: 'A plain-language guide to the therapy terms your child\'s ABA team will use — so you always feel informed, not confused, in meetings and calls.',
     format: 'PDF',
