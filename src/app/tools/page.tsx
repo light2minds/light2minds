@@ -224,14 +224,6 @@ const rbtTools: ToolCard[] = [
     file: '/downloads/L2M_RBT_Ethics_Quick_Reference_Sheet.pdf',
   },
   {
-    title: 'RBT Exam Study Guide',
-    description: 'Organized by Task List section (A–F), this study guide covers every competency with explanations, examples, and exam-specific study tips.',
-    format: 'PDF',
-    audience: 'For RBTs',
-    category: 'rbt',
-    searchTerms: 'RBT Study Guide Task List Exam Preparation',
-  },
-  {
     title: 'Monthly Supervision Log',
     description: 'BACB-aligned monthly supervision log to track required supervision hours, skills covered, and supervisor signatures. Essential for RBT certification maintenance.',
     format: 'PDF',
@@ -239,14 +231,6 @@ const rbtTools: ToolCard[] = [
     category: 'rbt',
     searchTerms: 'Supervision Log Monthly Hours Documentation',
     file: '/downloads/L2M_RBT_Monthly_Supervision_Log.pdf',
-  },
-  {
-    title: 'Competency Self-Assessment Checklist',
-    description: 'Self-rate your competency on each skill in the RBT Task List before your formal competency assessment — identify gaps and focus your preparation.',
-    format: 'PDF',
-    audience: 'For RBTs',
-    category: 'rbt',
-    searchTerms: 'Competency Checklist Self Assessment Skills',
   },
   {
     title: 'RBT Resume Template',
