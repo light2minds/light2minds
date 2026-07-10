@@ -126,6 +126,7 @@ const parentTools: ToolCard[] = [
     audience: 'For Families',
     category: 'parent',
     searchTerms: 'Provider Interview Questions ABA Speech OT',
+    file: '/downloads/Provider_Interview_Question_Guide-L2M.pdf',
   },
   {
     title: 'Home Strategy Quick-Reference Guide',
@@ -134,6 +135,7 @@ const parentTools: ToolCard[] = [
     audience: 'For Families',
     category: 'parent',
     searchTerms: 'Home Strategy Guide Parenting Autism ADHD',
+    file: '/downloads/L2M_Home_Strategy_Quick_Reference_Guide.pdf',
   },
   {
     title: 'After the Diagnosis — A Parent Roadmap',
