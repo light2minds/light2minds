@@ -131,6 +131,15 @@ const parentTools: ToolCard[] = [
     file: '/downloads/Bedtime_Schedule_Boy_and_Girl-L2M.pdf',
   },
   {
+    title: 'First-Then Board System',
+    description: 'A printable First-Then visual support board to help children understand what comes next — pairs a less-preferred task with a preferred one to build cooperation and reduce transition resistance.',
+    format: 'PDF',
+    audience: 'For Families',
+    category: 'parent',
+    searchTerms: 'First Then Board Visual Support Autism ADHD',
+    file: '/downloads/L2M_First_Then_Board_System.pdf',
+  },
+  {
     title: 'ABA Terms for Parents — Glossary',
     description: 'A plain-language guide to the therapy terms your child\'s ABA team will use — so you always feel informed, not confused, in meetings and calls.',
     format: 'PDF',
