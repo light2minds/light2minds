@@ -453,8 +453,8 @@ export default function ToolsPage() {
                       </div>
                       <div className="flex flex-wrap items-center gap-3 mt-5">
                         <a
-                          href="/aac-communication-board.jpg"
-                          download="AAC-Core-Vocabulary-Board-Light2Minds.jpg"
+                          href="/downloads/AAC_Board_HighRes.pdf"
+                          download="AAC-Core-Vocabulary-Board-Light2Minds.pdf"
                           className="inline-flex items-center gap-2 text-[13px] font-bold text-white px-5 py-2.5 rounded-full transition-all duration-150 hover:-translate-y-[1px]"
                           style={{ backgroundColor: '#2EBB50', boxShadow: '0 4px 0 #1E8E3E' }}
                         >
@@ -463,7 +463,7 @@ export default function ToolsPage() {
                             <path d="M7 1v8M4 6l3 3 3-3M2 11h10" />
                           </svg>
                         </a>
-                        <span className="text-[12px] text-navy-800/35">JPG · Print at full size for best results</span>
+                        <span className="text-[12px] text-navy-800/35">PDF · Print at full size for best results</span>
                       </div>
                     </div>
                   </div>
