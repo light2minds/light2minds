@@ -153,6 +153,7 @@ const parentTools: ToolCard[] = [
     audience: 'Families & Professionals',
     category: 'parent',
     searchTerms: 'Reinforcement Menu Reward Chart Children',
+    file: '/downloads/Reinforcement_Menu_for_Home-L2M.pdf',
   },
 ]
 
