@@ -101,6 +101,7 @@ const parentTools: ToolCard[] = [
     audience: 'For Families',
     category: 'parent',
     searchTerms: 'Behavior Observation Log Home Parent',
+    file: '/downloads/Light2Minds_Home_Behavior_Observation_Log.pdf',
   },
   {
     title: 'Visual Morning Schedule',
