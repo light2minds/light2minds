@@ -25,6 +25,7 @@ const clinicalTools: ToolCard[] = [
     audience: 'For Professionals',
     category: 'clinical',
     searchTerms: 'ABC Data Sheet Antecedent Behavior Consequence',
+    file: '/downloads/ABC_Data_Sheet-L2M.pdf',
   },
   {
     title: 'Discrete Trial (DTT) Data Sheet',
@@ -33,6 +34,7 @@ const clinicalTools: ToolCard[] = [
     audience: 'For Professionals',
     category: 'clinical',
     searchTerms: 'Discrete Trial DTT Data Sheet Skill Acquisition',
+    file: '/downloads/DTT_Data_Sheet-L2M.pdf',
   },
   {
     title: 'Behavior Frequency Tracking Sheet',
@@ -41,6 +43,7 @@ const clinicalTools: ToolCard[] = [
     audience: '',
     category: 'clinical',
     searchTerms: 'Behavior Frequency Tracking Event Recording',
+    file: '/downloads/Behavior_Frequency_Tracking-L2M.pdf',
   },
   {
     title: 'Duration & Latency Recording Form',
@@ -49,6 +52,7 @@ const clinicalTools: ToolCard[] = [
     audience: '',
     category: 'clinical',
     searchTerms: 'Duration Latency Recording Form',
+    file: '/downloads/Duration_and_Latency_Recording-L2M.pdf',
   },
   {
     title: 'Interval Recording Data Sheet',
@@ -57,14 +61,16 @@ const clinicalTools: ToolCard[] = [
     audience: '',
     category: 'clinical',
     searchTerms: 'Interval Recording Whole Partial Momentary Time Sampling',
+    file: '/downloads/Interval_Recording_Data-L2M.pdf',
   },
   {
     title: 'Session Note Template',
     description: 'Insurance-ready session note format covering all required documentation elements. Includes target summary, behavioral events, progress narrative, and next session plan.',
-    format: 'PDF + Word',
+    format: 'PDF',
     audience: '',
     category: 'clinical',
     searchTerms: 'Session Note Template Documentation',
+    file: '/downloads/ABA_Session_Note_Template-L2M.pdf',
   },
   {
     title: 'Task Analysis Data Sheet',
@@ -73,6 +79,7 @@ const clinicalTools: ToolCard[] = [
     audience: '',
     category: 'clinical',
     searchTerms: 'Task Analysis Chaining Data Sheet',
+    file: '/downloads/Task_Analysis_Data_Sheet-L2M.pdf',
   },
   {
     title: 'Preference Assessment Recording Form',
@@ -81,6 +88,16 @@ const clinicalTools: ToolCard[] = [
     audience: '',
     category: 'clinical',
     searchTerms: 'Preference Assessment MSWO Free Operant',
+    file: '/downloads/Preference_Assessment_Form-L2M.pdf',
+  },
+  {
+    title: 'Replacement Behavior Data Sheet',
+    description: 'Track occurrences of a functionally equivalent replacement behavior alongside the target behavior it\'s meant to replace — supports FBA-driven intervention plans and progress monitoring.',
+    format: 'PDF',
+    audience: '',
+    category: 'clinical',
+    searchTerms: 'Replacement Behavior Data Sheet FBA Intervention',
+    file: '/downloads/Replacement_Behavior_Data-L2M.pdf',
   },
 ]
 
@@ -195,6 +212,7 @@ const rbtTools: ToolCard[] = [
     audience: 'For RBTs',
     category: 'rbt',
     searchTerms: 'RBT Terminology Glossary Flashcards Study',
+    file: '/downloads/L2M_RBT_Terminology_Glossary.pdf',
   },
   {
     title: 'Ethics Quick-Reference Sheet',
@@ -203,6 +221,7 @@ const rbtTools: ToolCard[] = [
     audience: 'For RBTs',
     category: 'rbt',
     searchTerms: 'Ethics Quick Reference BACB Code Conduct',
+    file: '/downloads/L2M_RBT_Ethics_Quick_Reference_Sheet.pdf',
   },
   {
     title: 'RBT Exam Study Guide',
@@ -219,6 +238,7 @@ const rbtTools: ToolCard[] = [
     audience: 'For RBTs',
     category: 'rbt',
     searchTerms: 'Supervision Log Monthly Hours Documentation',
+    file: '/downloads/L2M_RBT_Monthly_Supervision_Log.pdf',
   },
   {
     title: 'Competency Self-Assessment Checklist',
@@ -235,6 +255,7 @@ const rbtTools: ToolCard[] = [
     audience: 'For RBTs',
     category: 'rbt',
     searchTerms: 'Resume Template Career RBT Job Application',
+    file: '/downloads/L2M_RBT_Resume_Template.docx',
   },
 ]
 
