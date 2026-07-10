@@ -14,6 +14,7 @@ type ToolCard = {
   audience: string
   category: 'clinical' | 'parent' | 'rbt'
   searchTerms?: string
+  file?: string
 }
 
 const clinicalTools: ToolCard[] = [
@@ -91,6 +92,7 @@ const parentTools: ToolCard[] = [
     audience: 'For Families',
     category: 'parent',
     searchTerms: 'IEP Preparation Checklist School Parents',
+    file: '/downloads/IEP_Meeting_Prep_Checklist-L2M.pdf',
   },
   {
     title: 'Home Behavior Observation Log',
@@ -234,9 +236,22 @@ function ToolCardItem({ tool, accent }: { tool: ToolCard; accent: string }) {
           <span className="text-[10px] font-bold tracking-[0.06em] uppercase bg-forest-50 text-forest-700 px-1.5 py-0.5 rounded">FREE</span>
           {tool.audience && <span className="text-[11px] text-navy-800/30">{tool.audience}</span>}
         </div>
-        <button className={`text-[12px] font-semibold px-4 py-1.5 rounded-full border transition-all duration-150 ${accent}`}>
-          Download
-        </button>
+        {tool.file ? (
+          <a
+            href={tool.file}
+            download
+            className={`text-[12px] font-semibold px-4 py-1.5 rounded-full border transition-all duration-150 ${accent}`}
+          >
+            Download
+          </a>
+        ) : (
+          <button
+            disabled
+            className="text-[12px] font-semibold px-4 py-1.5 rounded-full border border-stone-200 text-navy-800/25 cursor-not-allowed"
+          >
+            Coming Soon
+          </button>
+        )}
       </div>
     </div>
   )
