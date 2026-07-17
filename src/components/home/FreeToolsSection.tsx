@@ -21,6 +21,7 @@ const tools = [
       en: 'What to ask, what to bring, and what to expect — in plain language.',
       es: 'Qué preguntar, qué llevar y qué esperar — en lenguaje claro.',
     },
+    file: '/downloads/IEP_Meeting_Prep_Checklist-L2M.pdf',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="3" width="16" height="18" rx="2" />
@@ -31,11 +32,12 @@ const tools = [
   {
     color: '#5BC4F8',
     audience: { en: 'For Families', es: 'Para Familias' },
-    title: { en: 'Diagnosis Glossary', es: 'Glosario de Diagnóstico' },
+    title: { en: 'ABA Terms for Parents — Glossary', es: 'Glosario de Términos ABA para Padres' },
     desc: {
-      en: '60+ clinical terms explained in plain, parent-friendly language.',
-      es: 'Más de 60 términos clínicos explicados en lenguaje para padres.',
+      en: "A plain-language guide to the therapy terms your child's ABA team will use.",
+      es: 'Una guía en lenguaje sencillo de los términos de terapia que usará el equipo ABA de tu hijo.',
     },
+    file: '/downloads/Light2Minds_ABA_Terms_for_Parents_Glossary.pdf',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
@@ -46,26 +48,27 @@ const tools = [
   {
     color: '#2EBB50',
     audience: { en: 'For Professionals', es: 'Para Profesionales' },
-    title: { en: 'RBT Exam Quick Reference', es: 'Referencia Rápida RBT' },
+    title: { en: 'RBT Terminology Glossary', es: 'Glosario de Terminología RBT' },
     desc: {
-      en: 'Core concepts and key definitions for the RBT competency assessment.',
-      es: 'Conceptos clave y definiciones para la evaluación de competencia RBT.',
+      en: 'Comprehensive ABA glossary covering all terms from the RBT Task List.',
+      es: 'Glosario integral de ABA que cubre todos los términos del RBT Task List.',
     },
+    file: '/downloads/L2M_RBT_Terminology_Glossary.pdf',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 8v4l3 3" />
+        <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
       </svg>
     ),
   },
   {
     color: '#2EBB50',
     audience: { en: 'For Professionals', es: 'Para Profesionales' },
-    title: { en: 'ABC Data Collection Sheet', es: 'Hoja de Recolección ABC' },
+    title: { en: 'ABC Data Sheet', es: 'Hoja de Datos ABC' },
     desc: {
-      en: 'Printable form for daily clinical documentation and FBA support.',
-      es: 'Formulario imprimible para documentación clínica y apoyo de FBA.',
+      en: 'Antecedent-Behavior-Consequence data collection form for functional behavior assessment.',
+      es: 'Formulario de recolección de datos Antecedente-Conducta-Consecuencia para evaluación funcional.',
     },
+    file: '/downloads/ABC_Data_Sheet-L2M.pdf',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -116,8 +119,9 @@ export default function FreeToolsSection() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
           {tools.map((tool, i) => (
             <motion.div key={i} {...fade(i * 0.06)}>
-              <Link
-                href="/tools"
+              <a
+                href={tool.file}
+                download
                 className="group flex flex-col h-full rounded-xl border p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
                 style={{ borderColor: tool.color + '30', backgroundColor: tool.color + '0A' }}
               >
@@ -147,12 +151,12 @@ export default function FreeToolsSection() {
                   className="inline-flex items-center gap-1.5 text-[11.5px] font-bold transition-opacity opacity-60 group-hover:opacity-100"
                   style={{ color: tool.color }}
                 >
-                  {lang === 'es' ? 'Ver recurso' : 'View resource'}
+                  {lang === 'es' ? 'Descargar' : 'Download'}
                   <svg className="w-3 h-3" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M7 1v8M4 6l3 3 3-3M2 11h10" />
                   </svg>
                 </span>
-              </Link>
+              </a>
             </motion.div>
           ))}
         </div>
