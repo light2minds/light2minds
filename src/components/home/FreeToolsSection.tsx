@@ -118,8 +118,8 @@ export default function FreeToolsSection() {
             <motion.div key={i} {...fade(i * 0.06)}>
               <Link
                 href="/tools"
-                className="group flex flex-col h-full rounded-xl border p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md bg-stone-50/60"
-                style={{ borderColor: tool.color + '30' }}
+                className="group flex flex-col h-full rounded-xl border p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                style={{ borderColor: tool.color + '30', backgroundColor: tool.color + '0A' }}
               >
                 <div className="flex items-start justify-between mb-3">
                   <span

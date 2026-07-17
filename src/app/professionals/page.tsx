@@ -392,6 +392,8 @@ function Check({ color = '#2EBB50' }: { color?: string }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+const COMPETENCY_COLORS = ['#5BC4F8', '#2EBB50', '#FFE030', '#8B5CF6', '#64AF92']
+
 export default function ProfessionalsPage() {
   const { lang } = useLang()
   const flashcards = getFlashcards(lang)
@@ -544,8 +546,8 @@ export default function ProfessionalsPage() {
             <div className="space-y-3">
               {RBT_STEPS.map((step, i) => (
                 <motion.div key={step.num} {...up(i * 0.06)}
-                  className="flex gap-5 bg-white border border-stone-200/70 rounded-2xl p-5">
-                  <div className="w-9 h-9 rounded-full bg-navy-900 text-white text-[12px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                  className="flex gap-5 border border-stone-200/70 rounded-2xl p-5" style={{ backgroundColor: 'rgba(91,196,248,0.05)' }}>
+                  <div className="w-9 h-9 rounded-full text-white text-[12px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5" style={{ backgroundColor: '#1A7AC0' }}>
                     {step.num}
                   </div>
                   <div>
@@ -566,7 +568,7 @@ export default function ProfessionalsPage() {
             <div className="space-y-3 lg:order-2">
               {BCBA_STEPS.map((step, i) => (
                 <motion.div key={step.num} {...up(i * 0.06)}
-                  className="flex gap-5 bg-stone-50 border border-stone-200/70 rounded-2xl p-5">
+                  className="flex gap-5 border border-stone-200/70 rounded-2xl p-5" style={{ backgroundColor: 'rgba(139,92,246,0.06)' }}>
                   <div className="w-9 h-9 rounded-full text-white text-[12px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5" style={{ backgroundColor: '#8B5CF6' }}>
                     {step.num}
                   </div>
@@ -692,9 +694,9 @@ export default function ProfessionalsPage() {
                   </Link>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                  {COMPETENCY_STEPS.map(step => (
-                    <div key={step.num} className="flex gap-3 bg-stone-50 rounded-xl p-4 border border-stone-100">
-                      <div className="w-6 h-6 rounded-full bg-navy-900 text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">{step.num}</div>
+                  {COMPETENCY_STEPS.map((step, i) => (
+                    <div key={step.num} className="flex gap-3 rounded-xl p-4 border border-stone-100" style={{ backgroundColor: COMPETENCY_COLORS[i % COMPETENCY_COLORS.length] + '0A' }}>
+                      <div className="w-6 h-6 rounded-full text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0" style={{ backgroundColor: COMPETENCY_COLORS[i % COMPETENCY_COLORS.length] }}>{step.num}</div>
                       <div>
                         <h4 className="text-[12.5px] font-semibold text-navy-900 mb-0.5 leading-snug">{step.title}</h4>
                         <p className="text-[11.5px] text-navy-800/45 leading-relaxed">{step.body}</p>
@@ -918,7 +920,7 @@ export default function ProfessionalsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {WHY_ITEMS.map((item, i) => (
               <motion.div key={item.title} {...up(i * 0.06)}
-                className="flex items-start gap-3 bg-white border border-stone-200/60 rounded-xl p-4">
+                className="flex items-start gap-3 border border-stone-200/60 rounded-xl p-4" style={{ backgroundColor: item.accent + '08' }}>
                 <Check color={item.accent} />
                 <div>
                   <p className="text-[13px] font-semibold text-navy-900 leading-snug mb-0.5">{item.title}</p>

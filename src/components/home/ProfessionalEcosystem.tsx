@@ -67,6 +67,8 @@ const getAreas = (lang: Lang) => [
   },
 ]
 
+const AREA_COLORS = ['#5BC4F8', '#2EBB50', '#FFE030', '#8B5CF6', '#64AF92', '#5BC4F8']
+
 export default function ProfessionalEcosystem() {
   const { lang } = useLang()
   const areas = getAreas(lang)
@@ -128,10 +130,13 @@ export default function ProfessionalEcosystem() {
                 href={area.href}
                 target={area.external ? '_blank' : undefined}
                 rel={area.external ? 'noopener noreferrer' : undefined}
-                className="group block bg-white hover:bg-stone-50 p-5 h-full transition-colors duration-300"
+                className="group block bg-white p-5 h-full transition-colors duration-300"
+                style={{ borderTop: `2px solid ${AREA_COLORS[i % AREA_COLORS.length]}30` }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = AREA_COLORS[i % AREA_COLORS.length] + '08')}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = '')}
               >
                 <div className="flex items-center justify-between mb-5">
-                  <p className="text-[11px] font-bold text-navy-900/20 tracking-[0.1em]">{area.id}</p>
+                  <p className="text-[11px] font-bold tracking-[0.1em]" style={{ color: AREA_COLORS[i % AREA_COLORS.length] }}>{area.id}</p>
                   {area.badgeKey && (
                     <span
                       className="text-[9.5px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full"

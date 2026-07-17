@@ -23,7 +23,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="bg-white py-10 lg:py-14 border-t border-stone-200/40" id="contact">
+    <section className="bg-gradient-to-b from-sky-50/60 via-white to-white py-10 lg:py-14 border-t border-stone-200/40" id="contact">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
 

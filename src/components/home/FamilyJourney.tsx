@@ -82,6 +82,8 @@ const getSteps = (lang: Lang) => [
   },
 ]
 
+const STEP_COLORS = ['#5BC4F8', '#2EBB50', '#FFE030', '#64AF92', '#5BC4F8', '#2EBB50']
+
 export default function FamilyJourney() {
   const { lang } = useLang()
   const steps = getSteps(lang)
@@ -118,8 +120,11 @@ export default function FamilyJourney() {
               className="flex gap-3.5 items-start"
             >
               <div className="relative flex-shrink-0 w-10 h-10">
-                <div className="w-10 h-10 rounded-full bg-stone-50 border border-stone-150 flex items-center justify-center">
-                  <span className="w-4.5 h-4.5 w-[18px] h-[18px] text-navy-900/30">{step.icon}</span>
+                <div
+                  className="w-10 h-10 rounded-full border flex items-center justify-center"
+                  style={{ backgroundColor: STEP_COLORS[i % STEP_COLORS.length] + '14', borderColor: STEP_COLORS[i % STEP_COLORS.length] + '30' }}
+                >
+                  <span className="w-4.5 h-4.5 w-[18px] h-[18px]" style={{ color: STEP_COLORS[i % STEP_COLORS.length] }}>{step.icon}</span>
                 </div>
                 <span className="absolute -top-1 -right-1 text-[8px] font-bold text-navy-900/25 leading-none">
                   {step.num}

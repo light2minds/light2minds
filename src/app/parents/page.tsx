@@ -344,7 +344,8 @@ function ConditionCard({ cond }: { cond: ReturnType<typeof getConditions>[0] }) 
   return (
     <button
       onClick={() => setOpen(o => !o)}
-      className="w-full text-left bg-white border border-stone-200/70 rounded-2xl overflow-hidden flex flex-col transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 focus:outline-none"
+      className="w-full text-left border border-stone-200/70 rounded-2xl overflow-hidden flex flex-col transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 focus:outline-none"
+      style={{ backgroundColor: cond.color + '06' }}
     >
       <div className="h-[3px] w-full flex-shrink-0" style={{ backgroundColor: cond.color }} />
       <div className="p-5">
@@ -488,8 +489,8 @@ export default function ParentsPage() {
                   key={step.num}
                   {...fade}
                   transition={{ duration: 0.45, delay: i * 0.07 }}
-                  className="relative bg-white rounded-2xl overflow-hidden border border-stone-200/60 p-6 flex flex-col"
-                  style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.04)' }}
+                  className="relative rounded-2xl overflow-hidden border border-stone-200/60 p-6 flex flex-col"
+                  style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.04)', backgroundColor: step.color + '06' }}
                 >
                   {/* Colored left accent bar */}
                   <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl" style={{ backgroundColor: step.color }} />
@@ -683,8 +684,8 @@ export default function ParentsPage() {
 
             {/* Rights */}
             <motion.div {...fade} transition={{ duration: 0.4, delay: 0.05 }}
-              className="bg-white rounded-2xl overflow-hidden border border-sky-100"
-              style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+              className="rounded-2xl overflow-hidden border border-sky-100"
+              style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)', backgroundColor: 'rgba(91,196,248,0.05)' }}
             >
               <div className="h-[3px] w-full" style={{ backgroundColor: SKY }} />
               <div className="p-6">
@@ -716,8 +717,8 @@ export default function ParentsPage() {
 
             {/* IEP components */}
             <motion.div {...fade} transition={{ duration: 0.4, delay: 0.1 }}
-              className="bg-white rounded-2xl overflow-hidden border border-green-100"
-              style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+              className="rounded-2xl overflow-hidden border border-green-100"
+              style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)', backgroundColor: 'rgba(46,187,80,0.05)' }}
             >
               <div className="h-[3px] w-full" style={{ backgroundColor: GREEN }} />
               <div className="p-6">
@@ -806,7 +807,7 @@ export default function ParentsPage() {
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
             {downloads.map((d, i) => (
               <motion.div key={d.title} {...fade} transition={{ duration: 0.3, delay: i * 0.04 }}
-                className="bg-white border border-stone-200/60 rounded-xl overflow-hidden flex flex-col">
+                className="border border-stone-200/60 rounded-xl overflow-hidden flex flex-col" style={{ backgroundColor: d.color + '06' }}>
                 <div className="h-[3px] w-full" style={{ backgroundColor: d.color }} />
                 <div className="p-4 flex flex-col flex-1">
                   <h3 className="text-[12.5px] font-semibold text-navy-900 mb-1 leading-snug">{d.title}</h3>
