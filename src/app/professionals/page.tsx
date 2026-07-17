@@ -152,15 +152,6 @@ const getEthicsScenarios = (lang: Lang) => [
   },
 ]
 
-const getCareerTools = (lang: Lang) => [
-  { title: lang === 'es' ? 'Plantilla de Currículum RBT' : 'RBT Resume Template' },
-  { title: lang === 'es' ? 'Guía de Preparación para Entrevistas' : 'Interview Preparation Guide' },
-  { title: lang === 'es' ? 'Mapa de Trayectoria Profesional' : 'Career Pathway Map' },
-  { title: lang === 'es' ? 'Plantilla de Bitácora de Supervisión' : 'Supervision Log Template' },
-  { title: lang === 'es' ? 'Resumen del Camino hacia BCBA' : 'BCBA Pathway Overview' },
-  { title: lang === 'es' ? 'Apoyo para Apertura de Centro ABA' : 'ABA Center Startup Support' },
-]
-
 const getRbtSteps = (lang: Lang) => [
   {
     num: '01',
@@ -399,7 +390,6 @@ export default function ProfessionalsPage() {
   const flashcards = getFlashcards(lang)
   const terminologyItems = getTerminologyItems(lang)
   const ethicsScenarios = getEthicsScenarios(lang)
-  const careerTools = getCareerTools(lang)
   const RBT_STEPS = getRbtSteps(lang)
   const BCBA_STEPS = getBcbaSteps(lang)
   const MENTORSHIP_FEATURES = getMentorshipFeatures(lang)
@@ -451,18 +441,6 @@ export default function ProfessionalsPage() {
     'Complete RBT supervision requirements and document sessions accurately',
     'Use the least restrictive, most effective procedures',
     'Represent your credentials honestly',
-  ]
-
-  const ADDITIONAL_RESOURCES = lang === 'es' ? [
-    { label: 'Exámenes de Práctica', sub: '3 exámenes de práctica RBT completos', href: '/tools#rbt-tools' },
-    { label: 'Recursos Imprimibles', sub: 'Horarios visuales, hojas de datos, gráficos', href: '/tools' },
-    { label: 'Herramientas Clínicas', sub: 'Notas de sesión, plantillas de graficación', href: '/tools#clinical-tools' },
-    { label: 'Hojas de Trabajo Descargables', sub: 'Hojas ABC, tableros de fichas y más', href: '/tools' },
-  ] : [
-    { label: 'Mock Exams', sub: '3 full-length RBT practice exams', href: '/tools#rbt-tools' },
-    { label: 'Printable Resources', sub: 'Visual schedules, data sheets, charts', href: '/tools' },
-    { label: 'Clinical Tools', sub: 'Session notes, graphing templates', href: '/tools#clinical-tools' },
-    { label: 'Downloadable Worksheets', sub: 'ABC sheets, token boards, and more', href: '/tools' },
   ]
 
   return (
@@ -870,41 +848,6 @@ export default function ProfessionalsPage() {
             </Link>
           </div>
 
-          {/* D. Career Development */}
-          <div className="mb-7" id="career">
-            <div className="flex items-center justify-between gap-4 mb-4">
-              <div className="flex items-center gap-3">
-                <span className="text-[10px] font-bold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full text-forest-700 bg-forest-100">{lang === 'es' ? 'GRATIS' : 'FREE'}</span>
-                <h3 className="text-[15px] font-bold text-navy-900">{lang === 'es' ? 'Herramientas de Desarrollo Profesional' : 'Career Development Tools'}</h3>
-              </div>
-              <Link href="/tools"
-                className="text-[12px] font-semibold text-forest-700 hover:text-forest-900 flex items-center gap-1.5 transition-colors flex-shrink-0">
-                {lang === 'es' ? 'Ver todo' : 'View all'} <span className="w-3 h-px bg-current" />
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {careerTools.map(tool => (
-                <div key={tool.title} className="flex items-center gap-3 py-2.5 px-3 rounded-xl border border-stone-100 bg-white">
-                  <Check color="#2EBB50" />
-                  <span className="text-[13px] font-medium text-navy-900">{tool.title}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Additional free resources row */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {ADDITIONAL_RESOURCES.map(item => (
-              <Link key={item.label} href={item.href}
-                className="group flex flex-col gap-2 p-4 rounded-2xl border border-stone-100 bg-stone-50 hover:border-forest-200 hover:bg-forest-50 transition-all duration-200">
-                <div className="flex items-center gap-2">
-                  <span className="text-[9px] font-bold tracking-[0.1em] uppercase text-forest-700 bg-forest-100 px-1.5 py-0.5 rounded-full">{lang === 'es' ? 'GRATIS' : 'FREE'}</span>
-                </div>
-                <p className="text-[13px] font-semibold text-navy-900 group-hover:text-forest-800">{item.label}</p>
-                <p className="text-[11.5px] text-navy-800/45 leading-snug">{item.sub}</p>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 
