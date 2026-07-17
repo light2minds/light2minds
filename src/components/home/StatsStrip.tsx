@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, useInView, animate } from 'framer-motion'
 import { useLang, type Lang } from '@/lib/language'
 
 const getStats = (lang: Lang) => [
@@ -37,6 +38,27 @@ const getStats = (lang: Lang) => [
 const STAT_COLORS = ['#5BC4F8', '#2EBB50', '#FFE030', '#64AF92']
 const STAT_TEXT_COLORS = ['text-sky-600', 'text-forest-600', 'text-gold-600', 'text-sage-700']
 
+function AnimatedStatValue({ value, className }: { value: string; className: string }) {
+  const ref = useRef<HTMLParagraphElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-40px' })
+  const match = value.match(/^([\d.]+)(.*)$/)
+  const [display, setDisplay] = useState(match ? `0${match[2]}` : value)
+
+  useEffect(() => {
+    if (!inView || !match) return
+    const target = parseFloat(match[1])
+    const decimals = match[1].includes('.') ? 1 : 0
+    const controls = animate(0, target, {
+      duration: 1.1,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => setDisplay(`${v.toFixed(decimals)}${match[2]}`),
+    })
+    return () => controls.stop()
+  }, [inView])
+
+  return <p ref={ref} className={className}>{match ? display : value}</p>
+}
+
 export default function StatsStrip() {
   const { lang } = useLang()
   const stats = getStats(lang)
@@ -55,7 +77,7 @@ export default function StatsStrip() {
               className="lg:px-10 first:lg:pl-0 last:lg:pr-0"
             >
               <span className="block w-8 h-1 rounded-full mb-3" style={{ backgroundColor: STAT_COLORS[i] }} />
-              <p className={`text-[2rem] font-bold tracking-[-0.03em] leading-none mb-2 ${STAT_TEXT_COLORS[i]}`}>{stat.value}</p>
+              <AnimatedStatValue value={stat.value} className={`text-[2rem] font-bold tracking-[-0.03em] leading-none mb-2 ${STAT_TEXT_COLORS[i]}`} />
               <p className="text-[12px] text-navy-800/55 leading-relaxed mb-1.5">{stat.label}</p>
               <p className="text-[10px] text-navy-800/30 tracking-[0.04em]">— {stat.source}</p>
             </motion.div>

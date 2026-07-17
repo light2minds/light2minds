@@ -130,7 +130,7 @@ export default function ProfessionalEcosystem() {
                 href={area.href}
                 target={area.external ? '_blank' : undefined}
                 rel={area.external ? 'noopener noreferrer' : undefined}
-                className="group block bg-white p-5 h-full transition-colors duration-300"
+                className="group block bg-white p-5 h-full transition-all duration-300 hover:-translate-y-0.5"
                 style={{ borderTop: `2px solid ${AREA_COLORS[i % AREA_COLORS.length]}30` }}
                 onMouseEnter={e => (e.currentTarget.style.backgroundColor = AREA_COLORS[i % AREA_COLORS.length] + '08')}
                 onMouseLeave={e => (e.currentTarget.style.backgroundColor = '')}

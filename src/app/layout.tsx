@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CartDrawer from '@/components/shop/CartDrawer'
+import PageTransition from '@/components/PageTransition'
 import { Providers } from '@/components/Providers'
 import { CartProvider } from '@/context/CartContext'
 
@@ -60,7 +61,7 @@ export default function RootLayout({
           <CartProvider>
             <Navbar />
             <CartDrawer />
-            {children}
+            <PageTransition>{children}</PageTransition>
             <Footer />
           </CartProvider>
         </Providers>

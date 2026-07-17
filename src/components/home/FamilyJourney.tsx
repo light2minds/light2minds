@@ -120,12 +120,16 @@ export default function FamilyJourney() {
               className="flex gap-3.5 items-start"
             >
               <div className="relative flex-shrink-0 w-10 h-10">
-                <div
+                <motion.div
+                  initial={{ scale: 0.4, rotate: -45, opacity: 0 }}
+                  whileInView={{ scale: 1, rotate: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ type: 'spring', stiffness: 260, damping: 18, delay: i * 0.06 + 0.1 }}
                   className="w-10 h-10 rounded-full border flex items-center justify-center"
                   style={{ backgroundColor: STEP_COLORS[i % STEP_COLORS.length] + '14', borderColor: STEP_COLORS[i % STEP_COLORS.length] + '30' }}
                 >
                   <span className="w-4.5 h-4.5 w-[18px] h-[18px]" style={{ color: STEP_COLORS[i % STEP_COLORS.length] }}>{step.icon}</span>
-                </div>
+                </motion.div>
                 <span className="absolute -top-1 -right-1 text-[8px] font-bold text-navy-900/25 leading-none">
                   {step.num}
                 </span>

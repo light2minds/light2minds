@@ -87,9 +87,11 @@ export default function Navbar() {
                 >
                   {l.label}
                   {active && (
-                    <span
+                    <motion.span
+                      layoutId="nav-active-dot"
                       className="absolute bottom-1 left-1/2 -translate-x-1/2 w-[5px] h-[5px] rounded-full"
                       style={{ backgroundColor: '#2EBB50' }}
+                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                     />
                   )}
                 </Link>

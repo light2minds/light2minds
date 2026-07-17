@@ -123,7 +123,7 @@ export default function FreeToolsSection() {
               >
                 <div className="flex items-start justify-between mb-3">
                   <span
-                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6"
                     style={{ backgroundColor: tool.color + '18', color: tool.color }}
                   >
                     <span className="w-4 h-4">{tool.icon}</span>

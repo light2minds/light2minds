@@ -475,12 +475,19 @@ export default function ToolsPage() {
                 role="tab"
                 aria-selected={activeTab === tab.id}
                 onClick={() => { setActiveTab(tab.id); setQuery('') }}
-                className={`text-[12px] font-semibold px-5 py-2 rounded-full border transition-all duration-150 ${
+                className={`relative isolate text-[12px] font-semibold px-5 py-2 rounded-full border transition-colors duration-150 ${
                   activeTab === tab.id
-                    ? 'bg-navy-900 text-white border-navy-900'
+                    ? 'text-white border-navy-900'
                     : 'bg-white text-navy-800/55 border-stone-200 hover:border-navy-300 hover:text-navy-800'
                 }`}
               >
+                {activeTab === tab.id && (
+                  <motion.span
+                    layoutId="tools-tab-pill"
+                    className="absolute inset-0 rounded-full bg-navy-900 -z-10"
+                    transition={{ type: 'spring', stiffness: 500, damping: 32 }}
+                  />
+                )}
                 {tab.label}
               </button>
             ))}
