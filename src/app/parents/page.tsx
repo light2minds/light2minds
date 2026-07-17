@@ -57,7 +57,7 @@ const getConditions = (lang: Lang) => [
     insight: lang === 'es'
       ? 'El autismo no es causado por la crianza. Es una diferencia neurológica que requiere comprensión, no corrección.'
       : 'Autism is not caused by parenting. It is a neurological difference that requires understanding, not fixing.',
-    icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4 L8 4 Q12 0 16 4 L20 4 L20 8 Q16 12 20 16 L20 20 L16 20 Q12 24 8 20 L4 20 L4 16 Q8 12 4 8 Z" /></svg>),
+    icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="10" width="16" height="10" rx="1.5" /><circle cx="9" cy="7" r="2.2" /><circle cx="15" cy="7" r="2.2" /></svg>),
   },
   {
     color: GREEN,
