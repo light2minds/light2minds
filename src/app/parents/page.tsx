@@ -57,7 +57,7 @@ const getConditions = (lang: Lang) => [
     insight: lang === 'es'
       ? 'El autismo no es causado por la crianza. Es una diferencia neurológica que requiere comprensión, no corrección.'
       : 'Autism is not caused by parenting. It is a neurological difference that requires understanding, not fixing.',
-    icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3" /><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" /></svg>),
+    icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h5q3-3 6 0h5v5q-3 3 0 6v5h-5q-3 3-6 0H4v-5q3-3 0-6z" /></svg>),
   },
   {
     color: GREEN,
@@ -85,7 +85,7 @@ const getConditions = (lang: Lang) => [
     insight: lang === 'es'
       ? '"Esperar y ver" rara vez es el enfoque correcto. La intervención temprana produce sistemáticamente mejores resultados.'
       : '"Wait and see" is rarely the right approach. Early intervention consistently produces better outcomes.',
-    icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22V12M12 12C12 12 8 9 8 6a4 4 0 0 1 8 0c0 3-4 6-4 6z" /><path d="M8 14s-4 1-4 4h16c0-3-4-4-4-4" /></svg>),
+    icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4v16h16" /><path d="M7 16l4-4 3 3 5-6" /><path d="M15 9h4v4" /></svg>),
   },
   {
     color: SKY,
@@ -127,7 +127,7 @@ const getConditions = (lang: Lang) => [
     insight: lang === 'es'
       ? 'Entender el "por qué" detrás de un comportamiento siempre es el primer paso — y el más importante — hacia un cambio significativo.'
       : 'Understanding the "why" behind a behavior is always the first — and most important — step toward meaningful change.',
-    icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>),
+    icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /><path d="M12 8v4M12 16h.01" /></svg>),
   },
 ]
 
