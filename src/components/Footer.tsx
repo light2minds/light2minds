@@ -1,38 +1,44 @@
-import Link from 'next/link'
+'use client'
 
-const cols = [
+import Link from 'next/link'
+import { useLang, type Lang } from '@/lib/language'
+
+const getCols = (lang: Lang) => [
   {
-    heading: 'Families',
+    heading: lang === 'es' ? 'Familias' : 'Families',
     links: [
-      { label: 'Understanding Diagnosis', href: '/parents#diagnosis' },
-      { label: 'ABA Therapy Guide',        href: '/parents#aba' },
-      { label: 'IEP Guidance',             href: '/parents#iep' },
-      { label: 'Home Strategies',          href: '/parents#strategies' },
-      { label: '1-on-1 Sessions',          href: '/parents#sessions' },
+      { label: lang === 'es' ? 'Entendiendo el Diagnóstico' : 'Understanding Diagnosis', href: '/parents#diagnosis' },
+      { label: lang === 'es' ? 'Guía de Terapia ABA' : 'ABA Therapy Guide',        href: '/parents#aba' },
+      { label: lang === 'es' ? 'Orientación sobre el IEP' : 'IEP Guidance',             href: '/parents#iep' },
+      { label: lang === 'es' ? 'Estrategias para el Hogar' : 'Home Strategies',          href: '/parents#strategies' },
+      { label: lang === 'es' ? 'Sesiones Individuales' : '1-on-1 Sessions',      href: '/parents#sessions' },
     ],
   },
   {
-    heading: 'Professionals',
+    heading: lang === 'es' ? 'Profesionales' : 'Professionals',
     links: [
-      { label: 'RBT Exam Prep',    href: '/professionals#exam' },
-      { label: 'Study Materials',  href: '/professionals#materials' },
-      { label: 'Ethics Module',    href: '/professionals#ethics' },
-      { label: 'Career Tools',     href: '/professionals#career' },
-      { label: 'Clinical Forms',   href: '/professionals#forms' },
+      { label: lang === 'es' ? 'Preparación Examen RBT' : 'RBT Exam Prep',    href: '/professionals#exam' },
+      { label: lang === 'es' ? 'Materiales de Estudio' : 'Study Materials',  href: '/professionals#materials' },
+      { label: lang === 'es' ? 'Módulo de Ética' : 'Ethics Module',    href: '/professionals#ethics' },
+      { label: lang === 'es' ? 'Herramientas de Carrera' : 'Career Tools',     href: '/professionals#career' },
+      { label: lang === 'es' ? 'Formularios Clínicos' : 'Clinical Forms',   href: '/professionals#forms' },
     ],
   },
   {
-    heading: 'Resources',
+    heading: lang === 'es' ? 'Recursos' : 'Resources',
     links: [
-      { label: 'All Tools',         href: '/tools' },
-      { label: 'Parent Handouts',   href: '/tools#parent-tools' },
-      { label: 'Data Forms',        href: '/tools#clinical-tools' },
-      { label: 'RBT Study',         href: '/tools#rbt-tools' },
+      { label: lang === 'es' ? 'Todas las Herramientas' : 'All Tools',         href: '/tools' },
+      { label: lang === 'es' ? 'Guías para Padres' : 'Parent Handouts',   href: '/tools#parent-tools' },
+      { label: lang === 'es' ? 'Formularios de Datos' : 'Data Forms',        href: '/tools#clinical-tools' },
+      { label: lang === 'es' ? 'Estudio para Terapeutas' : 'RBT Study',         href: '/tools#rbt-tools' },
     ],
   },
 ]
 
 export default function Footer() {
+  const { lang } = useLang()
+  const cols = getCols(lang)
+
   return (
     <footer className="bg-stone-100 border-t border-stone-200/60">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-16 lg:pt-20 pb-10">
@@ -43,7 +49,9 @@ export default function Footer() {
               <span style={{ color: '#5BC4F8' }}>Light</span><span style={{ color: '#FFE030' }}>2</span><span style={{ color: '#2EBB50' }}>minds</span>
             </Link>
             <p className="text-sm text-navy-800/50 leading-relaxed">
-              Behavioral and neurodevelopmental guidance for families and professionals.
+              {lang === 'es'
+                ? 'Orientación conductual y del neurodesarrollo para familias y profesionales.'
+                : 'Behavioral and neurodevelopmental guidance for families and professionals.'}
             </p>
             <div className="mt-4 space-y-2">
               <a href="tel:+15613772473" className="flex items-center gap-2 text-xs text-navy-800/50 hover:text-navy-900 transition-colors group">
@@ -77,7 +85,7 @@ export default function Footer() {
                 </svg>
                 Facebook · Light 2 Minds
               </a>
-              <p className="text-xs text-navy-800/35">Florida, USA</p>
+              <p className="text-xs text-navy-800/35">{lang === 'es' ? 'Florida, EE.UU.' : 'Florida, USA'}</p>
             </div>
           </div>
 
@@ -106,10 +114,12 @@ export default function Footer() {
 
         <div className="pt-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
           <p className="text-xs text-navy-800/30">
-            &copy; {new Date().getFullYear()} Light2minds. All rights reserved.
+            &copy; {new Date().getFullYear()} Light2minds. {lang === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
           </p>
           <p className="text-xs text-navy-800/25 max-w-xl lg:text-right leading-relaxed">
-            Educational content only. Not a substitute for professional medical advice, diagnosis, supervision, or therapy.
+            {lang === 'es'
+              ? 'Contenido educativo únicamente. No sustituye el consejo médico profesional, diagnóstico, supervisión o terapia.'
+              : 'Educational content only. Not a substitute for professional medical advice, diagnosis, supervision, or therapy.'}
           </p>
         </div>
       </div>

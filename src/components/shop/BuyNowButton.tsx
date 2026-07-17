@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { cartCreate } from '@/lib/shopify'
+import { useLang } from '@/lib/language'
 
 type Props = {
   variantId: string
@@ -9,8 +10,10 @@ type Props = {
   label?: string
 }
 
-export default function BuyNowButton({ variantId, available = true, label = 'Buy Now' }: Props) {
+export default function BuyNowButton({ variantId, available = true, label }: Props) {
+  const { lang } = useLang()
   const [loading, setLoading] = useState(false)
+  const resolvedLabel = label ?? (lang === 'es' ? 'Comprar Ahora' : 'Buy Now')
 
   if (!available) {
     return (
@@ -18,7 +21,7 @@ export default function BuyNowButton({ variantId, available = true, label = 'Buy
         disabled
         className="w-full py-3 rounded-xl text-[13px] font-semibold text-navy-800/30 bg-stone-100 border border-stone-200 cursor-not-allowed"
       >
-        Sold Out
+        {lang === 'es' ? 'Agotado' : 'Sold Out'}
       </button>
     )
   }
@@ -50,9 +53,9 @@ export default function BuyNowButton({ variantId, available = true, label = 'Buy
             <circle cx="12" cy="12" r="10" stroke="currentColor" strokeOpacity="0.25" strokeWidth="3" />
             <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
           </svg>
-          Processing…
+          {lang === 'es' ? 'Procesando…' : 'Processing…'}
         </>
-      ) : label}
+      ) : resolvedLabel}
     </button>
   )
 }

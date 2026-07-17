@@ -4,8 +4,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { formatPrice, getFirstImage, getDefaultVariant, ShopifyProduct } from '@/lib/shopify'
 import BuyNowButton from '@/components/shop/BuyNowButton'
+import { useLang, type Lang } from '@/lib/language'
 
-const BLURBS: Record<string, string> = {
+const getBlurbs = (lang: Lang): Record<string, string> => lang === 'es' ? {
+  'bcba-bcaba-study-guide':       'Preparación integral para la certificación.',
+  'rbt-study-guide':              'Todo lo que necesitas para aprobar la evaluación de competencia RBT.',
+  'rbt-exam-study-guide-spanish': 'Guía completa en español para el examen de competencia RBT.',
+  'professional-therapy-box™':    'Herramientas y recursos esenciales para tus primeras sesiones de ABA.',
+  'sensory-travel-kit':           'Mantén a tu hijo regulado y cómodo dondequiera que vayan.',
+  'bedtime-regulation-box':       'Crea una rutina nocturna calmante que funcione cada noche.',
+  'calm-focus-box':               'Herramientas sensoriales para ayudar a los niños a regularse, concentrarse y prosperar.',
+} : {
   'bcba-bcaba-study-guide':       'Comprehensive preparation for board certification.',
   'rbt-study-guide':              'Everything you need to pass the RBT competency assessment.',
   'rbt-exam-study-guide-spanish': 'Guía completa en español para el examen de competencia RBT.',
@@ -47,16 +56,17 @@ export default function ShopProductCard({
   isPlaceholder?: boolean
   buyLabel?: string
 }) {
+  const { lang } = useLang()
   const image          = getFirstImage(product)
   const defaultVariant = getDefaultVariant(product)
-  const blurb          = BLURBS[product.handle] ?? product.description
+  const blurb          = getBlurbs(lang)[product.handle] ?? product.description
   const price          = formatPrice(
     product.priceRange.minVariantPrice.amount,
     product.priceRange.minVariantPrice.currencyCode,
   )
   const isKit        = ['kit', 'box'].some(k => product.productType.toLowerCase().includes(k))
   const isDigital    = ['guide', 'digital'].some(k => product.productType.toLowerCase().includes(k))
-  const resolvedLabel = buyLabel ?? (isDigital ? 'Buy Digital Guide' : 'Buy Now')
+  const resolvedLabel = buyLabel ?? (isDigital ? (lang === 'es' ? 'Comprar Guía Digital' : 'Buy Digital Guide') : (lang === 'es' ? 'Comprar Ahora' : 'Buy Now'))
   const available = !!(defaultVariant?.availableForSale && product.availableForSale)
 
   return (
@@ -80,7 +90,7 @@ export default function ShopProductCard({
         )}
         {isPlaceholder && (
           <span className="absolute top-2.5 left-2.5 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-50 text-amber-600 border border-amber-200">
-            Preview
+            {lang === 'es' ? 'Vista Previa' : 'Preview'}
           </span>
         )}
       </Link>
@@ -112,7 +122,7 @@ export default function ShopProductCard({
 
           {isPlaceholder ? (
             <button disabled className="w-full py-2.5 rounded-xl text-[13px] font-medium text-navy-800/30 bg-stone-100 border border-stone-200 cursor-not-allowed">
-              Preview Only
+              {lang === 'es' ? 'Solo Vista Previa' : 'Preview Only'}
             </button>
           ) : (
             <BuyNowButton
@@ -126,7 +136,7 @@ export default function ShopProductCard({
             href={`/products/${product.handle}`}
             className="block text-center text-[11.5px] font-medium text-navy-800/40 hover:text-navy-800 transition-colors pt-0.5"
           >
-            View Details
+            {lang === 'es' ? 'Ver Detalles' : 'View Details'}
           </Link>
         </div>
       </div>

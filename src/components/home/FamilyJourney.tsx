@@ -2,12 +2,15 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { useLang, type Lang } from '@/lib/language'
 
-const steps = [
+const getSteps = (lang: Lang) => [
   {
     num: '01',
-    title: 'Understanding',
-    body: 'Coming to terms with a diagnosis and learning what it means for your child and your daily life.',
+    title: lang === 'es' ? 'Comprensión' : 'Understanding',
+    body: lang === 'es'
+      ? 'Aceptar un diagnóstico y aprender lo que significa para tu hijo y tu vida diaria.'
+      : 'Coming to terms with a diagnosis and learning what it means for your child and your daily life.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="5" />
@@ -17,8 +20,10 @@ const steps = [
   },
   {
     num: '02',
-    title: 'Evaluation',
-    body: 'Navigating assessments and reports — understanding what is being measured and why it matters.',
+    title: lang === 'es' ? 'Evaluación' : 'Evaluation',
+    body: lang === 'es'
+      ? 'Navegar evaluaciones e informes — entendiendo qué se mide y por qué importa.'
+      : 'Navigating assessments and reports — understanding what is being measured and why it matters.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="11" cy="11" r="8" />
@@ -28,8 +33,10 @@ const steps = [
   },
   {
     num: '03',
-    title: 'Support',
-    body: 'Connecting with the right therapies — ABA, speech, occupational — and understanding each one.',
+    title: lang === 'es' ? 'Apoyo' : 'Support',
+    body: lang === 'es'
+      ? 'Conectar con las terapias adecuadas — ABA, habla, ocupacional — y entender cada una.'
+      : 'Connecting with the right therapies — ABA, speech, occupational — and understanding each one.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -38,8 +45,10 @@ const steps = [
   },
   {
     num: '04',
-    title: 'Skill Building',
-    body: 'Learning evidence-based strategies to use at home where your child can grow every day.',
+    title: lang === 'es' ? 'Desarrollo de Habilidades' : 'Skill Building',
+    body: lang === 'es'
+      ? 'Aprender estrategias basadas en evidencia para usar en casa donde tu hijo pueda crecer cada día.'
+      : 'Learning evidence-based strategies to use at home where your child can grow every day.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
@@ -48,8 +57,10 @@ const steps = [
   },
   {
     num: '05',
-    title: 'Advocacy',
-    body: 'Navigating IEPs, school systems, and insurance — knowing your rights and speaking up effectively.',
+    title: lang === 'es' ? 'Defensa de Derechos' : 'Advocacy',
+    body: lang === 'es'
+      ? 'Navegar los IEP, el sistema escolar y el seguro médico — conociendo tus derechos y expresándote con eficacia.'
+      : 'Navigating IEPs, school systems, and insurance — knowing your rights and speaking up effectively.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -58,8 +69,10 @@ const steps = [
   },
   {
     num: '06',
-    title: 'Progress',
-    body: 'Measuring growth, celebrating milestones, and sustaining momentum for your whole family.',
+    title: lang === 'es' ? 'Progreso' : 'Progress',
+    body: lang === 'es'
+      ? 'Medir el crecimiento, celebrar los logros y mantener el impulso para toda tu familia.'
+      : 'Measuring growth, celebrating milestones, and sustaining momentum for your whole family.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
@@ -70,6 +83,9 @@ const steps = [
 ]
 
 export default function FamilyJourney() {
+  const { lang } = useLang()
+  const steps = getSteps(lang)
+
   return (
     <section className="bg-white py-10 lg:py-14 border-t border-stone-200/60">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -83,10 +99,10 @@ export default function FamilyJourney() {
           className="mb-8"
         >
           <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-navy-700/40 mb-3">
-            The Family Journey
+            {lang === 'es' ? 'El Camino de la Familia' : 'The Family Journey'}
           </p>
           <h2 className="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-navy-900 tracking-[-0.025em] leading-[1.15]">
-            From uncertainty to confidence.
+            {lang === 'es' ? 'De la incertidumbre a la confianza.' : 'From uncertainty to confidence.'}
           </h2>
         </motion.div>
 
@@ -129,10 +145,14 @@ export default function FamilyJourney() {
           <div className="h-[3px] w-full" style={{ backgroundColor: '#5BC4F8' }} />
           <div className="px-5 py-4">
             <p className="text-[13px] font-bold text-navy-900 mb-1">
-              Sensory kits built for your family&apos;s real life.
+              {lang === 'es'
+                ? 'Kits sensoriales creados para la vida real de tu familia.'
+                : "Sensory kits built for your family's real life."}
             </p>
             <p className="text-[12px] text-navy-800/60 leading-relaxed mb-3">
-              Curated bundles of sensory tools to help children stay regulated — at home, on the go, and at bedtime.
+              {lang === 'es'
+                ? 'Paquetes seleccionados de herramientas sensoriales para ayudar a los niños a mantenerse regulados — en casa, en movimiento y a la hora de dormir.'
+                : 'Curated bundles of sensory tools to help children stay regulated — at home, on the go, and at bedtime.'}
             </p>
             <div className="flex flex-wrap gap-2">
               {['Sensory Travel Kit', 'Calm & Focus Box', 'Bedtime Regulation Box'].map(name => (
@@ -161,14 +181,14 @@ export default function FamilyJourney() {
             className="inline-flex items-center gap-2.5 text-[13px] font-semibold text-white px-6 py-2.5 rounded-full transition-all duration-150 hover:-translate-y-0.5"
             style={{ backgroundColor: '#5BC4F8', boxShadow: '0 3px 0 #3A9ECE' }}
           >
-            Family Resources
+            {lang === 'es' ? 'Recursos para Familias' : 'Family Resources'}
             <span className="w-4 h-px bg-current" />
           </Link>
           <Link
             href="/tools"
             className="inline-flex items-center gap-2.5 text-[13px] font-semibold text-navy-900 px-6 py-2.5 rounded-full border border-navy-900/15 hover:bg-navy-900 hover:text-white transition-all duration-200"
           >
-            Browse Free Tools
+            {lang === 'es' ? 'Explorar Herramientas Gratis' : 'Browse Free Tools'}
             <span className="w-4 h-px bg-current" />
           </Link>
         </motion.div>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useCart } from '@/context/CartContext'
+import { useLang } from '@/lib/language'
 
 type Props = {
   variantId: string
@@ -12,10 +13,12 @@ type Props = {
 }
 
 export default function AddToCartButton({
-  variantId, available = true, label = 'Add to Cart', size = 'md', fullWidth = false,
+  variantId, available = true, label, size = 'md', fullWidth = false,
 }: Props) {
+  const { lang } = useLang()
   const { addItem, isLoading } = useCart()
   const [added, setAdded] = useState(false)
+  const resolvedLabel = label ?? (lang === 'es' ? 'Añadir al Carrito' : 'Add to Cart')
 
   const handleClick = async () => {
     if (!available || isLoading) return
@@ -32,7 +35,7 @@ export default function AddToCartButton({
         disabled
         className={`${fullWidth ? 'w-full' : ''} ${padding} rounded-xl font-semibold text-navy-800/30 bg-stone-100 border border-stone-200 cursor-not-allowed`}
       >
-        Out of stock
+        {lang === 'es' ? 'Agotado' : 'Out of stock'}
       </button>
     )
   }
@@ -53,10 +56,10 @@ export default function AddToCartButton({
       {added ? (
         <>
           <svg className="w-4 h-4" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M1 7l4 4 8-7" /></svg>
-          Added!
+          {lang === 'es' ? '¡Añadido!' : 'Added!'}
         </>
       ) : isLoading ? (
-        'Adding…'
+        lang === 'es' ? 'Añadiendo…' : 'Adding…'
       ) : (
         <>
           <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -64,7 +67,7 @@ export default function AddToCartButton({
             <line x1="3" y1="6" x2="21" y2="6" />
             <path d="M16 10a4 4 0 0 1-8 0" />
           </svg>
-          {label}
+          {resolvedLabel}
         </>
       )}
     </button>

@@ -64,12 +64,12 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-[68px]">
 
-          <Link href="/" aria-label="Light2minds home" className="flex-shrink-0">
+          <Link href="/" aria-label={lang === 'es' ? 'Inicio de Light2minds' : 'Light2minds home'} className="flex-shrink-0">
             <LogoMark />
           </Link>
 
           {/* ── Desktop nav ── */}
-          <nav className="hidden lg:flex items-center" aria-label="Primary navigation">
+          <nav className="hidden lg:flex items-center" aria-label={lang === 'es' ? 'Navegación principal' : 'Primary navigation'}>
             {links.map((l) => {
               const active = pathname.startsWith(l.href)
               return (
@@ -103,7 +103,11 @@ export default function Navbar() {
             <button
               onClick={openCart}
               className="relative w-10 h-10 flex items-center justify-center rounded-xl transition-colors hover:bg-stone-100"
-              aria-label={`Open cart${itemCount > 0 ? ` (${itemCount} items)` : ''}`}
+              aria-label={
+                lang === 'es'
+                  ? `Abrir carrito${itemCount > 0 ? ` (${itemCount} artículos)` : ''}`
+                  : `Open cart${itemCount > 0 ? ` (${itemCount} items)` : ''}`
+              }
             >
               <svg className="w-5 h-5 text-navy-900/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
@@ -172,7 +176,7 @@ export default function Navbar() {
             <button
               onClick={() => setMenuOpen((o) => !o)}
               className="flex flex-col items-center justify-center gap-[5px] min-w-[44px] min-h-[44px] -mr-2"
-              aria-label="Toggle menu"
+              aria-label={lang === 'es' ? 'Alternar menú' : 'Toggle menu'}
               aria-expanded={menuOpen}
             >
               <span className={['block w-[22px] h-[1.5px] bg-navy-900 transition-all duration-300 origin-center', menuOpen ? 'rotate-45 translate-y-[6.5px]' : ''].join(' ')} />

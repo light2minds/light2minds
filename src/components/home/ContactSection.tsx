@@ -106,7 +106,7 @@ export default function ContactSection() {
                     <circle cx="8" cy="6" r="1.5" />
                   </svg>
                 </span>
-                Florida, USA
+                {lang === 'es' ? 'Florida, EE.UU.' : 'Florida, USA'}
               </div>
             </div>
           </motion.div>

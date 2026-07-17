@@ -5,14 +5,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { formatPrice, ShopifyProduct, ShopifyVariant } from '@/lib/shopify'
 import AddToCartButton from '@/components/shop/AddToCartButton'
+import { useLang, type Lang } from '@/lib/language'
 
-function ShareButton({ title }: { title: string }) {
+function ShareButton({ title, lang }: { title: string; lang: Lang }) {
   const share = () => {
     if (navigator.share) {
       navigator.share({ title, url: window.location.href }).catch(() => {})
     } else {
       navigator.clipboard.writeText(window.location.href)
-        .then(() => alert('Link copied!'))
+        .then(() => alert(lang === 'es' ? '¡Enlace copiado!' : 'Link copied!'))
         .catch(() => {})
     }
   }
@@ -26,12 +27,13 @@ function ShareButton({ title }: { title: string }) {
         <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
         <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
       </svg>
-      Share this product
+      {lang === 'es' ? 'Compartir este producto' : 'Share this product'}
     </button>
   )
 }
 
 export default function ProductDetails({ product }: { product: ShopifyProduct }) {
+  const { lang } = useLang()
   const [selected, setSelected] = useState<ShopifyVariant | null>(
     product.variants.edges[0]?.node ?? null
   )
@@ -103,7 +105,7 @@ export default function ProductDetails({ product }: { product: ShopifyProduct })
                   {formatPrice(compare.amount, compare.currencyCode)}
                 </p>
                 <span className="text-[12px] font-bold px-2 py-1 rounded-full text-white" style={{ backgroundColor: '#2EBB50' }}>
-                  Save {Math.round((1 - parseFloat(price.amount) / parseFloat(compare.amount)) * 100)}%
+                  {lang === 'es' ? 'Ahorra' : 'Save'} {Math.round((1 - parseFloat(price.amount) / parseFloat(compare.amount)) * 100)}%
                 </span>
               </>
             )}
@@ -120,7 +122,7 @@ export default function ProductDetails({ product }: { product: ShopifyProduct })
           {hasOptions && (
             <div>
               <p className="text-[12px] font-semibold text-navy-800/55 mb-2.5 tracking-[0.04em]">
-                {variants[0].selectedOptions[0]?.name ?? 'Option'}:
+                {variants[0].selectedOptions[0]?.name ?? (lang === 'es' ? 'Opción' : 'Option')}:
                 <span className="text-navy-900 ml-1">{selected?.title}</span>
               </p>
               <div className="flex flex-wrap gap-2">
@@ -148,13 +150,13 @@ export default function ProductDetails({ product }: { product: ShopifyProduct })
             <AddToCartButton
               variantId={selected.id}
               available={selected.availableForSale && product.availableForSale}
-              label="Add to Cart"
+              label={lang === 'es' ? 'Añadir al Carrito' : 'Add to Cart'}
               size="lg"
               fullWidth
             />
           )}
 
-          <ShareButton title={product.title} />
+          <ShareButton title={product.title} lang={lang} />
 
           {product.tags.length > 0 && (
             <div className="flex flex-wrap gap-1.5 pt-2">
@@ -174,7 +176,7 @@ export default function ProductDetails({ product }: { product: ShopifyProduct })
           className="inline-flex items-center gap-2 text-[13px] font-semibold text-navy-800/45 hover:text-navy-900 transition-colors"
         >
           <svg className="w-4 h-4" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M12 7H2M6 3L2 7l4 4" /></svg>
-          Back to Shop
+          {lang === 'es' ? 'Volver a la Tienda' : 'Back to Shop'}
         </Link>
       </div>
     </div>
