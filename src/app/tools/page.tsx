@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useLang, type Lang } from '@/lib/language'
 
 const fade = { initial: { opacity: 0, y: 18 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } }
@@ -16,6 +16,13 @@ type ToolCard = {
   category: 'clinical' | 'parent' | 'rbt'
   searchTerms?: string
   file?: string
+}
+
+function getThumbnail(file?: string): string | undefined {
+  if (!file) return undefined
+  const name = file.split('/').pop() ?? ''
+  const base = name.replace(/\.(pdf|docx)$/i, '')
+  return `/thumbnails/${base}.png`
 }
 
 const getClinicalTools = (lang: Lang): ToolCard[] => [
@@ -298,14 +305,109 @@ const getTabs = (lang: Lang) => [
   { id: 'rbt', label: lang === 'es' ? 'Estudio para Terapeutas' : 'Therapist Study' },
 ]
 
-function ToolCardItem({ tool, accent, lang }: { tool: ToolCard; accent: string; lang: Lang }) {
+// ── Section accent config ───────────────────────────────────────────────────
+const SECTION_STYLE = {
+  parent: {
+    hex: '#2EBB50',
+    soft: 'rgba(46,187,80,0.10)',
+    accent: 'text-forest-700 border-forest-200 hover:bg-forest-700 hover:text-white hover:border-forest-700',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 11l9-8 9 8" /><path d="M5 10v10h14V10" /><path d="M9 20v-6h6v6" />
+      </svg>
+    ),
+  },
+  clinical: {
+    hex: '#1A7AC0',
+    soft: 'rgba(91,196,248,0.10)',
+    accent: 'text-sky-700 border-sky-200 hover:bg-sky-600 hover:text-white hover:border-sky-600',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="5" y="4" width="14" height="17" rx="2" /><path d="M9 2h6v3H9z" /><path d="M8 11h8M8 15h5" />
+      </svg>
+    ),
+  },
+  rbt: {
+    hex: '#B8900E',
+    soft: 'rgba(255,224,48,0.14)',
+    accent: 'text-gold-600 border-gold-200 hover:bg-gold-400 hover:text-navy-900 hover:border-gold-400',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 9l10-5 10 5-10 5-10-5z" /><path d="M6 11.5V17c0 1 2.7 3 6 3s6-2 6-3v-5.5" /><path d="M22 9v6" />
+      </svg>
+    ),
+  },
+} as const
+
+function SectionIntro({ cat, title, subtitle, count }: { cat: keyof typeof SECTION_STYLE; title: string; subtitle: string; count: number }) {
+  const s = SECTION_STYLE[cat]
   return (
-    <div className="bg-white border border-stone-200/70 rounded-2xl overflow-hidden flex flex-col hover:shadow-sm hover:shadow-stone-200/60 hover:-translate-y-0.5 transition-all duration-200">
-      <div className="p-6 flex-1">
-        <h4 className="text-[14px] font-semibold text-navy-900 mb-2 leading-snug">{tool.title}</h4>
-        <p className="text-[13px] text-navy-800/45 leading-relaxed">{tool.description}</p>
+    <div className="flex items-center gap-4 mb-8">
+      <span
+        className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0"
+        style={{ backgroundColor: s.soft, color: s.hex }}
+      >
+        <span className="w-5 h-5">{s.icon}</span>
+      </span>
+      <div className="flex-1 min-w-0">
+        <p className="text-[15px] font-bold text-navy-900 leading-snug">{title}</p>
+        <p className="text-[12.5px] text-navy-800/45 leading-snug">{subtitle}</p>
       </div>
-      <div className="px-6 py-4 border-t border-stone-100 flex items-center justify-between gap-3">
+      <span className="hidden sm:inline text-[11px] font-semibold text-navy-800/30 flex-shrink-0">{count}</span>
+      <div className="hidden sm:block flex-1 h-px bg-stone-100" />
+    </div>
+  )
+}
+
+function ToolCardItem({
+  tool, lang, onPreview,
+}: {
+  tool: ToolCard
+  lang: Lang
+  onPreview: (tool: ToolCard) => void
+}) {
+  const s = SECTION_STYLE[tool.category]
+  const thumb = getThumbnail(tool.file)
+
+  return (
+    <div className="group bg-white border border-stone-200/70 rounded-2xl overflow-hidden flex flex-col hover:shadow-lg hover:shadow-stone-200/70 hover:-translate-y-1 transition-all duration-250">
+      {/* Preview */}
+      <button
+        type="button"
+        onClick={() => tool.file && onPreview(tool)}
+        disabled={!tool.file}
+        className="relative h-36 w-full flex-shrink-0 overflow-hidden bg-stone-50 border-b border-stone-100 disabled:cursor-default"
+      >
+        {thumb ? (
+          <Image
+            src={thumb}
+            alt={tool.title}
+            fill
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.06]"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: s.soft }}>
+            <span className="w-8 h-8" style={{ color: s.hex }}>{s.icon}</span>
+          </div>
+        )}
+        {tool.file && (
+          <div className="absolute inset-0 bg-navy-900/0 group-hover:bg-navy-900/45 transition-colors duration-200 flex items-center justify-center">
+            <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0 inline-flex items-center gap-1.5 text-[11.5px] font-bold text-white px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/30">
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z" /><circle cx="12" cy="12" r="3" />
+              </svg>
+              {lang === 'es' ? 'Vista Previa' : 'Preview'}
+            </span>
+          </div>
+        )}
+      </button>
+
+      <div className="p-5 flex-1">
+        <h4 className="text-[14px] font-semibold text-navy-900 mb-1.5 leading-snug">{tool.title}</h4>
+        <p className="text-[12.5px] text-navy-800/45 leading-relaxed line-clamp-3">{tool.description}</p>
+      </div>
+      <div className="px-5 py-4 border-t border-stone-100 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 flex-wrap">
           {tool.format.split(' + ').map((f) => (
             <span
@@ -321,20 +423,19 @@ function ToolCardItem({ tool, accent, lang }: { tool: ToolCard; accent: string; 
             </span>
           ))}
           <span className="text-[10px] font-bold tracking-[0.06em] uppercase bg-forest-50 text-forest-700 px-1.5 py-0.5 rounded">{lang === 'es' ? 'GRATIS' : 'FREE'}</span>
-          {tool.audience && <span className="text-[11px] text-navy-800/30">{tool.audience}</span>}
         </div>
         {tool.file ? (
           <a
             href={tool.file}
             download
-            className={`text-[12px] font-semibold px-4 py-1.5 rounded-full border transition-all duration-150 ${accent}`}
+            className={`text-[12px] font-semibold px-4 py-1.5 rounded-full border transition-all duration-150 flex-shrink-0 ${s.accent}`}
           >
             {lang === 'es' ? 'Descargar' : 'Download'}
           </a>
         ) : (
           <button
             disabled
-            className="text-[12px] font-semibold px-4 py-1.5 rounded-full border border-stone-200 text-navy-800/25 cursor-not-allowed"
+            className="text-[12px] font-semibold px-4 py-1.5 rounded-full border border-stone-200 text-navy-800/25 cursor-not-allowed flex-shrink-0"
           >
             {lang === 'es' ? 'Próximamente' : 'Coming Soon'}
           </button>
@@ -344,10 +445,100 @@ function ToolCardItem({ tool, accent, lang }: { tool: ToolCard; accent: string; 
   )
 }
 
+function PreviewModal({ tool, lang, onClose }: { tool: ToolCard | null; lang: Lang; onClose: () => void }) {
+  useEffect(() => {
+    if (!tool) return
+    document.body.style.overflow = 'hidden'
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [tool, onClose])
+
+  if (!tool) return null
+  const s = SECTION_STYLE[tool.category]
+  const thumb = getThumbnail(tool.file)
+
+  return (
+    <AnimatePresence>
+      {tool && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.18 }}
+          className="fixed inset-0 z-[100] bg-navy-900/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 12 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-3xl overflow-hidden max-w-3xl w-full max-h-[88vh] flex flex-col sm:flex-row shadow-2xl"
+          >
+            {/* Image side */}
+            <div className="sm:w-[42%] flex-shrink-0 bg-stone-100 flex items-center justify-center p-4 sm:p-6 max-h-[40vh] sm:max-h-[88vh] overflow-hidden">
+              {thumb ? (
+                <img src={thumb} alt={tool.title} className="max-h-full max-w-full object-contain rounded-lg shadow-md" />
+              ) : (
+                <span className="w-16 h-16" style={{ color: s.hex }}>{s.icon}</span>
+              )}
+            </div>
+
+            {/* Details side */}
+            <div className="flex-1 p-6 sm:p-8 overflow-y-auto relative">
+              <button
+                onClick={onClose}
+                aria-label={lang === 'es' ? 'Cerrar' : 'Close'}
+                className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-navy-800/40 hover:text-navy-900 hover:bg-stone-100 transition-colors"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"><path d="M1 1l12 12M13 1L1 13" /></svg>
+              </button>
+
+              <span
+                className="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-[0.08em] uppercase px-2.5 py-1 rounded-full mb-4"
+                style={{ backgroundColor: s.soft, color: s.hex }}
+              >
+                {tool.format} · {lang === 'es' ? 'GRATIS' : 'FREE'}
+              </span>
+
+              <h3 className="text-[19px] font-bold text-navy-900 leading-snug mb-3 pr-8">{tool.title}</h3>
+              <p className="text-[13.5px] text-navy-800/55 leading-relaxed mb-6">{tool.description}</p>
+
+              {tool.audience && (
+                <p className="text-[11.5px] text-navy-800/35 mb-6">{tool.audience}</p>
+              )}
+
+              {tool.file && (
+                <a
+                  href={tool.file}
+                  download
+                  className="inline-flex items-center gap-2 text-[13.5px] font-bold text-white px-6 py-3 rounded-full transition-all duration-150 hover:-translate-y-px"
+                  style={{ backgroundColor: s.hex, boxShadow: `0 4px 0 ${s.hex}99` }}
+                >
+                  {lang === 'es' ? 'Descargar Gratis' : 'Download Free'}
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 1v8M4 6l3 3 3-3M2 11h10" />
+                  </svg>
+                </a>
+              )}
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
+
 export default function ToolsPage() {
   const { lang } = useLang()
   const [activeTab, setActiveTab] = useState('all')
   const [query, setQuery] = useState('')
+  const [previewTool, setPreviewTool] = useState<ToolCard | null>(null)
 
   const clinicalTools = getClinicalTools(lang)
   const parentTools = getParentTools(lang)
@@ -504,7 +695,7 @@ export default function ToolsPage() {
               {searchResults.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {searchResults.map((tool) => (
-                    <ToolCardItem key={tool.title} tool={tool} accent="text-navy-700 border-navy-900/15 hover:bg-navy-900 hover:text-white hover:border-navy-900" lang={lang} />
+                    <ToolCardItem key={tool.title} tool={tool} lang={lang} onPreview={setPreviewTool} />
                   ))}
                 </div>
               ) : (
@@ -523,23 +714,42 @@ export default function ToolsPage() {
               {/* Parent Resources */}
               {showSection('parent') && (
                 <div id="parent-tools" className="mb-16">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="flex-1 h-px bg-stone-100" />
-                    <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-navy-800/30 whitespace-nowrap">{lang === 'es' ? 'Recursos y Guías para Padres' : 'Parent Resources & Handouts'}</p>
-                    <div className="flex-1 h-px bg-stone-100" />
-                  </div>
+                  <SectionIntro
+                    cat="parent"
+                    title={lang === 'es' ? 'Recursos y Guías para Padres' : 'Parent Resources & Handouts'}
+                    subtitle={lang === 'es' ? 'Herramientas prácticas para el día a día en casa.' : 'Practical, everyday tools to support your child at home.'}
+                    count={parentTools.length + 1}
+                  />
 
                   {/* AAC Board — featured download */}
                   <div className="mb-6 bg-white border border-[#5BC4F8]/30 rounded-2xl overflow-hidden flex flex-col sm:flex-row">
-                    <div className="sm:w-64 flex-shrink-0 bg-stone-50 border-b sm:border-b-0 sm:border-r border-stone-100 flex items-center justify-center p-4">
+                    <button
+                      type="button"
+                      onClick={() => setPreviewTool({
+                        title: lang === 'es' ? 'Tablero de Comunicación de Vocabulario Central AAC' : 'AAC Core Vocabulary Communication Board',
+                        description: lang === 'es'
+                          ? 'Un tablero de vocabulario central AAC a todo color, listo para imprimir, con más de 80 palabras de alta frecuencia con símbolos visuales.'
+                          : 'A full-color, print-ready AAC core vocabulary board featuring 80+ high-frequency words with visual symbols.',
+                        format: 'PDF',
+                        audience: lang === 'es' ? 'Para Familias' : 'For Families',
+                        category: 'parent',
+                        file: '/downloads/AAC_Board_HighRes.pdf',
+                      })}
+                      className="relative sm:w-64 flex-shrink-0 bg-stone-50 border-b sm:border-b-0 sm:border-r border-stone-100 flex items-center justify-center p-4 group"
+                    >
                       <Image
                         src="/aac-communication-board.jpg"
                         alt="AAC Core Vocabulary Communication Board"
                         width={320}
                         height={240}
-                        className="rounded-xl w-full h-auto object-cover"
+                        className="rounded-xl w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       />
-                    </div>
+                      <div className="absolute inset-4 rounded-xl bg-navy-900/0 group-hover:bg-navy-900/45 transition-colors duration-200 flex items-center justify-center">
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[11.5px] font-bold text-white px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/30">
+                          {lang === 'es' ? 'Vista Previa' : 'Preview'}
+                        </span>
+                      </div>
+                    </button>
                     <div className="flex flex-col justify-between p-6 flex-1">
                       <div>
                         <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -573,7 +783,7 @@ export default function ToolsPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {parentTools.map((tool) => (
-                      <ToolCardItem key={tool.title} tool={tool} accent="text-forest-700 border-forest-200 hover:bg-forest-700 hover:text-white hover:border-forest-700" lang={lang} />
+                      <ToolCardItem key={tool.title} tool={tool} lang={lang} onPreview={setPreviewTool} />
                     ))}
                   </div>
                 </div>
@@ -582,14 +792,15 @@ export default function ToolsPage() {
               {/* Clinical Forms */}
               {showSection('clinical') && (
                 <div id="clinical-tools" className="mb-16">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="flex-1 h-px bg-stone-100" />
-                    <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-navy-800/30 whitespace-nowrap">{lang === 'es' ? 'Formularios de Datos Clínicos' : 'Clinical Data Forms'}</p>
-                    <div className="flex-1 h-px bg-stone-100" />
-                  </div>
+                  <SectionIntro
+                    cat="clinical"
+                    title={lang === 'es' ? 'Formularios de Datos Clínicos' : 'Clinical Data Forms'}
+                    subtitle={lang === 'es' ? 'Hojas de datos y documentación para uso clínico diario.' : 'Data sheets and documentation for daily clinical use.'}
+                    count={clinicalTools.length}
+                  />
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {clinicalTools.map((tool) => (
-                      <ToolCardItem key={tool.title} tool={tool} accent="text-navy-700 border-navy-900/15 hover:bg-navy-900 hover:text-white hover:border-navy-900" lang={lang} />
+                      <ToolCardItem key={tool.title} tool={tool} lang={lang} onPreview={setPreviewTool} />
                     ))}
                   </div>
                 </div>
@@ -598,14 +809,15 @@ export default function ToolsPage() {
               {/* Therapist Study Materials */}
               {showSection('rbt') && (
                 <div id="rbt-tools" className="mb-16">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="flex-1 h-px bg-stone-100" />
-                    <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-navy-800/30 whitespace-nowrap">{lang === 'es' ? 'Materiales de Estudio para Terapeutas' : 'Therapist Study Materials'}</p>
-                    <div className="flex-1 h-px bg-stone-100" />
-                  </div>
+                  <SectionIntro
+                    cat="rbt"
+                    title={lang === 'es' ? 'Materiales de Estudio para Terapeutas' : 'Therapist Study Materials'}
+                    subtitle={lang === 'es' ? 'Preparación para el examen RBT y herramientas de carrera.' : 'RBT exam prep and career-building resources.'}
+                    count={rbtTools.length}
+                  />
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {rbtTools.map((tool) => (
-                      <ToolCardItem key={tool.title} tool={tool} accent="text-navy-700 border-navy-900/15 hover:bg-navy-900 hover:text-white hover:border-navy-900" lang={lang} />
+                      <ToolCardItem key={tool.title} tool={tool} lang={lang} onPreview={setPreviewTool} />
                     ))}
                   </div>
                 </div>
@@ -658,6 +870,8 @@ export default function ToolsPage() {
           </div>
         </div>
       </section>
+
+      <PreviewModal tool={previewTool} lang={lang} onClose={() => setPreviewTool(null)} />
 
     </main>
   )
