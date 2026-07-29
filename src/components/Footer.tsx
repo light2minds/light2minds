@@ -35,9 +35,16 @@ const getCols = (lang: Lang) => [
   },
 ]
 
+const getLegalLinks = (lang: Lang) => [
+  { label: lang === 'es' ? 'Política de Privacidad' : 'Privacy Policy', href: '/legal/Light2Minds_Privacy_Policy.pdf' },
+  { label: lang === 'es' ? 'Términos de Servicio' : 'Terms of Service', href: '/legal/Light2Minds_Terms_of_Service.pdf' },
+  { label: lang === 'es' ? 'Política de Envíos y Devoluciones' : 'Shipping & Return Policy', href: '/legal/Light2Minds_Shipping_Return_Policy.pdf' },
+]
+
 export default function Footer() {
   const { lang } = useLang()
   const cols = getCols(lang)
+  const legalLinks = getLegalLinks(lang)
 
   return (
     <footer className="bg-stone-100 border-t border-stone-200/60">
@@ -113,9 +120,26 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
-          <p className="text-xs text-navy-800/30">
-            &copy; {new Date().getFullYear()} Light2minds. {lang === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
-          </p>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-3">
+            <p className="text-xs text-navy-800/30">
+              &copy; {new Date().getFullYear()} Light2minds. {lang === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
+            </p>
+            <div className="flex items-center gap-3">
+              {legalLinks.map((l, i) => (
+                <span key={l.href} className="flex items-center gap-3">
+                  {i > 0 && <span className="text-navy-800/15 select-none">·</span>}
+                  <a
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-navy-800/30 hover:text-navy-800/60 underline underline-offset-2 decoration-navy-800/15 hover:decoration-navy-800/40 transition-colors duration-150"
+                  >
+                    {l.label}
+                  </a>
+                </span>
+              ))}
+            </div>
+          </div>
           <p className="text-xs text-navy-800/25 max-w-xl lg:text-right leading-relaxed">
             {lang === 'es'
               ? 'Contenido educativo únicamente. No sustituye el consejo médico profesional, diagnóstico, supervisión o terapia.'
