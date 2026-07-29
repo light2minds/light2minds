@@ -376,7 +376,7 @@ function ToolCardItem({
         type="button"
         onClick={() => tool.file && onPreview(tool)}
         disabled={!tool.file}
-        className="relative h-36 w-full flex-shrink-0 overflow-hidden bg-stone-50 border-b border-stone-100 disabled:cursor-default"
+        className="relative h-24 sm:h-36 w-full flex-shrink-0 overflow-hidden bg-stone-50 border-b border-stone-100 disabled:cursor-default"
       >
         {thumb ? (
           <Image
@@ -384,7 +384,7 @@ function ToolCardItem({
             alt={tool.title}
             fill
             className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.06]"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: s.soft }}>
@@ -403,16 +403,16 @@ function ToolCardItem({
         )}
       </button>
 
-      <div className="p-5 flex-1">
-        <h4 className="text-[14px] font-semibold text-navy-900 mb-1.5 leading-snug">{tool.title}</h4>
-        <p className="text-[12.5px] text-navy-800/45 leading-relaxed line-clamp-3">{tool.description}</p>
+      <div className="p-3 sm:p-5 flex-1">
+        <h4 className="text-[12.5px] sm:text-[14px] font-semibold text-navy-900 mb-1 sm:mb-1.5 leading-snug line-clamp-2 sm:line-clamp-none">{tool.title}</h4>
+        <p className="hidden sm:block text-[12.5px] text-navy-800/45 leading-relaxed line-clamp-3">{tool.description}</p>
       </div>
-      <div className="px-5 py-4 border-t border-stone-100 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2 flex-wrap">
+      <div className="px-3 py-2.5 sm:px-5 sm:py-4 border-t border-stone-100 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
           {tool.format.split(' + ').map((f) => (
             <span
               key={f}
-              className={`text-[10px] font-bold tracking-[0.06em] uppercase px-1.5 py-0.5 rounded ${
+              className={`text-[9px] sm:text-[10px] font-bold tracking-[0.06em] uppercase px-1.5 py-0.5 rounded ${
                 f === 'PDF' ? 'bg-red-50 text-red-700' :
                 f === 'Word' ? 'bg-blue-50 text-blue-700' :
                 f === 'Excel' ? 'bg-green-50 text-green-700' :
@@ -422,20 +422,20 @@ function ToolCardItem({
               {f}
             </span>
           ))}
-          <span className="text-[10px] font-bold tracking-[0.06em] uppercase bg-forest-50 text-forest-700 px-1.5 py-0.5 rounded">{lang === 'es' ? 'GRATIS' : 'FREE'}</span>
+          <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.06em] uppercase bg-forest-50 text-forest-700 px-1.5 py-0.5 rounded">{lang === 'es' ? 'GRATIS' : 'FREE'}</span>
         </div>
         {tool.file ? (
           <a
             href={tool.file}
             download
-            className={`text-[12px] font-semibold px-4 py-1.5 rounded-full border transition-all duration-150 flex-shrink-0 ${s.accent}`}
+            className={`text-[11.5px] sm:text-[12px] font-semibold px-4 py-1.5 rounded-full border transition-all duration-150 flex-shrink-0 text-center ${s.accent}`}
           >
             {lang === 'es' ? 'Descargar' : 'Download'}
           </a>
         ) : (
           <button
             disabled
-            className="text-[12px] font-semibold px-4 py-1.5 rounded-full border border-stone-200 text-navy-800/25 cursor-not-allowed flex-shrink-0"
+            className="text-[11.5px] sm:text-[12px] font-semibold px-4 py-1.5 rounded-full border border-stone-200 text-navy-800/25 cursor-not-allowed flex-shrink-0"
           >
             {lang === 'es' ? 'Próximamente' : 'Coming Soon'}
           </button>
@@ -693,7 +693,7 @@ export default function ToolsPage() {
                   : <>{searchResults.length} {searchResults.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;</>}
               </p>
               {searchResults.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                   {searchResults.map((tool) => (
                     <ToolCardItem key={tool.title} tool={tool} lang={lang} onPreview={setPreviewTool} />
                   ))}
@@ -781,7 +781,7 @@ export default function ToolsPage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                     {parentTools.map((tool) => (
                       <ToolCardItem key={tool.title} tool={tool} lang={lang} onPreview={setPreviewTool} />
                     ))}
@@ -798,7 +798,7 @@ export default function ToolsPage() {
                     subtitle={lang === 'es' ? 'Hojas de datos y documentación para uso clínico diario.' : 'Data sheets and documentation for daily clinical use.'}
                     count={clinicalTools.length}
                   />
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                     {clinicalTools.map((tool) => (
                       <ToolCardItem key={tool.title} tool={tool} lang={lang} onPreview={setPreviewTool} />
                     ))}
@@ -815,7 +815,7 @@ export default function ToolsPage() {
                     subtitle={lang === 'es' ? 'Preparación para el examen RBT y herramientas de carrera.' : 'RBT exam prep and career-building resources.'}
                     count={rbtTools.length}
                   />
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                     {rbtTools.map((tool) => (
                       <ToolCardItem key={tool.title} tool={tool} lang={lang} onPreview={setPreviewTool} />
                     ))}
