@@ -92,6 +92,12 @@ export default function Footer() {
                 </svg>
                 Facebook · Light 2 Minds
               </a>
+              <a href="https://www.tiktok.com/@light2minds2?lang=en" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-navy-800/50 hover:text-navy-900 transition-colors">
+                <svg className="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="#000000">
+                  <path d="M16.6 5.82c-1.01-.88-1.6-2.16-1.6-3.57h-3.24v13.13c0 1.6-1.3 2.9-2.9 2.9s-2.9-1.3-2.9-2.9 1.3-2.9 2.9-2.9c.3 0 .59.05.86.13V9.4a6.15 6.15 0 0 0-.86-.06 6.13 6.13 0 1 0 6.13 6.13V8.03a8.16 8.16 0 0 0 4.76 1.52V6.32c-1.04 0-2-.32-2.85-.9-.06-.04-.13-.09-.2-.14z"/>
+                </svg>
+                TikTok · @light2minds2
+              </a>
               <p className="text-xs text-navy-800/35">{lang === 'es' ? 'Florida, EE.UU.' : 'Florida, USA'}</p>
             </div>
           </div>

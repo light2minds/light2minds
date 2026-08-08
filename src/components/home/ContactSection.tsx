@@ -14,12 +14,28 @@ const fade = (delay = 0) => ({
 export default function ContactSection() {
   const { lang } = useLang()
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(false)
   const [form, setForm] = useState({ name: '', email: '', message: '' })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Placeholder — replace with real form submission (e.g. Formspree, EmailJS)
-    setSubmitted(true)
+    if (submitting) return
+    setSubmitting(true)
+    setError(false)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error('Failed')
+      setSubmitted(true)
+    } catch {
+      setError(true)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -173,14 +189,24 @@ export default function ContactSection() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-xl text-[14px] font-bold text-navy-900 transition-all duration-150 hover:translate-y-[-1px] active:translate-y-[1px]"
+                  disabled={submitting}
+                  className="w-full py-3.5 rounded-xl text-[14px] font-bold text-navy-900 transition-all duration-150 hover:translate-y-[-1px] active:translate-y-[1px] disabled:opacity-60 disabled:pointer-events-none"
                   style={{
                     backgroundColor: '#FFE030',
                     boxShadow: '0 4px 0 #C4A800, 0 6px 14px rgba(0,0,0,0.08)',
                   }}
                 >
-                  {lang === 'es' ? 'Enviar mensaje' : 'Send message'}
+                  {submitting
+                    ? (lang === 'es' ? 'Enviando…' : 'Sending…')
+                    : (lang === 'es' ? 'Enviar mensaje' : 'Send message')}
                 </button>
+                {error && (
+                  <p className="text-[12px] text-red-600 text-center">
+                    {lang === 'es'
+                      ? 'Algo salió mal. Intenta de nuevo o escríbenos a info@light2minds.com.'
+                      : 'Something went wrong. Please try again or email info@light2minds.com.'}
+                  </p>
+                )}
                 <p className="text-[11px] text-navy-800/30 text-center">
                   {lang === 'es'
                     ? 'Respondemos en 1–2 días hábiles.'
